@@ -1,6 +1,6 @@
 <?php
 
-class BaseController
+class BaseController 
 {
     /**
      * Helper function to render a view.
