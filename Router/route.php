@@ -14,4 +14,7 @@ $route->get('/', [UserController::class, 'index']);
 // Register 
 $route->get('/register', [UserController::class, 'register']);
 
+// Login
+$route->get('/login', [UserController::class, 'login']);
+
 $route->route();
