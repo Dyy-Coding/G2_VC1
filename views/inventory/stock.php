@@ -1,134 +1,62 @@
-<div class="container-fluid py-4">
-    <div class="row">
-        <div class="col-12">
-            <div class="card mb-4">
-                <div class="card-header pb-0">
-                    <h6>Total Stock Count</h6>
-                </div>
-                <div class="card-body px-0 pt-0 pb-2">
-                    <div class="table-responsive p-0">
-                        <table class="table align-items-center mb-0">
-                            <thead>
-                                <tr>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Project</th>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Stock Count</th>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Status</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <div class="d-flex px-2">
-                                            <div>
-                                                <img src="../assets/img/small-logos/logo-spotify.svg" class="avatar avatar-sm rounded-circle me-2" alt="spotify">
-                                            </div>
-                                            <div class="my-auto">
-                                                <h6 class="mb-0 text-sm">Spotify</h6>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <p class="text-sm font-weight-bold mb-0">50</p>
-                                    </td>
-                                    <td>
-                                        <span class="text-xs font-weight-bold">In Stock</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="d-flex px-2">
-                                            <div>
-                                                <img src="../assets/img/small-logos/logo-invision.svg" class="avatar avatar-sm rounded-circle me-2" alt="invision">
-                                            </div>
-                                            <div class="my-auto">
-                                                <h6 class="mb-0 text-sm">Invision</h6>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <p class="text-sm font-weight-bold mb-0">5</p>
-                                    </td>
-                                    <td>
-                                        <span class="text-xs font-weight-bold text-danger">Low Stock</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="d-flex px-2">
-                                            <div>
-                                                <img src="../assets/img/small-logos/logo-jira.svg" class="avatar avatar-sm rounded-circle me-2" alt="jira">
-                                            </div>
-                                            <div class="my-auto">
-                                                <h6 class="mb-0 text-sm">Jira</h6>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <p class="text-sm font-weight-bold mb-0">20</p>
-                                    </td>
-                                    <td>
-                                        <span class="text-xs font-weight-bold">In Stock</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="d-flex px-2">
-                                            <div>
-                                                <img src="../assets/img/small-logos/logo-slack.svg" class="avatar avatar-sm rounded-circle me-2" alt="slack">
-                                            </div>
-                                            <div class="my-auto">
-                                                <h6 class="mb-0 text-sm">Slack</h6>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <p class="text-sm font-weight-bold mb-0">0</p>
-                                    </td>
-                                    <td>
-                                        <span class="text-xs font-weight-bold text-danger">Out of Stock</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="d-flex px-2">
-                                            <div>
-                                                <img src="../assets/img/small-logos/logo-webdev.svg" class="avatar avatar-sm rounded-circle me-2" alt="webdev">
-                                            </div>
-                                            <div class="my-auto">
-                                                <h6 class="mb-0 text-sm">Webdev</h6>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <p class="text-sm font-weight-bold mb-0">80</p>
-                                    </td>
-                                    <td>
-                                        <span class="text-xs font-weight-bold">In Stock</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="d-flex px-2">
-                                            <div>
-                                                <img src="../assets/img/small-logos/logo-xd.svg" class="avatar avatar-sm rounded-circle me-2" alt="xd">
-                                            </div>
-                                            <div class="my-auto">
-                                                <h6 class="mb-0 text-sm">Adobe XD</h6>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <p class="text-sm font-weight-bold mb-0">2</p>
-                                    </td>
-                                    <td>
-                                        <span class="text-xs font-weight-bold text-danger">Low Stock</span>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
+
+<div class="container mt-5 card" style="width: 95%; padding: 20px;">
+    <div class="d-flex justify-content-between mb-3">
+        <div>
+            <h1>All products</h1>
+            <p>Sand, Pebble, Cement,.....</p>
+        </div>
+        <div>
+            <button class="btn btn-primary me-2">+ New Products</button>
+            <button class="btn btn-secondary">Import</button>
+            <button class="btn btn-secondary">Export</button>
         </div>
     </div>
+    <div class="d-flex justify-content-between mb-3">
+    <div >
+            <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                3 entries per page
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <li><a class="dropdown-item" href="#">3</a></li>
+                <li><a class="dropdown-item" href="#">5</a></li>
+                <li><a class="dropdown-item" href="#">10</a></li>
+            </ul>
+        </div>
+        <div>
+            <input type="text" class="form-control" placeholder="Search">
+        </div>
+    </div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Category</th>
+                <th>Price</th>
+                <th>Type/Size</th>
+                <th>Quantity</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><i class="bi bi-lightbulb"></i>
+                <img src="" alt="image"> Sand number one</td>
+                <td>Construction</td>
+                <td>$1,680</td>
+                <td>m³</td>
+                <td>0</td>
+                <td><button type="button" class="btn btn-success btn-rounded" data-mdb-ripple-init>OUT OF STOCK</button></td>
+            </tr>
+            <tr>
+                <td><i class="bi bi-lightbulb"></i>
+                <img src="" alt="image"> Bulb yellow light</td>
+                <td>Electronic</td>
+                <td>$4,310</td>
+                <td>inches</td>
+                <td>168</td>
+                <td><button type="button" class="btn btn-danger btn-rounded" data-mdb-ripple-init>Have in stock</button></td>
+            </tr>
+        </tbody>
+    </table>
 </div>
