@@ -27,7 +27,7 @@
         </div>
     </div>
 
-    <table class="table">
+    <table class="table text-center" >
         <thead>
             <tr>
                 <th>Product</th>
@@ -38,7 +38,7 @@
                 <th>Status</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody >
             <tr>
                 <td><i class="bi bi-lightbulb"></i>
                 <img src="" alt="image"> Sand number one</td>
@@ -46,7 +46,7 @@
                 <td>$1,680</td>
                 <td>m³</td>
                 <td>0</td>
-                <td><button type="button" class="btn btn-success btn-rounded" data-mdb-ripple-init>OUT OF STOCK</button></td>
+                <td><button type="button" class="btn btn-success " data-mdb-ripple-init>OUT OF STOCK</button></td>
             </tr>
             <tr>
                 <td><i class="bi bi-lightbulb"></i>
@@ -55,7 +55,7 @@
                 <td>$4,310</td>
                 <td>inches</td>
                 <td>168</td>
-                <td><button type="button" class="btn btn-danger btn-rounded" data-mdb-ripple-init>Have in stock</button></td>
+                <td><button type="button" class="btn btn-danger " data-mdb-ripple-init>Have in stock</button></td>
             </tr>
         </tbody>
     </table>
