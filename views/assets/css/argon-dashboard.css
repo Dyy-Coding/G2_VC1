@@ -288,6 +288,7 @@ h4,
   }
 }
 
+
 h5,
 .h5 {
   font-size: 1.25rem;
@@ -1435,6 +1436,8 @@ progress {
   .gy-sm-12 {
     --bs-gutter-y: 16rem;
   }
+
+  
 }
 
 @media (min-width: 768px) {
@@ -1719,6 +1722,9 @@ progress {
   .gy-md-12 {
     --bs-gutter-y: 16rem;
   }
+
+
+
 }
 
 @media (min-width: 992px) {
@@ -28325,3 +28331,4 @@ input:checked + .slider:before {
 .nav-link:hover .icon {
   transform: scale(1.2); /* Slightly enlarge icons on hover */
 }
+
