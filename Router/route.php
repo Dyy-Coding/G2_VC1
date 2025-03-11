@@ -8,6 +8,9 @@ require_once "Controllers/UserController.php";
 
 $route = new Router();
 
+// Dashboard
+
+
 // User
 $route->get('/', [UserController::class, 'index']);
 
