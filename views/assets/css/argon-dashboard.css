@@ -28294,3 +28294,34 @@ input:checked + .slider:before {
   transform: translateX(26px);
 }
 /*# sourceMappingURL=dashboard-free.css.map */
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  color: black;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* Hover Effect */
+.nav-link:hover {
+  background-color: rgba(0, 0, 255, 0.1); /* Light blue on hover */
+  transform: scale(1.05); /* Slightly enlarge the item */
+}
+
+/* Active State */
+.active {
+  background-color: blue !important;
+  color: white !important;
+  font-weight: bold;
+}
+
+/* Icon adjustments */
+.icon {
+  transition: transform 0.2s ease;
+}
+.nav-link:hover .icon {
+  transform: scale(1.2); /* Slightly enlarge icons on hover */
+}
