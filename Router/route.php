@@ -13,7 +13,7 @@ $route = new Router();
 
 
 // User
-$route->get('/', [UserController::class, 'index']);
+$route->get('/user', [UserController::class, 'index']);
 
 // Register 
 $route->get('/register', [UserController::class, 'register']);
