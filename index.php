@@ -1,1 +1,1 @@
-<?php require("Router/route.php") ?>
+<?php require("views/adminView/addNewuser/adduser.php") ?>
