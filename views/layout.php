@@ -1,26 +1,18 @@
 <?php
-// Function to render views without navbar (for login/register pages)
-function authenticationView($content) {
-    require_once "views/layouts/header.php"; 
-    $content;  // Output content
-    require_once "views/layouts/footer.php"; 
+// Include the header
+require_once "views/layouts/header.php"; 
+
+// Check if this is an authentication-related page (login or register)
+$isAuthPage = isset($isAuthPage) ? $isAuthPage : false; // Default to false if not set
+
+// Include the navbar only if it's not an authentication page
+if (!$isAuthPage) {
+    require_once "views/layouts/navbar.php";
 }
 
-// Function to render views with navbar (for all pages except login/register)
-function simpleView($content) {
-    require_once "views/layouts/header.php"; 
-    require_once "views/layouts/navbar.php";  // Include navbar for non-login/register pages
-    $content;  // Output content
-    require_once "views/layouts/footer.php"; 
-}
+// Output the content of the page
+echo $content;
 
-// Conditional check for login or register
-if ($content !== "views/authentication/login.php" && $content !== "views/authentication/register.php") {
-    // Call simpleView if content is not login or register
-    simpleView($content);
-
-} else {
-    // Call authenticationView for login/register pages
-    authenticationView($content);
-}
+// Include the footer
+require_once "views/layouts/footer.php";
 ?>

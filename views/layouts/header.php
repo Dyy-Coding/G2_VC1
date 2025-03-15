@@ -39,105 +39,94 @@
     <hr class="horizontal dark mt-0">
     <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
       <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link " href="/">
-            <div
-              class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="ni ni-tv-2 text-dark text-sm opacity-10"></i>
-            </div>
-            <span class="nav-link-text ms-1">Dashboard</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/inventory">
-            <div
-              class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="ni ni-calendar-grid-58 text-dark text-sm opacity-10"></i>
-            </div>
-            <span class="nav-link-text ms-1">Inventory</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="../pages/billing.html">
-            <div
-              class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="ni ni-credit-card text-dark text-sm opacity-10"></i>
-            </div>
-            <span class="nav-link-text ms-1">Sales</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="../pages/virtual-reality.html">
-            <div
-              class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="ni ni-app text-dark text-sm opacity-10"></i>
-            </div>
-            <span class="nav-link-text ms-1">Customer</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="../pages/rtl.html">
-            <div
-              class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="ni ni-world-2 text-dark text-sm opacity-10"></i>
-            </div>
-            <span class="nav-link-text ms-1">Supplier</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="../pages/rtl.html">
-            <div
-              class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="ni ni-world-2 text-dark text-sm opacity-10"></i>
-            </div>
-            <span class="nav-link-text ms-1">Employee</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/user">
-            <div
-              class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="ni ni-single-02 text-dark text-sm opacity-10"></i>
-            </div>
-            <span class="nav-link-text ms-1">Account</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="../pages/sign-in.html">
-            <div
-              class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="ni ni-single-copy-04 text-dark text-sm opacity-10"></i>
-            </div>
-            <span class="nav-link-text ms-1">Report</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/register">
-            <div
-              class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="ni ni-collection text-dark text-sm opacity-10"></i>
-            </div>
-            <span class="nav-link-text ms-1">Help and Support</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/register">
-            <div
-              class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="ni ni-collection text-dark text-sm opacity-10"></i>
-            </div>
-            <span class="nav-link-text ms-1">Settings</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/logout">
-            <div
-              class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="ni ni-collection text-dark text-sm opacity-10"></i>
-            </div>
-            <span class="nav-link-text ms-1">Logout</span>
-          </a>
-        </li>
+      <li class="nav-item">
+        <a class="nav-link " href="/">
+        <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+          <i class="ni ni-tv-2 text-dark text-sm opacity-10"></i>
+        </div>
+        <span class="nav-link-text ms-1">Dashboard</span>
+        </a>
+      </li>
+      <li class="nav-item">
+    <a class="nav-link" href="/inventory">
+        <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+          <i class="ni ni-calendar-grid-58 text-dark text-sm opacity-10"></i>
+        </div>
+        <span class="nav-link-text ms-1">Inventory</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../pages/billing.html">
+        <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+          <i class="ni ni-credit-card text-dark text-sm opacity-10"></i>
+        </div>
+        <span class="nav-link-text ms-1">Sales</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../pages/virtual-reality.html">
+        <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+          <i class="ni ni-app text-dark text-sm opacity-10"></i>
+        </div>
+        <span class="nav-link-text ms-1">Customer</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../pages/rtl.html">
+        <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+          <i class="ni ni-world-2 text-dark text-sm opacity-10"></i>
+        </div>
+        <span class="nav-link-text ms-1">Supplier</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../pages/rtl.html">
+        <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+          <i class="ni ni-world-2 text-dark text-sm opacity-10"></i>
+        </div>
+        <span class="nav-link-text ms-1">Employee</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/profile">
+        <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+          <i class="ni ni-single-02 text-dark text-sm opacity-10"></i>
+        </div>
+        <span class="nav-link-text ms-1">Account</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../pages/sign-in.html">
+        <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+          <i class="ni ni-single-copy-04 text-dark text-sm opacity-10"></i>
+        </div>
+        <span class="nav-link-text ms-1">Report</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/register">
+        <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+          <i class="ni ni-collection text-dark text-sm opacity-10"></i>
+        </div>
+        <span class="nav-link-text ms-1">Help and Support</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/register">
+        <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+          <i class="ni ni-collection text-dark text-sm opacity-10"></i>
+        </div>
+        <span class="nav-link-text ms-1">Settings</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/logout">
+        <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+          <i class="ni ni-collection text-dark text-sm opacity-10"></i>
+        </div>
+        <span class="nav-link-text ms-1">Logout</span>
+        </a>
+      </li>
       </ul>
     </div>
     <style>
