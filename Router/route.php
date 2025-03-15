@@ -13,9 +13,14 @@ $route = new Router();
 
 // Dashboard Routes
 $route->get('/', [DashboardController::class, 'index']);
+
+
+// Auth Routes
 $route->get('/login', [LoginController::class, 'login']);
 $route->post('/login', [LoginController::class, 'login']);
 $route->get('/logout', [LoginController::class, 'logout']);
+
+// Register Routes
 $route->get('/register', [RegisterController::class, 'register']);
 $route->post('/register', [RegisterController::class, 'register']);
 
