@@ -20,6 +20,7 @@ $route->post('/register', [RegisterController::class, 'register']);
 
 // Inventory Routes
 $route->get('/inventory', [InventoryController::class, 'inventory']);
+$route->get('/sales', [InventoryController::class, 'sales']);
 
 // Route Handling
 $route->route();
