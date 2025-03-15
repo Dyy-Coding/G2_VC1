@@ -63,7 +63,7 @@
 
 <div class="col-lg-6 d-none d-lg-flex position-fixed top-0 end-0 w-100 vh-100 text-center justify-content-center flex-column">
   <div class="position-relative h-100 w-100 border-radius-lg d-flex flex-column justify-content-center overflow-hidden"
-       style="background-image: url('https://structuralengineeringbasics.com/wp-content/uploads/2019/05/STRUCTURAL-ENGINEERING-MATERIALS-1024x530-1-1200x720.webp'); 
+       style="background-image: url('https://wp.buildingmaterials.co.uk/wp-content/uploads/2022/11/shutterstock_619349516-scaled.jpg'); 
               background-size: cover; background-position: center; background-repeat: no-repeat;">
     <span class="bg-gradient-primary opacity-6"></span>
   </div>
