@@ -1,30 +1,54 @@
 <?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
-class BaseController 
+class BaseController
 {
-    /**
-     * Helper function to render a view.
-     *
-     * @param string $view The view file to render.
-     * @param array $data The data to pass to the view.
-     */
-    protected function view($view, $data = [])
+    protected function view(string $view, array $data = [], string $layout = 'layout')
     {
         extract($data);
         ob_start();
-        require "views/{$view}.php";
+
+        $viewFile = __DIR__ . '/../Views/' . $view . '.php';
+        if (!file_exists($viewFile)) {
+            http_response_code(404);
+            require __DIR__ . '/../Views/errors/404.php';
+            return;
+        }
+
+        require $viewFile;
         $content = ob_get_clean();
-        require "views/layout.php";
+
+        require __DIR__ . "/../Views/{$layout}.php";
+        
+    }
+    protected function viewAuthentication(string $view, array $data = [], string $layout = 'layout')
+    {
+        extract($data);
+        ob_start();
+
+        $viewFile = __DIR__ . '/../Views/' . $view . '.php';
+        if (!file_exists($viewFile)) {
+            http_response_code(404);
+            require __DIR__ . '/../Views/errors/404.php';
+            return;
+        }
+
+        require $viewFile;
+        
     }
 
-    /**
-     * Helper function to handle redirections.
-     *
-     * @param string $url The URL to redirect to.
-     */
-    protected function redirect($url)
+    protected function redirect(string $url)
     {
         header("Location: $url");
         exit;
+    }
+
+    protected function requireAuth()
+    {
+        if (!isset($_SESSION['user'])) {
+            $this->redirect('/login');
+        }
     }
 }

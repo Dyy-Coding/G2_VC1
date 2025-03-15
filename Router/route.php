@@ -1,28 +1,25 @@
 <?php
 require_once "Router.php";
 require_once "Controllers/BaseController.php";
-require_once "Database/Database.php";
-require_once "Controllers/UserController.php";
-require_once "Controllers/InventoryController.php";
-require_once "Controllers/DashboardController.php";
-
-
+require_once __DIR__ . '/../Database/Database.php';
+require_once "Controllers/adminController/loginController.php";
+require_once "Controllers/adminController/registerController.php";
+require_once "Controllers/adminController/InventoryController.php";
+require_once "Controllers/AdminController/DashboardController.php";
+require_once "Models/usersModel.php";
 
 $route = new Router();
 
-// Dashboard
+
+// Dashboard Routes
 $route->get('/', [DashboardController::class, 'index']);
+$route->get('/login', [LoginController::class, 'login']);
+$route->post('/login', [LoginController::class, 'login']);
+$route->get('/register', [RegisterController::class, 'register']);
+$route->post('/register', [RegisterController::class, 'register']);
 
-// User
-$route->get('/user', [UserController::class, 'index']);
-
-// Register 
-$route->get('/register', [UserController::class, 'register']);
-
-// Login
-$route->get('/login', [UserController::class, 'login']);
-
-// Inventory
+// Inventory Routes
 $route->get('/inventory', [InventoryController::class, 'inventory']);
 
+// Route Handling
 $route->route();

@@ -6,92 +6,66 @@ class Router
     private $method;
     private $routes = [];
 
-    /**
-     * Constructor to initialize the URI and request method.
-     */
     public function __construct()
     {
         $this->uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
         $this->method = $_SERVER['REQUEST_METHOD'];
     }
 
-    /**
-     * Registers a GET route.
-     *
-     * @param string $uri The URI of the route.
-     * @param array $action The controller class and method to be executed.
-     */
     public function get($uri, $action)
     {
-        $this->routes[$uri] = [
+        $this->routes[] = [
+            'uri' => trim($uri, '/'),
             'method' => 'GET',
             'action' => $action
         ];
     }
 
-    /**
-     * Registers a POST route.
-     *
-     * @param string $uri The URI of the route.
-     * @param array $action The controller class and method to be executed.
-     */
     public function post($uri, $action)
     {
-        $this->routes[$uri] = [
+        $this->routes[] = [
+            'uri' => trim($uri, '/'),
             'method' => 'POST',
             'action' => $action
         ];
     }
 
-    /**
-     * Registers a PUT route.
-     *
-     * @param string $uri The URI of the route.
-     * @param array $action The controller class and method to be executed.
-     */
-    public function put($uri, $action)
-    {
-        $this->routes[$uri] = [
-            'method' => 'PUT',
-            'action' => $action
-        ];
-    }
-
-    /**
-     * Registers a DELETE route.
-     *
-     * @param string $uri The URI of the route.
-     * @param array $action The controller class and method to be executed.
-     */
-    public function delete($uri, $action)
-    {
-        $this->routes[$uri] = [
-            'method' => 'DELETE',
-            'action' => $action
-        ];
-    }
-
-    /**
-     * Routes the request to the appropriate controller and method.
-     */
     public function route()
     {
-        foreach ($this->routes as $uri => $route) {
-            // Convert route pattern to a regex that matches numbers (for IDs)
-            $pattern = preg_replace('/\{[a-zA-Z0-9_]+\}/', '([0-9]+)', trim($uri, '/'));
+        $currentUri = trim($this->uri, '/');
 
-            if (preg_match("#^$pattern$#", trim($this->uri, '/'), $matches)) {
+        foreach ($this->routes as $route) {
+            $pattern = preg_replace('/\{[a-zA-Z0-9_]+\}/', '([a-zA-Z0-9_]+)', $route['uri']);
+            if ($this->method === $route['method'] && preg_match("#^{$pattern}$#", $currentUri, $matches)) {
                 array_shift($matches); // Remove full match
                 $controllerClass = $route['action'][0];
-                $function = $route['action'][1];
+                $method = $route['action'][1];
 
-                $controller = new $controllerClass();
-                $controller->$function(...$matches); // Pass extracted parameters
-                exit;
+                // Instantiate and call controller action
+                if (class_exists($controllerClass) && method_exists($controllerClass, $method)) {
+                    $controller = new $controllerClass();
+                    call_user_func_array([$controller, $method], $matches);
+                    return;
+                } else {
+                    http_response_code(500);
+                    echo "Controller or method not found: {$controllerClass}::{$method}";
+                    return;
+                }
             }
         }
 
+        // If no route matched
         http_response_code(404);
-        require_once 'views/errors/404.php';
+        echo "<h3 style='color:red;'>404 Not Found</h3><p>Page '{$this->uri}' does not exist.</p>";
+    }
+
+    public function printRoutes()
+    {
+        echo "<h3>Registered Routes:</h3>";
+        foreach ($this->routes as $route) {
+            $controller = $route['action'][0];
+            $method = $route['action'][1];
+            echo "URI: <strong>/{$route['uri']}</strong> | Method: <strong>{$route['method']}</strong> | Action: <strong>{$controller}::{$method}</strong><br>";
+        }
     }
 }

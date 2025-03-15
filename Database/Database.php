@@ -1,42 +1,29 @@
 <?php
+class Database {
+    private static $conn = null;
 
-class Database
-{
-    private $db;
+    public static function getConnection() {
+        if (self::$conn === null) {
+            try {
+                $host = 'localhost';
+                $db   = 'construction_depot_lim_try';
+                $user = 'root';
+                $pass = '';
+                $charset = 'utf8mb4';
 
-    /**
-     * Constructor to initialize the database connection.
-     *
-     * @param string $host The hostname of the database server.
-     * @param string $dbname The name of the database.
-     * @param string $username The username for the database connection.
-     * @param string $password The password for the database connection.
-     */
-    public function __construct($host, $dbname, $username, $password)
-    {
-        $dsn = "mysql:host=$host;dbname=$dbname;charset=UTF8";
+                $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
+                $options = [
+                    PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+                    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+                    PDO::ATTR_EMULATE_PREPARES   => false,
+                ];
 
-        try {
-            $this->db = new PDO($dsn, $username, $password);
-            $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        } catch (PDOException $e) {
-            echo "Connection failed: " . $e->getMessage();
+                self::$conn = new PDO($dsn, $user, $pass, $options);
+            } catch (PDOException $e) {
+                die("DB Connection failed: " . $e->getMessage());
+            }
         }
-    }
 
-    /**
-     * Executes a SQL query with optional parameters.
-     *
-     * @param string $sql The SQL query to execute.
-     * @param array $params The parameters to bind to the query.
-     * @return PDOStatement The result of the executed query.
-     */
-    public function query($sql, $params = [])
-    {
-        $stmt = $this->db->prepare($sql);
-        $stmt->execute($params);
-        return $stmt;
+        return self::$conn;
     }
-
-    
 }
