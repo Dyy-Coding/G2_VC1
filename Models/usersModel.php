@@ -7,12 +7,26 @@ class UserModel {
         $this->conn = Database::getConnection(); // Singleton DB connection
     }
 
-    // Get a user by email
+    // Get a user by email (case-insensitive)
+    public function registerUser($email, $password) {
+        // Hash the password before storing it
+        $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
+
+        // Insert the new user into the database with the hashed password
+        $query = "INSERT INTO users (email, password) VALUES (:email, :password)";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':email', $email);
+        $stmt->bindParam(':password', $hashedPassword);
+        $stmt->execute();
+    }
+
     public function getUserByEmail($email) {
-        $stmt = $this->conn->prepare("SELECT * FROM users WHERE email = :email LIMIT 1");
+        // Retrieve the user from the database by email
+        $query = "SELECT * FROM users WHERE email = :email";
+        $stmt = $this->conn->prepare($query);
         $stmt->bindParam(':email', $email);
         $stmt->execute();
-        return $stmt->fetch(PDO::FETCH_ASSOC);
+        return $stmt->fetch(PDO::FETCH_ASSOC);  // Returns an associative array
     }
 
     // Get a user by ID
@@ -23,28 +37,33 @@ class UserModel {
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    // Add a new user to the database (Create)
-    public function addUser($full_name, $email, $phone, $role_id, $hashed_password) {
-        try {
-            $sql = "INSERT INTO users (full_name, email, phone, role_id, password, created_at) 
-                    VALUES (:full_name, :email, :phone, :role_id, :password, NOW())";
-            $stmt = $this->conn->prepare($sql);
-            $stmt->bindParam(':full_name', $full_name);
-            $stmt->bindParam(':email', $email);
-            $stmt->bindParam(':phone', $phone);
-            $stmt->bindParam(':role_id', $role_id);
-            $stmt->bindParam(':password', $hashed_password);
+    // Add a new user to the database (Create)// Add a new user to the database (Create)
+public function addUser($first_name, $last_name, $email, $phone, $role_id, $password)
+{
+    // Hash the password before storing it
+    $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+
+    // Using PDO prepared statements
+    $sql = "INSERT INTO users (first_name, last_name, email, phone, role_id, password) 
+            VALUES (:first_name, :last_name, :email, :phone, :role_id, :password)";
     
-            if ($stmt->execute()) {
-                return $this->conn->lastInsertId(); // Return new user ID instead of true
-            } else {
-                return "Failed to insert user.";
-            }
-        } catch (PDOException $e) {
-            return "Database error: " . $e->getMessage();
-        }
+    $stmt = $this->conn->prepare($sql);
+    $stmt->bindParam(':first_name', $first_name);
+    $stmt->bindParam(':last_name', $last_name);
+    $stmt->bindParam(':email', $email);
+    $stmt->bindParam(':phone', $phone);
+    $stmt->bindParam(':role_id', $role_id, PDO::PARAM_INT);
+    $stmt->bindParam(':password', $hashedPassword);
+    
+    if ($stmt->execute()) {
+        return $this->conn->lastInsertId();  // Return the inserted user ID
     }
+
+    return false;  // Return false if registration fails
+}
+
     
+
     // Get all users (Read)
     public function getAllUsers() {
         $stmt = $this->conn->prepare("SELECT * FROM users");
@@ -53,11 +72,12 @@ class UserModel {
     }
 
     // Update user information (Update)
-    public function updateUser($user_id, $full_name, $email, $phone, $role_id) {
-        $sql = "UPDATE users SET full_name = :full_name, email = :email, phone = :phone, role_id = :role_id WHERE user_id = :user_id";
+    public function updateUser($user_id, $first_name, $last_name, $email, $phone, $role_id) {
+        $sql = "UPDATE users SET first_name = :first_name, last_name = :last_name, email = :email, phone = :phone, role_id = :role_id WHERE user_id = :user_id";
         $stmt = $this->conn->prepare($sql);
         $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
-        $stmt->bindParam(':full_name', $full_name);
+        $stmt->bindParam(':first_name', $first_name);
+        $stmt->bindParam(':last_name', $last_name);
         $stmt->bindParam(':email', $email);
         $stmt->bindParam(':phone', $phone);
         $stmt->bindParam(':role_id', $role_id, PDO::PARAM_INT);
@@ -74,18 +94,39 @@ class UserModel {
 
     // Function to log user actions
     public function log_action($user_id, $action) {
-        // If user_id is NULL (not logged in), assign a default user_id (e.g., 0 for guest)
-        $user_id = $user_id ?? "unknown"; // Default to 0 if user_id is not set
-
-        $ip = $_SERVER['REMOTE_ADDR'] ?? 'unknown';
-        $agent = $_SERVER['HTTP_USER_AGENT'] ?? 'unknown';
-
-        $stmt = $this->conn->prepare("INSERT INTO audit_logs (user_id, action, ip_address, user_agent, created_at) 
-                                      VALUES (:user_id, :action, :ip_address, :user_agent, NOW())");
-        $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
-        $stmt->bindParam(':action', $action);
-        $stmt->bindParam(':ip_address', $ip);
-        $stmt->bindParam(':user_agent', $agent);
-        $stmt->execute();
+        try {
+            // Validate user existence
+            $user = $this->getUserById($user_id);
+            if (!$user) {
+                $user_id = null; // Avoid foreign key violation
+            }
+    
+            // Get user IP and user agent
+            $ip = $_SERVER['REMOTE_ADDR'] ?? 'unknown';
+            $agent = $_SERVER['HTTP_USER_AGENT'] ?? 'unknown';
+    
+            // Prepare SQL statement
+            $stmt = $this->conn->prepare("INSERT INTO audit_logs (user_id, action, ip_address, user_agent, created_at) 
+                                          VALUES (:user_id, :action, :ip_address, :user_agent, NOW())");
+    
+            // Bind parameters with proper handling for NULL values
+            if ($user_id === null) {
+                $stmt->bindValue(':user_id', null, PDO::PARAM_NULL);
+            } else {
+                $stmt->bindValue(':user_id', $user_id, PDO::PARAM_INT);
+            }
+            $stmt->bindParam(':action', $action);
+            $stmt->bindParam(':ip_address', $ip);
+            $stmt->bindParam(':user_agent', $agent);
+    
+            // Execute the query
+            if (!$stmt->execute()) {
+                error_log("Failed to log action: " . implode(" | ", $stmt->errorInfo()));
+            }
+        } catch (PDOException $e) {
+            error_log("Audit log error: " . $e->getMessage());
+        }
     }
+    
 }
+?>

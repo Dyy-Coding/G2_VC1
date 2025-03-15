@@ -21,6 +21,32 @@
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Custom Styling -->
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .card {
+            border-radius: 16px;
+        }
+        .form-control {
+            border-radius: 8px;
+        }
+        .btn {
+            border-radius: 8px;
+        }
+        .btn-primary {
+            background-color: #4e73df;
+            border: none;
+        }
+        .btn-primary:hover {
+            background-color: #2e59d9;
+        }
+        .text-gray-600:hover {
+            color: #1d1d1d;
+        }
+    </style>
 </head>
 
 <body>
