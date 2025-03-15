@@ -29,15 +29,7 @@
             <div class="card-body p-8">
                 <h2 class="text-2xl font-bold mb-6 text-center text-gray-700">Register New User</h2>
 
-                <?php if (!empty($errors)): ?>
-                    <div class="bg-red-100 text-red-700 p-3 rounded mb-4">
-                        <?php foreach ($errors as $error) echo "<p>$error</p>"; ?>
-                    </div>
-                <?php elseif ($successMessage): ?>
-                    <div class="bg-green-100 text-green-700 p-3 rounded mb-4">
-                        <p><?= $successMessage ?></p>
-                    </div>
-                <?php endif; ?>
+           
 
                 <form action="/register" method="POST">
                     <div class="mb-4">

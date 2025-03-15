@@ -15,6 +15,7 @@ $route = new Router();
 $route->get('/', [DashboardController::class, 'index']);
 $route->get('/login', [LoginController::class, 'login']);
 $route->post('/login', [LoginController::class, 'login']);
+$route->get('/logout', [LoginController::class, 'logout']);
 $route->get('/register', [RegisterController::class, 'register']);
 $route->post('/register', [RegisterController::class, 'register']);
 

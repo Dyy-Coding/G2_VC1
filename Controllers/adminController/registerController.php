@@ -1,10 +1,10 @@
 <?php
 
 class RegisterController extends BaseController {
-    private $usersModel;
+    private $users;
 
     public function __construct() {
-        $this->usersModel = new UserModel();
+        $this->users = new UserModel();
     }
 
     public function register() {
@@ -30,20 +30,32 @@ class RegisterController extends BaseController {
                 return;
             }
 
-            // Generate a verification token (for email verification)
-            $verification_token = bin2hex(random_bytes(16)); // 32-character random token
+            // Check if email already exists
+            $existingUser = $this->users->getUserByEmail($email);
+            if ($existingUser) {
+                $this->viewAuthentication('authentication/register', ['error' => 'Email is already in use.']);
+                return;
+            }
 
             // Hash the password for security
             $hashed_password = password_hash($password, PASSWORD_BCRYPT);
 
             // Call UsersModel to add user
-            $result = $this->usersModel->addUser($full_name, $email, $phone, $role_id, $hashed_password, $verification_token);
+            $result = $this->users->addUser($full_name, $email, $phone, $role_id, $hashed_password);
 
-            if ($result === true) {
-                // Send verification email
-                $this->sendVerificationEmail($email, $verification_token);
+            if (is_numeric($result)) {
+                // ✅ Set user session after successful registration
+                $_SESSION['user_id'] = $result; // Use the newly inserted user ID
+                $_SESSION['role_id'] = $role_id;
+                $_SESSION['full_name'] = $full_name;
 
-                $this->viewAuthentication('authentication/register', ['success' => 'Registration successful! Please check your email to verify your account.']);
+                // ✅ Log the registration action
+                $this->users->log_action($result, 'User registered successfully.');
+
+                // ✅ Redirect immediately to the dashboard
+                $_SESSION['success'] = 'Registration successful! Redirecting to dashboard...';
+                header("Location: /");
+                exit();
             } else {
                 $this->viewAuthentication('authentication/register', ['error' => $result]); // Show error message
             }
@@ -51,16 +63,5 @@ class RegisterController extends BaseController {
             $this->viewAuthentication('authentication/register'); // Show registration form
         }
     }
-
-    private function sendVerificationEmail($email, $verification_token) {
-        $verification_link = "http://yourwebsite.com/verify?token=" . $verification_token;
-
-        $subject = "Verify your email address";
-        $message = "Please click on the following link to verify your email address: $verification_link";
-        $headers = "From: no-reply@yourwebsite.com";
-
-        mail($email, $subject, $message, $headers);
-    }
 }
-
 ?>

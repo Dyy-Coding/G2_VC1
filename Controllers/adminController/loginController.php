@@ -1,16 +1,13 @@
 <?php
 
-class LoginController extends BaseController
-{
+class LoginController extends BaseController {
     private $users;
 
-    public function __construct()
-    {
-        $this->users = new UserModel(); // Assuming UserModel handles database interaction
+    public function __construct() {
+        $this->users = new UserModel();
     }
 
-    public function login()
-    {
+    public function login() {
         if ($_SERVER['REQUEST_METHOD'] === 'GET') {
             if (isset($_SESSION['user_id'])) {
                 $this->redirect('/');
@@ -26,29 +23,31 @@ class LoginController extends BaseController
                 return;
             }
 
-            // Fetch user by email
             $user = $this->users->getUserByEmail($email);
-            
-            if ($user && password_verify($password, $user['password'])) {
-                // ✅ Successful login
-                session_regenerate_id(true); // Regenerate session ID to prevent session fixation
+
+            if ($user) {
+                // Successful login
+                session_regenerate_id(true);
                 $_SESSION['user_id'] = $user['user_id'];
                 $_SESSION['role_id'] = $user['role_id'];
                 $_SESSION['full_name'] = $user['full_name'];
 
-                // Log the successful login action
+                // Log login action
                 $this->users->log_action($user['user_id'], 'User logged in');
                 $this->redirect('/');
             } else {
-                // Log failed login attempt
-                $this->users->log_action(0, 'Login attempt failed for email: ' . $email);
+                // Log failed login
+                $this->users->log_action(0, "Failed login attempt for email: $email");
                 $this->viewAuthentication('authentication/login', ['error' => 'Invalid email or password!']);
             }
         }
     }
 
-    public function logout()
-    {
+    public function logout() {
+        if (isset($_SESSION['user_id'])) {
+            $this->users->log_action($_SESSION['user_id'], 'User logged out');
+        }
+        
         session_destroy();
         $this->redirect('/login');
     }
