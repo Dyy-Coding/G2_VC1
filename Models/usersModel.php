@@ -16,6 +16,22 @@ class UserModel {
         return $stmt->fetch(PDO::FETCH_ASSOC); // Return associative array or false
     }
 
+    
+    // Function to log user actions
+    public function log_action($user_id, $action)
+    {
+        $ip = $_SERVER['REMOTE_ADDR'] ?? 'unknown';
+        $agent = $_SERVER['HTTP_USER_AGENT'] ?? 'unknown';
+
+        // Assuming $this->conn is the PDO connection initialized in BaseController
+        $stmt = $this->conn->prepare("INSERT INTO audit_logs (user_id, action, ip_address, user_agent) VALUES (:user_id, :action, :ip_address, :user_agent)");
+        $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
+        $stmt->bindParam(':action', $action);
+        $stmt->bindParam(':ip_address', $ip);
+        $stmt->bindParam(':user_agent', $agent);
+        $stmt->execute();
+    }
+
     // Add a new user to the database
     public function addUser($full_name, $email, $phone, $role_id, $password, $verification_token) {
         $sql = "INSERT INTO users (full_name, email, phone, role_id, password, verification_token, is_verified) 
