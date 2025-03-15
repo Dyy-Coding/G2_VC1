@@ -21,6 +21,32 @@
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Custom Styling -->
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .card {
+            border-radius: 16px;
+        }
+        .form-control {
+            border-radius: 8px;
+        }
+        .btn {
+            border-radius: 8px;
+        }
+        .btn-primary {
+            background-color: #4e73df;
+            border: none;
+        }
+        .btn-primary:hover {
+            background-color: #2e59d9;
+        }
+        .text-gray-600:hover {
+            color: #1d1d1d;
+        }
+    </style>
 </head>
 
 <body class="bg-gray-100">
@@ -29,34 +55,50 @@
             <div class="card-body p-8">
                 <h2 class="text-2xl font-bold mb-6 text-center text-gray-700">Register New User</h2>
 
-           
-
                 <form action="/register" method="POST">
+                    <!-- First Name Input -->
                     <div class="mb-4">
-                        <label class="block text-gray-600 font-medium mb-1">Full Name</label>
-                        <input type="text" name="name" class="form-control border border-gray-300 p-2 rounded-lg focus:ring-2 focus:ring-blue-400" required value="<?= htmlspecialchars($full_name ?? '') ?>">
+                        <label for="first_name" class="block text-gray-600 font-medium mb-1">First Name</label>
+                        <input type="text" id="first_name" name="first_name" class="form-control border border-gray-300 p-2 w-full focus:ring-2 focus:ring-blue-400" required value="<?= htmlspecialchars($first_name ?? '') ?>" />
                     </div>
 
+                    <!-- Last Name Input -->
                     <div class="mb-4">
-                        <label class="block text-gray-600 font-medium mb-1">Email</label>
-                        <input type="email" name="email" class="form-control border border-gray-300 p-2 rounded-lg focus:ring-2 focus:ring-blue-400" required value="<?= htmlspecialchars($email ?? '') ?>">
+                        <label for="last_name" class="block text-gray-600 font-medium mb-1">Last Name</label>
+                        <input type="text" id="last_name" name="last_name" class="form-control border border-gray-300 p-2 w-full focus:ring-2 focus:ring-blue-400" required value="<?= htmlspecialchars($last_name ?? '') ?>" />
                     </div>
 
+                    <!-- Email Input -->
                     <div class="mb-4">
-                        <label class="block text-gray-600 font-medium mb-1">Password</label>
-                        <input type="password" name="password" class="form-control border border-gray-300 p-2 rounded-lg focus:ring-2 focus:ring-blue-400" required>
+                        <label for="email" class="block text-gray-600 font-medium mb-1">Email</label>
+                        <input type="email" id="email" name="email" class="form-control border border-gray-300 p-2 w-full focus:ring-2 focus:ring-blue-400" required value="<?= htmlspecialchars($email ?? '') ?>" />
                     </div>
 
+                    <!-- Phone Number Input -->
+                    <div class="mb-4">
+                        <label for="phone" class="block text-gray-600 font-medium mb-1">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" class="form-control border border-gray-300 p-2 w-full focus:ring-2 focus:ring-blue-400" required value="<?= htmlspecialchars($phone ?? '') ?>" />
+                    </div>
+
+                    <!-- Password Input -->
+                    <div class="mb-4">
+                        <label for="password" class="block text-gray-600 font-medium mb-1">Password</label>
+                        <input type="password" id="password" name="password" class="form-control border border-gray-300 p-2 w-full focus:ring-2 focus:ring-blue-400" required />
+                    </div>
+
+                    <!-- Confirm Password Input -->
                     <div class="mb-6">
-                        <label class="block text-gray-600 font-medium mb-1">Confirm Password</label>
-                        <input type="password" name="confirm_password" class="form-control border border-gray-300 p-2 rounded-lg focus:ring-2 focus:ring-blue-400" required>
+                        <label for="confirm_password" class="block text-gray-600 font-medium mb-1">Confirm Password</label>
+                        <input type="password" id="confirm_password" name="confirm_password" class="form-control border border-gray-300 p-2 w-full focus:ring-2 focus:ring-blue-400" required />
                     </div>
 
-                    <div class="d-flex justify-content-between">
+                    <!-- Form Buttons -->
+                    <div class="d-flex justify-content-between mb-4">
                         <button type="submit" class="btn btn-primary w-48">Register</button>
-                        <a href="/login" class="text-gray-600 hover:text-black">Login</a>
+                        <a href="/login" class="text-gray-600 hover:text-black">Already have an account? Login</a>
                     </div>
-                    
+
+                    <!-- Reset Button -->
                     <div class="mt-4">
                         <button type="reset" class="btn btn-secondary w-full">Reset</button>
                     </div>
