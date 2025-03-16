@@ -48,6 +48,9 @@
             <span class="nav-link-text ms-1">Dashboard</span>
           </a>
         </li>
+
+
+
         <li class="nav-item">
           <a class="nav-link" href="/inventory">
             <div
@@ -56,7 +59,26 @@
             </div>
             <span class="nav-link-text ms-1">Inventory</span>
           </a>
+          <ul class="dropdown-menu" id="inventoryDropdown" style="display: none; position: relative; left: 44px;">
+            <li><a class="dropdown-item" href="/inventory">Category</a></li>
+            <li><a class="dropdown-item" href="/inventory">Product</a></li>
+            <li><a class="dropdown-item" href="/inventory">Order</a></li>
+          </ul>
         </li>
+        <script>
+          document.querySelector('.nav-link[href="/inventory"]').addEventListener('click', function (event) {
+            event.preventDefault();
+            var inventorydropdown = document.getElementById("inventoryDropdown");
+            if (inventorydropdown.style.display === "none" || inventorydropdown.style.display === "") {
+              inventorydropdown.style.display = "block";
+            } else {
+              inventorydropdown.style.display = "none";
+            }
+          });
+        </script>
+
+
+
         <li class="nav-item">
           <a class="nav-link" href="../pages/billing.html">
             <div
@@ -112,11 +134,11 @@
         <script>
           document.querySelector('.nav-link[href="/profile"]').addEventListener('click', function (event) {
             event.preventDefault();
-            var dropdown = document.getElementById("accountDropdown");
-            if (dropdown.style.display === "none" || dropdown.style.display === "") {
-              dropdown.style.display = "block";
+            var accountdropdown = document.getElementById("accountDropdown");
+            if (accountdropdown.style.display === "none" || accountdropdown.style.display === "") {
+              accountdropdown.style.display = "block";
             } else {
-              dropdown.style.display = "none";
+              accountdropdown.style.display = "none";
             }
           });
         </script>
