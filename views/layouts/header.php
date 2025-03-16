@@ -123,17 +123,5 @@
         </a>
       </li>
       </ul>
-        </div>
-        <style>
-      .nav-link:hover, .nav-link-text:hover {
-      background-color: #f8f9fa;
-      color: #5e72e4;
-      }
-      .nav-link.active, .nav-link-text.active {
-      background-color: #5e72e4;
-      color: #fff;
-      }
-        </style>
-    </div>
   </aside>
   <main class="main-content position-relative border-radius-lg "> 

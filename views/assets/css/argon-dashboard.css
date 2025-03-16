@@ -28274,3 +28274,37 @@ pre[class*=language-] {
 .todo-item:last-child {
   margin-bottom: 0;
 }
+
+.form-outline{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.search {
+  margin: 15px;
+}
+
+.input-group{
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 10px;
+  margin: 15px;
+}
+
+.dropdown {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: right;
+  margin: 15px;
+}
+
+.checkbox{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin: 15px;
+}

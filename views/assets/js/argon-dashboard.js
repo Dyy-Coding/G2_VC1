@@ -862,3 +862,9 @@ if (indicators) {
 
   sections.forEach(onSectionLeavesViewport);
 }
+
+// Initialization for ES Users
+import { Dropdown, Ripple, initMDB } from "mdb-ui-kit";
+
+initMDB({ Dropdown, Ripple });
+
