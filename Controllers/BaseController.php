@@ -1,7 +1,8 @@
 <?php
-  if (session_status() == PHP_SESSION_NONE) {
+if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
+
 class BaseController
 {
     /**
@@ -25,11 +26,18 @@ class BaseController
         require $viewFile;
         $content = ob_get_clean();
 
-        // Load the layout only if a layout is required
-        if ($layout) {
-            $this->loadLayout($layout, $content);
-        } else {
+        // Check if the view is "forgot-password.php" or "reset-password.php"
+        // If so, set the layout to false to skip the header, navbar, and footer
+        if ($view === 'forgot-password' || $view === 'reset-password') {
+            // Output the content directly without layout
             echo $content;
+        } else {
+            // Load the layout only if it's not one of the special pages
+            if ($layout) {
+                $this->loadLayout($layout, $content);
+            } else {
+                echo $content;
+            }
         }
     }
 
@@ -137,7 +145,6 @@ class BaseController
         // Write to the log file
         file_put_contents($logFile, $logMessage, FILE_APPEND);
     }
-    
 
     /**
      * Load layout with content.

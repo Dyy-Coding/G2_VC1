@@ -11,7 +11,7 @@ class DashboardController extends BaseController {
 
         // Optional: Check user role (for admin-only access)
         if ($_SESSION['role_id'] !== 1) { // Assuming role_id 1 = Admin
-            $this->redirect('/user-dashboard'); // Redirect non-admin users
+            $this->redirect('/user'); // Redirect non-admin users
             exit;
         }
 
@@ -38,7 +38,7 @@ class DashboardController extends BaseController {
         $last_name = $_SESSION['last_name'] ?? '';
 
         // Load the user dashboard view
-        $this->renderView('userView/dashboard/dashboard', [
+        $this->renderView('adminView/dashboard/dashboard', [
             'first_name' => $first_name,
             'last_name' => $last_name
         ]);
