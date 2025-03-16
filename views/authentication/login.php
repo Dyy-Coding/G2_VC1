@@ -60,28 +60,7 @@
 
         </div>
 
-        <div class="mb-3 text-start">
-          <label class="form-label text-gray-600 font-medium fs-6 mb-2" for="pwd">Password:</label>
-          <input type="password" id="pwd" placeholder="Enter password..." name="password" class="form-control shadow-sm border border-gray-300 rounded-lg focus-ring focus-ring-blue-400" required />
-        </div>
-
-        <div class="d-flex justify-content-between align-items-center m-4">
-          <div class="form-check form-switch">
-            <input class="form-check-input" type="checkbox" id="rememberMe">
-            <label class="form-check-label fs-6" for="rememberMe">Remember me</label>
-          </div>
-          <a href="/forgot_password" class="text-primary">Forgot password?</a>
-        </div>
-
-        <div class="d-flex justify-content-center">
-        <button class="btn btn-primary w-50" type="submit">Login</button>
-        </div>
-      </form>
-
-      <div class="mt-4 text-center">
-        <small>Don't have an account? <a href="/register" class="text-primary fw-bold fs-6">Register</a></small>
-      </div>
-    </div>
+       
   </div>
 </div>
 

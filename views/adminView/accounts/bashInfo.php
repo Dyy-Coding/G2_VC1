@@ -55,6 +55,7 @@
                                                 class="form-control form-control-lg" placeholder="Confirm password" />
                                         </div>
                                     </div>
+                                    <button type="submit" class="btn btn-light btn-lg py-2 mt-5" data-mdb-ripple-color="dark">Update User</button>
                                 </div>
                             </div>
                             <div class="col-lg-6 bg-indigo text-white">
@@ -79,8 +80,7 @@
                                             <a href="#!" class="text-black"><u>Terms and Conditions</u></a> of your
                                             site. </label>
                                     </div>
-                                    <button type="submit" class="btn btn-light btn-lg" data-mdb-ripple-color="dark">Add
-                                        new user</button>
+                                    <button type="submit" class="btn btn-light btn-lg py-2" data-mdb-ripple-color="dark">Add new user</button>
                                 </div>
                             </div>
                         </div>
@@ -110,7 +110,7 @@
                             <input type="password" id="form3Examplev4" name="confirm_password"
                                 class="form-control form-control-lg" placeholder="Confirm New Password" />
                         </div>
-                        <button type="submit" class="btn btn-light btn-lg" data-mdb-ripple-color="dark">Update
+                        <button type="submit" class="btn btn-light btn-lg py-2" data-mdb-ripple-color="dark">Update
                             Password</button>
                     </div>
                 </div>
@@ -118,25 +118,6 @@
         </div>
     </div>
 </form>
-
-<!-- <div class="container py-5">
-    <div class="profile-card card card-registration card-registration-2" style="border-radius: 15px;">
-        <div class="text-center p-4">
-            <h3 class="fw-normal mb-4" style="color: rgb(37, 0, 4);">Delete Account</h3>
-            <p class="mb-4">Once you delete your account, there is no going back. Please be certain.</p>
-        </div>
-        <div class="d-flex justify-content-between align-items-center mb-4 px-4">
-            <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" id="confirmDelete" />
-                <label class="form-check-label" for="confirmDelete">Confirm</label>
-            </div>
-        </div>
-        <div class="d-flex justify-content-end gap-1 px-4 mb-4">
-            <button type="button" class="btn btn-outline-secondary px-4 py-2">Deactivate</button>
-            <button type="submit" class="btn btn-danger px-4 py-2">Delete Account</button>
-        </div>
-    </div>
-</div> -->
 
 <div class="container py-2">
     <div class="profile-card card card-registration card-registration-2" style="border-radius: 15px;">
