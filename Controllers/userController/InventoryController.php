@@ -3,6 +3,6 @@
 class InventoryController extends BaseController {
 
     public function inventory() {
-        $this->view('inventory/stock');
+        $this->renderView('inventory/stock');
     }
 }

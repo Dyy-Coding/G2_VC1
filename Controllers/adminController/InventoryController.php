@@ -2,37 +2,22 @@
 
 class InventoryController extends BaseController {
 
-    public function __construct()
-    {
-        // Ensure the session is started
-
-        // Ensure the user is authenticated and authorized to view inventory
-        $this->requireAuth();
-        $this->checkAdminRole();
-    }
 
     /**
      * Display the inventory (stock) page.
      */
     public function inventory()
     {
+        // If needed, you can fetch the inventory data from the model or database here
+        // Example: $inventoryData = $this->inventoryModel->getInventory();
         
-            // Check if the required inventory view exists and render it
-            $this->renderView('adminView/inventory/stock');
-
-    }
-
-    private function checkAdminRole()
-    {
-        // Assuming role_id 1 is for admins; adjust as per your actual role system
-        if ($_SESSION['role_id'] !== 1) {
-            $this->redirect('/'); // Redirect non-admin users to home or another page
-        }
+        // Check if the required inventory view exists and render it
+        // Assuming `adminView/inventory/stock` is the correct view file
+        $this->renderView('adminView/inventory/stock');
     }
 
     /**
      * Ensure that the session is started.
+     * This can be moved to BaseController or another common helper class
      */
-
 }
-?>

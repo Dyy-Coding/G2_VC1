@@ -84,4 +84,5 @@ class LoginController extends BaseController
         // Redirect to login page
         $this->redirect('/login');
     }
+
 }
