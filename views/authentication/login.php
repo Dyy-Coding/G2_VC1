@@ -95,7 +95,7 @@
                 <input class="form-check-input" type="checkbox" id="rememberMe">
                 <label class="form-check-label fs-6 text-gray-700" for="rememberMe">Remember me</label>
               </div>
-              <a href="/forgot_password" class="text-primary text-sm hover:underline">Forgot password?</a>
+              <a href="/forgot" class="text-primary text-sm hover:underline">Forgot password?</a>
             </div>
 
             <!-- Submit Button -->
