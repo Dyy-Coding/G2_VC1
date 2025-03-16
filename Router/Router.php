@@ -1,3 +1,4 @@
+
 <?php
 
 
@@ -29,7 +30,7 @@ class Router
     // Method to handle route addition (for GET and POST)
     private function addRoute($method, $uri, $action)
     {
-        // Clean the URI
+        // Clean the URI (remove leading/trailing slashes)
         $uri = trim($uri, '/');
 
         // Check for duplicate routes
@@ -39,6 +40,7 @@ class Router
             }
         }
 
+        // Add the new route
         $this->routes[] = [
             'uri' => $uri,
             'method' => $method,
@@ -49,16 +51,17 @@ class Router
     // Route matching and dispatching
     public function route()
     {
-        $currentUri = trim($this->uri, '/');
-        
+        $currentUri = trim($this->uri, '/'); // Clean the current URI
+
         foreach ($this->routes as $route) {
-            // Match dynamic URL segments like {id} in the route URI
-            $pattern = preg_replace('/\{([a-zA-Z0-9_]+)\}/', '(?P<$1>[a-zA-Z0-9_]+)', $route['uri']);
-            
+            $routeUri = trim($route['uri'], '/'); // Clean the route URI
+
+            // Match dynamic URL segments like {id}
+            $pattern = preg_replace('/\{([a-zA-Z0-9_]+)\}/', '(?P<$1>[a-zA-Z0-9_]+)', $routeUri);
+
             // Check if the current URI matches the route pattern and method
             if ($this->method === $route['method'] && preg_match("#^{$pattern}$#", $currentUri, $matches)) {
-                // Remove the full match
-                array_shift($matches); 
+                array_shift($matches); // Remove the full match (we don't need it)
 
                 // Extract controller and method
                 $controllerClass = $route['action'][0];
