@@ -117,7 +117,7 @@
                     </div>
 
                     <div class="d-flex justify-content-center gap-8">
-                        <button type="submit" class="btn bg-blue-400 p-1 w-1/6">Reset</button>
+                        <button type="reset" class="btn bg-blue-400 p-1 w-1/6">Reset</button>
                         <small class="text-sm text-gray-500">
                             You have an account already! 
                             <a href="/login" class="text-blue-600 text-base">Login</a>
@@ -125,7 +125,7 @@
                     </div>
                     
                     <div class="mt-3 mb-0 text-center">
-                        <button type="reset" class="btn btn-primary w-1/2">Register</button>
+                        <button type="submit" class="btn btn-primary w-1/2">Register</button>
                     </div>
                 </form>
             </div>

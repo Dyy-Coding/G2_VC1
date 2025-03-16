@@ -19,6 +19,7 @@
   </div>
 </div>
 
+<<<<<<< HEAD
 <div class="container d-flex justify-content-center align-items-center min-vh-100">
   <div class="card w-40 shadow-lg" style="height: 500px;">
     <div class="card-header bg-primary text-white text-center fs-4 fw-bold py-3">
@@ -29,6 +30,47 @@
         <div class="mb-4 text-start">
           <label class="form-label text-gray-600 font-medium fs-6 mb-2" for="email">Email:</label>
           <input type="email" id="email" placeholder="Enter email..." name="email" class="form-control shadow-sm border border-gray-300 rounded-lg focus-ring focus-ring-blue-400" required />
+=======
+<section class="vh-100">
+  <div class="container py-5 h-100">
+    <div class="row justify-content-center">
+      <div class="col-md-6 col-lg-5">
+        <div class="card p-4 text-center shadow-lg">
+          <h3 class="mb-4 text-primary font-semibold text-3xl">Login</h3>
+
+          <form action="/login" method="POST" class="space-y-4">
+            <!-- Email Field -->
+            <div class="form-outline mb-3 text-start">
+              <label class="form-label fw-bold fs-6 text-gray-700" for="email">Email:</label>
+              <input type="email" id="email" placeholder="Enter email..." name="email" class="form-control shadow-sm py-2 px-3 border rounded-lg" required />
+            </div>
+
+            <!-- Password Field -->
+            <div class="form-outline mb-3 text-start">
+              <label class="form-label fw-bold fs-6 text-gray-700" for="pwd">Password:</label>
+              <input type="password" id="pwd" placeholder="Enter password..." name="password" class="form-control shadow-sm py-2 px-3 border rounded-lg" required />
+            </div>
+
+            <!-- Remember Me & Forgot Password -->
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" id="rememberMe">
+                <label class="form-check-label fs-6 text-gray-700" for="rememberMe">Remember me</label>
+              </div>
+              <a href="/forgot" class="text-primary text-sm hover:underline">Forgot password?</a>
+            </div>
+
+            <!-- Submit Button -->
+            <button class="btn btn-primary w-full py-2 rounded-lg shadow-md" type="submit">Login</button>
+          </form>
+
+          <div class="mt-4 text-gray-700">
+            <small>Don't have an account? 
+              <a href="/register" class="text-primary font-semibold hover:underline">Register</a>
+            </small>
+          </div>
+
+>>>>>>> feature/Authentication
         </div>
 
         <div class="mb-3 text-start">
