@@ -31,7 +31,8 @@ $route->post('/forgotpasswordform', [AuthController::class, 'showForgotPasswordF
 $route->get('/forgot', [AuthController::class, 'forgot']);
 
 // Forgot Password Route (POST request to handle the reset email request)
-$route->get('/forgot-password', [AuthController::class, 'resetPasswordRequest']);
+$route->post('/forgot-password', [AuthController::class, 'resetPasswordRequest']);
+
 
 
 // Authentication Routes (Login and Register)
@@ -51,7 +52,7 @@ $route->get('/sales', [InventoryController::class, 'sales']);
 $route->get('/profile', [BashInfoController::class, 'profile']);
 
 // Print the registered routes for debugging purposes
-
+// $route->printRoutes();
 
 // Route Handling: match the requested URI with the defined routes
 $route->route();
