@@ -49,8 +49,6 @@
           </a>
         </li>
 
-
-
         <li class="nav-item">
           <a class="nav-link" href="/inventory">
             <div
@@ -65,6 +63,7 @@
             <li><a class="dropdown-item" href="/inventory">Order</a></li>
           </ul>
         </li>
+        
         <script>
           document.querySelector('.nav-link[href="/inventory"]').addEventListener('click', function (event) {
             event.preventDefault();
@@ -76,8 +75,6 @@
             }
           });
         </script>
-
-
 
         <li class="nav-item">
           <a class="nav-link" href="../pages/billing.html">
