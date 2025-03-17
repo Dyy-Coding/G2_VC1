@@ -9,7 +9,8 @@ require_once "Controllers/adminController/authenicationController/registerContro
 require_once "Controllers/adminController/authenicationController/forgotPasswordController.php";
 require_once "Controllers/adminController/InventoryController.php";
 require_once "Controllers/AdminController/DashboardController.php";
-require_once "Controllers/adminController/BashInfoController.php";
+require_once "Controllers/adminController/accountController/BashInfoController.php";
+require_once "Controllers/adminController/accountController/adminUserController.php";
 require_once 'Controllers/validateionHelper.php';
 require_once "Models/usersModel.php";
 
@@ -50,6 +51,8 @@ $route->get('/sales', [InventoryController::class, 'sales']);
 
 // Profile Routes
 $route->get('/profile', [BashInfoController::class, 'profile']);
+$route->get('/userList', [BashInfoController::class, 'viewUsers']);
+$route->get('/addusersForm', [AccountController::class, 'viewAddusersForm']);
 
 // Print the registered routes for debugging purposes
 // $route->printRoutes();
