@@ -44,6 +44,7 @@
     <table class="table text-center" >
         <thead>
             <tr>
+                <th></th>
                 <th>Product</th>
                 <th>Category</th>
                 <th>Quantity</th>
@@ -55,50 +56,50 @@
         </thead>
         <tbody >
             <tr>
+                <td><input type="checkbox" name="" id=""></td>
                 <td> Sand number one</td>
                 <td>Construction</td>
                 <td>168</td>
                 <td><button type="button" class="btn btn-success " data-mdb-ripple-init>OUT OF STOCK</button></td>
                 <td>
                     <h6>Chandy Neat</h6>
-                    <span>chandy@gamil.com</span>
                 </td>
                 <td>14 April 2025</td>
                 <td>
-                    <a href="/users/edit/<?= $user['id'] ?>"><i class="material-icons">edit</i></a>
-                    <a href="/users/delete/<?= $user['id'] ?>"><i class="material-icons text-danger">delete</i></a>
+                    <a><i class="material-icons">edit</i></a>
+                    <a><i class="material-icons text-danger">delete</i></a>
                    
                 </td>
             </tr>
             <tr>
+                <td><input type="checkbox" name="" id=""></td>
                 <td> Sand number one</td>
                 <td>Construction</td>
                 <td>168</td>
                 <td><button type="button" class="btn btn-success " data-mdb-ripple-init>OUT OF STOCK</button></td>
                 <td>
                     <h6>Chandy Neat</h6>
-                    <span>chandy@gamil.com</span>
                 </td>
                 <td>14 April 2025</td>
                 <td>
-                    <a href="/users/edit/<?= $user['id'] ?>"><i class="material-icons">edit</i></a>
-                    <a href="/users/delete/<?= $user['id'] ?>"><i class="material-icons text-danger">delete</i></a>
+                    <i class="material-icons">edit</i>
+                    <i class="material-icons text-danger">delete</i>
                    
                 </td>
             </tr>
             <tr>
+                <td><input type="checkbox" name="" id=""></td>
                 <td> Sand number one</td>
                 <td>Construction</td>
                 <td>168</td>
                 <td><button type="button" class="btn btn-success " data-mdb-ripple-init>OUT OF STOCK</button></td>
                 <td>
                     <h6>Chandy Neat</h6>
-                    <span>chandy@gamil.com</span>
                 </td>
                 <td>14 April 2025</td>
                 <td>
-                    <a href="/users/edit/<?= $user['id'] ?>"><i class="material-icons">edit</i></a>
-                    <a href="/users/delete/<?= $user['id'] ?>"><i class="material-icons text-danger">delete</i></a>
+                    <i class="material-icons">edit</i>
+                    <i class="material-icons text-danger">delete</i>
                    
                 </td>
             </tr>
