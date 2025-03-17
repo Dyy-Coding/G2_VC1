@@ -123,8 +123,8 @@
             <span class="nav-link-text ms-1">Account</span>
           </a>
           <ul class="dropdown-menu" id="accountDropdown" style="display: none; position: relative; left: 44px;">
-            <li><a class="dropdown-item" href="/">User List</a></li>
-            <li><a class="dropdown-item" href="/profile">User Form</a></li>
+            <li><a class="dropdown-item" href="/userList">User List</a></li>
+            <li><a class="dropdown-item" href="/addusersForm">User Form</a></li>
           </ul>
         </li>
 
