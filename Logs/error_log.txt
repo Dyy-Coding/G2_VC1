@@ -10,6 +10,7 @@
 [2025-03-15 13:52:22] Error 500: Layout not found
 [2025-03-15 13:52:24] Error 500: Layout not found
 
+<<<<<<< HEAD
 [2025-03-17 07:03:54] Error 404: View not found
 [2025-03-17 07:07:03] Error 404: View not found
 [2025-03-17 07:07:04] Error 404: View not found
@@ -99,3 +100,8 @@
 [2025-03-17 10:26:19] Error 404: View not found
 [2025-03-17 10:27:46] Error 404: View not found
 [2025-03-17 10:31:18] Error 404: View not found
+=======
+[2025-03-17 02:46:35] Error 404: View not found
+[2025-03-17 05:46:08] Error 404: View not found
+[2025-03-17 05:46:09] Error 404: View not found
+>>>>>>> 7a5e64c0c716718788cbd9049f4a74c6242978b0
