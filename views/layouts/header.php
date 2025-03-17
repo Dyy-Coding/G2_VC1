@@ -116,6 +116,7 @@
 
         <li class="nav-item">
           <a class="nav-link" href="/profile">
+          <!-- <a class="nav-link" href="/profile"> -->
             <div
               class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
               <i class="ni ni-single-02 text-dark text-sm opacity-10"></i>
@@ -123,6 +124,7 @@
             <span class="nav-link-text ms-1">Account</span>
           </a>
           <ul class="dropdown-menu" id="accountDropdown" style="display: none; position: relative; left: 44px;">
+            <li><a class="dropdown-item" href="/profile">Profile</a></li>
             <li><a class="dropdown-item" href="/userList">User List</a></li>
             <li><a class="dropdown-item" href="/addusersForm">User Form</a></li>
           </ul>
