@@ -26,9 +26,10 @@ class UserModel {
     }
 
     // Add a new user
-    public function addUser($first_name, $last_name, $email, $phone, $role_id, $password) {
-        $sql = "INSERT INTO users (first_name, last_name, email, phone, role_id, password) 
-                VALUES (:first_name, :last_name, :email, :phone, :role_id, :password)";
+    public function addUser($first_name, $last_name, $email, $phone, $role_id, $password, $address, $streetAddress) {
+        $sql = "INSERT INTO users (first_name, last_name, email, phone, role_id, password, address, street_address) 
+                VALUES (:first_name, :last_name, :email, :phone, :role_id, :password, :address, :street_address)";
+        
         $stmt = $this->conn->prepare($sql);
         $stmt->bindParam(':first_name', $first_name, PDO::PARAM_STR);
         $stmt->bindParam(':last_name', $last_name, PDO::PARAM_STR);
@@ -36,12 +37,16 @@ class UserModel {
         $stmt->bindParam(':phone', $phone, PDO::PARAM_STR);
         $stmt->bindParam(':role_id', $role_id, PDO::PARAM_INT);
         $stmt->bindParam(':password', $password, PDO::PARAM_STR);
-
+        $stmt->bindParam(':address', $address, PDO::PARAM_STR);
+        $stmt->bindParam(':street_address', $streetAddress, PDO::PARAM_STR);
+    
         if ($stmt->execute()) {
-            return $this->conn->lastInsertId();
+            return $this->conn->lastInsertId(); // Return the last inserted ID
         }
-        return false;
+    
+        return false; // Return false if the insert fails
     }
+    
 
     // Function to generate a token and store it in the database for the user
     public function generatePasswordResetToken($email) {
