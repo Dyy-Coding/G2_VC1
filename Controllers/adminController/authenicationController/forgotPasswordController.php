@@ -26,7 +26,7 @@ class AuthController extends BaseController {
 
             if ($user) {
                 // Generate and store the reset token in the database
-                $token = $this->userModel->generatePasswordResetToken($email);
+                $token = $this->userModel-> generatePasswordResetToken($email);
 
                 if ($token) {
                     // Normally, you would send the token via email, but we're logging it here for demo purposes
