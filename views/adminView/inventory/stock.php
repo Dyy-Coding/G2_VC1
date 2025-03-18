@@ -6,7 +6,7 @@
             <p>Sand, Pebble, Cement,.....</p>
         </div>
         <div>
-            <button class="btn btn-primary me-2">+ New Meterail</button>
+            <a href="/materials/form"class="btn btn-primary me-2">+ New Meterail</a>
             <button class="btn btn-secondary">Import</button>
             <button class="btn btn-secondary">Export</button>
         </div>

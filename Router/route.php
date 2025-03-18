@@ -12,6 +12,7 @@ require_once "Controllers/adminController/InventoryController.php";
 require_once "Controllers/AdminController/DashboardController.php";
 require_once "Controllers/adminController/BashInfoController.php";
 require_once 'Controllers/adminController/InventoryTest/productController.php';
+require_once 'Controllers/adminController/Inventorytest/showController.php';
 require_once 'Controllers/errorController.php';
 
 // Database link files
@@ -44,7 +45,10 @@ $route->group('dashboard', function($route) {
 $route->group('inventory', function($route) {
     $route->get('/inventory', [InventoryController::class, 'inventory']);
     $route->get('/materials/form', [MaterialController::class, 'showAddForm']);
+    $route->get('/materials/show', [ShowController::class, 'productShow']);
     $route->post('Add/materials', [MaterialController::class, 'addMaterial']);
+    $route->get('/materials/show1', [ShowController::class, 'anotherMethod']); // Example
+
     // $route->get('/materials/form', [MaterialController::class, 'showAddForm']);
     // $route->post('/materials/add', [MaterialController::class, 'addMaterial']);
     $route->get('/category', [InventoryController::class, 'category']);
@@ -55,9 +59,9 @@ $route->group('inventory', function($route) {
 
 $route->group('profile', function($route) {
     $route->get('/profile', [BashInfomController::class, 'profile']);
-    $route->get('/profile', [BashInfoController::class, 'baseinfoprofile']);
+    // $route->get('/profile', [BashInfoController::class, 'baseinfoprofile']);
     $route->get('/addusersform', [AccountController::class, 'viewAddusersForm']);
-    $route->get('/userList', [AccountListController::class, 'viewAddusersListdetail']);
+    // $route->get('/userList', [AccountListController::class, 'viewAddusersListdetail']);
 
 });
 

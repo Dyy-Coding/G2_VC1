@@ -28,6 +28,9 @@
       <h2 class="text-3xl font-bold text-gray-800 mb-4 text-center">Add New Material</h2>
 
       <form action="/Add/materials" method="POST" enctype="multipart/form-data" class="space-y-3">
+      <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars($csrf_token); ?>">
+
+<!-- Your form fields here -->
         <div class="flex  lg:w-2xl gap-4">
           <div class="w-1/2">
             <label class="block text-sm font-medium text-gray-600 mb-1">Material Name</label>

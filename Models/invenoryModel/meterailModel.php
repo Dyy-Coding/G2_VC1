@@ -10,7 +10,7 @@ class Material {
 
     // Add material with image and size
     public function addMaterial($name, $categoryID, $quantity, $unitPrice, $supplierID, $minStockLevel, $reorderLevel, $unitOfMeasure, $size, $image, $description, $brand, $location, $supplierContact, $status, $warrantyPeriod) {
-        // Validation (you can expand validation rules if needed)
+        // Validation
         if (empty($name) || empty($categoryID) || empty($supplierID)) {
             error_log("Validation Error: Name, Category and Supplier are required.");
             return false;
@@ -27,12 +27,12 @@ class Material {
             $imagePath = $uploadResult['success'];
         }
     
-        // Prepare SQL with all attributes
+        // SQL Insert
         $query = "INSERT INTO Materials 
             (Name, CategoryID, Quantity, UnitPrice, SupplierID, MinStockLevel, ReorderLevel, UnitOfMeasure, Size, ImagePath, Description, CreatedAt, UpdatedAt, Brand, Location, SupplierContact, Status, WarrantyPeriod)
             VALUES 
             (:name, :categoryID, :quantity, :unitPrice, :supplierID, :minStockLevel, :reorderLevel, :unitOfMeasure, :size, :imagePath, :description, NOW(), NOW(), :brand, :location, :supplierContact, :status, :warrantyPeriod)";
-        
+    
         try {
             $stmt = $this->conn->prepare($query);
             $stmt->bindParam(':name', $name);
@@ -52,7 +52,13 @@ class Material {
             $stmt->bindParam(':status', $status);
             $stmt->bindParam(':warrantyPeriod', $warrantyPeriod);
     
-            return $stmt->execute();
+            if ($stmt->execute()) {
+                // ✅ Return the inserted ID
+                return $this->conn->lastInsertId();
+            } else {
+                error_log("Database Insertion Failed.");
+                return false;
+            }
         } catch (PDOException $e) {
             error_log("Exception in addMaterial: " . $e->getMessage());
             return false;
@@ -60,28 +66,6 @@ class Material {
     }
     
 
-    // Validate material data
-    public function validateMaterialData($name, $categoryID, $quantity, $unitPrice, $supplierID, $minStockLevel, $reorderLevel, $size) {
-        if (empty($name) || empty($categoryID) || empty($supplierID)) {
-            return "Name, category, and supplier are required.";
-        }
-        if (!is_numeric($quantity) || $quantity < 0) {
-            return "Quantity must be a non-negative number.";
-        }
-        if (!is_numeric($unitPrice) || $unitPrice < 0) {
-            return "Unit price must be a valid number.";
-        }
-        if (!is_numeric($minStockLevel) || $minStockLevel < 0) {
-            return "Min stock level must be a non-negative number.";
-        }
-        if (!is_numeric($reorderLevel) || $reorderLevel < 0) {
-            return "Reorder level must be a non-negative number.";
-        }
-        if (empty($size) || !in_array($size, ['25kg', '50kg', 'Other'])) {
-            return "Size must be either 25kg, 50kg, or Other.";
-        }
-        return true;
-    }
 
     // Upload image with validation
     public function uploadImage($file) {
