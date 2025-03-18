@@ -23,14 +23,14 @@
 </head>
 
 <body class="bg-gradient-to-br from-blue-100 via-purple-100 to-pink-100 min-h-screen flex items-center justify-center px-4">
-  <div class="flex w-full max-w-6xl rounded-2xl overflow-hidden bg-white card-shadow">
+  <div class="flex w-full max-w-7xl rounded-2xl overflow-hidden bg-white card-shadow">
     
     <!-- Left Image Side -->
     <div class="hidden lg:flex w-1/2 bg-cover bg-center" style="background-image: url('https://static.vecteezy.com/system/resources/previews/010/925/404/non_2x/registration-page-name-and-password-field-fill-in-form-menu-bar-corporate-website-create-account-user-information-flat-design-modern-illustration-vector.jpg');">
     </div>
 
     <!-- Right Form Side -->
-    <div class="w-full lg:w-1/2 p-10">
+    <div class="w-full lg:w-1/2 p-8">
       <h2 class="text-3xl font-bold text-gray-800 mb-4 text-center">Register</h2>
 
       <!-- Success / Error Messages -->
@@ -47,37 +47,51 @@
         </div>
       <?php endif; ?>
 
-      <form action="/register" method="POST" class="space-y-4">
+      <form action="/register" method="POST" class="space-y-3">
         <div class="flex gap-4">
           <div class="w-1/2">
             <label class="block text-sm font-medium text-gray-600 mb-1">First Name</label>
-            <input type="text" name="first_name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-400 outline-none" required>
+            <input type="text" name="first_name" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-400 outline-none" required>
           </div>
           <div class="w-1/2">
             <label class="block text-sm font-medium text-gray-600 mb-1">Last Name</label>
-            <input type="text" name="last_name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-400 outline-none" required>
+            <input type="text" name="last_name" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-400 outline-none" required>
           </div>
         </div>
 
         <div class="flex gap-4">
           <div class="w-1/2">
             <label class="block text-sm font-medium text-gray-600 mb-1">Email</label>
-            <input type="email" name="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-400 outline-none" required>
+            <input type="email" name="email" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-400 outline-none" required>
           </div>
           <div class="w-1/2">
             <label class="block text-sm font-medium text-gray-600 mb-1">Phone</label>
-            <input type="text" name="phone_number" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-400 outline-none">
+            <input type="text" name="phone_number" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-400 outline-none">
+          </div>    
+
+        </div>
+        <div class="flex gap-4">
+                 <!-- Address Input -->
+          <div class="w-1/2">
+            <label class="block text-sm font-medium text-gray-600 mb-1">Address</label>
+            <input type="text" name="address" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-400 outline-none" required>
+          </div>
+          <div class="w-1/2">
+            <label class="block text-sm font-medium text-gray-600 mb-1">Street Address</label>
+            <input type="text" name="address" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-400 outline-none" required>
           </div>
         </div>
 
+     
+      
         <div>
           <label class="block text-sm font-medium text-gray-600 mb-1">Password</label>
-          <input type="password" id="password" name="password" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-400 outline-none" required>
+          <input type="password" id="password" name="password" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-400 outline-none" required>
         </div>
 
         <div>
           <label class="block text-sm font-medium text-gray-600 mb-1">Confirm Password</label>
-          <input type="password" id="confirm_password" name="confirm_password" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-400 outline-none" required>
+          <input type="password" id="confirm_password" name="confirm_password" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-400 outline-none" required>
         </div>
 
         <!-- Password Visibility Toggle -->
@@ -87,7 +101,8 @@
         </div>
 
         <div class="flex justify-between items-center mt-4">
-          <button type="reset" class="bg-gray-200 text-gray-700 hover:bg-gray-300 px-6 py-2 rounded-lg font-medium">Reset</button>
+        <button type="reset" class="bg-sky-500 text-white hover:bg-sky-600 px-4 py-1 rounded-lg font-medium">Reset</button>
+
           <p class="text-sm text-gray-500">
             Already have an account?
             <a href="/login" class="text-blue-600 hover:underline font-medium">Login</a>
