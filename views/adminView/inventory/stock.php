@@ -2,11 +2,11 @@
 <div class="container mt-3 card" style="width: 95%; padding: 20px;">
     <div class="d-flex justify-content-between mb-1">
         <div>
-            <h1>All products</h1>
+            <h1>All materials</h1>
             <p>Sand, Pebble, Cement,.....</p>
         </div>
         <div>
-            <button class="btn btn-primary me-2">+ New Products</button>
+            <button class="btn btn-primary me-2">+ New Meterail</button>
             <button class="btn btn-secondary">Import</button>
             <button class="btn btn-secondary">Export</button>
         </div>

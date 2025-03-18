@@ -1,16 +1,3 @@
-<<<<<<< HEAD
-</div>
-</main>
-<div class="fixed-plugin">
-  <a class="fixed-plugin-button text-dark position-fixed px-3 py-2">
-    <i class="fa fa-cog py-2"> </i>
-  </a>
-  <div class="card shadow-lg">
-    <div class="card-header pb-0 pt-3 ">
-      <div class="float-start">
-        <h5 class="mt-3 mb-0">Argon Configurator</h5>
-        <p>See our dashboard options.</p>
-=======
 <footer class="footer pt-3  ">
         <div class="container-fluid">
           <div class="row align-items-center justify-content-lg-between">
@@ -46,7 +33,6 @@
           </button>
         </div>
         <!-- End Toggle Button -->
->>>>>>> 3a366349bf86ddc20ccf1c9c156f0438eff0f877
       </div>
       <div class="float-end mt-4">
         <button class="btn btn-link text-dark p-0 fixed-plugin-close-button">
@@ -115,8 +101,6 @@
           class="btn btn-dark mb-0 me-2" target="_blank">
           <i class="fab fa-facebook-square me-1" aria-hidden="true"></i> Share
         </a>
-<<<<<<< HEAD
-=======
         <!-- Sidenav Type -->
 
         <div class="d-flex">
@@ -150,7 +134,6 @@
             <i class="fab fa-facebook-square me-1" aria-hidden="true"></i> Share
           </a>
         </div> -->
->>>>>>> 3a366349bf86ddc20ccf1c9c156f0438eff0f877
       </div>
     </div>
   </div>
