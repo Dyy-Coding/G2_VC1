@@ -20,7 +20,6 @@ $users = [
     ],
 ];
 ?>
-
 <div class="container mt-3 mb-3">
     <div class="card shadow-sm rounded" style="border: 1px solid #ddd;">
         <div class="card-header p-2">
