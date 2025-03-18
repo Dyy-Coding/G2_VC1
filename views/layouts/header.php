@@ -61,7 +61,7 @@
           </a>
           <ul class="dropdown-menu" id="inventoryDropdown" style="display: none; position: relative; left: 44px;">
             <li><a class="dropdown-item" href="/category">Category</a></li>
-            <li><a class="dropdown-item" href="/inventory">Product</a></li>
+            <li><a class="dropdown-item" href="/inventory">Material</a></li>
             <li><a class="dropdown-item" href="/order">Order</a></li>
           </ul>
         </li>
