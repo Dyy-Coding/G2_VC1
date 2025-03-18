@@ -24,6 +24,9 @@
         <p class="text-center text-gray-500 mb-4">Enter your email address below, and we’ll send you a reset link.</p>
 
         <form action="/forgotpasswordform" method="POST">
+            <!-- Hidden Token Field -->
+            <input type="hidden" name="token" value="<?php echo htmlspecialchars($token); ?>">
+
             <div class="mb-4">
                 <label for="email" class="form-label block text-sm font-medium text-gray-700">Email address</label>
                 <input type="email" name="email" id="email"
