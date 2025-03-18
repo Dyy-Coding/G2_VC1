@@ -45,6 +45,8 @@ $route->group('inventory', function($route) {
     $route->get('/inventory', [InventoryController::class, 'inventory']);
     // $route->get('/materials/form', [MaterialController::class, 'showAddForm']);
     // $route->post('/materials/add', [MaterialController::class, 'addMaterial']);
+    $route->get('/category', [InventoryController::class, 'category']);
+    $route->get('/order', [InventoryController::class, 'order']);
 
 });
 
@@ -59,7 +61,6 @@ $route->group('profile', function($route) {
 $route->get('/error', [ErrorController::class, 'error']);
 
 
-
 // Route Handling: match the requested URI with the defined routes
 $route->route();
-$route->printRoutes();
+// $route->printRoutes();
