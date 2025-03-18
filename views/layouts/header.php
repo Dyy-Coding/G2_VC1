@@ -19,10 +19,11 @@
 <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
 <!-- CSS Files -->
 <link id="pagestyle" href="views/assets/css/argon-dashboard.css?v=2.1.0" rel="stylesheet" />
+
 </head>
 
 <body class="g-sidenav-show   bg-gray-100">
-  <div class="min-height-300 bg-dark position-absolute w-100"></div>
+  <div class="min-height-300 bg-dark position-fixed w-100"></div>
   <aside
     class="sidenav bg-white navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-4 "
     id="sidenav-main">
@@ -56,7 +57,24 @@
             </div>
             <span class="nav-link-text ms-1">Inventory</span>
           </a>
+          <ul class="dropdown-menu" id="inventoryDropdown" style="display: none; position: relative; left: 44px;">
+            <li><a class="dropdown-item" href="/category">Category</a></li>
+            <li><a class="dropdown-item" href="/inventory">Product</a></li>
+            <li><a class="dropdown-item" href="/order">Order</a></li>
+          </ul>
         </li>
+
+        <script>
+          document.querySelector('.nav-link[href="/inventory"]').addEventListener('click', function (event) {
+            event.preventDefault();
+            var dropdown = document.getElementById("inventoryDropdown");
+            if (dropdown.style.display === "none" || dropdown.style.display === "") {
+              dropdown.style.display = "block";
+            } else {
+              dropdown.style.display = "none";
+            }
+          });
+        </script>
         <li class="nav-item">
           <a class="nav-link" href="../pages/billing.html">
             <div

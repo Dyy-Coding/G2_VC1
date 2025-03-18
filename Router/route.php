@@ -46,6 +46,10 @@ $route->post('/register', [RegisterController::class, 'register']); // Handle Re
 
 // Inventory Routes
 $route->get('/inventory', [InventoryController::class, 'inventory']);
+$route->get('/category', [InventoryController::class, 'category']);
+$route->get('/order', [InventoryController::class, 'order']);
+
+
 $route->get('/sales', [InventoryController::class, 'sales']);
 
 // Profile Routes
