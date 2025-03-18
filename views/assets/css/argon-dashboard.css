@@ -28374,9 +28374,31 @@ td .name span {
   width: 15%; /* Adjust as needed */
   height: auto;
 }
-.sticker {
-  position: absolute;
-  width:20%; /* Adjust sticker size */
-  height: auto;
-  cursor: pointer;
+
+
+#addMeterial {
+  display: none;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  width: 50%;
+}
+
+#preview {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+  display: none;
+}
+
+.form-add-meterial{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
 }
