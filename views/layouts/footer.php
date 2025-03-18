@@ -14,12 +14,7 @@
             </div>
           </div>
         </div>
-      </footer>
-    </div>
-      </div>
-    </div>
-  </div>
-</div>
+</footer>
 <!--   Core JS Files   -->
 <script src="views/assets/js/core/popper.min.js"></script>
 <script src="views/assets/js/core/bootstrap.min.js"></script>
