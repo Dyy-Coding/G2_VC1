@@ -2,7 +2,7 @@
 <div class="container mt-3 card" style="width: 95%; padding: 20px;">
     <div class="d-flex justify-content-between mb-1">
         <div>
-            <h1>All products</h1>
+            <h1>All meterials</h1>
             <p>Sand, Pebble, Cement,.....</p>
         </div>
         <div>
@@ -101,7 +101,6 @@
                    
                 </td>
             </tr>
-
         </tbody>
     </table>
 </div>
