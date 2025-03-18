@@ -44,18 +44,18 @@ $route->group('dashboard', function($route) {
 $route->group('inventory', function($route) {
     $route->get('/inventory', [InventoryController::class, 'inventory']);
     $route->get('/materials/form', [MaterialController::class, 'showAddForm']);
-    $route->post('/materials/add', [MaterialController::class, 'addMaterial']);
+    $route->post('Add/materials', [MaterialController::class, 'addMaterial']);
 
 });
 
 
 $route->group('profile', function($route) {
-    $route->get('/profile', [BashInfoController::class, 'profile']);
+    $route->get('/profile', [BashInfomController::class, 'profile']);
 });
 
 $route->get('/error', [ErrorController::class, 'error']);
 
-$route->printRoutes();
+// $route->printRoutes();
 
 
 // Route Handling: match the requested URI with the defined routes

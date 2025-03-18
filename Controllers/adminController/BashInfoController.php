@@ -1,6 +1,6 @@
 <?php
 
-class BashInfoController extends BaseController {
+class BashInfomController extends BaseController {
     private $data;
     private function __construct(){
         $this->data->UserModel();
