@@ -16,6 +16,14 @@ class InventoryController extends BaseController {
         $this->renderView('adminView/inventory/stock');
     }
 
+    public function category() {
+
+        $this->renderView('adminView/inventory/category');
+    }
+
+    public function order() {
+        $this->renderView('adminView/inventory/order');
+    }
     /**
      * Ensure that the session is started.
      * This can be moved to BaseController or another common helper class
