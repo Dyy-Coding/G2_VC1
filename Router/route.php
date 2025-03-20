@@ -16,7 +16,6 @@ require_once 'Controllers/errorController.php';
 
 // Database link files
 require_once __DIR__ . '/../Database/Database.php';
-require_once "Controllers/adminController/accountController/BaseInfoController.php";
 require_once "Controllers/adminController/accountController/adminUserFormController.php";
 require_once "Controllers/adminController/accountController/adminUserListController.php";
 require_once 'Controllers/validateionHelper.php';
@@ -53,9 +52,9 @@ $route->group('inventory', function($route) {
 
 
 $route->group('profile', function($route) {
-    $route->get('/profile', [BashInfoController::class, 'baseinfoprofile']);
     $route->get('/addusersform', [AccountController::class, 'viewAddusersForm']);
     $route->get('/userList', [AccountListController::class, 'viewAddusersListdetail']);
+    $route->get('/createuser', [AccountListController::class, 'admincreateuserlist']);
 });
 
 $route->get('/error', [ErrorController::class, 'error']);
