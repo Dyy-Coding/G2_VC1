@@ -3,20 +3,17 @@
 class Material {
     private $conn;
 
-    // Constructor to initialize DB connection
     public function __construct() {
         $this->conn = Database::getConnection();
     }
 
     // Add material with image and size
     public function addMaterial($name, $categoryID, $quantity, $unitPrice, $supplierID, $minStockLevel, $reorderLevel, $unitOfMeasure, $size, $image, $description, $brand, $location, $supplierContact, $status, $warrantyPeriod) {
-        // Validation
         if (empty($name) || empty($categoryID) || empty($supplierID)) {
             error_log("Validation Error: Name, Category and Supplier are required.");
             return false;
         }
-    
-        // Upload image and get the path
+
         $imagePath = null;
         if (is_array($image) && isset($image['name']) && $image['error'] === 0) {
             $uploadResult = $this->uploadImage($image);
@@ -26,13 +23,12 @@ class Material {
             }
             $imagePath = $uploadResult['success'];
         }
-    
-        // SQL Insert
+
         $query = "INSERT INTO Materials 
             (Name, CategoryID, Quantity, UnitPrice, SupplierID, MinStockLevel, ReorderLevel, UnitOfMeasure, Size, ImagePath, Description, CreatedAt, UpdatedAt, Brand, Location, SupplierContact, Status, WarrantyPeriod)
             VALUES 
             (:name, :categoryID, :quantity, :unitPrice, :supplierID, :minStockLevel, :reorderLevel, :unitOfMeasure, :size, :imagePath, :description, NOW(), NOW(), :brand, :location, :supplierContact, :status, :warrantyPeriod)";
-    
+
         try {
             $stmt = $this->conn->prepare($query);
             $stmt->bindParam(':name', $name);
@@ -51,9 +47,8 @@ class Material {
             $stmt->bindParam(':supplierContact', $supplierContact);
             $stmt->bindParam(':status', $status);
             $stmt->bindParam(':warrantyPeriod', $warrantyPeriod);
-    
+
             if ($stmt->execute()) {
-                // ✅ Return the inserted ID
                 return $this->conn->lastInsertId();
             } else {
                 error_log("Database Insertion Failed.");
@@ -64,8 +59,6 @@ class Material {
             return false;
         }
     }
-    
-
 
     // Upload image with validation
     public function uploadImage($file) {
@@ -105,7 +98,7 @@ class Material {
         return ["success" => $filePath];
     }
 
-    // Fetch categories
+    // Fetch all categories
     public function getCategories() {
         try {
             $stmt = $this->conn->prepare("SELECT CategoryID, CategoryName FROM Categories");
@@ -117,7 +110,7 @@ class Material {
         }
     }
 
-    // Fetch suppliers
+    // Fetch all suppliers
     public function getSuppliers() {
         try {
             $stmt = $this->conn->prepare("SELECT SupplierID, Name FROM Suppliers");
@@ -128,6 +121,25 @@ class Material {
             return [];
         }
     }
-}
 
+    // ✅ Fetch all materials
+    public function getAllMaterials() {
+        try {
+            $stmt = $this->conn->prepare("SELECT * FROM Materials");
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            error_log("Error fetching materials: " . $e->getMessage());
+            return [];
+        }
+    }
+
+    // ✅ Helper method to prepare form data
+    public function prepareAddMaterialForm() {
+        return [
+            'categories' => $this->getCategories(),
+            'suppliers'  => $this->getSuppliers()
+        ];
+    }
+}
 ?>

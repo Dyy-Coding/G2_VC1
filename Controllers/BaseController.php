@@ -47,20 +47,21 @@ class BaseController
      * @param string $view The view name to render.
      * @param array $data Data to be passed to the view.
      */
-    protected function renderAuthView(string $view, array $data = [])
-    {
+    protected function renderAuthView(string $view, array $data = []) {
         extract($data);
         ob_start();
-
+    
         $viewFile = __DIR__ . '/../Views/' . $view . '.php';
+    
+        // Debugging: Check if view file exists
         if (!file_exists($viewFile)) {
-            $this->handleError(404, 'View not found');
-            return;
+            die("Error: View file not found at $viewFile");
         }
-
+    
         require $viewFile;
         echo ob_get_clean();
     }
+    
 
     /**
      * Redirect to a given URL and terminate script.

@@ -44,7 +44,9 @@ $route->group('dashboard', function($route) {
 
 $route->group('inventory', function($route) {
     $route->get('/inventory', [InventoryController::class, 'inventory']);
-    $route->get('/materials/form', [MaterialController::class, 'showAddForm']);
+    // $route->get('/materials/form', [MaterialController::class, 'showAddForm']);
+    $route->get('/materials/form', [MaterialController::class,'showAddForm']);
+
     $route->get('/materials/show', [ShowController::class, 'productShow']);
     $route->post('Add/materials', [MaterialController::class, 'addMaterial']);
     $route->get('/materials/show1', [ShowController::class, 'anotherMethod']); // Example
