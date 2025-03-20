@@ -14,13 +14,34 @@
               <input type="text" class="form-control" placeholder="Type here...">
             </div>
           </div>
-          <ul class="navbar-nav  justify-content-end">
-            <li class="nav-item d-flex align-items-center">
-              <a href="javascript:;" class="nav-link text-white font-weight-bold px-0">
-                <i class="fa fa-user me-sm-1"></i>
-                <span class="d-sm-inline d-none">Sign In</span>
-              </a>
-            </li>
+          <li class="nav-item dropdown d-flex align-items-center">
+            <a href="#" class="nav-link text-white font-weight-bold px-2 d-flex align-items-center gap-2" 
+              id="languageDropdown" role="button" data-bs-toggle="dropdown">
+              <i class="ni ni-world-2 text-white text-sm"></i>
+              <span id="selectedLanguage">English</span>
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item language-option" data-language="English" href="#">English</a></li>
+              <li><a class="dropdown-item language-option" data-language="Khmer" href="#">Khmer</a></li>
+            </ul>
+          </li>
+
+          <script>
+            // Load language from local storage when page loads
+            document.addEventListener('DOMContentLoaded', () => {
+              const savedLanguage = localStorage.getItem('selectedLanguage') || 'English';
+              document.getElementById('selectedLanguage').textContent = savedLanguage;
+            });
+
+            // Change language function
+            document.querySelectorAll('.language-option').forEach(item => {
+              item.addEventListener('click', function() {
+                const language = this.dataset.language;
+                document.getElementById('selectedLanguage').textContent = language;
+                localStorage.setItem('selectedLanguage', language); // Save to local storage
+              });
+            });
+          </script>
             <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
               <a href="javascript:;" class="nav-link text-white p-0" id="iconNavbarSidenav">
                 <div class="sidenav-toggler-inner">

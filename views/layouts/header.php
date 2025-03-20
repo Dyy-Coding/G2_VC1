@@ -17,6 +17,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <!-- Font Awesome Icons -->
 <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <!-- CSS Files -->
 <link id="pagestyle" href="views/assets/css/argon-dashboard.css?v=2.1.0" rel="stylesheet" />
 
@@ -25,14 +26,14 @@
 <body class="g-sidenav-show   bg-gray-100">
   <div class="min-height-300 bg-dark position-fixed w-100"></div>
   <aside
-    class="sidenav bg-white navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-4 "
+    class="sidenav bg-white navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 "
     id="sidenav-main">
     <div class="sidenav-header">
       <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
         aria-hidden="true" id="iconSidenav"></i>
       <a class="navbar-brand m-0" href=" https://demos.creative-tim.com/argon-dashboard/pages/dashboard.html "
         target="_blank">
-        <img src="views/assets/img/small-logos/logo.png" width="26px" height="26px" class="navbar-brand-img h-100"
+        <img src="views/assets/img/logos/logo.png" width="26px" height="26px" class="navbar-brand-img h-100"
           alt="main_logo">
         <span class="ms-1 font-weight-bold">Lim Try</span>
       </a>
@@ -60,7 +61,7 @@
           </a>
           <ul class="dropdown-menu" id="inventoryDropdown" style="display: none; position: relative; left: 44px;">
             <li><a class="dropdown-item" href="/category">Category</a></li>
-            <li><a class="dropdown-item" href="/inventory">Product</a></li>
+            <li><a class="dropdown-item" href="/inventory">Material</a></li>
             <li><a class="dropdown-item" href="/order">Order</a></li>
           </ul>
         </li>
@@ -107,7 +108,7 @@
           <a class="nav-link" href="../pages/rtl.html">
             <div
               class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="ni ni-world-2 text-dark text-sm opacity-10"></i>
+              <i class="ni ni-briefcase-24 text-dark text-sm opacity-10"></i>
             </div>
             <span class="nav-link-text ms-1">Employee</span>
           </a>
@@ -156,7 +157,7 @@
           <a class="nav-link" href="/register">
             <div
               class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="ni ni-collection text-dark text-sm opacity-10"></i>
+              <i class="ni ni-briefcase-24 text-dark text-sm opacity-10"></i>
             </div>
             <span class="nav-link-text ms-1">Help and Support</span>
           </a>
@@ -165,7 +166,7 @@
           <a class="nav-link" href="/register">
             <div
               class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="ni ni-collection text-dark text-sm opacity-10"></i>
+              <i class="ni ni-settings text-dark text-sm opacity-10 "></i>
             </div>
             <span class="nav-link-text ms-1">Settings</span>
           </a>
@@ -181,19 +182,6 @@
         </li>
       </ul>
     </div>
-    <style>
-      .nav-link:hover,
-      .nav-link-text:hover {
-        background-color: #f8f9fa;
-        color: #5e72e4;
-      }
-
-      .nav-link.active,
-      .nav-link-text.active {
-        background-color: #5e72e4;
-        color: #fff;
-      }
-    </style>
     </div>
   </aside>
   <main class="main-content position-relative border-radius-lg ">

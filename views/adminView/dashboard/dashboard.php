@@ -112,67 +112,114 @@
         </div>
         <div class="card-body p-3">
           <div class="chart">
-            <canvas id="chart-line" class="chart-canvas" height="300"></canvas>
+            <canvas id="chart-line-1" class="chart-canvas" height="300"></canvas>
           </div>
         </div>
       </div>
     </div>
     <div class="col-lg-5">
-      <div class="card card-carousel overflow-hidden h-100 p-0">
-        <div id="carouselExampleCaptions" class="carousel slide h-100" data-bs-ride="carousel">
-          <div class="carousel-inner border-radius-lg h-100">
-            <div class="carousel-item h-100 active" style="background-image: url('../assets/img/carousel-1.jpg');
-      background-size: cover;">
-              <div class="carousel-caption d-none d-md-block bottom-0 text-start start-0 ms-5">
-                <div class="icon icon-shape icon-sm bg-white text-center border-radius-md mb-3">
-                  <i class="ni ni-camera-compact text-dark opacity-10"></i>
-                </div>
-                <h5 class="text-white mb-1">Get started with Argon</h5>
-                <p>There’s nothing I really wanted to do in life that I wasn’t able to get good at.</p>
-              </div>
-            </div>
-            <div class="carousel-item h-100" style="background-image: url('../assets/img/carousel-2.jpg');
-      background-size: cover;">
-              <div class="carousel-caption d-none d-md-block bottom-0 text-start start-0 ms-5">
-                <div class="icon icon-shape icon-sm bg-white text-center border-radius-md mb-3">
-                  <i class="ni ni-bulb-61 text-dark opacity-10"></i>
-                </div>
-                <h5 class="text-white mb-1">Faster way to create web pages</h5>
-                <p>That’s my skill. I’m not really specifically talented at anything except for the ability to learn.
-                </p>
-              </div>
-            </div>
-            <div class="carousel-item h-100" style="background-image: url('../assets/img/carousel-3.jpg');
-      background-size: cover;">
-              <div class="carousel-caption d-none d-md-block bottom-0 text-start start-0 ms-5">
-                <div class="icon icon-shape icon-sm bg-white text-center border-radius-md mb-3">
-                  <i class="ni ni-trophy text-dark opacity-10"></i>
-                </div>
-                <h5 class="text-white mb-1">Share with us your design tips!</h5>
-                <p>Don’t be afraid to be wrong because you can’t learn anything from a compliment.</p>
-              </div>
-            </div>
+    <div class="col-lg-12 ">
+      <div class="card">
+        <div class="card-header pb-0 p-1">
+          <div class="d-flex justify-content-between">
+            <h3 class="mb-2 p-2">Stock Lists</h3>
           </div>
-          <button class="carousel-control-prev w-5 me-3" type="button" data-bs-target="#carouselExampleCaptions"
-            data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-          </button>
-          <button class="carousel-control-next w-5 me-3" type="button" data-bs-target="#carouselExampleCaptions"
-            data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-          </button>
+        </div>
+        <table class="table align-middle bg-white">
+          <thead>
+            <tr>
+              <th style="font-size: 16px;">Product</th>
+              <th style="font-size: 16px;">Category</th>
+              <th style="font-size: 16px;">Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <div class="text-center">Phone</div>
+              </td>
+              <td class="text-center">Electronic</td>
+              <td>
+                <div class="text-center">
+                  <button type="button" class="btn btn-success btn-sm btn-rounded">Have in stock</button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div class="text-center">Laptop</div>
+              </td>
+              <td class="text-center">Electronic</td>
+              <td>
+                <div class="text-center">
+                  <button type="button" class="btn btn-danger btn-sm btn-rounded">Out of stock</button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div class="text-center">T-Shirt</div>
+              </td>
+              <td class="text-center">Clothing</td>
+              <td>
+                <div class="text-center">
+                  <button type="button" class="btn btn-success btn-sm btn-rounded">Have in stock</button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div class="text-center">Shoes</div>
+              </td>
+              <td class="text-center">Footwear</td>
+              <td>
+                <div class="text-center">
+                  <button type="button" class="btn btn-danger btn-sm btn-rounded">Out of stock</button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div class="text-center">Shoes</div>
+              </td>
+              <td class="text-center">Footwear</td>
+              <td>
+                <div class="text-center">
+                  <button type="button" class="btn btn-danger btn-sm btn-rounded">Out of stock</button>
+                </div>
+              </td>
+            </tr>
+            
+          </tbody>
+        </table>
+      </div>
+    </div>
+    </div>
+  </div>
+  <div class="row mt-4">
+    <div class="col-lg-12 mb-lg-0 mb-4">
+      <div class="card z-index-2 h-100">
+        <div class="card-header pb-0 pt-3 bg-transparent">
+          <h6 class="text-capitalize">Orders overview</h6>
+          <p class="text-sm mb-0">
+            <i class="fa fa-arrow-up text-success"></i>
+            <span class="font-weight-bold">4% more</span> in 2021
+          </p>
+        </div>
+        <div class="card-body p-3">
+          <div class="chart">
+            <canvas id="chart-line-2" class="chart-canvas" height="300"></canvas>
+          </div>
         </div>
       </div>
     </div>
   </div>
   <div class="row mt-4">
-    <div class="col-lg-4 mb-lg-0 mb-4">
+    <div class="col-lg-6 mb-lg-0 mb-4">
       <div class="todo-card ">
-        <div class="card-header pb-0 p-3">
+        <div class="card-header pb-4 p-3">
           <div class="d-flex justify-content-between">
-            <h6 class="mb-2">Team member</h6>
+            <h3 class="mb-2">Supplier</h3>
           </div>
         </div>
         <table class="table align-middle bg-white">
@@ -232,79 +279,207 @@
         </table>
       </div>
     </div>
-    <div class="col-lg-4 mb-lg-0 mb-4">
-      <div class="todo-card">
-        <h3 class="mb-4">To do List</h3>
-        <div class="todo-item">
-          <div class="d-flex flex-column justify-content-between">
-            <span>Call with Phean</span>
-            <span>11:03 PM</span>
-          </div>
-          <input type="checkbox">
-        </div>
-        <div class="todo-item">
-          <div class="d-flex flex-column justify-content-between">
-            <span>View our materials</span>
-            <span>11:03 PM</span>
-          </div>
-          <input type="checkbox">
-        </div>
-        <div class="todo-item">
-          <div class="d-flex flex-column justify-content-between">
-            <span>Buy some materials</span>
-            <span>11:03 PM</span>
-          </div>
-          <input type="checkbox">
-        </div>
-        <div class="todo-item">
-          <div class="d-flex flex-column justify-content-between">
-            <span>Call with Panha</span>
-            <span>11:03 PM</span>
-          </div>
-          <input type="checkbox">
-        </div>
-        <div class="todo-item">
-          <div class="d-flex flex-column justify-content-between">
-            <span>Change your profile</span>
-            <span>11:03 PM</span>
-          </div>
-          <input type="checkbox">
+    <div class="col-lg-6 mb-lg-2 mb-4">
+  <div class="todo-card">
+    <div class="container mt-3">
+      <h3>Progress Track</h3>
+
+      <div class="d-flex align-items-center mb-3">
+        <i class="bi bi-info-circle me-2"></i>
+        <span>React Material Dashboard</span>
+      </div>
+      <div class="d-flex align-items-center mb-3">
+        <img src="/views/assets/img/carousel-3.jpg" alt="User avatar" style="width: 40px; height: 40px; border-radius: 5px" class="me-2">
+        <div class="progress flex-grow-1">
+          <div class="progress-bar bg-warning" style="width: 70%;" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
         </div>
       </div>
+      <div class="line line-filled"></div>
+
+      <div class="d-flex align-items-center mb-3">
+        <i class="bi bi-eye me-2"></i>
+        <span>View Dashboard</span>
+      </div>
+      <div class="d-flex align-items-center mb-3">
+        <img src="/views/assets/img/carousel-2.jpg" alt="User avatar" style="width: 40px; height: 40px; border-radius: 5px" class="me-2">
+        <div class="progress flex-grow-1">
+          <div class="progress-bar bg-primary" style="width: 60%;" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+      </div>
+      <div class="line line-filled"></div>
+
+      <div class="d-flex align-items-center mb-3">
+        <i class="bi bi-check-circle me-2"></i>
+        <span>Task Completed</span>
+      </div>
+      <div class="d-flex align-items-center mb-3">
+        <img src="/views/assets/img/carousel-1.jpg" alt="User avatar" style="width: 40px; height: 40px; border-radius: 5px" class="me-2">
+        <div class="progress flex-grow-1">
+          <div class="progress-bar bg-success" style="width: 70%;" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+      </div>
+      <div class="line line-filled"></div>
+
     </div>
-    <div class="col-lg-4 mb-lg-0 mb-4">
+  </div>
+</div>
+
+  </div>
+  <!-- <div class="row mt-4">
+    <div class="col-lg-12 mb-lg-0 mb-4">
       <div class="todo-card">
-        <div class="container mt-5">
-          <h3>Progress Track</h3>
-
-          <div class="d-flex align-items-center mb-3">
-            <i class="bi bi-info-circle me-2"></i>
-            <span>React Material Dashboard</span>
+        <div class="card-header pb-0 p-1">
+          <div class="d-flex justify-content-between">
+            <h3 class="mb-2">Stock Lists</h3>
           </div>
-          <div class="progress mb-4">
-            <div class="progress-bar bg-primary" style="width: 70%;" role="progressbar" aria-valuenow="70"
-              aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+        <table class="table align-middle bg-white">
+          <thead>
+            <tr>
+              <th>Product</th>
+              <th>Category</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <div class="text-center">Phone</div>
+              </td>
+              <td class="text-center">Electronic</td>
+              <td>
+                <div class="text-center">
+                  <button type="button" class="btn btn-success btn-sm btn-rounded">Have in stock</button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div class="text-center">Laptop</div>
+              </td>
+              <td class="text-center">Electronic</td>
+              <td>
+                <div class="text-center">
+                  <button type="button" class="btn btn-danger btn-sm btn-rounded">Out of stock</button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div class="text-center">T-Shirt</div>
+              </td>
+              <td class="text-center">Clothing</td>
+              <td>
+                <div class="text-center">
+                  <button type="button" class="btn btn-success btn-sm btn-rounded">Have in stock</button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div class="text-center">Shoes</div>
+              </td>
+              <td class="text-center">Footwear</td>
+              <td>
+                <div class="text-center">
+                  <button type="button" class="btn btn-danger btn-sm btn-rounded">Out of stock</button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div> -->
+  <div class="row mt-4">
+    <div class="col-lg-12 mb-lg-0 mb-4">
+      <div class="todo-card">
+        <div class="card-header pb-0 p-3">
+          <div class="d-flex justify-content-between">
+            <h3 class="mb-2">Users List</h3>
           </div>
-          <div class="line line-filled"></div>
-
-          <div class="d-flex align-items-center mb-3">
-            <i class="bi bi-eye me-2"></i>
-            <span>View Dashboard</span>
-          </div>
-          <div class="progress mb-4">
-            <div class="progress-bar bg-purple" style="width: 50%;" role="progressbar" aria-valuenow="50"
-              aria-valuemin="0" aria-valuemax="100"></div>
-          </div>
-          <div class="line"></div>
-
-          <div class="d-flex align-items-center mb-3">
-            <i class="bi bi-check-circle me-2"></i>
-            <span>Task Completed</span>
-          </div>
-          <div class="progress mb-4">
-            <div class="progress-bar bg-success" style="width: 100%;" role="progressbar" aria-valuenow="100"
-              aria-valuemin="0" aria-valuemax="100"></div>
-          </div>
+        </div>
+        <div class="table-responsive">
+          <table class="table align-items-center">
+            <thead>
+              <tr>
+                <th style="font-size: 16px;">Name</th>
+                <th style="font-size: 16px;">Email</th>
+                <th style="font-size: 16px;">Role</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="w-30">
+                  <div class="d-flex px-2 py-1 align-items-center">
+                    <div>
+                      <img src="/views/assets/img/team-1.jpg" alt="User avatar" style="width: 40px; height: 40px"
+                      class="rounded-circle">
+                    </div>
+                    <div class="ms-4">
+                      <h6 class="text-sm mb-0">John Doe</h6>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div class="text-center">
+                    <h6 class="text-sm mb-0">john@example.com</h6>
+                  </div>
+                </td>
+                <td>
+                  <div class="text-center">
+                    <h6 class="text-sm mb-0">Admin</h6>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="w-30">
+                  <div class="d-flex px-2 py-1 align-items-center">
+                    <div>
+                      <img src="/views/assets/img/team-2.jpg" alt="User avatar" style="width: 40px; height: 40px"
+                      class="rounded-circle">
+                    </div>
+                    <div class="ms-4">
+                      <h6 class="text-sm mb-0">Jane Smith</h6>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div class="text-center">
+                    <h6 class="text-sm mb-0">jane@example.com</h6>
+                  </div>
+                </td>
+                <td>
+                  <div class="text-center">   
+                    <h6 class="text-sm mb-0">User</h6>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="w-30">
+                  <div class="d-flex px-2 py-1 align-items-center">
+                    <div>
+                      <img src="/views/assets/img/team-3.jpg" alt="User avatar" style="width: 40px; height: 40px"
+                      class="rounded-circle" >
+                    </div>
+                    <div class="ms-4">
+                      <h6 class="text-sm mb-0">Alice Johnson</h6>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div class="text-center">
+                    <h6 class="text-sm mb-0">alice@example.com</h6>
+                  </div>
+                </td>
+                <td>
+                  <div class="text-center">
+                    <h6 class="text-sm mb-0">Viewer</h6>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>

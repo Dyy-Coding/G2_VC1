@@ -53,6 +53,8 @@ $route->group('inventory', function($route) {
 
     // $route->get('/materials/form', [MaterialController::class, 'showAddForm']);
     // $route->post('/materials/add', [MaterialController::class, 'addMaterial']);
+    $route->get('/inventory/addMaterial', [InventoryController::class, 'showAddForm']);
+    $route->post('/materials/add', [InventoryController::class, 'addMaterial']);
     $route->get('/category', [InventoryController::class, 'category']);
     $route->get('/order', [InventoryController::class, 'order']);
 
