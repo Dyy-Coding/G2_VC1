@@ -107,16 +107,17 @@
 
   // Second chart (Bar chart)
   new Chart(ctx2, {
-    type: "bar",  // Changed to a bar chart
+    type: "bar",  
     data: {
       labels: ["Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
       datasets: [{
         label: "Mobile apps",
-        backgroundColor: "#5e72e4",  // Use solid color for bar chart
+        backgroundColor: "#5e72e4",  
         borderColor: "#5e72e4",
         borderWidth: 2,
         data: [50, 40, 300, 220, 500, 250, 400, 230, 500],
-        maxBarThickness: 30
+        maxBarThickness: 30,
+        borderRadius: 10  // This makes the bars rounded like pillars
       }],
     },
     options: {
