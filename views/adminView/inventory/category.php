@@ -43,8 +43,8 @@
                                 <input type="checkbox">
                                 Cements
                             </td>
-                            <td>168</td>
-                            <td><button type="button" class="btn btn-success btn-sm">OUT OF STOCK</button></td>
+                            <td>0</td>
+                            <td><button type="button" class="btn btn-danger btn-sm">OUT OF STOCK</button></td>
                             <td>Bag</td>
                             <td>14 April 2025</td>
                             <td>
@@ -57,8 +57,8 @@
                                 <input type="checkbox">
                                 Color
                             </td>
-                            <td>168</td>
-                            <td><button type="button" class="btn btn-success btn-sm">OUT OF STOCK</button></td>
+                            <td>0</td>
+                            <td><button type="button" class="btn btn-danger btn-sm">OUT OF STOCK</button></td>
                             <td>litre</td>
                             <td>14 April 2025</td>
                             <td>
@@ -72,7 +72,7 @@
                                 Pin
                             </td>
                             <td>168</td>
-                            <td><button type="button" class="btn btn-success btn-sm">OUT OF STOCK</button></td>
+                            <td><button type="button" class="btn btn-success btn-sm">FULL IN STOCK</button></td>
                             <td>kg</td>
                             <td>14 April 2025</td>
                             <td>

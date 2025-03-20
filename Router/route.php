@@ -11,7 +11,6 @@ require_once "Controllers/adminController/authenicationController/forgotPassword
 require_once "Controllers/adminController/InventoryController.php";
 require_once "Controllers/AdminController/DashboardController.php";
 require_once "Controllers/adminController/BashInfoController.php";
-require_once 'Controllers/adminController/InventoryTest/productController.php';
 require_once 'Controllers/errorController.php';
 
 // Database link files
@@ -43,8 +42,8 @@ $route->group('dashboard', function($route) {
 
 $route->group('inventory', function($route) {
     $route->get('/inventory', [InventoryController::class, 'inventory']);
-    // $route->get('/materials/form', [MaterialController::class, 'showAddForm']);
-    // $route->post('/materials/add', [MaterialController::class, 'addMaterial']);
+    $route->get('/inventory/addMaterial', [InventoryController::class, 'showAddForm']);
+    $route->post('/materials/add', [InventoryController::class, 'addMaterial']);
     $route->get('/category', [InventoryController::class, 'category']);
     $route->get('/order', [InventoryController::class, 'order']);
 
