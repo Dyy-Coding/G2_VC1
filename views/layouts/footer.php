@@ -1,5 +1,5 @@
 <footer class="footer pt-3  ">
-        <div class="container-fluid">
+        <!-- <div class="container-fluid">
           <div class="row align-items-center justify-content-lg-between">
             <div class="col-lg-6 mb-lg-0 mb-4">
               <div class="copyright text-center text-sm text-muted text-lg-start">
@@ -13,7 +13,7 @@
             <div class="col-lg-6">
             </div>
           </div>
-        </div>
+        </div> -->
 </footer>
 <!--   Core JS Files   -->
 <script src="views/assets/js/core/popper.min.js"></script>
@@ -107,16 +107,17 @@
 
   // Second chart (Bar chart)
   new Chart(ctx2, {
-    type: "bar",  // Changed to a bar chart
+    type: "bar",  
     data: {
       labels: ["Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
       datasets: [{
         label: "Mobile apps",
-        backgroundColor: "#5e72e4",  // Use solid color for bar chart
+        backgroundColor: "#5e72e4",  
         borderColor: "#5e72e4",
         borderWidth: 2,
         data: [50, 40, 300, 220, 500, 250, 400, 230, 500],
-        maxBarThickness: 30
+        maxBarThickness: 30,
+        borderRadius: 10  // This makes the bars rounded like pillars
       }],
     },
     options: {

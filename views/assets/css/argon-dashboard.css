@@ -216,6 +216,7 @@ body {
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   height: 100vh; /* Full viewport height */
+  overflow-x: hidden;
 
 }
 
@@ -469,10 +470,10 @@ caption {
   text-align: left;
 }
 
-th {
+/* th {
   text-align: inherit;
   text-align: -webkit-match-parent;
-}
+} */
 
 thead,
 tbody,
@@ -22783,7 +22784,7 @@ fieldset:disabled .btn {
   }
 
   .dropdown:not(.dropdown-hover) .dropdown-menu {
-    margin-top: 40px !important;
+    margin-top: 5px !important;
   }
 
   .dropdown .dropdown-menu:before {
@@ -29221,9 +29222,49 @@ td .name span {
   width: 15%; /* Adjust as needed */
   height: auto;
 }
-.sticker {
-  position: absolute;
-  width:20%; /* Adjust sticker size */
-  height: auto;
-  cursor: pointer;
+
+
+#addMeterial {
+  display: none;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  width: 50%;
+}
+
+#preview {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+  display: none;
+}
+
+.form-add-meterial{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+#inventoryDropdown, #accountDropdown {
+  display: none;
+  text-align: center;
+}
+
+.input-group-text {
+  color: #495057;
+}
+
+.sidenav {
+  overflow-y: hidden; /* Hide vertical scrollbar */
+  overflow-x: hidden; /* Hide horizontal scrollbar */
+}
+
+.navbar-nav {
+  overflow: hidden;
 }

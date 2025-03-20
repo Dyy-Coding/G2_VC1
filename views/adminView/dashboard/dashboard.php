@@ -1,6 +1,6 @@
 <div class="container-fluid py-4">
   <div class="row">
-    <div class="col-xl-4 col-sm-6 mb-xl-0 mb-4">
+    <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
       <div class="card">
         <div class="card-body p-3">
           <div class="row">
@@ -25,7 +25,7 @@
         </div>
       </div>
     </div>
-    <div class="col-xl-4 col-sm-6 mb-xl-0 mb-4">
+    <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
       <div class="card">
         <div class="card-body p-3">
           <div class="row">
@@ -50,7 +50,7 @@
         </div>
       </div>
     </div>
-    <div class="col-xl-4 col-sm-6 mb-xl-0 mb-4">
+    <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
       <div class="card">
         <div class="card-body p-3">
           <div class="row">
@@ -69,6 +69,30 @@
             <div class="col-4 text-end">
               <div class="icon icon-shape bg-gradient-success shadow-success text-center rounded-circle">
                 <i class="ni ni-paper-diploma text-lg opacity-10" aria-hidden="true"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-3 col-sm-6">
+      <div class="card">
+        <div class="card-body p-3">
+          <div class="row">
+            <div class="col-8">
+              <div class="numbers">
+                <p class="text-sm mb-0 text-uppercase font-weight-bold">Sales</p>
+                <h5 class="font-weight-bolder">
+                  $103,430
+                </h5>
+                <p class="mb-0">
+                  <span class="text-success text-sm font-weight-bolder">+5%</span> than last month
+                </p>
+              </div>
+            </div>
+            <div class="col-4 text-end">
+              <div class="icon icon-shape bg-gradient-warning shadow-warning text-center rounded-circle">
+                <i class="ni ni-cart text-lg opacity-10" aria-hidden="true"></i>
               </div>
             </div>
           </div>
@@ -98,15 +122,15 @@
       <div class="card">
         <div class="card-header pb-0 p-1">
           <div class="d-flex justify-content-between">
-            <h3 class="mb-2 p-1">Stock Lists</h3>
+            <h3 class="mb-2 p-2">Stock Lists</h3>
           </div>
         </div>
         <table class="table align-middle bg-white">
           <thead>
             <tr>
-              <th>Product</th>
-              <th>Category</th>
-              <th>Status</th>
+              <th style="font-size: 16px;">Product</th>
+              <th style="font-size: 16px;">Category</th>
+              <th style="font-size: 16px;">Status</th>
             </tr>
           </thead>
           <tbody>
@@ -193,7 +217,7 @@
   <div class="row mt-4">
     <div class="col-lg-6 mb-lg-0 mb-4">
       <div class="todo-card ">
-        <div class="card-header pb-0 p-3">
+        <div class="card-header pb-4 p-3">
           <div class="d-flex justify-content-between">
             <h3 class="mb-2">Supplier</h3>
           </div>
@@ -256,50 +280,50 @@
       </div>
     </div>
     <div class="col-lg-6 mb-lg-2 mb-4">
-      <div class="todo-card">
-        <div class="container mt-3">
-          <h3>Progress Track</h3>
+  <div class="todo-card">
+    <div class="container mt-3">
+      <h3>Progress Track</h3>
 
-          <div class="d-flex align-items-center mb-3">
-            <i class="bi bi-info-circle me-2"></i>
-            <span>React Material Dashboard</span>
-          </div>
-          <div class="progress mb-4">
-            <div class="progress-bar bg-primary" style="width: 70%;" role="progressbar" aria-valuenow="70"
-              aria-valuemin="0" aria-valuemax="100"></div>
-          </div>
-          <div class="line line-filled"></div>
-
-          <div class="d-flex align-items-center mb-3">
-            <i class="bi bi-eye me-2"></i>
-            <span>View Dashboard</span>
-          </div>
-          <div class="progress mb-4">
-            <div class="progress-bar bg-purple" style="width: 50%;" role="progressbar" aria-valuenow="50"
-              aria-valuemin="0" aria-valuemax="100"></div>
-          </div>
-          <div class="line"></div>
-
-          <div class="d-flex align-items-center mb-3">
-            <i class="bi bi-check-circle me-2"></i>
-            <span>Task Completed</span>
-          </div>
-          <div class="progress mb-4">
-            <div class="progress-bar bg-success" style="width: 100%;" role="progressbar" aria-valuenow="100"
-              aria-valuemin="0" aria-valuemax="100"></div>
-          </div>
-
-          <div class="d-flex align-items-center mb-3">
-            <i class="bi bi-check-circle me-2"></i>
-            <span>Task Completed</span>
-          </div>
-          <div class="progress mb-4">
-            <div class="progress-bar bg-success" style="width: 80%;" role="progressbar" aria-valuenow="100"
-              aria-valuemin="0" aria-valuemax="100"></div>
-          </div>
+      <div class="d-flex align-items-center mb-3">
+        <i class="bi bi-info-circle me-2"></i>
+        <span>React Material Dashboard</span>
+      </div>
+      <div class="d-flex align-items-center mb-3">
+        <img src="/views/assets/img/carousel-3.jpg" alt="User avatar" style="width: 40px; height: 40px; border-radius: 5px" class="me-2">
+        <div class="progress flex-grow-1">
+          <div class="progress-bar bg-warning" style="width: 70%;" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
         </div>
       </div>
+      <div class="line line-filled"></div>
+
+      <div class="d-flex align-items-center mb-3">
+        <i class="bi bi-eye me-2"></i>
+        <span>View Dashboard</span>
+      </div>
+      <div class="d-flex align-items-center mb-3">
+        <img src="/views/assets/img/carousel-2.jpg" alt="User avatar" style="width: 40px; height: 40px; border-radius: 5px" class="me-2">
+        <div class="progress flex-grow-1">
+          <div class="progress-bar bg-primary" style="width: 60%;" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+      </div>
+      <div class="line line-filled"></div>
+
+      <div class="d-flex align-items-center mb-3">
+        <i class="bi bi-check-circle me-2"></i>
+        <span>Task Completed</span>
+      </div>
+      <div class="d-flex align-items-center mb-3">
+        <img src="/views/assets/img/carousel-1.jpg" alt="User avatar" style="width: 40px; height: 40px; border-radius: 5px" class="me-2">
+        <div class="progress flex-grow-1">
+          <div class="progress-bar bg-success" style="width: 70%;" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+      </div>
+      <div class="line line-filled"></div>
+
     </div>
+  </div>
+</div>
+
   </div>
   <!-- <div class="row mt-4">
     <div class="col-lg-12 mb-lg-0 mb-4">
@@ -379,9 +403,9 @@
           <table class="table align-items-center">
             <thead>
               <tr>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Role</th>
+                <th style="font-size: 16px;">Name</th>
+                <th style="font-size: 16px;">Email</th>
+                <th style="font-size: 16px;">Role</th>
               </tr>
             </thead>
             <tbody>
@@ -389,7 +413,8 @@
                 <td class="w-30">
                   <div class="d-flex px-2 py-1 align-items-center">
                     <div>
-                      <img src="/views/assets/img/users/user1.png" alt="User avatar">
+                      <img src="/views/assets/img/team-1.jpg" alt="User avatar" style="width: 40px; height: 40px"
+                      class="rounded-circle">
                     </div>
                     <div class="ms-4">
                       <h6 class="text-sm mb-0">John Doe</h6>
@@ -411,7 +436,8 @@
                 <td class="w-30">
                   <div class="d-flex px-2 py-1 align-items-center">
                     <div>
-                      <img src="../assets/img/users/user2.png" alt="User avatar">
+                      <img src="/views/assets/img/team-2.jpg" alt="User avatar" style="width: 40px; height: 40px"
+                      class="rounded-circle">
                     </div>
                     <div class="ms-4">
                       <h6 class="text-sm mb-0">Jane Smith</h6>
@@ -433,7 +459,8 @@
                 <td class="w-30">
                   <div class="d-flex px-2 py-1 align-items-center">
                     <div>
-                      <img src="../assets/img/users/user3.png" alt="User avatar">
+                      <img src="/views/assets/img/team-3.jpg" alt="User avatar" style="width: 40px; height: 40px"
+                      class="rounded-circle" >
                     </div>
                     <div class="ms-4">
                       <h6 class="text-sm mb-0">Alice Johnson</h6>

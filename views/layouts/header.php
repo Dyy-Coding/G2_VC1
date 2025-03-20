@@ -23,9 +23,8 @@
 <link id="pagestyle" href="views/assets/css/argon-dashboard.css?v=2.1.0" rel="stylesheet" />
 
 </head>
-
 <body class="g-sidenav-show   bg-gray-100">
-  <div class="min-height-300 bg-dark position-fixed w-100"></div>
+  <div class="min-height-300 bg-dark position-fixed w-100 "></div>
   <aside
     class="sidenav bg-white navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 "
     id="sidenav-main">
@@ -40,7 +39,7 @@
       </a>
     </div>
     <hr class="horizontal dark mt-0">
-    <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
+    <div class="collapse navbar-collapse  w-auto" id="sidenav-collapse-main">
       <ul class="navbar-nav">
         <li class="nav-item">
           <a class="nav-link " href="/">
@@ -60,9 +59,9 @@
             </div>
             <span class="nav-link-text ms-1">Inventory</span>
           </a>
-          <ul class="dropdown-menu" id="inventoryDropdown" style="display: none; position: relative; left: 44px;">
+          <ul class="dropdown-menu" id="inventoryDropdown" >
             <li><a class="dropdown-item" href="/category">Category</a></li>
-            <li><a class="dropdown-item" href="/inventory">Product</a></li>
+            <li><a class="dropdown-item" href="/inventory">Material</a></li>
             <li><a class="dropdown-item" href="/order">Order</a></li>
           </ul>
         </li>
@@ -109,7 +108,7 @@
           <a class="nav-link" href="../pages/rtl.html">
             <div
               class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="ni ni-world-2 text-dark text-sm opacity-10"></i>
+              <i class="ni ni-briefcase-24 text-dark text-sm opacity-10"></i>
             </div>
             <span class="nav-link-text ms-1">Employee</span>
           </a>
@@ -125,7 +124,7 @@
             </div>
             <span class="nav-link-text ms-1">Account</span>
           </a>
-          <ul class="dropdown-menu" id="accountDropdown" style="display: none; position: relative; left: 44px;">
+          <ul class="dropdown-menu" id="accountDropdown" >
             <li><a class="dropdown-item" href="/profile">Profile</a></li>
             <li><a class="dropdown-item" href="/userList">User</a></li>
           </ul>
@@ -157,7 +156,7 @@
           <a class="nav-link" href="/register">
             <div
               class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="ni ni-collection text-dark text-sm opacity-10"></i>
+              <i class="ni ni-briefcase-24 text-dark text-sm opacity-10"></i>
             </div>
             <span class="nav-link-text ms-1">Help and Support</span>
           </a>
@@ -166,7 +165,7 @@
           <a class="nav-link" href="/register">
             <div
               class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="ni ni-collection text-dark text-sm opacity-10"></i>
+              <i class="ni ni-settings text-dark text-sm opacity-10 "></i>
             </div>
             <span class="nav-link-text ms-1">Settings</span>
           </a>
@@ -182,6 +181,6 @@
         </li>
       </ul>
     </div>
-    </div>
+  </div>
   </aside>
   <main class="main-content position-relative border-radius-lg ">
