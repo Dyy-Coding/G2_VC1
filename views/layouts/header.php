@@ -10,6 +10,7 @@
     Argon Dashboard 3 by Creative Tim
   </title>
    Fonts and icons     -->
+<link rel="stylesheet" href="views/assets/css/adminaccountuser/adminUserList.css">
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
 <!-- Nucleo Icons -->
 <link href="https://demos.creative-tim.com/argon-dashboard-pro/assets/css/nucleo-icons.css" rel="stylesheet" />
@@ -125,8 +126,7 @@
           </a>
           <ul class="dropdown-menu" id="accountDropdown" >
             <li><a class="dropdown-item" href="/profile">Profile</a></li>
-            <li><a class="dropdown-item" href="/userList">User List</a></li>
-            <li><a class="dropdown-item" href="/addusersForm">User Form</a></li>
+            <li><a class="dropdown-item" href="/userList">User</a></li>
           </ul>
         </li>
 
