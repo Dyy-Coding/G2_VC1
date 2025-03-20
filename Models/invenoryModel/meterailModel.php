@@ -3,56 +3,32 @@
 class Material {
     private $conn;
 
-    // Constructor to initialize DB connection
     public function __construct() {
         $this->conn = Database::getConnection();
     }
 
-    // Add material with image
-    public function addMaterial($name, $categoryID, $quantity, $unitPrice, $supplierID, $minStockLevel, $reorderLevel, $image) {
-        // Check if valid image file array is passed
-        if (!is_array($image) || !isset($image['name'])) {
-            error_log("Invalid image format provided.");
-            return false;
-        }
-
-        // Upload image and get path
-        $imageUpload = $this->uploadImage($image);
-        
-        if (!$imageUpload || isset($imageUpload["error"])) {
-            error_log("Image Upload Error: " . ($imageUpload["error"] ?? "Unknown error"));
-            return false;
-        }
-
-        $imagePath = $imageUpload["success"];
-
-        $query = "INSERT INTO Materials (Name, CategoryID, Quantity, UnitPrice, SupplierID, MinStockLevel, ReorderLevel, ImagePath)
-                  VALUES (:name, :categoryID, :quantity, :unitPrice, :supplierID, :minStockLevel, :reorderLevel, :imagePath)";
-
+    // ✅ Fetch all materials with category & supplier name
+    public function getAllMaterials() {
         try {
+            $query = "SELECT m.*, c.CategoryName, s.Name AS SupplierName 
+                      FROM Materials m
+                      LEFT JOIN Categories c ON m.CategoryID = c.CategoryID
+                      LEFT JOIN Suppliers s ON m.SupplierID = s.SupplierID
+                      ORDER BY m.CreatedAt DESC";
+            
             $stmt = $this->conn->prepare($query);
-
-            $stmt->bindParam(':name', $name, PDO::PARAM_STR);
-            $stmt->bindParam(':categoryID', $categoryID, PDO::PARAM_INT);
-            $stmt->bindParam(':quantity', $quantity, PDO::PARAM_INT);
-            $stmt->bindParam(':unitPrice', $unitPrice, PDO::PARAM_STR);
-            $stmt->bindParam(':supplierID', $supplierID, PDO::PARAM_INT);
-            $stmt->bindParam(':minStockLevel', $minStockLevel, PDO::PARAM_INT);
-            $stmt->bindParam(':reorderLevel', $reorderLevel, PDO::PARAM_INT);
-            $stmt->bindParam(':imagePath', $imagePath, PDO::PARAM_STR);
-
-            return $stmt->execute();
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
-            error_log("Exception in addMaterial: " . $e->getMessage());
-            return false;
+            error_log("Error fetching materials: " . $e->getMessage());
+            return [];
         }
     }
 
-    // Upload image method
+    // ✅ Upload image with validation
     public function uploadImage($file) {
-        // Validate input type
-        if (!is_array($file) || !isset($file["name"])) {
-            return ["error" => "Invalid file format."];
+        if (!isset($file['name']) || $file['error'] !== 0) {
+            return ['error' => 'Invalid file upload.'];
         }
 
         $targetDir = "uploads/images/";
@@ -60,37 +36,80 @@ class Material {
             mkdir($targetDir, 0755, true);
         }
 
-        $fileName = basename($file["name"]);
+        $fileName = preg_replace("/[^a-zA-Z0-9._-]/", "_", basename($file['name']));
         $filePath = $targetDir . uniqid() . '_' . $fileName;
         $fileType = strtolower(pathinfo($filePath, PATHINFO_EXTENSION));
 
-        $validTypes = ["jpg", "jpeg", "png", "gif"];
+        $validTypes = ['jpg', 'jpeg', 'png', 'gif'];
         if (!in_array($fileType, $validTypes)) {
-            return ["error" => "Only JPG, JPEG, PNG & GIF files are allowed."];
+            return ['error' => 'Only JPG, JPEG, PNG & GIF files are allowed.'];
         }
 
-        $mimeType = mime_content_type($file["tmp_name"]);
-        $validMimeTypes = ["image/jpeg", "image/png", "image/gif"];
-        if (!in_array($mimeType, $validMimeTypes)) {
-            return ["error" => "Invalid image file type."];
+        if ($file['size'] > 5 * 1024 * 1024) {
+            return ['error' => 'File size should be less than 5MB.'];
         }
 
-        if ($file["size"] > 5000000) {
-            return ["error" => "File size should be less than 5MB."];
+        if (!move_uploaded_file($file['tmp_name'], $filePath)) {
+            return ['error' => 'Failed to upload the image.'];
         }
 
-        if (move_uploaded_file($file["tmp_name"], $filePath)) {
-            return ["success" => $filePath];
-        } else {
-            return ["error" => "There was an error uploading the file."];
+        return ['success' => $filePath];
+    }
+
+    // ✅ Add material with image handling
+    public function addMaterial($data, $image) {
+        $requiredFields = ['name', 'categoryID', 'quantity', 'unitPrice', 'supplierID'];
+        foreach ($requiredFields as $field) {
+            if (empty($data[$field])) {
+                error_log("Validation Error: $field is required.");
+                return false;
+            }
+        }
+        
+        $imagePath = null;
+        if (!empty($image) && isset($image['name']) && $image['error'] === 0) {
+            $uploadResult = $this->uploadImage($image);
+            if (isset($uploadResult['error'])) {
+                error_log("Image Upload Error: " . $uploadResult['error']);
+                return false;
+            }
+            $imagePath = $uploadResult['success'];
+        }
+
+        $query = "INSERT INTO Materials (Name, CategoryID, Quantity, UnitPrice, SupplierID, MinStockLevel, ReorderLevel, UnitOfMeasure, Size, ImagePath, Description, CreatedAt, UpdatedAt, Brand, Location, SupplierContact, Status, WarrantyPeriod) 
+                  VALUES (:name, :categoryID, :quantity, :unitPrice, :supplierID, :minStockLevel, :reorderLevel, :unitOfMeasure, :size, :imagePath, :description, NOW(), NOW(), :brand, :location, :supplierContact, :status, :warrantyPeriod)";
+        
+        try {
+            $stmt = $this->conn->prepare($query);
+            $stmt->execute([
+                ':name' => $data['name'],
+                ':categoryID' => $data['categoryID'],
+                ':quantity' => $data['quantity'],
+                ':unitPrice' => $data['unitPrice'],
+                ':supplierID' => $data['supplierID'],
+                ':minStockLevel' => $data['minStockLevel'] ?? null,
+                ':reorderLevel' => $data['reorderLevel'] ?? null,
+                ':unitOfMeasure' => $data['unitOfMeasure'] ?? null,
+                ':size' => $data['size'] ?? null,
+                ':imagePath' => $imagePath,
+                ':description' => $data['description'] ?? null,
+                ':brand' => $data['brand'] ?? null,
+                ':location' => $data['location'] ?? null,
+                ':supplierContact' => $data['supplierContact'] ?? null,
+                ':status' => $data['status'] ?? null,
+                ':warrantyPeriod' => $data['warrantyPeriod'] ?? null
+            ]);
+            return $this->conn->lastInsertId();
+        } catch (PDOException $e) {
+            error_log("Exception in addMaterial: " . $e->getMessage());
+            return false;
         }
     }
 
-    // Fetch categories
+    // Fetch all categories
     public function getCategories() {
-        $query = "SELECT CategoryID, CategoryName FROM Categories;";
         try {
-            $stmt = $this->conn->prepare($query);
+            $stmt = $this->conn->prepare("SELECT CategoryID, CategoryName FROM Categories");
             $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
@@ -99,11 +118,10 @@ class Material {
         }
     }
 
-    // Fetch suppliers
+    // Fetch all suppliers
     public function getSuppliers() {
-        $query = "SELECT SupplierID, Name FROM Suppliers;";
         try {
-            $stmt = $this->conn->prepare($query);
+            $stmt = $this->conn->prepare("SELECT SupplierID, Name FROM Suppliers");
             $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
@@ -111,5 +129,14 @@ class Material {
             return [];
         }
     }
+
+    // ✅ Helper method to prepare form data
+    public function prepareAddMaterialForm() {
+        return [
+            'categories' => $this->getCategories(),
+            'suppliers'  => $this->getSuppliers()
+        ];
+    }
 }
+
 ?>
