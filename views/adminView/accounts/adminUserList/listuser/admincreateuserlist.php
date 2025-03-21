@@ -1,4 +1,4 @@
-<div class="container mt-4 card" style="width: 95%; padding: 25px;">
+<div class="container mt-4 card mb-4" style="width: 95%; padding: 25px;">
     <div class="container d-flex align-items-center justify-content-between mb-3">
         <div class="container">
             <h3 class="mb-4 mt-4">Enter User Info</h3>

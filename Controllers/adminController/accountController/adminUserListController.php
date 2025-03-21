@@ -4,12 +4,10 @@ require_once "Controllers/BaseController.php";
 class AccountListController extends BaseController
 {
     private $model;
-
     function __construct()
     {
         $this->model = new AdminUserListModel();
     }
-
     public function viewAddusersListdetail()
     {
         $users = $this->model->listGetUsersAccount();

@@ -31,6 +31,7 @@
                 <th class="w-large">Last Name</th>
                 <th class="w-large">Email</th>
                 <th class="w-large">Phone Number</th>
+                <th class="w-large">Role</th>
                 <th class="w-large">Action</th>
             </tr>
         </thead>
@@ -46,9 +47,8 @@
                     <td><?= $user['last_name'] ?></td>
                     <td><?= $user['email'] ?></td>
                     <td><?= $user['phone'] ?></td>
-                    <td>
-                        <button class="btn btn-success">View</button>
-                    </td>
+                    <td><?= $user['role_id'] ?></td>
+                    <td><button class="btn btn-success">View</button></td>
                 </tr>
             <?php endforeach; ?>
         </tbody>
