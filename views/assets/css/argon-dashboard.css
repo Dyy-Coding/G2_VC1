@@ -29275,3 +29275,11 @@ feature/account
 .navbar-nav {
   overflow: hidden;
 }
+
+#sidenav-collapse-main{
+  height: 100%;
+}
+
+#sidenav-main{
+  overflow-y: hidden;
+}
