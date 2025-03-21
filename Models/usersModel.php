@@ -215,5 +215,31 @@ public function getLastUserIdInPasswordResets() {
     return $stmt->fetchColumn(); // Returns only the user_id
 }
 
+// Function to get a user by their password (checks email and password)
+public function getUserByPassword($password) {
+    // Prepare the SQL query to fetch the user by password
+    $query = "SELECT user_id, password, email, first_name, last_name FROM users WHERE password = :password LIMIT 1";
+
+    // Prepare the statement
+    $stmt = $this->conn->prepare($query);
+    
+    // Bind the password parameter
+    $stmt->bindParam(':password', $password, PDO::PARAM_STR);
+
+    // Execute the query
+    $stmt->execute();
+
+    // Check if a user with this password exists
+    if ($stmt->rowCount() > 0) {
+        // Fetch the user data
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+        
+        // Return the user data
+        return $user; 
+    } else {
+        return null; // No user found with the provided password
+    }
+}
+
 }
 ?>

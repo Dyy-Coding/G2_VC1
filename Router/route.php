@@ -27,9 +27,10 @@ $route = new Router();
 $route->group('auth', function($route) {
     $route->get('/login', [LoginController::class, 'login']);  // Display Login Form (GET)
     $route->post('/login', [LoginController::class, 'login']); // Handle Login (POST)
-    $route->get('/logout', [LoginController::class, 'logout']);// Handle Registration Form (POST)
+    $route->get('/logout', [LoginController::class, 'logout']);
     $route->get('/forgot', [AuthController::class, 'forgot']); // Forgot Password Form (GET)
     $route->post('/forgot-password', [AuthController::class, 'resetPasswordRequest']); // Handle Forgot Password (POST)
+    $route->post('/forgotpasswordform', [AuthController::class, 'showForgotPasswordForm']); // Handle Forgot Password (POST)
 });
 
 $route->group('dashboard', function($route) {
