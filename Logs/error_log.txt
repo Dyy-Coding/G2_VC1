@@ -9,13 +9,208 @@
 [2025-03-15 13:38:37] Error 404: View not found
 [2025-03-15 13:52:22] Error 500: Layout not found
 [2025-03-15 13:52:24] Error 500: Layout not found
+<<<<<<< HEAD
 
 [2025-03-17 02:46:35] Error 404: View not found
 [2025-03-17 05:46:08] Error 404: View not found
 [2025-03-17 05:46:09] Error 404: View not found
+=======
+<<<<<<< HEAD
+=======
+
+>>>>>>> feature/addmeterial
+[2025-03-17 07:03:54] Error 404: View not found
+[2025-03-17 07:07:03] Error 404: View not found
+[2025-03-17 07:07:04] Error 404: View not found
+[2025-03-17 07:07:04] Error 404: View not found
+[2025-03-17 07:07:04] Error 404: View not found
+[2025-03-17 07:07:05] Error 404: View not found
+[2025-03-17 07:07:05] Error 404: View not found
+[2025-03-17 07:07:18] Error 404: View not found
+[2025-03-17 07:15:06] Error 404: View not found
+[2025-03-17 07:17:50] Error 404: View not found
+[2025-03-17 07:17:50] Error 404: View not found
+[2025-03-17 07:17:51] Error 404: View not found
+[2025-03-17 07:17:51] Error 404: View not found
+[2025-03-17 07:17:51] Error 404: View not found
+[2025-03-17 07:17:51] Error 404: View not found
+[2025-03-17 07:18:51] Error 404: View not found
+[2025-03-17 07:19:28] Error 404: View not found
+[2025-03-17 07:19:33] Error 404: View not found
+[2025-03-17 08:42:23] Error 404: View not found
+[2025-03-17 08:45:18] Error 404: View not found
+[2025-03-17 08:46:44] Error 404: View not found
+[2025-03-17 08:46:45] Error 404: View not found
+[2025-03-17 08:46:47] Error 404: View not found
+[2025-03-17 08:50:53] Error 404: View not found
+[2025-03-17 08:50:54] Error 404: View not found
+[2025-03-17 08:50:54] Error 404: View not found
+[2025-03-17 08:50:54] Error 404: View not found
+[2025-03-17 08:51:30] Error 404: View not found
+[2025-03-17 09:04:20] Error 404: View not found
+[2025-03-17 09:05:29] Error 404: View not found
+[2025-03-17 09:08:32] Error 404: View not found
+[2025-03-17 09:10:01] Error 404: View not found
+[2025-03-17 09:10:03] Error 404: View not found
+[2025-03-17 09:10:04] Error 404: View not found
+[2025-03-17 09:10:05] Error 404: View not found
+[2025-03-17 09:11:51] Error 404: View not found
+[2025-03-17 09:13:58] Error 404: View not found
+[2025-03-17 09:13:59] Error 404: View not found
+[2025-03-17 09:13:59] Error 404: View not found
+[2025-03-17 09:13:59] Error 404: View not found
+[2025-03-17 09:14:00] Error 404: View not found
+[2025-03-17 09:14:01] Error 404: View not found
+[2025-03-17 09:14:02] Error 404: View not found
+[2025-03-17 09:14:02] Error 404: View not found
+[2025-03-17 09:14:02] Error 404: View not found
+[2025-03-17 09:14:03] Error 404: View not found
+[2025-03-17 09:15:45] Error 404: View not found
+[2025-03-17 09:16:45] Error 404: View not found
+[2025-03-17 09:16:46] Error 404: View not found
+[2025-03-17 09:16:47] Error 404: View not found
+[2025-03-17 09:16:48] Error 404: View not found
+[2025-03-17 09:16:48] Error 404: View not found
+[2025-03-17 09:16:49] Error 404: View not found
+[2025-03-17 10:06:23] Error 404: View not found
+[2025-03-17 10:06:27] Error 404: View not found
+[2025-03-17 10:08:03] Error 404: View not found
+[2025-03-17 10:09:08] Error 404: View not found
+[2025-03-17 10:09:09] Error 404: View not found
+[2025-03-17 10:09:10] Error 404: View not found
+[2025-03-17 10:09:14] Error 404: View not found
+[2025-03-17 10:10:31] Error 404: View not found
+[2025-03-17 10:10:32] Error 404: View not found
+[2025-03-17 10:10:33] Error 404: View not found
+[2025-03-17 10:10:33] Error 404: View not found
+[2025-03-17 10:10:33] Error 404: View not found
+[2025-03-17 10:10:37] Error 404: View not found
+[2025-03-17 10:10:47] Error 404: View not found
+[2025-03-17 10:15:35] Error 404: View not found
+[2025-03-17 10:16:13] Error 404: View not found
+[2025-03-17 10:16:39] Error 404: View not found
+[2025-03-17 10:16:50] Error 404: View not found
+[2025-03-17 10:18:28] Error 404: View not found
+[2025-03-17 10:18:57] Error 404: View not found
+[2025-03-17 10:20:47] Error 404: View not found
+[2025-03-17 10:20:48] Error 404: View not found
+[2025-03-17 10:20:49] Error 404: View not found
+[2025-03-17 10:20:51] Error 404: View not found
+[2025-03-17 10:21:51] Error 404: View not found
+[2025-03-17 10:21:52] Error 404: View not found
+[2025-03-17 10:21:52] Error 404: View not found
+[2025-03-17 10:24:21] Error 404: View not found
+[2025-03-17 10:24:22] Error 404: View not found
+[2025-03-17 10:24:22] Error 404: View not found
+[2025-03-17 10:24:22] Error 404: View not found
+[2025-03-17 10:24:22] Error 404: View not found
+[2025-03-17 10:24:22] Error 404: View not found
+[2025-03-17 10:26:19] Error 404: View not found
+[2025-03-17 10:27:46] Error 404: View not found
+[2025-03-17 10:31:18] Error 404: View not found
+[2025-03-17 02:46:35] Error 404: View not found
+[2025-03-17 05:46:08] Error 404: View not found
+[2025-03-17 05:46:09] Error 404: View not found
+<<<<<<< HEAD
+[2025-03-20 03:19:49] Error 404: View not found
+[2025-03-20 03:19:53] Error 404: View not found
+[2025-03-20 03:20:03] Error 404: View not found
+[2025-03-20 04:41:34] Error 404: View not found
+[2025-03-20 04:42:06] Error 404: View not found
+[2025-03-20 04:42:07] Error 404: View not found
+[2025-03-20 04:42:08] Error 404: View not found
+=======
+[2025-03-18 10:46:22] Error 404: View not found
+[2025-03-18 10:47:39] Error 404: View not found
+[2025-03-18 10:47:44] Error 404: View not found
+[2025-03-18 10:48:29] Error 404: View not found
+[2025-03-18 10:48:57] Error 404: View not found
+[2025-03-18 10:49:04] Error 404: View not found
+[2025-03-18 10:50:29] Error 404: View not found
+[2025-03-18 11:46:34] Error 404: View not found
+[2025-03-18 12:05:14] Error 404: View not found
+[2025-03-18 12:08:14] Error 404: View not found
+[2025-03-18 12:08:15] Error 404: View not found
+[2025-03-18 12:08:16] Error 404: View not found
+[2025-03-18 12:10:04] Error 404: View not found
+[2025-03-18 12:10:04] Error 404: View not found
+[2025-03-18 12:12:19] Error 404: View not found
+[2025-03-18 12:12:48] Error 404: View not found
+[2025-03-18 13:02:08] Error 404: View not found
+[2025-03-18 13:06:31] Error 404: View not found
+[2025-03-18 13:56:27] Error 404: View not found
+[2025-03-18 13:57:11] Error 404: View not found
+[2025-03-18 13:59:46] Error 404: View not found
+[2025-03-18 13:59:48] Error 404: View not found
+[2025-03-18 13:59:53] Error 404: View not found
+[2025-03-19 05:55:31] Error 404: View not found
+[2025-03-19 05:55:34] Error 404: View not found
+[2025-03-19 06:00:04] Error 404: View not found
+[2025-03-19 06:00:06] Error 404: View not found
+[2025-03-19 06:00:06] Error 404: View not found
+[2025-03-19 06:00:07] Error 404: View not found
+[2025-03-19 06:00:07] Error 404: View not found
+[2025-03-19 06:00:07] Error 404: View not found
+[2025-03-19 06:00:08] Error 404: View not found
+[2025-03-19 06:00:08] Error 404: View not found
+[2025-03-19 06:00:08] Error 404: View not found
+[2025-03-19 06:00:08] Error 404: View not found
+[2025-03-19 06:00:24] Error 404: View not found
+[2025-03-19 06:00:26] Error 404: View not found
+[2025-03-19 06:00:26] Error 404: View not found
+[2025-03-19 06:00:26] Error 404: View not found
+[2025-03-19 06:00:27] Error 404: View not found
+[2025-03-19 06:02:18] Error 404: View not found
+[2025-03-19 06:19:40] Error 404: View not found
+[2025-03-19 06:19:41] Error 404: View not found
+[2025-03-19 06:20:16] Error 404: View not found
+[2025-03-19 06:20:16] Error 404: View not found
+[2025-03-19 06:20:17] Error 404: View not found
+[2025-03-19 06:20:17] Error 404: View not found
+[2025-03-19 06:20:17] Error 404: View not found
+[2025-03-19 06:20:17] Error 404: View not found
+[2025-03-19 06:20:43] Error 404: View not found
+[2025-03-19 06:20:44] Error 404: View not found
+[2025-03-19 06:22:01] Error 404: View not found
+[2025-03-19 06:22:03] Error 404: View not found
+[2025-03-19 06:24:26] Error 404: View not found
+[2025-03-19 06:24:27] Error 404: View not found
+[2025-03-19 06:24:28] Error 404: View not found
+[2025-03-19 06:29:41] Error 404: View not found
+[2025-03-19 06:30:00] Error 404: View not found
+[2025-03-19 06:30:01] Error 404: View not found
+[2025-03-19 06:30:01] Error 404: View not found
+[2025-03-19 06:30:02] Error 404: View not found
+[2025-03-19 06:30:09] Error 404: View not found
+[2025-03-19 06:30:51] Error 404: View not found
+[2025-03-19 06:31:09] Error 404: View not found
+[2025-03-19 06:31:12] Error 404: View not found
+[2025-03-19 06:31:12] Error 404: View not found
+[2025-03-19 06:32:19] Error 404: View not found
+[2025-03-19 06:32:23] Error 404: View not found
+[2025-03-19 06:34:34] Error 404: View not found
+[2025-03-19 06:34:35] Error 404: View not found
+[2025-03-19 06:34:35] Error 404: View not found
+[2025-03-19 06:34:35] Error 404: View not found
+[2025-03-19 06:34:35] Error 404: View not found
+[2025-03-19 06:34:36] Error 404: View not found
+[2025-03-19 06:34:36] Error 404: View not found
+[2025-03-19 06:34:36] Error 404: View not found
+[2025-03-19 06:34:36] Error 404: View not found
+[2025-03-19 06:34:40] Error 404: View not found
+>>>>>>> feature/addmeterial
+>>>>>>> a1c9faa65804f178bc05c7458cee4540d5ee26ab
 [2025-03-18 09:35:07] Error 404: View not found
 [2025-03-18 09:35:16] Error 404: View not found
 [2025-03-18 09:36:42] Error 404: View not found
 [2025-03-18 09:36:48] Error 404: View not found
 [2025-03-18 09:40:48] Error 404: View not found
+<<<<<<< HEAD
 >>>>>>> 5676e3c8199b5feb8d5c6be430ee20361d5901e3
+=======
+<<<<<<< HEAD
+
+=======
+>>>>>>> origin
+>>>>>>> feature/addmeterial
+>>>>>>> a1c9faa65804f178bc05c7458cee4540d5ee26ab

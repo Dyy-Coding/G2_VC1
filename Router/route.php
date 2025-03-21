@@ -42,6 +42,7 @@ $route->group('dashboard', function($route) {
 
 $route->group('inventory', function($route) {
     $route->get('/inventory', [InventoryController::class, 'inventory']);
+    $route->post('Add/materials', [InventoryController::class, 'addMaterial']);
     $route->get('/inventory/addMaterial', [InventoryController::class, 'showAddForm']);
     $route->post('/materials/add', [InventoryController::class, 'addMaterial']);
     $route->get('/category', [InventoryController::class, 'category']);
@@ -54,9 +55,12 @@ $route->group('profile', function($route) {
     $route->get('/addusersform', [AccountController::class, 'viewAddusersForm']);
     $route->get('/userList', [AccountListController::class, 'viewAddusersListdetail']);
     $route->get('/createuser', [AccountListController::class, 'admincreateuserlist']);
+    $route->get('/profile', [BashInfomController::class, 'profile']);
 });
 
 $route->get('/error', [ErrorController::class, 'error']);
+
+// $route->printRoutes();
 
 
 // Route Handling: match the requested URI with the defined routes
