@@ -8,9 +8,6 @@ class LoginController extends BaseController
     public function __construct()
     {
         // Ensure session is started
-        if (session_status() === PHP_SESSION_NONE) {
-            session_start();
-        }
 
         // Initialize the UserModel to interact with user data
         $this->users = new UserModel();
