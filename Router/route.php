@@ -6,7 +6,6 @@ require_once "Router.php";
 // Controller link files
 require_once "Controllers/BaseController.php";
 require_once "Controllers/adminController/authenicationController/loginController.php";
-require_once "Controllers/adminController/authenicationController/registerController.php";
 require_once "Controllers/adminController/authenicationController/forgotPasswordController.php";
 require_once "Controllers/adminController/InventoryController.php";
 require_once "Controllers/AdminController/DashboardController.php";
@@ -28,9 +27,7 @@ $route = new Router();
 $route->group('auth', function($route) {
     $route->get('/login', [LoginController::class, 'login']);  // Display Login Form (GET)
     $route->post('/login', [LoginController::class, 'login']); // Handle Login (POST)
-    $route->get('/logout', [LoginController::class, 'logout']);
-    $route->get('/register', [RegisterController::class, 'register']); // Display Registration Form (GET)
-    $route->post('/register', [RegisterController::class, 'register']); // Handle Registration Form (POST)
+    $route->get('/logout', [LoginController::class, 'logout']);// Handle Registration Form (POST)
     $route->get('/forgot', [AuthController::class, 'forgot']); // Forgot Password Form (GET)
     $route->post('/forgot-password', [AuthController::class, 'resetPasswordRequest']); // Handle Forgot Password (POST)
 });

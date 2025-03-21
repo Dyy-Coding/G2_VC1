@@ -7,8 +7,6 @@ class LoginController extends BaseController
 
     public function __construct()
     {
-        // Ensure session is started
-
         // Initialize the UserModel to interact with user data
         $this->users = new UserModel();
     }
@@ -19,7 +17,6 @@ class LoginController extends BaseController
         if ($_SERVER['REQUEST_METHOD'] === 'GET') {
             // Redirect to home if already logged in
             if (isset($_SESSION['user_id'])) {
-                // Avoid redirect loop if user is already logged in
                 $this->redirect('/');
                 return;
             }
@@ -33,16 +30,24 @@ class LoginController extends BaseController
             $email = trim($_POST['email'] ?? '');
             $password = $_POST['password'] ?? '';
 
-            // Validate input fields
-            if (empty($email) || empty($password)) {
-                $this->renderAuthView('authentication/login', ['error' => 'Email and password are required!']);
+            // Initialize an array to store errors
+            $errors = [];
+
+            // Validate email and password using the separate functions
+            $this->validateEmail($email, $errors);
+            $this->validatePassword($password, $errors);
+
+            // If there are errors, re-render the login view with error messages
+            if (!empty($errors)) {
+                $this->renderAuthView('authentication/login', ['errors' => $errors, 'email' => $email, 'password' => $password]);
                 return;
             }
 
-            // Fetch user by email
+            // Fetch user by email from the database
             $user = $this->users->getUserByEmail($email);
 
-            if ($user) {
+            // Check if user exists and password is correct
+            if ($user && password_verify($password, $user['password'])) {
                 // Successful login, regenerate session ID to prevent session fixation attacks
                 session_regenerate_id(true);
 
@@ -61,9 +66,35 @@ class LoginController extends BaseController
                 // Log failed login attempt
                 $this->users->log_action(null, "Failed login attempt for email: $email");
 
-                // Display error
-                $this->renderAuthView('authentication/login', ['error' => 'Invalid email or password!']);
+                // General error: Invalid email or password
+                $errors['general'] = 'Invalid email or password!';
+                
+                // Re-render the login view with error messages
+                $this->renderAuthView('authentication/login', ['errors' => $errors, 'email' => $email, 'password' => $password]);
             }
+        }
+    }
+
+    // Email validation function
+    private function validateEmail($email, &$errors)
+    {
+        if (empty($email)) {
+            $errors['email'] = 'Email is required!';
+        } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $errors['email'] = 'Invalid email format!';
+        } elseif (!$this->users->getUserByEmail($email)) {
+            // Check if email exists in the database
+            $errors['email'] = 'Email not found in our records!';
+        }
+    }
+
+    // Password validation function
+    private function validatePassword($password, &$errors)
+    {
+        if (empty($password)) {
+            $errors['password'] = 'Password is required!';
+        } elseif (strlen($password) < 6) {
+            $errors['password'] = 'Password must be at least 6 characters!';
         }
     }
 
@@ -81,5 +112,4 @@ class LoginController extends BaseController
         // Redirect to login page
         $this->redirect('/login');
     }
-
 }
