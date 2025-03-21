@@ -4,6 +4,7 @@ class BashInfomController extends BaseController {
     private $data;
     private function __construct(){
         $this->data->UserModel();
+        
     }
 
     public function profile() {

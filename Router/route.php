@@ -42,12 +42,7 @@ $route->group('dashboard', function($route) {
 
 $route->group('inventory', function($route) {
     $route->get('/inventory', [InventoryController::class, 'inventory']);
-    // $route->get('/materials/form', [MaterialController::class, 'showAddForm']);
-
     $route->post('Add/materials', [InventoryController::class, 'addMaterial']);
-
-    // $route->get('/materials/form', [MaterialController::class, 'showAddForm']);
-    // $route->post('/materials/add', [MaterialController::class, 'addMaterial']);
     $route->get('/inventory/addMaterial', [InventoryController::class, 'showAddForm']);
     $route->post('/materials/add', [InventoryController::class, 'addMaterial']);
     $route->get('/category', [InventoryController::class, 'category']);
@@ -61,10 +56,6 @@ $route->group('profile', function($route) {
     $route->get('/userList', [AccountListController::class, 'viewAddusersListdetail']);
     $route->get('/createuser', [AccountListController::class, 'admincreateuserlist']);
     $route->get('/profile', [BashInfomController::class, 'profile']);
-    // $route->get('/profile', [BashInfoController::class, 'baseinfoprofile']);
-    $route->get('/addusersform', [AccountController::class, 'viewAddusersForm']);
-    // $route->get('/userList', [AccountListController::class, 'viewAddusersListdetail']);
-
 });
 
 $route->get('/error', [ErrorController::class, 'error']);
