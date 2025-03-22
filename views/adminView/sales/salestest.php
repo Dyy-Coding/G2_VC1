@@ -1,9 +1,9 @@
 <?php
 // db.php - Include database connection
-include 'db.php';
+// include 'db.php';
 
 // Fetch orders
-$orders = $conn->query("SELECT * FROM orders ORDER BY created_at DESC");
+// $orders = $conn->query("SELECT * FROM orders ORDER BY created_at DESC");
 ?>
 
 <!DOCTYPE html>

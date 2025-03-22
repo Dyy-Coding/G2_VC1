@@ -134,7 +134,13 @@
 
             <!-- Submit -->
             <button type="submit" class="btn btn-primary w-100 py-2 shadow">Login</button>
+
           </form>
+          <!-- Register Link -->
+          <div class="text-center mt-3">
+            <span class="text-gray-700">Don't have an account?</span>
+            <a href="/register" class="text-primary fw-semibold">Register</a>
+          </div>
 
        
         </div>
