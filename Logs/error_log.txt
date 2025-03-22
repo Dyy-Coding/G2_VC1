@@ -9,16 +9,6 @@
 [2025-03-15 13:38:37] Error 404: View not found
 [2025-03-15 13:52:22] Error 500: Layout not found
 [2025-03-15 13:52:24] Error 500: Layout not found
-<<<<<<< HEAD
-
-[2025-03-17 02:46:35] Error 404: View not found
-[2025-03-17 05:46:08] Error 404: View not found
-[2025-03-17 05:46:09] Error 404: View not found
-=======
-<<<<<<< HEAD
-=======
-
->>>>>>> feature/addmeterial
 [2025-03-17 07:03:54] Error 404: View not found
 [2025-03-17 07:07:03] Error 404: View not found
 [2025-03-17 07:07:04] Error 404: View not found
@@ -213,4 +203,3 @@
 =======
 >>>>>>> origin
 >>>>>>> feature/addmeterial
->>>>>>> a1c9faa65804f178bc05c7458cee4540d5ee26ab

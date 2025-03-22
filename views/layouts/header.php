@@ -19,14 +19,7 @@
 <!-- Font Awesome Icons -->
 <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<style>
-  .aside_high {
-    height: 100vh; /* Full viewport height */
-    min-height: 100vh; /* Ensures full height */
-/* Enables scrolling if needed */
-}
 
-</style>
 <!-- CSS Files -->
 <link id="pagestyle" href="views/assets/css/argon-dashboard.css?v=2.1.0" rel="stylesheet" />
 
@@ -39,7 +32,7 @@
     <div class="sidenav-header">
       <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
         aria-hidden="true" id="iconSidenav"></i>
-      <a class="navbar-brand m-0" href=" https://demos.creative-tim.com/argon-dashboard/pages/dashboard.html "
+      <a class="navbar-brand m-0" href=" #"
         target="_blank">
         <img src="views/assets/img/logos/logo.png" width="26px" height="26px" class="navbar-brand-img h-100"
           alt="main_logo">

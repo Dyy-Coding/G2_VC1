@@ -9,51 +9,40 @@
             </ol>
             <h6 class="font-weight-bolder text-white mb-0">Dashboard</h6>
         </nav>
-        <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
+        <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4 d-flex flex-row align-items-center justify-content-center" id="navbar">
           <div class="ms-md-auto pe-md-3 d-flex align-items-center">
-            <div class="input">
-              <span class=" text-body"><i class="fas fa-search" ></i></span>
-              <input type="text" class="form-control" placeholder="Type here...">
-            <div class="search-container ms-md-auto pe-md-3 d-flex align-items-center">
-                <div class="input-group shadow-sm rounded" style="max-width: 300px; background: white; border-radius: 20px;">
-                    <span class="input-group-text bg-transparent border-0 px-3" role="button" aria-label="Search">
-                        <i class="fas fa-search text-gray-600"></i>
-                    </span>
-                    <input type="text" class="form-control border-0 px-2" 
-                        placeholder="Search..." aria-label="Search"
-                        style="background: transparent; border-radius: 20px; color: black;">
-                </div>
-            </div>
+            <form id="searchForm" action="/category" method="GET">
+              <div class="input">
+                <span class="text-body"><i class="fas fa-search"></i></span>
+                <input type="search" name="q" class="form-control border-0" placeholder="Type here..." required>
+              </div>
+            </form>
+          </div>
+          <!-- <li class="nav-item dropdown d-flex align-items-center">
+            <a href="#" class="nav-link text-white font-weight-bold px-2 d-flex align-items-center gap-2 dropdown-toggle"
+              role="button" id="languageDropdownToggle" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="ni ni-world-2 text-white text-sm"></i>
+              <span id="selectedLanguage">English</span>
+            </a>
+            <ul class="dropdown-menu" id="languageDropdown">
+              <li><a class="dropdown-item language-option" data-language="English" href="#">English</a></li>
+              <li><a class="dropdown-item language-option" data-language="Khmer" href="#">Khmer</a></li>
+            </ul>
+          </li> -->
+          <li class="nav-item dropdown d-flex flex-row align-items-center">
+            <!-- <label for="myDropdown" class="text-white font-weight-bold px-2 d-flex align-items-center gap-2">Choose an option:</label> -->
+              <i class="ni ni-world-2 text-white text-sm"></i>
+              <select id="myDropdown" class="text-white font-weight-bold px-2 d-flex align-items-center gap-2 bg-transparent border-0" >
+                  <option value="english">English</option>
+                  <option value="khmer">Khmer</option>
+              </select>
 
-            <li class="nav-item dropdown d-flex align-items-center">
-                <a href="#" class="nav-link text-white font-weight-bold px-2 d-flex align-items-center gap-2" 
-                   id="languageDropdown" role="button" aria-haspopup="true" aria-expanded="false" data-bs-toggle="dropdown">
-                    <i class="ni ni-world-2 text-white text-sm"></i>
-                    <span id="selectedLanguage">English</span>
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="languageDropdown">
-                    <li><a class="dropdown-item language-option" data-language="English" href="#">English</a></li>
-                    <li><a class="dropdown-item language-option" data-language="Khmer" href="#">Khmer</a></li>
-                </ul>
-            </li>
-        </div>
-
-        <script>
-            // Load language from local storage when page loads
-            document.addEventListener('DOMContentLoaded', () => {
-                const savedLanguage = localStorage.getItem('selectedLanguage') || 'English';
-                document.getElementById('selectedLanguage').textContent = savedLanguage;
-            });
-
-            // Change language function
-            document.querySelectorAll('.language-option').forEach(item => {
-                item.addEventListener('click', function() {
-                    const language = this.dataset.language;
-                    document.getElementById('selectedLanguage').textContent = language;
-                    localStorage.setItem('selectedLanguage', language); // Save to local storage
+          </li>
+            <script>
+                document.getElementById("myDropdown").addEventListener("change", function () {
+                    // alert("You selected: " + this.value);
                 });
-            });
-          </script>
+            </script>
           </ul>
         </div>
       </div>
