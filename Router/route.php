@@ -54,6 +54,7 @@ $route->group('profile', function($route) {
     $route->get('/addusersform', [AccountController::class, 'viewAddusersForm']);
     $route->get('/userList', [AccountListController::class, 'viewAddusersListdetail']);
     $route->get('/createuser', [AccountListController::class, 'admincreateuserlist']);
+    $route->get('/userdetail', [AccountListController::class, 'viewuserdetail']);    
 });
 
 $route->get('/error', [ErrorController::class, 'error']);

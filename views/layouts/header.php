@@ -126,7 +126,7 @@
           </a>
           <ul class="dropdown-menu" id="accountDropdown" >
             <li><a class="dropdown-item" href="/profile">Profile</a></li>
-            <li><a class="dropdown-item" href="/userList">User</a></li>
+            <li><a class="dropdown-item" href="/userList">Employees</a></li>
           </ul>
         </li>
 

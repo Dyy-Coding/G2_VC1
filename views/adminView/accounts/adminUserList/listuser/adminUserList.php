@@ -38,17 +38,17 @@
         <tbody>
             <?php foreach ($users as $index => $user): ?>
                 <tr>
-                    <td><input type="checkbox" name="userCheckbox[]" value="<?= $user['select_user'] ?>"></td>
+                    <td><input type="checkbox" name="userCheckbox[]" value="<?= htmlspecialchars($user['user_id'] ?? '') ?>"></td>
                     <td>
-                        <img src="<?= !empty($user['profile_image']) ? $user['profile_image'] : 'views/assets/img/team-2.jpg' ?>"
+                        <img src="<?= !empty($user['profile_image']) ? htmlspecialchars($user['profile_image']) : 'views/assets/img/team-2.jpg' ?>"
                             alt="Profile Image" style="width: 30px; height: 30px; object-fit: cover;">
                     </td>
-                    <td><?= $user['first_name'] ?></td>
-                    <td><?= $user['last_name'] ?></td>
-                    <td><?= $user['email'] ?></td>
-                    <td><?= $user['phone'] ?></td>
-                    <td><?= $user['role_id'] ?></td>
-                    <td><button class="btn btn-success">View</button></td>
+                    <td><?= htmlspecialchars($user['first_name'] ?? 'N/A'); ?></td>
+                    <td><?= htmlspecialchars($user['last_name'] ?? 'N/A'); ?></td>
+                    <td><?= htmlspecialchars($user['email'] ?? 'N/A'); ?></td>
+                    <td><?= htmlspecialchars($user['phone'] ?? 'N/A'); ?></td>
+                    <td><?= htmlspecialchars($user['role_id'] ?? 'N/A'); ?></td>
+                    <td><a href="userdetail?id=<?= htmlspecialchars($user['user_id'] ?? '') ?>" class="btn btn-warning">View</a></td>
                 </tr>
             <?php endforeach; ?>
         </tbody>
