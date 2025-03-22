@@ -1,7 +1,6 @@
 <?php
 
 class InventoryController extends BaseController {
-
     private $material;
 
     public function __construct() {
@@ -11,18 +10,20 @@ class InventoryController extends BaseController {
     /**
      * Display the inventory (stock) page.
      */
-    public function inventory()
-    {
-        // If needed, you can fetch the inventory data from the model or database here
-        // Example: $inventoryData = $this->inventoryModel->getInventory();
-        
-        // Check if the required inventory view exists and render it
-        // Assuming `adminView/inventory/stock` is the correct view file
-        $this->renderView('adminView/inventory/stock');
+    public function inventory() {
+        $categories = $this->material->getCategories();
+        $suppliers = $this->material->getSuppliers();
+        $materials = $this->material->getAllMaterials(); // Fetch all materials
+    
+        $this->renderView("adminView/inventory/stock", [
+            'categories' => $categories,
+            'suppliers' => $suppliers,
+            'materials'  => $materials
+        ]);
     }
+    
 
     public function category() {
-
         $this->renderView('adminView/inventory/category');
     }
 
@@ -30,55 +31,59 @@ class InventoryController extends BaseController {
         $this->renderView('adminView/inventory/order');
     }
 
-    // Show Add Form with Categories and Suppliers
-    public function showAddForm() {
-        $categories = $this->material->getCategories();
-        $suppliers = $this->material->getSuppliers();
 
-        $this->renderAuthView("adminView/inventory/addMaterial", [
-            'categories' => $categories,
-            'suppliers' => $suppliers
-        ]);
-    }
+    
+
     // Add Material
     public function addMaterial() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Sanitize input
-            $name = $this->sanitizeInput($_POST['name']);
-            $categoryID = (int) $this->sanitizeInput($_POST['categoryID']);
-            $quantity = (int) $this->sanitizeInput($_POST['quantity']);
-            $unitPrice = (float) $this->sanitizeInput($_POST['unitPrice']);
-            $supplierID = (int) $this->sanitizeInput($_POST['supplierID']);
-            $minStockLevel = (int) $this->sanitizeInput($_POST['minStockLevel']);
-            $reorderLevel = (int) $this->sanitizeInput($_POST['reorderLevel']);
+            $data = [
+                'name' => $this->sanitizeInput($_POST['name'] ?? ''),
+                'categoryID' => (int) $_POST['categoryID'] ?? 0,
+                'quantity' => (int) $_POST['quantity'] ?? 0,
+                'unitPrice' => (float) $_POST['unitPrice'] ?? 0.0,
+                'supplierID' => (int) $_POST['supplierID'] ?? 0,
+                'minStockLevel' => (int) $_POST['minStockLevel'] ?? 0,
+                'reorderLevel' => (int) $_POST['reorderLevel'] ?? 0,
+                'unitOfMeasure' => $this->sanitizeInput($_POST['unitOfMeasure'] ?? ''),
+                'size' => $this->sanitizeInput($_POST['size'] ?? ''),
+                'description' => $this->sanitizeInput($_POST['description'] ?? ''),
+                'brand' => $this->sanitizeInput($_POST['brand'] ?? ''),
+                'location' => $this->sanitizeInput($_POST['location'] ?? ''),
+                'supplierContact' => $this->sanitizeInput($_POST['supplierContact'] ?? ''),
+                'status' => $this->sanitizeInput($_POST['status'] ?? ''),
+                'warrantyPeriod' => $this->sanitizeInput($_POST['warrantyPeriod'] ?? ''),
+            ];
 
-            // Check required fields
-            if (empty($name) || empty($categoryID) || empty($quantity) || empty($unitPrice) || empty($supplierID)) {
-                $this->setFlashMessage('error', 'All fields are required!');
+            // Validate required fields
+            if (empty($data['name']) || empty($data['categoryID']) || empty($data['supplierID'])) {
+                $this->setFlashMessage('error', 'Name, Category, and Supplier are required!');
                 $this->redirect('/materials/add');
                 return;
             }
 
-            // Handle image upload (if provided)
+            // Handle image upload
             $imagePath = null;
-            if (isset($_FILES['image']) && $_FILES['image']['error'] === 0) {
-                $imageUpload = $this->material->uploadImage($_FILES['image']);
-                if (!$imageUpload || isset($imageUpload["error"])) {
-                    $this->setFlashMessage('error', $imageUpload["error"] ?? 'Error uploading image.');
+            if (!empty($_FILES['image']['name'])) {
+                $uploadResult = $this->material->uploadImage($_FILES['image']);
+                if (isset($uploadResult['error'])) {
+                    $this->setFlashMessage('error', $uploadResult['error']);
                     $this->redirect('/materials/add');
                     return;
                 }
-                $imagePath = $imageUpload["success"];
+                $imagePath = $uploadResult['success'];
             }
 
-            // Insert material into the database
-            $insertSuccess = $this->material->addMaterial($name, $categoryID, $quantity, $unitPrice, $supplierID, $minStockLevel, $reorderLevel, $imagePath);
+            // Insert material into database
+            $data['imagePath'] = $imagePath;
+            $insertSuccess = $this->material->addMaterial($data, $_FILES['image'] ?? null);
 
             if ($insertSuccess) {
                 $this->setFlashMessage('success', 'Material added successfully!');
-                $this->redirect('/user');
+                $this->redirect('/inventory');
             } else {
-                error_log("Error adding material: Database insert failed for $name (Category ID: $categoryID)");
+                error_log("Error adding material: Database insert failed for " . $data['name']);
                 $this->setFlashMessage('error', 'Error adding material! Please try again.');
                 $this->redirect('/materials/add');
             }
@@ -94,8 +99,4 @@ class InventoryController extends BaseController {
     private function sanitizeInput($input) {
         return htmlspecialchars(trim($input), ENT_QUOTES, 'UTF-8');
     }
-    /**
-     * Ensure that the session is started.
-     * This can be moved to BaseController or another common helper class
-     */
 }
