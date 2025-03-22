@@ -19,14 +19,7 @@
 <!-- Font Awesome Icons -->
 <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<style>
-  .aside_high {
-    height: 100vh; /* Full viewport height */
-    min-height: 100vh; /* Ensures full height */
-/* Enables scrolling if needed */
-}
 
-</style>
 <!-- CSS Files -->
 <link id="pagestyle" href="views/assets/css/argon-dashboard.css?v=2.1.0" rel="stylesheet" />
 

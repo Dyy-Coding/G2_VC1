@@ -107,6 +107,29 @@ class LoginController extends BaseController
         }
     }
 
+    // Email validation function
+    private function validateEmail($email, &$errors)
+    {
+        if (empty($email)) {
+            $errors['email'] = 'Email is required!';
+        } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $errors['email'] = 'Invalid email format!';
+        } elseif (!$this->users->getUserByEmail($email)) {
+            // Check if email exists in the database
+            $errors['email'] = 'Email not found in our records!';
+        }
+    }
+
+    // Password validation function
+    private function validatePassword($password, &$errors)
+    {
+        if (empty($password)) {
+            $errors['password'] = 'Password is required!';
+        } elseif (strlen($password) < 6) {
+            $errors['password'] = 'Password must be at least 6 characters!';
+        }
+    }
+
     public function logout()
     {
         if (isset($_SESSION['user_id'])) {

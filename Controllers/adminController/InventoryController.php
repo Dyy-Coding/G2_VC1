@@ -100,4 +100,3 @@ class InventoryController extends BaseController {
         return htmlspecialchars(trim($input), ENT_QUOTES, 'UTF-8');
     }
 }
-?>

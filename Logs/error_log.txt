@@ -10,6 +10,10 @@
 [2025-03-15 13:52:22] Error 500: Layout not found
 [2025-03-15 13:52:24] Error 500: Layout not found
 <<<<<<< HEAD
+[2025-03-16 06:43:44] Error 404: View not found
+[2025-03-16 06:44:03] Error 404: View not found
+=======
+<<<<<<< HEAD
 =======
 
 >>>>>>> feature/addmeterial
@@ -203,3 +207,4 @@
 =======
 >>>>>>> origin
 >>>>>>> feature/addmeterial
+>>>>>>> origin
