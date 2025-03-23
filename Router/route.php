@@ -24,7 +24,7 @@ require_once "Models/invenoryModel/meterailModel.php";
 $route = new Router();
 
 // Group routes by controller for better organization
-$route->group('auth', function($route) {
+$route->group('auth', function ($route) {
     $route->get('/login', [LoginController::class, 'login']);  // Display Login Form (GET)
     $route->post('/login', [LoginController::class, 'login']); // Handle Login (POST)
     $route->get('/logout', [LoginController::class, 'logout']);
@@ -33,12 +33,12 @@ $route->group('auth', function($route) {
     $route->post('/forgotpasswordform', [AuthController::class, 'showForgotPasswordForm']); // Handle Forgot Password (POST)
 });
 
-$route->group('dashboard', function($route) {
+$route->group('dashboard', function ($route) {
     $route->get('/', [DashboardController::class, 'index']);
     $route->get('/user', [DashboardController::class, 'userDashboard']);
 });
 
-$route->group('inventory', function($route) {
+$route->group('inventory', function ($route) {
     $route->get('/inventory', [InventoryController::class, 'inventory']);
     $route->post('Add/materials', [InventoryController::class, 'addMaterial']);
     $route->get('/inventory/addMaterial', [InventoryController::class, 'showAddForm']);
@@ -49,12 +49,21 @@ $route->group('inventory', function($route) {
 });
 
 
-$route->group('profile', function($route) {
-    $route->get('/addusersform', [AccountController::class, 'viewAddusersForm']);
-    $route->get('/userList', [AccountListController::class, 'viewAddusersListdetail']);
-    $route->get('/createuser', [AccountListController::class, 'admincreateuserlist']);
-    $route->get('/userdetail', [AccountListController::class, 'viewuserdetail']);    
-    // $route->get('/profile', [BashInfomController::class, 'profile']);
+$route->group('profile', function ($route) {
+    // $route->get('/addusersform', [AccountController::class, 'viewAddusersForm']);
+    $route->get('/userList', [AccountListController::class, 'viewUsersAccListProfile']);
+    $route->get('/userdetail', [AccountListController::class, 'viewUserDetail']);
+
+    // add user 
+    $route->get('/createuser', [AccountListController::class, 'createNewUserAccProfile']);
+    $route->post('/userstore', [AccountListController::class, 'storeUserAccProfile']);
+
+    // update user
+    $route->get('/edituser', [AccountListController::class, 'editUserAccProfile']);
+    $route->post('/storeupdate', [AccountListController::class, 'updateUserAccProfile']);
+
+    // delete user
+    $route->post('/deleteuser', [AccountListController::class, 'destroyUserAccProfile']);
 });
 
 $route->get('/error', [ErrorController::class, 'error']);

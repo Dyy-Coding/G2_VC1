@@ -10,12 +10,26 @@
     Argon Dashboard 3 by Creative Tim
   </title>
    Fonts and icons     -->
-<link rel="stylesheet" href="views/assets/css/adminaccountuser/adminUserList.css">
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
 <!-- Nucleo Icons -->
 <link href="https://demos.creative-tim.com/argon-dashboard-pro/assets/css/nucleo-icons.css" rel="stylesheet" />
 <link href="https://demos.creative-tim.com/argon-dashboard-pro/assets/css/nucleo-svg.css" rel="stylesheet" />
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+
+<!--Start link or script for account feature -->
+
+<!-- JS for userlist.php -->
+<script src="views/assets/JavaScript/adminuseraccount/userlist.js" defer></script>
+<link rel="stylesheet" href="views/assets/css/adminaccountuser/adminUserList.css">
+
+<!-- three-dot menu for user list -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<!--End for link or script for account feature  -->
+
 <!-- Font Awesome Icons -->
 <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
