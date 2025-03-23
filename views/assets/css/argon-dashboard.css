@@ -29214,22 +29214,6 @@ td .name span {
 }
 
 
-.image-container {
-  position: relative;
-  display: inline-block;
-}
-.base-image {
-  width: 15%; /* Adjust as needed */
-  height: auto;
-}
-feature/account
-.sticker {
-  position: absolute;
-  width:20%; /* Adjust sticker size */
-  height: auto;
-  cursor: pointer;
-}
-
 
 #addMeterial {
   display: none;
@@ -29284,3 +29268,20 @@ feature/account
 #sidenav-main{
   overflow-y: hidden;
 }
+
+/* .dropdown:hover .dropdown-menu {
+  display: block;
+  margin-top: 0;
+} */
+
+.input-group-meterails{
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+}
+ 
+.inline-controls-meterails{
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  
+}
+
