@@ -22,6 +22,12 @@ require_once 'Controllers/validateionHelper.php';
 require_once "Models/usersModel.php";
 require_once "Models/invenoryModel/meterailModel.php";
 
+
+
+// Customer Controller 
+
+require_once "Controllers/userController/welcomeController/welcomeController.php";
+
 // Initialize Router
 $route = new Router();
 
@@ -40,6 +46,10 @@ $route->group('auth', function($route) {
 $route->group('dashboard', function($route) {
     $route->get('/', [DashboardController::class, 'index']);
     $route->get('/user', [DashboardController::class, 'userDashboard']);
+});
+$route->group('welcome', function($route) {
+    $route->get('/welcome', [WelcomeController::class, 'welcome']);
+
 });
 
 $route->group('inventory', function($route) {
