@@ -73,83 +73,99 @@
         </div>
     </div>
 
-    <div class="input-group mt-0 mb-0">
-        <div class="inline-controls">
-            <label for="rowsPerPage" class="me-2">Rows per page:</label>
-            <select id="rowsPerPage" class="form-select" style="width: 7%;">
-                <option value="10">10</option>
-                <option value="25" selected>25</option>
-                <option value="50">50</option>
-            </select>
-
-            <div class="form-check">
+    <div class="input-group-meterails mt-2 mb-0">
+        <div class="inline-controls-meterails">
+            <div class="form-check ">
                 <input class="form-check-input" type="checkbox" id="showOutOfStock">
                 <label class="form-check-label" for="showOutOfStock">Show out of stock</label>
             </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="showOutOfStock">
+                <label class="form-check-label" for="showOutOfStock">Select all</label>
+            </div>
         </div>
-        <div class="form-outline">
-            <input type="search" id="form1" class="form-control" placeholder="Search"/>
+        <div class="form-outline ">
+            <input type="search" id="form1" class="form-control" style="width:100%" placeholder="Search"/>
         </div>
     </div>
-
-    <table class="table text-center">
+    <button class="btn btn-danger m-3" style="width: 5%; font-size: small; padding: 5px;">Delete</button>
+    <table class="table text-center align-middle" style="table-layout: fixed; width: 100%;">
     <thead>
         <tr>
-            <th>Select</th> <!-- Column for Checkbox -->
-            <th>Product</th> <!-- Column for Image and Material Name -->
-            <th>Category</th>
+            <th >Select</th>
+            <th style="width: 15%;">Product</th>
+            <th style="width: 15%;">Category</th>
             <th>Quantity</th>
             <th>Status</th>
-            <th>Supplier</th>
             <th>Type or Size</th>
             <th>Price</th>
-            <th>Action</th>
+            <th style="width: 5%;">Action</th>
         </tr>
     </thead>
     <tbody>
         <?php if (!empty($materials)): ?>
             <?php foreach ($materials as $material): ?>
                 <tr>
-                    <!-- Checkbox Column -->
+                    <!-- Checkbox -->
                     <td>
                         <input type="checkbox">
                     </td>
 
                     <!-- Product Column (Image + Name) -->
-                    <td class="d-flex align-items-center">
+                    <td class="d-flex align-items-center justify-content-center">
                         <img src="<?= htmlspecialchars($material['ImagePath']) ?>" 
                              alt="Material Image" width="40" height="40" 
                              style="object-fit: cover; border-radius: 5px; margin-right: 10px;">
-                        <?= htmlspecialchars($material['Name']) ?>
+                        <span><?= htmlspecialchars($material['Name']) ?></span>
                     </td>
 
                     <td><?= htmlspecialchars($material['CategoryName']) ?></td>
                     <td><?= htmlspecialchars($material['Quantity']) ?></td>
+
+                    <!-- Stock Status -->
                     <td>
                         <?php if ($material['Quantity'] == 0): ?>
-                            <button type="button" class="btn btn-danger btn-sm">OUT OF STOCK</button>
+                            <span class="badge bg-danger">OUT OF STOCK</span>
+                        <?php elseif ($material['Quantity'] < 15): ?>
+                            <span class="badge bg-warning text-dark">LOW STOCK</span>
                         <?php else: ?>
-                            <button type="button" class="btn btn-success btn-sm">IN STOCK</button>
+                            <span class="badge bg-success">HIGH STOCK</span>
                         <?php endif; ?>
                     </td>
-                    <td><?= htmlspecialchars($material['SupplierName']) ?></td>
+
                     <td><?= htmlspecialchars($material['Size']) ?></td>
-                    <td>$<?= number_format($material['UnitPrice'], 2) ?></td>
-                   
-                    <td>
-                        <a href="edit_material.php?id=<?= $material['MaterialID'] ?>" class="text-primary">
-                            <i class="material-icons">edit</i>
+                    <td><?= htmlspecialchars($material['UnitPrice']) ?></td>
+
+                    <!-- Action Dropdown -->
+                    <td class="dropdown">
+                        <a href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="material-icons" style="font-size:34px;">more_vert</i>
                         </a>
-                        <a href="delete_material.php?id=<?= $material['MaterialID'] ?>" class="text-danger" 
-                           onclick="return confirm('Are you sure?');">
-                            <i class="material-icons">delete</i>
-                        </a>
+
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuLink">
+                            <li>
+                                <a href="edit_material.php?id=<?= $material['MaterialID'] ?>" class="dropdown-item text-primary d-flex align-items-center">
+                                    <i class="material-icons me-2" style="font-size:18px;">edit</i> Edit
+                                </a>
+                            </li>
+                            <li>
+                                <a href="delete_material.php?id=<?= $material['MaterialID'] ?>" class="dropdown-item text-danger d-flex align-items-center"
+                                   onclick="return confirm('Are you sure?');">
+                                    <i class="material-icons me-2" style="font-size:18px;">delete</i> Delete
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item d-flex align-items-center" href="details_material.php?id=<?= $material['MaterialID'] ?>">
+                                    <i class="material-icons me-2" style="font-size:18px;">visibility</i> View
+                                </a>
+                            </li>
+                        </ul>
                     </td>
                 </tr>
             <?php endforeach; ?>
         <?php else: ?>
             <tr>
-                <td colspan="10">No materials found.</td>
+                <td colspan="8">No materials found.</td>
             </tr>
         <?php endif; ?>
     </tbody>

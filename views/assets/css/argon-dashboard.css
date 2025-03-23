@@ -29213,7 +29213,6 @@ td .name span {
   color: var(--bs-green);
 }
 
-
 .image-container {
   position: relative;
   display: inline-block;
@@ -29222,8 +29221,6 @@ td .name span {
   width: 15%; /* Adjust as needed */
   height: auto;
 }
-<<<<<<< HEAD
-=======
 feature/account
 .sticker {
   position: absolute;
@@ -29231,7 +29228,6 @@ feature/account
   height: auto;
   cursor: pointer;
 }
->>>>>>> a1c9faa65804f178bc05c7458cee4540d5ee26ab
 
 
 #addMeterial {
@@ -29287,3 +29283,20 @@ feature/account
 #sidenav-main{
   overflow-y: hidden;
 }
+
+/* .dropdown:hover .dropdown-menu {
+  display: block;
+  margin-top: 0;
+} */
+
+.input-group-meterails{
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+}
+ 
+.inline-controls-meterails{
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  
+}
+
