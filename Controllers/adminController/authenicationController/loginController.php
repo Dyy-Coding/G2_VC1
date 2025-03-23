@@ -1,19 +1,15 @@
 <?php
-
-class LoginController extends BaseController
-{
+class LoginController extends BaseController {
     private $users;
 
-    public function __construct()
-    {
+    public function __construct() {
         $this->users = new UserModel();
     }
 
-    public function login()
-    {
+    public function login() {
         if ($_SERVER['REQUEST_METHOD'] === 'GET') {
             if (isset($_SESSION['user_id'])) {
-                $this->redirect('/');
+                $this->redirect('/'); // Redirect to homepage if already logged in
                 return;
             }
             $this->renderAuthView('authentication/login');
@@ -75,9 +71,19 @@ class LoginController extends BaseController
                     $_SESSION['first_name'] = $user['first_name'];
                     $_SESSION['last_name'] = $user['last_name'];
                     $this->users->log_action($user['user_id'], 'User logged in');
-                    $this->redirect('/');
+
+                    // Special handling for role_id = 1 (super admin)
+                    if ($user['role_id'] == 1) {
+                        $this->redirect('/'); // Full system access
+                    } else {
+                        // Check specific permission for other roles
+                        if ($this->users->userHasPermission($user['user_id'], 'access_dashboard')) {
+                            $this->redirect('/dashboard'); // Regular dashboard for permitted users
+                        } else {
+                            $this->redirect('/welcome'); // Default page for others
+                        }
+                    }
                 } else {
-                    // Password wrong
                     $this->users->log_action(null, "Failed login (wrong password) for email: $email");
                     $errorMessage = 'Invalid password!';
                     $emailClass = 'is-valid';
@@ -88,10 +94,8 @@ class LoginController extends BaseController
                         'passwordClass' => $passwordClass,
                         'email' => $emailValue,
                     ]);
-                    return;
                 }
             } else {
-                // Email wrong
                 $this->users->log_action(null, "Failed login (wrong email) for email: $email");
                 $errorMessage = 'Invalid email!';
                 $emailClass = 'is-invalid';
@@ -100,29 +104,25 @@ class LoginController extends BaseController
                     'error' => $errorMessage,
                     'emailClass' => $emailClass,
                     'passwordClass' => $passwordClass,
-                    'email' => '', // clear wrong email input
+                    'email' => '',
                 ]);
-                return;
             }
         }
     }
 
-    // Email validation function
-    private function validateEmail($email, &$errors)
-    {
+    // Email validation function (unchanged)
+    private function validateEmail($email, &$errors) {
         if (empty($email)) {
             $errors['email'] = 'Email is required!';
         } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             $errors['email'] = 'Invalid email format!';
         } elseif (!$this->users->getUserByEmail($email)) {
-            // Check if email exists in the database
             $errors['email'] = 'Email not found in our records!';
         }
     }
 
-    // Password validation function
-    private function validatePassword($password, &$errors)
-    {
+    // Password validation function (unchanged)
+    private function validatePassword($password, &$errors) {
         if (empty($password)) {
             $errors['password'] = 'Password is required!';
         } elseif (strlen($password) < 6) {
@@ -130,8 +130,7 @@ class LoginController extends BaseController
         }
     }
 
-    public function logout()
-    {
+    public function logout() {
         if (isset($_SESSION['user_id'])) {
             $this->users->log_action($_SESSION['user_id'], 'User logged out');
         }

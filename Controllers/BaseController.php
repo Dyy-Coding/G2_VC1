@@ -26,13 +26,9 @@ class BaseController
         require $viewFile;
         $content = ob_get_clean();
 
-        // Check if the view is "forgot-password.php" or "reset-password.php"
-        // If so, set the layout to false to skip the header, navbar, and footer
         if ($view === 'forgot-password' || $view === 'reset-password') {
-            // Output the content directly without layout
             echo $content;
         } else {
-            // Load the layout only if it's not one of the special pages
             if ($layout) {
                 $this->loadLayout($layout, $content);
             } else {
@@ -52,8 +48,6 @@ class BaseController
         ob_start();
     
         $viewFile = __DIR__ . '/../Views/' . $view . '.php';
-    
-        // Debugging: Check if view file exists
         if (!file_exists($viewFile)) {
             die("Error: View file not found at $viewFile");
         }
@@ -61,7 +55,34 @@ class BaseController
         require $viewFile;
         echo ob_get_clean();
     }
-    
+
+    /**
+     * Render a customer-specific view with optional layout.
+     *
+     * @param string $view The customer view name to render.
+     * @param array $data Data to be passed to the view.
+     * @param string $layout The layout name (default is 'customer_layout').
+     */
+    protected function renderCustomerView(string $view, array $data = [], string $layout = 'customer_layout')
+    {
+        extract($data);
+        ob_start();
+
+        $viewFile = __DIR__ . '/../Views/customer/' . $view . '.php';
+        if (!file_exists($viewFile)) {
+            $this->handleError(404, 'Customer view not found');
+            return;
+        }
+
+        require $viewFile;
+        $content = ob_get_clean();
+
+        if ($layout) {
+            $this->loadLayout($layout, $content, true);
+        } else {
+            echo $content;
+        }
+    }
 
     /**
      * Redirect to a given URL and terminate script.
@@ -92,13 +113,9 @@ class BaseController
      */
     private function handleError(int $errorCode, string $message)
     {
-        // Log the error to a file
         $this->logError($errorCode, $message);
-
-        // Set the HTTP response code
         http_response_code($errorCode);
 
-        // Display a user-friendly message
         if ($errorCode == 404) {
             $userMessage = 'Sorry, the page you are looking for could not be found.';
         } elseif ($errorCode == 500) {
@@ -107,16 +124,13 @@ class BaseController
             $userMessage = 'An unexpected error occurred. Please try again.';
         }
 
-        // Display a basic error page with the message
         echo "<h1>Error $errorCode</h1>";
         echo "<p>$userMessage</p>";
 
-        // Optionally render a custom error view if available
         $errorView = __DIR__ . '/../Views/errors/' . $errorCode . '.php';
         if (file_exists($errorView)) {
             require $errorView;
         } else {
-            // Fallback to a generic error view
             require __DIR__ . '/../Views/errors/404.php';
         }
 
@@ -131,35 +145,50 @@ class BaseController
      */
     private function logError(int $errorCode, string $message)
     {
-        $logDir = __DIR__ . '/../Logs'; // Define logs directory
+        $logDir = __DIR__ . '/../Logs';
         $logFile = $logDir . '/error_log.txt';
     
-        // Ensure the Logs directory exists, create it if not
         if (!is_dir($logDir)) {
             mkdir($logDir, 0777, true);
         }
     
-        // Prepare the log message
         $date = date('Y-m-d H:i:s');
         $logMessage = "[$date] Error $errorCode: $message" . PHP_EOL;
-    
-        // Write to the log file
         file_put_contents($logFile, $logMessage, FILE_APPEND);
     }
 
     /**
-     * Load layout with content.
+     * Load layout with content, excluding navbar and footer for auth pages, with customer-specific option.
      *
      * @param string $layout The layout file name.
      * @param string $content The content to be inserted into the layout.
+     * @param bool $isCustomer Whether to use customer-specific layout files (default is false).
      */
-    private function loadLayout(string $layout, string $content)
+    private function loadLayout(string $layout, string $content, bool $isCustomer = false)
     {
+        $authPages = ['login.php', 'register.php', 'forgot_password.php', 'reset_password.php'];
+        $currentPage = filter_input(INPUT_GET, 'page', FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?? '';
+        $currentFile = basename($currentPage);
+        $isAuthPage = in_array($currentFile, $authPages);
+
         $layoutFile = __DIR__ . "/../Views/{$layout}.php";
-        if (file_exists($layoutFile)) {
-            require $layoutFile;
-        } else {
+        if (!file_exists($layoutFile)) {
             $this->handleError(500, 'Layout not found');
+            return;
+        }
+
+        $headerFile = $isCustomer ? __DIR__ . '/../Views/layouts/headerCustomer.php' : __DIR__ . '/../Views/layouts/header.php';
+        require_once $headerFile;
+
+        if (!$isAuthPage) {
+            $navbarFile = $isCustomer ? __DIR__ . '/../Views/layouts/navbarCustomer.php' : __DIR__ . '/../Views/layouts/navbar.php';
+            require_once $navbarFile;
+        }
+
+        echo $content;
+
+        if (!$isAuthPage) {
+            require_once __DIR__ . '/../Views/layouts/footer.php';
         }
     }
 }
