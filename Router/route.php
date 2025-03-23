@@ -9,6 +9,7 @@ require_once "Controllers/adminController/authenicationController/loginControlle
 require_once "Controllers/adminController/authenicationController/forgotPasswordController.php";
 require_once "Controllers/adminController/authenicationController/registerController.php";
 require_once "Controllers/adminController/InventoryController.php";
+// require_once "Controllers/adminController/sales/salesController.php";
 require_once "Controllers/AdminController/DashboardController.php";
 require_once "Controllers/adminController/BashInfoController.php";
 require_once 'Controllers/errorController.php';
