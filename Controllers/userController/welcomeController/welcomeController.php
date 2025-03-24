@@ -3,6 +3,6 @@
 class WelcomeController extends BaseController {
 
     public function welcome() {
-        $this->renderView('userView/welcome/welcome');
+        $this->renderAuthView('userView/welcome/welcome');
     }
 }
