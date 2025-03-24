@@ -1,238 +1,210 @@
-<div class="container-fluid py-4">
-  <!-- Welcome Section -->
-  <div class="row mb-4">
-    <div class="col-12 text-center">
-      <h1 class="display-4 font-weight-bold">Welcome to Your Material Marketplace!</h1>
-      <p class="lead text-muted">Discover top-quality products, check availability, and shop with ease. Your one-stop store starts here!</p>
-      <a href="#shop-now" class="btn btn-primary btn-lg mt-3">Shop Now</a>
-    </div>
-  </div>
-
-  <!-- Key Metrics Section -->
-  <div class="row">
-    <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-      <div class="card">
-        <div class="card-body p-3">
-          <div class="row">
-            <div class="col-8">
-              <div class="numbers">
-                <p class="text-sm mb-0 text-uppercase font-weight-bold">Today's Deals</p>
-                <h5 class="font-weight-bolder">$53,000</h5>
-                <p class="mb-0">
-                  <span class="text-success text-sm font-weight-bolder">+55%</span> savings today
-                </p>
-              </div>
-            </div>
-            <div class="col-4 text-end">
-              <div class="icon icon-shape bg-gradient-primary shadow-primary text-center rounded-circle">
-                <i class="ni ni-money-coins text-lg opacity-10" aria-hidden="true"></i>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-      <div class="card">
-        <div class="card-body p-3">
-          <div class="row">
-            <div class="col-8">
-              <div class="numbers">
-                <p class="text-sm mb-0 text-uppercase font-weight-bold">Active Shoppers</p>
-                <h5 class="font-weight-bolder">2,300</h5>
-                <p class="mb-0">
-                  <span class="text-success text-sm font-weight-bolder">+3%</span> since last week
-                </p>
-              </div>
-            </div>
-            <div class="col-4 text-end">
-              <div class="icon icon-shape bg-gradient-danger shadow-danger text-center rounded-circle">
-                <i class="ni ni-world text-lg opacity-10" aria-hidden="true"></i>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-      <div class="card">
-        <div class="card-body p-3">
-          <div class="row">
-            <div class="col-8">
-              <div class="numbers">
-                <p class="text-sm mb-0 text-uppercase font-weight-bold">New Arrivals</p>
-                <h5 class="font-weight-bolder">+3,462</h5>
-                <p class="mb-0">
-                  <span class="text-success text-sm font-weight-bolder">+10%</span> this month
-                </p>
-              </div>
-            </div>
-            <div class="col-4 text-end">
-              <div class="icon icon-shape bg-gradient-success shadow-success text-center rounded-circle">
-                <i class="ni ni-paper-diploma text-lg opacity-10" aria-hidden="true"></i>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-xl-3 col-sm-6">
-      <div class="card">
-        <div class="card-body p-3">
-          <div class="row">
-            <div class="col-8">
-              <div class="numbers">
-                <p class="text-sm mb-0 text-uppercase font-weight-bold">Total Sales</p>
-                <h5 class="font-weight-bolder">$103,430</h5>
-                <p class="mb-0">
-                  <span class="text-success text-sm font-weight-bolder">+5%</span> this month
-                </p>
-              </div>
-            </div>
-            <div class="col-4 text-end">
-              <div class="icon icon-shape bg-gradient-warning shadow-warning text-center rounded-circle">
-                <i class="ni ni-cart text-lg opacity-10" aria-hidden="true"></i>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Product Catalog Section -->
-  <div class="row mt-4" id="shop-now">
-    <div class="col-lg-12">
-      <div class="card">
-        <div class="card-header pb-0 p-1">
-          <div class="d-flex justify-content-between">
-            <h3 class="mb-2 p-2">Browse Our Products</h3>
-          </div>
-        </div>
-        <table class="table align-middle bg-white">
-          <thead>
-            <tr>
-              <th style="font-size: 16px;">Product</th>
-              <th style="font-size: 16px;">Category</th>
-              <th style="font-size: 16px;">Availability</th>
-              <th style="font-size: 16px;">Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><div class="text-center">Phone</div></td>
-              <td class="text-center">Electronic</td>
-              <td><div class="text-center"><button type="button" class="btn btn-success btn-sm btn-rounded">In Stock</button></div></td>
-              <td><div class="text-center"><a href="#" class="btn btn-primary btn-sm">Buy Now</a></div></td>
-            </tr>
-            <tr>
-              <td><div class="text-center">Laptop</div></td>
-              <td class="text-center">Electronic</td>
-              <td><div class="text-center"><button type="button" class="btn btn-danger btn-sm btn-rounded">Out of Stock</button></div></td>
-              <td><div class="text-center"><a href="#" class="btn btn-secondary btn-sm disabled">Buy Now</a></div></td>
-            </tr>
-            <tr>
-              <td><div class="text-center">T-Shirt</div></td>
-              <td class="text-center">Clothing</td>
-              <td><div class="text-center"><button type="button" class="btn btn-success btn-sm btn-rounded">In Stock</button></div></td>
-              <td><div class="text-center"><a href="#" class="btn btn-primary btn-sm">Buy Now</a></div></td>
-            </tr>
-            <tr>
-              <td><div class="text-center">Shoes</div></td>
-              <td class="text-center">Footwear</td>
-              <td><div class="text-center"><button type="button" class="btn btn-danger btn-sm btn-rounded">Out of Stock</button></div></td>
-              <td><div class="text-center"><a href="#" class="btn btn-secondary btn-sm disabled">Buy Now</a></div></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-
-  <!-- Sales Overview Section -->
-  <div class="row mt-4">
-    <div class="col-lg-7 mb-lg-0 mb-4">
-      <div class="card z-index-2 h-100">
-        <div class="card-header pb-0 pt-3 bg-transparent">
-          <h6 class="text-capitalize">Sales Trends</h6>
-          <p class="text-sm mb-0">
-            <i class="fa fa-arrow-up text-success"></i>
-            <span class="font-weight-bold">4% more</span> purchases in 2021
-          </p>
-        </div>
-        <div class="card-body p-3">
-          <div class="chart">
-            <canvas id="chart-line-1" class="chart-canvas" height="300"></canvas>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-5">
-      <div class="card">
-        <div class="card-header pb-0 p-3">
-          <h3 class="mb-2">Why Shop With Us?</h3>
-        </div>
-        <div class="card-body">
-          <ul class="list-group">
-            <li class="list-group-item border-0">Fast Shipping</li>
-            <li class="list-group-item border-0">Quality Guaranteed</li>
-            <li class="list-group-item border-0">24/7 Customer Support</li>
-            <li class="list-group-item border-0">Exclusive Deals</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Contact Suppliers Section -->
-  <div class="row mt-4">
-    <div class="col-lg-6 mb-lg-0 mb-4">
-      <div class="todo-card">
-        <div class="card-header pb-4 p-3">
-          <h3 class="mb-2">Contact Our Suppliers</h3>
-          <p class="text-sm">Reach out for custom orders or inquiries!</p>
-        </div>
-        <table class="table align-middle bg-white">
-          <tbody>
-            <tr>
-              <td>
-                <div class="d-flex align-items-center">
-                  <img src="https://mdbootstrap.com/img/new/avatars/8.jpg" alt="" style="width: 45px; height: 45px" class="rounded-circle" />
-                  <div class="ms-3">
-                    <p class="fw-bold mb-1">John Doe</p>
-                    <button type="button" class="btn btn-success btn-sm">Available</button>
-                  </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-commerce Store</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Ionicons -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <style>
+        .carousel-item img {
+            height: 500px;
+            object-fit: cover;
+        }
+        @media (max-width: 768px) {
+            .carousel-item img {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans antialiased">
+    <!-- Header -->
+    <header class="bg-white shadow sticky top-0 z-50">
+        <nav class="navbar navbar-expand-lg container py-4">
+            <div class="container-fluid">
+                <a class="navbar-brand text-2xl font-bold text-gray-800" href="#">Store</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto space-x-6">
+                        <li class="nav-item">
+                            <a class="nav-link text-gray-600 hover:text-indigo-600 transition-colors font-medium" href="#">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-gray-600 hover:text-indigo-600 transition-colors font-medium" href="#">Shop</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-gray-600 hover:text-indigo-600 transition-colors font-medium" href="#">Categories</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-gray-600 hover:text-indigo-600 transition-colors font-medium" href="#">Contact</a>
+                        </li>
+                    </ul>
                 </div>
-              </td>
-              <td><a href="#" class="btn btn-primary btn-sm">Message</a></td>
-            </tr>
-            <tr>
-              <td>
-                <div class="d-flex align-items-center">
-                  <img src="https://mdbootstrap.com/img/new/avatars/6.jpg" alt="" style="width: 45px; height: 45px" class="rounded-circle" />
-                  <div class="ms-3">
-                    <p class="fw-bold mb-1">Alex Ray</p>
-                    <button type="button" class="btn btn-success btn-sm">Available</button>
-                  </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Banner Carousel -->
+        <div id="bannerCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="https://wp.technologyreview.com/wp-content/uploads/2023/07/220616_SublimeSystems_199.jpeg" class="d-block w-100" alt="Summer Collection">
+                    <div class="carousel-caption d-flex flex-col items-center justify-center h-full text-white">
+                        <h2 class="text-4xl md:text-5xl font-bold mb-2">Summer Collection</h2>
+                        <p class="text-lg md:text-xl mb-4">Starting at $20.00</p>
+                        <a href="#" class="btn bg-indigo-600 text-white hover:bg-indigo-700 transition-colors px-6 py-2 rounded-full">Shop Now</a>
+                    </div>
                 </div>
-              </td>
-              <td><a href="#" class="btn btn-primary btn-sm">Message</a></td>
-            </tr>
-            <tr>
-              <td>
-                <div class="d-flex align-items-center">
-                  <img src="https://mdbootstrap.com/img/new/avatars/7.jpg" alt="" style="width: 45px; height: 45px" class="rounded-circle" />
-                  <div class="ms-3">
-                    <p class="fw-bold mb-1">Kate Hunington</p>
-                    <button type="button" class="btn btn-danger btn-sm">Unavailable</button>
-                  </div>
+                <div class="carousel-item">
+                    <img src="https://i0.wp.com/civillane.com/wp-content/uploads/2022/02/Top-5-Cement-Companies-In-India.jpg?fit=1000%2C600&ssl=1" class="d-block w-100" alt="New Arrivals">
+                    <div class="carousel-caption d-flex flex-col items-center justify-center h-full text-white">
+                        <h2 class="text-4xl md:text-5xl font-bold mb-2">New Arrivals</h2>
+                        <p class="text-lg md:text-xl mb-4">Starting at $15.00</p>
+                        <a href="#" class="btn bg-indigo-600 text-white hover:bg-indigo-700 transition-colors px-6 py-2 rounded-full">Shop Now</a>
+                    </div>
                 </div>
-              </td>
-              <td><a href="#" class="btn btn-secondary btn-sm disabled">Message</a></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-</div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#bannerCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#bannerCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+
+        <!-- Categories -->
+        <section class="py-12">
+            <div class="container">
+                <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-8">Categories</h2>
+                <div class="row row-cols-1 row-cols-md-4 g-4">
+                    <div class="col">
+                        <div class="bg-white rounded-lg shadow-md p-4 hover:shadow-lg transition-transform transform hover:scale-105">
+                            <img src="https://m.media-amazon.com/images/I/71lMSi5mQaL._AC_UF894,1000_QL80_.jpg" class="w-full h-32 object-contain p-4" alt="Clothes">
+                            <div class="text-center">
+                                <h5 class="text-lg font-semibold text-gray-800">Clothes</h5>
+                                <p class="text-gray-500 text-sm">(50)</p>
+                                <a href="#" class="mt-2 inline-block bg-indigo-600 text-white py-2 px-4 rounded-full hover:bg-indigo-700 transition-colors">Show All</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="bg-white rounded-lg shadow-md p-4 hover:shadow-lg transition-transform transform hover:scale-105">
+                            <img src="https://www.gmat.co.uk/wp-content/uploads/2023/04/Types-of-Construction-Sand.jpg" class="w-full h-32 object-contain p-4" alt="Footwear">
+                            <div class="text-center">
+                                <h5 class="text-lg font-semibold text-gray-800">Footwear</h5>
+                                <p class="text-gray-500 text-sm">(30)</p>
+                                <a href="#" class="mt-2 inline-block bg-indigo-600 text-white py-2 px-4 rounded-full hover:bg-indigo-700 transition-colors">Show All</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="bg-white rounded-lg shadow-md p-4 hover:shadow-lg transition-transform transform hover:scale-105">
+                            <img src="./images/icons/jewelry.svg" class="w-full h-32 object-contain p-4" alt="Jewelry">
+                            <div class="text-center">
+                                <h5 class="text-lg font-semibold text-gray-800">Jewelry</h5>
+                                <p class="text-gray-500 text-sm">(25)</p>
+                                <a href="#" class="mt-2 inline-block bg-indigo-600 text-white py-2 px-4 rounded-full hover:bg-indigo-700 transition-colors">Show All</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="bg-white rounded-lg shadow-md p-4 hover:shadow-lg transition-transform transform hover:scale-105">
+                            <img src="./images/icons/bag.svg" class="w-full h-32 object-contain p-4" alt="Bags">
+                            <div class="text-center">
+                                <h5 class="text-lg font-semibold text-gray-800">Bags</h5>
+                                <p class="text-gray-500 text-sm">(20)</p>
+                                <a href="#" class="mt-2 inline-block bg-indigo-600 text-white py-2 px-4 rounded-full hover:bg-indigo-700 transition-colors">Show All</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Products -->
+        <section class="py-12 bg-white">
+            <div class="container">
+                <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-8">New Arrivals</h2>
+                <div class="row row-cols-1 row-cols-md-4 g-4">
+                    <div class="col">
+                        <div class="bg-gray-50 rounded-lg shadow-md p-4 hover:shadow-lg transition-all">
+                            <img src="./admin/upload/product1.jpg" class="w-full h-48 object-cover rounded-t-lg" alt="T-shirt">
+                            <div class="p-4">
+                                <h5 class="text-lg font-semibold text-gray-800">Summer T-shirt</h5>
+                                <p class="text-gray-500 text-sm">New Arrival!</p>
+                                <div class="flex justify-between items-center mt-3">
+                                    <div>
+                                        <span class="text-indigo-600 font-bold">$25.00</span>
+                                        <del class="text-gray-400 text-sm ml-2">$30.00</del>
+                                    </div>
+                                    <a href="#" class="bg-indigo-600 text-white py-1 px-3 rounded-full hover:bg-indigo-700 transition-colors">View</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="bg-gray-50 rounded-lg shadow-md p-4 hover:shadow-lg transition-all">
+                            <img src="https://www.gmat.co.uk/wp-content/uploads/2023/04/Types-of-Construction-Sand.jpg" class="w-full h-48 object-cover rounded-t-lg" alt="Jacket">
+                            <div class="p-4">
+                                <h5 class="text-lg font-semibold text-gray-800">Winter Jacket</h5>
+                                <p class="text-gray-500 text-sm">New Arrival!</p>
+                                <div class="flex justify-between items-center mt-3">
+                                    <div>
+                                        <span class="text-indigo-600 font-bold">$45.00</span>
+                                        <del class="text-gray-400 text-sm ml-2">$55.00</del>
+                                    </div>
+                                    <a href="#" class="bg-indigo-600 text-white py-1 px-3 rounded-full hover:bg-indigo-700 transition-colors">View</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services -->
+        <section class="py-12">
+            <div class="container">
+                <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-8">Our Services</h2>
+                <div class="row row-cols-1 row-cols-md-5 g-4">
+                    <div class="col">
+                        <div class="bg-white rounded-lg shadow-md p-6 text-center hover:shadow-lg transition-shadow">
+                            <ion-icon name="boat-outline" class="text-4xl text-indigo-600 mb-3"></ion-icon>
+                            <h5 class="text-lg font-semibold text-gray-800">Worldwide Delivery</h5>
+                            <p class="text-gray-500 text-sm">For Orders Over $100</p>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="bg-white rounded-lg shadow-md p-6 text-center hover:shadow-lg transition-shadow">
+                            <ion-icon name="rocket-outline" class="text-4xl text-indigo-600 mb-3"></ion-icon>
+                            <h5 class="text-lg font-semibold text-gray-800">Next Day Delivery</h5>
+                            <p class="text-gray-500 text-sm">UK Orders Only</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-6">
+        <div class="container text-center">
+            <p class="text-gray-300">© 2025 Store. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

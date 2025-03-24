@@ -61,50 +61,51 @@ class AuthController extends BaseController
 
     // Send the reset email with a token code
     // Inside the sendPasswordResetEmail function
-private function sendPasswordResetEmail($email, $token)
-{
-    $resetLink = "http://localhost:8000/reset-password.php?token=" . urlencode($token);
+    private function sendPasswordResetEmail($email, $token)
+    {
+        $resetLink = "http://localhost:8000/reset-password.php?token=" . urlencode($token);
 
-    $mail = new PHPMailer(true);
-    try {
-        // Enable debugging for troubleshooting
-        $mail->SMTPDebug = 2; // Set to 0 in production after testing
+        $mail = new PHPMailer(true);
+        try {
+            // Enable debugging for troubleshooting
+            $mail->SMTPDebug = 2; // Set to 0 in production after testing
 
-        // Set mailer to use SMTP
-        $mail->isSMTP();
-        $mail->Host = 'smtp.gmail.com';
-        $mail->SMTPAuth = true;
-        $mail->Username = 'chandyneat9999@gmail.com'; // Your Gmail address
-        $mail->Password = 'chandy@123'; // Replace with your Gmail App Password
-        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-        $mail->Port = 587;
+            // Set mailer to use SMTP
+            $mail->isSMTP();
+            $mail->Host = 'smtp.gmail.com';
+            $mail->SMTPAuth = true;
+            $mail->Username = 'chandy.neat@student.passerellesnumeriques.org
+'; // Replace with your Gmail username
+            $mail->Password = 'chandy@pncstudent2025'; // Replace with your Gmail password
+            $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+            $mail->Port = 587;
 
-        // Sender and recipient
-        $mail->setFrom('chandyneat9999@gmail.com', 'Lim Try Construction Depot');
-        $mail->addAddress($email);
+            // Sender and recipient
+            $mail->setFrom('chandy.neat@student.passerellesnumeriques.org', 'Lim Try Construction Depot');
+            $mail->addAddress($email);
 
-        // Content of the email
-        $mail->isHTML(true);
-        $mail->Subject = 'Password Reset Request';
-        $mail->Body = "
-            <p>Hi,</p>
-            <p>We received a request to reset your password. Please use the following token to reset your password:</p>
-            <h2>$token</h2>
-            <p>Click the link below to reset your password:</p>
-            <p><a href='$resetLink'>$resetLink</a></p>
-            <p>If you didn’t request this, ignore this message.</p>
-        ";
+            // Content of the email
+            $mail->isHTML(true);
+            $mail->Subject = 'Password Reset Request';
+            $mail->Body = "
+                <p>Hi,</p>
+                <p>We received a request to reset your password. Please use the following token to reset your password:</p>
+                <h2>$token</h2>
+                <p>Click the link below to reset your password:</p>
+                <p><a href='$resetLink'>$resetLink</a></p>
+                <p>If you didn't request this, ignore this message.</p>
+            ";
 
-        // Send the email
-        if ($mail->send()) {
-            // Success message is already handled in handleForgotPassword()
-        } else {
+            // Send the email
+            if ($mail->send()) {
+                // Success message is already handled in handleForgotPassword()
+            } else {
+                echo "Mailer Error: " . $mail->ErrorInfo;
+            }
+        } catch (Exception $e) {
             echo "Mailer Error: " . $mail->ErrorInfo;
         }
-    } catch (Exception $e) {
-        echo "Mailer Error: " . $mail->ErrorInfo;
     }
-}
 
     // Show the reset password form
     public function showResetForm()
