@@ -29306,3 +29306,11 @@ feature/account
   position: relative;
   left: 30px;
 }
+
+.btn-detail{
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  gap: 15px;
+  margin-top: 3%;
+}
