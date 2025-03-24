@@ -1,7 +1,6 @@
 <?php
 // db.php - Include database connection
 // include 'db.php';
-
 // Fetch orders
 // $orders = $conn->query("SELECT * FROM orders ORDER BY created_at DESC");
 ?>
@@ -90,3 +89,4 @@
     </script>
 </body>
 </html>
+
