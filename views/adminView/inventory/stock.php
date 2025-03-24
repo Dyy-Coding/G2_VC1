@@ -94,7 +94,7 @@
         <tr>
             <th >Select</th>
             <th style="width: 15%;">Product</th>
-            <th style="width: 15%;">Category</th>
+            <th style="width: 20%;">Category</th>
             <th>Quantity</th>
             <th>Status</th>
             <th>Type or Size</th>
@@ -112,7 +112,7 @@
                     </td>
 
                     <!-- Product Column (Image + Name) -->
-                    <td class="d-flex align-items-center justify-content-center">
+                    <td class="td-product ">
                         <img src="<?= htmlspecialchars($material['ImagePath']) ?>" 
                              alt="Material Image" width="40" height="40" 
                              style="object-fit: cover; border-radius: 5px; margin-right: 10px;">
