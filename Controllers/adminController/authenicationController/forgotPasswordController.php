@@ -1,129 +1,174 @@
 <?php
 
-class AuthController extends BaseController {
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 
+// Ensure Composer autoload is included
+require 'vendor/autoload.php';
+
+class AuthController extends BaseController
+{
     private $userModel;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->userModel = new UserModel();
     }
 
     // Show the forgot password form
-    public function forgot() {
-        $this->renderAuthView('authentication/forgot_password');
+    public function forgot()
+    {
         if (isset($_SESSION['user_id'])) {
-            $this->userModel->log_action($_SESSION['user_id'], 'User forgot password.');
+            $this->userModel->log_action($_SESSION['user_id'], 'User opened forgot password page.');
         }
+        $this->renderAuthView('authentication/forgot_password');
     }
 
-    // Handle the password reset request
-    public function showForgotPasswordForm() {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['email'])) {
-            $email = $this->getEmailInput();
+    // Handle the forgot password form submission
+    public function handleForgotPassword()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $contact = $this->getEmailOrPhoneInput();
 
-            // Get user by email
-            $user = $this->userModel->checkEmail($email);
+            if (empty($contact)) {
+                echo "Please enter your email.";
+                return;
+            }
+
+            $user = $this->userModel->checkUserByEmailOrPhone($contact);
 
             if ($user) {
-                // Generate and store the reset token in the database
-                $token = $this->userModel-> generatePasswordResetToken($email);
+                $token = bin2hex(random_bytes(32)); // Generate a random token
+                $expiresAt = date('Y-m-d H:i:s', strtotime('+1 hour')); // Token expiration time (1 hour)
 
-                if ($token) {
-                    // Normally, you would send the token via email, but we're logging it here for demo purposes
-                    error_log("Password reset token for {$email}: " . $token);
+                if ($this->userModel->storeResetToken($user['user_id'], $token, $expiresAt)) {
+                    if (filter_var($contact, FILTER_VALIDATE_EMAIL)) {
+                        $this->sendPasswordResetEmail($contact, $token); // Send reset email with token
+                        echo "A password reset code has been sent to your email.";
+                    } else {
+                        echo "Please enter a valid email address.";
+                    }
 
-                    // Render the reset page (you should actually send the token to the user's email here)
-                    $this->renderAuthView('authentication/resetpassword');
-                    exit();
+                    $this->userModel->log_action($user['user_id'], 'Password reset token generated.');
                 } else {
-                    // Error generating token
-                    echo "Error generating password reset token.";
-                }
-
-                // Log action
-                if (isset($_SESSION['user_id'])) {
-                    $this->userModel->log_action($_SESSION['user_id'], 'User requested password reset link.');
+                    echo "Failed to generate password reset token.";
                 }
             } else {
-                // User email not found
-                echo "Email not found.";
-                if (isset($_SESSION['user_id'])) {
-                    $this->userModel->log_action($_SESSION['user_id'], 'User requested reset, but email not found.');
-                }
+                echo "No user found with that contact.";
             }
         }
     }
 
-    // Change password after token validation
-    public function resetPasswordRequest() {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $newPassword = $this->getPasswordInput();
-            $user_id = $this->userModel->getLastUserIdInPasswordResets();
-    
-            // Ensure password and token are provided
-            if (!$newPassword) {
-                echo "Password cannot be empty.";
-                return;
-            }
-    
-    
-            // Validate the reset token
-            echo var_dump($user_id);
-            
-            // Ensure the token is valid and the user exists
-            if ($user_id && $newPassword) {
-                // Hash the new password
-                $hashedPassword = password_hash($newPassword, PASSWORD_BCRYPT);
-    
-                // Update the password in the database
-                $this->userModel->updatePassword($user_id, $hashedPassword);
-    
-                // Log the password reset action
-                if (isset($_SESSION['user_id'])) {
-                    $this->userModel->log_action($_SESSION['user_id'], 'User reset password using token.');
-                }
-    
-                // Redirect to login page after successful password reset
-                header("Location: /login");
-                exit();
-            } else {
-                // Token is invalid or expired, pass the error message and token to the view
-                $error_message = "Invalid or expired token.";
-                $this->renderAuthView('authentication/resetpassword', [
-                    'error_message' => $error_message,
-                 // Pass the token here for troubleshooting
-                ]);
-                return;
-            }
+    // Send the reset email with a token code
+    // Inside the sendPasswordResetEmail function
+private function sendPasswordResetEmail($email, $token)
+{
+    $resetLink = "http://localhost:8000/reset-password.php?token=" . urlencode($token);
+
+    $mail = new PHPMailer(true);
+    try {
+        // Enable debugging for troubleshooting
+        $mail->SMTPDebug = 2; // Set to 0 in production after testing
+
+        // Set mailer to use SMTP
+        $mail->isSMTP();
+        $mail->Host = 'smtp.gmail.com';
+        $mail->SMTPAuth = true;
+        $mail->Username = 'chandyneat9999@gmail.com'; // Your Gmail address
+        $mail->Password = 'chandy@123'; // Replace with your Gmail App Password
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+        $mail->Port = 587;
+
+        // Sender and recipient
+        $mail->setFrom('chandyneat9999@gmail.com', 'Lim Try Construction Depot');
+        $mail->addAddress($email);
+
+        // Content of the email
+        $mail->isHTML(true);
+        $mail->Subject = 'Password Reset Request';
+        $mail->Body = "
+            <p>Hi,</p>
+            <p>We received a request to reset your password. Please use the following token to reset your password:</p>
+            <h2>$token</h2>
+            <p>Click the link below to reset your password:</p>
+            <p><a href='$resetLink'>$resetLink</a></p>
+            <p>If you didn’t request this, ignore this message.</p>
+        ";
+
+        // Send the email
+        if ($mail->send()) {
+            // Success message is already handled in handleForgotPassword()
         } else {
-            echo "Invalid request method.";
-            return;
+            echo "Mailer Error: " . $mail->ErrorInfo;
         }
-    }
-    
-    // Private function to get the email from input
-    private function getEmailInput() {
-        if (isset($_POST['email'])) {
-            return filter_var(trim($_POST['email']), FILTER_SANITIZE_EMAIL);
-        }
-        return null;
-    }
-
-    // Private function to get the password from input
-    private function getPasswordInput() {
-        if (isset($_POST['password'])) {
-            return trim($_POST['password']);
-        }
-        return null;
-    }
-
-    // Private function to get the token from input
-    private function getTokenInput() {
-        if (isset($_POST['token'])) {
-            return trim($_POST['token']);
-        }
-        return null;
+    } catch (Exception $e) {
+        echo "Mailer Error: " . $mail->ErrorInfo;
     }
 }
 
-?>
+    // Show the reset password form
+    public function showResetForm()
+    {
+        $token = $_GET['token'] ?? null;
+
+        if (!$token || !$this->userModel->isTokenValid($token)) {
+            // If token is invalid or expired, show the error view
+            $this->renderAuthView('authentication/error', ['message' => 'Invalid or expired token.']);
+            return;
+        }
+
+        // Token is valid, show the reset form
+        $this->renderAuthView('authentication/reset_password', ['token' => $token]);
+    }
+
+    // Handle reset password form submission
+    public function handleResetPassword()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $token = $_POST['token'] ?? null;
+            $newPassword = $this->getPasswordInput();
+
+            if (!$token || !$newPassword) {
+                echo "Token or password missing.";
+                return;
+            }
+
+            $user = $this->userModel->getUserByResetToken($token);
+
+            if ($user) {
+                $hashedPassword = password_hash($newPassword, PASSWORD_BCRYPT);
+                $this->userModel->updatePassword($user['user_id'], $hashedPassword);
+                $this->userModel->deleteResetToken($token);
+
+                echo "Password successfully reset.";
+                header("Location: /login");
+                exit();
+            } else {
+                // Token invalid or expired
+                $this->renderAuthView('authentication/error', ['message' => 'Invalid or expired token.']);
+            }
+        }
+    }
+
+    // Show a success message after password reset
+    public function passwordResetSuccess()
+    {
+        $this->renderAuthView('authentication/reset_confirmation', ['message' => 'Your password has been successfully reset.']);
+    }
+
+    // Show an error message if token is invalid or expired
+    public function passwordResetError()
+    {
+        $this->renderAuthView('authentication/error', ['message' => 'Invalid or expired token.']);
+    }
+
+    private function getEmailOrPhoneInput()
+    {
+        return trim($_POST['contact'] ?? '');
+    }
+
+    private function getPasswordInput()
+    {
+        return trim($_POST['password'] ?? '');
+    }
+}

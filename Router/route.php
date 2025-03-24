@@ -33,15 +33,31 @@ $route = new Router();
 
 // Group routes by controller for better organization
 $route->group('auth', function($route) {
+    // Login Routes
     $route->get('/login', [LoginController::class, 'login']);  // Display Login Form (GET)
     $route->post('/login', [LoginController::class, 'login']); // Handle Login (POST)
-    $route->get('/logout', [LoginController::class, 'logout']);
-    $route->get('/forgot', [AuthController::class, 'forgot']); // Forgot Password Form (GET)
-    $route->get('/register', [RegisterController::class, 'register']); // Display Registration Form (GET)
+    $route->get('/logout', [LoginController::class, 'logout']); // Handle Logout
+
+    // Forgot Password Routes
+    $route->get('/forgot', [AuthController::class, 'forgot']);  // Display Forgot Password Form (GET)
+    $route->post('/forgot-password', [AuthController::class, 'handleForgotPassword']); // Handle Forgot Password Request (POST)
+
+    // Password Reset Routes
+    $route->get('/reset-password', [AuthController::class, 'handleResetPassword']); // Show Reset Form (GET)
+    $route->post('/reset-password', [AuthController::class, 'handleForgotPassword']); // Handle Reset Password Form (POST)
+
+    // Registration Routes
+    $route->get('/register', [RegisterController::class, 'register']);  // Display Registration Form (GET)
     $route->post('/register', [RegisterController::class, 'register']); // Handle Registration Form (POST)
-    $route->post('/forgot-password', [AuthController::class, 'resetPasswordRequest']); // Handle Forgot Password (POST)
-    $route->post('/forgotpasswordform', [AuthController::class, 'showForgotPasswordForm']); // Handle Forgot Password (POST)
+
+    // Password Reset Confirmation Route (Redirect after successful reset)
+    $route->get('/password-reset-success', [AuthController::class, 'passwordResetSuccess']);  // Display success page after reset
+
+    // Error Route (For invalid or expired token error)
+    $route->get('/password-reset-error', [AuthController::class, 'passwordResetError']);  // Show error page when token is invalid/expired
 });
+
+
 
 $route->group('dashboard', function($route) {
     $route->get('/', [DashboardController::class, 'index']);

@@ -21,17 +21,17 @@
 <body class="min-h-screen flex items-center justify-center">
     <div class="container max-w-md bg-white p-5 rounded-xl shadow-lg w-full">
         <h2 class="text-center text-2xl font-bold text-gray-800 mb-4">Forgot Your Password?</h2>
-        <p class="text-center text-gray-500 mb-4">Enter your email address below, and we’ll send you a reset link.</p>
+        <p class="text-center text-gray-500 mb-4">Enter your email or phone number below, and we’ll send you a reset link.</p>
 
-        <form action="/forgotpasswordform" method="POST">
+        <form action="/reset-password" method="POST">
             <!-- Hidden Token Field -->
             <input type="hidden" name="token" value="<?php echo htmlspecialchars($token); ?>">
 
             <div class="mb-4">
-                <label for="email" class="form-label block text-sm font-medium text-gray-700">Email address</label>
-                <input type="email" name="email" id="email"
+                <label for="contact" class="form-label block text-sm font-medium text-gray-700">Email or Phone Number</label>
+                <input type="text" name="contact" id="contact"
                     class="form-control block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    placeholder="you@example.com" required>
+                    placeholder="you@example.com or +1234567890" required>
             </div>
 
             <div class="d-grid">
