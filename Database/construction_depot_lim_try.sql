@@ -518,3 +518,25 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+
+--------------------------------------------------------------
+-- Adds a foreign key constraint between user and role
+-- 1. Identify Invalid role_id Values:
+SELECT u.role_id
+FROM users u
+LEFT JOIN roles r ON u.role_id = r.role_id
+WHERE r.role_id IS NULL;
+
+-- 2. Fix the Invalid Data:
+UPDATE users
+SET role_id = 1
+WHERE role_id NOT IN (SELECT role_id FROM roles);
+
+-- 3. Add the Foreign Key Constraint:
+ALTER TABLE users
+ADD CONSTRAINT fk_user_role
+FOREIGN KEY (role_id)
+REFERENCES roles(role_id);
+
+--------------------------------------------------------------

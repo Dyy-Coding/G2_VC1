@@ -1,14 +1,19 @@
 <?php
 require_once "Models/accountModel/adminUserListModel.php";
 require_once "Controllers/BaseController.php";
+require_once 'vendor/autoload.php';
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 
 class AccountListController extends BaseController
 {
     private $model;
+
     function __construct()
     {
         $this->model = new AdminUserListModel();
     }
+
     // get all users from database
     public function viewUsersAccListProfile()
     {
@@ -42,7 +47,12 @@ class AccountListController extends BaseController
     // Display the create user form (GET request)
     public function createNewUserAccProfile()
     {
-        $this->renderView('adminView/accounts/adminUserList/listuser/createuser', []);
+        $roles = $this->model->getRolesFSY();
+        // Filter out the admin role (role_id 1) from the roles array
+        $roles = array_filter($roles, function ($role) {
+            return $role['role_id'] != 1;
+        });
+        $this->renderView('adminView/accounts/adminUserList/listuser/createuser', ['roles' => $roles]);
     }
 
     // Store a new user (POST request from /userstore)
@@ -51,6 +61,15 @@ class AccountListController extends BaseController
         if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
             header('Location: createuser?error=Invalid request method');
             exit;
+        }
+
+        $roleId = (int) ($_POST['role'] ?? 2); // Default to role_id 2 (non-admin)
+
+        // Prevent assigning the admin role
+        if ($roleId == 1) {
+            $error = "Cannot assign admin role.";
+            $this->renderView('adminView/accounts/adminUserList/listuser/createuser', ['error' => $error]);
+            return;
         }
 
         // Get form data
@@ -132,10 +151,8 @@ class AccountListController extends BaseController
     // edit user
     public function editUserAccProfile()
     {
-        // Fetch the 'id' from the query string
         $id = isset($_GET['id']) ? (int) $_GET['id'] : null;
 
-        // Validate the id
         if (!$id) {
             header('Location: userList?error=Invalid user ID');
             exit;
@@ -150,19 +167,36 @@ class AccountListController extends BaseController
             exit;
         }
 
-        // Render the edit user view with the user data
-        $this->renderView('adminView/accounts/adminUserList/listuser/edituser', ['user' => $user]);
+        if (!$user) {
+            header('Location: userList?error=User not found');
+            exit;
+        }
+
+        $roles = $this->model->getRolesFSY();
+        // Filter out the admin role (role_id 1) from the roles array
+        $roles = array_filter($roles, function ($role) {
+            return $role['role_id'] != 1;
+        });
+
+        // Render the edit user view with the user data and roles
+        $this->renderView('adminView/accounts/adminUserList/listuser/edituser', ['user' => $user, 'roles' => $roles]);
     }
 
-    function updateUserAccProfile()
+    public function updateUserAccProfile()
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            // Get the user_id from the form
             $id = $_POST['user_id'] ?? null;
 
-            // Validate that user_id is provided
             if (empty($id)) {
                 $this->redirect('/userList?error=User ID is missing');
+                return;
+            }
+
+            $roleId = (int) ($_POST['role_id'] ?? 2); // Default to role_id 2 (non-admin)
+
+            // Prevent assigning the admin role
+            if ($roleId == 1) {
+                $this->redirect('/edituser?id=' . $id . '&error=Cannot assign admin role.');
                 return;
             }
 
@@ -222,7 +256,6 @@ class AccountListController extends BaseController
 
                 $newFileName = time() . "_" . basename($_FILES["profile"]["name"]);
                 $targetFile = $targetDir . $newFileName;
-
 
                 if (move_uploaded_file($_FILES["profile"]["tmp_name"], $targetFile)) {
                     $profileImage = "/public/Images/" . $newFileName; // Path relative to web root

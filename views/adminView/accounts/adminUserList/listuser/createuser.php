@@ -52,9 +52,17 @@
                         <div class="form-group">
                             <label for="role" class="form-label">Role <span class="text-danger">*</span></label>
                             <select id="role" name="role" class="form-control" required>
-                                <option value="2">User</option>
-                                <option value="3">Editor</option>
-                                <!-- Add more roles as needed -->
+                                <?php if (!empty($roles)): ?>
+                                    <?php foreach ($roles as $role): ?>
+                                        <?php if ($role['role_id'] != 1): ?>
+                                            <option value="<?= htmlspecialchars($role['role_id']) ?>">
+                                                <?= htmlspecialchars($role['role_name']) ?>
+                                            </option>
+                                        <?php endif; ?>
+                                    <?php endforeach; ?>
+                                <?php else: ?>
+                                    <option value="">No roles found</option>
+                                <?php endif; ?>
                             </select>
                         </div>
                     </div>

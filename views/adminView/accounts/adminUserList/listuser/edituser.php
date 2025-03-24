@@ -22,9 +22,11 @@
                 <!-- Profile Image -->
                 <div class="form-group mb-3">
                     <label for="profile" class="form-label">Select Image (Optional):</label>
-                    <input type="file" name="profile" id="profile" class="form-control" accept="image/jpeg,image/png,image/gif">
+                    <input type="file" name="profile" id="profile" class="form-control"
+                        accept="image/jpeg,image/png,image/gif">
                     <!-- Hidden input for old profile image -->
-                    <input type="hidden" name="old_profile" value="<?= htmlspecialchars($user['profile_image'] ?? '') ?>">
+                    <input type="hidden" name="old_profile"
+                        value="<?= htmlspecialchars($user['profile_image'] ?? '') ?>">
                     <?php if (!empty($user['profile_image'])): ?>
                         <div class="mt-2">
                             <p>Current Image:</p>
@@ -38,14 +40,16 @@
                 <div class="row g-2 mb-3">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="first-name" class="form-label">First Name <span class="text-danger">*</span></label>
+                            <label for="first-name" class="form-label">First Name <span
+                                    class="text-danger">*</span></label>
                             <input type="text" id="first-name" name="first_name" class="form-control"
                                 value="<?= htmlspecialchars($user['first_name'] ?? '') ?>" required>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="last-name" class="form-label">Last Name <span class="text-danger">*</span></label>
+                            <label for="last-name" class="form-label">Last Name <span
+                                    class="text-danger">*</span></label>
                             <input type="text" id="last-name" name="last_name" class="form-control"
                                 value="<?= htmlspecialchars($user['last_name'] ?? '') ?>" required>
                         </div>
@@ -67,7 +71,8 @@
                             <input type="password" id="password" name="password" class="form-control"
                                 placeholder="Enter new password">
                             <!-- Hidden input for old password -->
-                            <input type="hidden" name="old_password" value="<?= htmlspecialchars($user['password'] ?? '') ?>">
+                            <input type="hidden" name="old_password"
+                                value="<?= htmlspecialchars($user['password'] ?? '') ?>">
                         </div>
                     </div>
                 </div>
@@ -76,7 +81,8 @@
                 <div class="row g-2 mb-3">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="phone" class="form-label">Phone Number <span class="text-danger">*</span></label>
+                            <label for="phone" class="form-label">Phone Number <span
+                                    class="text-danger">*</span></label>
                             <input type="tel" id="phone" name="phone" class="form-control"
                                 value="<?= htmlspecialchars($user['phone'] ?? '') ?>" required>
                         </div>
@@ -85,8 +91,14 @@
                         <div class="form-group">
                             <label for="role" class="form-label">Role <span class="text-danger">*</span></label>
                             <select id="role" name="role_id" class="form-control" required>
-                                <option value="2" <?= ($user['role_id'] == 2) ? 'selected' : '' ?>>User</option>
-                                <option value="3" <?= ($user['role_id'] == 3) ? 'selected' : '' ?>>Editor</option>
+                                <?php foreach ($roles as $role): ?>
+                                    <?php if ($role['role_id'] != 1): ?>
+                                        <option value="<?= htmlspecialchars($role['role_id']) ?>"
+                                            <?= ($user['role_id'] == $role['role_id']) ? 'selected' : '' ?>>
+                                            <?= htmlspecialchars($role['role_name']) ?>
+                                        </option>
+                                    <?php endif; ?>
+                                <?php endforeach; ?>
                             </select>
                         </div>
                     </div>

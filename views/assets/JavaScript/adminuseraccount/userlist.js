@@ -14,3 +14,26 @@ document.getElementById('selectAll').addEventListener('change', function () {
         checkbox.checked = this.checked;
     }, this);
 });
+
+// Add JavaScript for Search Functionality
+document.getElementById('search').addEventListener('input', function () {
+    const searchValue = this.value.toLowerCase(); // Get the search input and convert to lowercase
+    const rows = document.querySelectorAll('#userTable tbody tr'); // Get all table rows
+
+    rows.forEach(row => {
+        const firstName = row.querySelector('.first-name').textContent.toLowerCase();
+        const lastName = row.querySelector('.last-name').textContent.toLowerCase();
+        const phone = row.querySelector('.phone').textContent.toLowerCase();
+        const role = row.querySelector('.role').textContent.toLowerCase();
+
+        // Check if any column matches the search input
+        if (firstName.includes(searchValue) ||
+            lastName.includes(searchValue) ||
+            phone.includes(searchValue) ||
+            role.includes(searchValue)) {
+            row.style.display = ''; // Show the row
+        } else {
+            row.style.display = 'none'; // Hide the row
+        }
+    });
+});

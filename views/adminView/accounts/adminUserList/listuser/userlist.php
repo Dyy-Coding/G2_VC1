@@ -1,4 +1,4 @@
-<div class="container mt-4 card" style="width: 95%; padding: 25px;">
+<div class="container mt-3 card" style="width: 95%; padding: 25px;">
     <div class="d-flex justify-content-between align-items-center mb-4">
         <div>
             <h1 class="h3">User List</h1>
@@ -17,12 +17,12 @@
             <label class="form-check-label" for="selectAll">Select All</label>
         </div>
         <div class="ms-2" style="width: 400px">
-            <input type="search" id="search" class="form-control" placeholder="Search" />
+            <input type="search" id="search" class="form-control" placeholder="Search User" />
         </div>
     </div>
 
     <form action="/deleteuser" method="POST" id="deleteForm">
-        <table class="table text-center align-middle">
+        <table class="table text-center align-middle" id="userTable">
             <thead>
                 <tr>
                     <th class="w-small">Select</th>
@@ -43,42 +43,33 @@
                             <img src="<?= !empty($user['profile_image']) ? htmlspecialchars($user['profile_image']) : 'views/assets/img/team-2.jpg' ?>"
                                 alt="Profile Image" style="width: 30px; height: 30px; object-fit: cover;">
                         </td>
-                        <td><?= htmlspecialchars($user['first_name'] ?? 'N/A'); ?></td>
-                        <td><?= htmlspecialchars($user['last_name'] ?? 'N/A'); ?></td>
-                        <td><?= htmlspecialchars($user['phone'] ?? 'N/A'); ?></td>
-                        <td>
-                            <?php
-                            $roleName = 'N/A';
-                            if ($user['role_id'] == 2) {
-                                $roleName = 'User';
-                            } elseif ($user['role_id'] == 3) {
-                                $roleName = 'Editor';
-                            }
-                            echo htmlspecialchars($roleName);
-                            ?>
+                        <td class="first-name"><?= htmlspecialchars($user['first_name'] ?? 'N/A'); ?></td>
+                        <td class="last-name"><?= htmlspecialchars($user['last_name'] ?? 'N/A'); ?></td>
+                        <td class="phone"><?= htmlspecialchars($user['phone'] ?? 'N/A'); ?></td>
+                        <td class="role">
+                            <?= htmlspecialchars($user['role_name'] ?? 'N/A'); ?>
                         </td>
                         <td>
                             <div class="dropdown">
-                                <button class="btn" type="button" id="dropdownMenuButton"
-                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                <button class="btn" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
                                     <i class="fas fa-ellipsis-v"></i>
                                 </button>
-                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuLink">
                                     <li>
-                                        <a class="dropdown-item"
-                                            href="/edituser?id=<?= htmlspecialchars($user['user_id'] ?? '') ?>">Edit</a>
+                                        <a href="/edituser?id=<?= htmlspecialchars($user['user_id'] ?? '') ?>"
+                                            class="dropdown-item text-primary d-flex align-items-center">
+                                            <i class="material-icons me-2" style="font-size:18px;">edit</i> Edit
+                                        </a>
                                     </li>
                                     <li>
-                                        <a class="dropdown-item"
-                                            href="/userdetail?id=<?= htmlspecialchars($user['user_id'] ?? '') ?>">View</a>
+                                        <a class="dropdown-item d-flex align-items-center"
+                                            href="/userdetail?id=<?= htmlspecialchars($user['user_id'] ?? '') ?>"><i class="material-icons me-2" style="font-size:18px;">visibility</i> View
+                                        </a>
                                     </li>
                                 </ul>
                             </div>
                         </td>
-                        <!-- <td>
-                            <a href="/edituser?id=<?= htmlspecialchars($user['user_id'] ?? '') ?>" class="btn btn-primary me-2">Edit</a>
-                            <a href="/userdetail?id=<?= htmlspecialchars($user['user_id'] ?? '') ?>" class="btn btn-warning">View</a>
-                        </td> -->
                     </tr>
                 <?php endforeach; ?>
             </tbody>
