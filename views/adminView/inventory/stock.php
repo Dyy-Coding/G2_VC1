@@ -144,7 +144,7 @@
 
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuLink">
                             <li>
-                                <a href="edit_material.php?id=<?= $material['MaterialID'] ?>" class="dropdown-item text-primary d-flex align-items-center">
+                                <a href="inventory/edit/<?= $material['MaterialID'] ?>" class="dropdown-item text-primary d-flex align-items-center">
                                     <i class="material-icons me-2" style="font-size:18px;">edit</i> Edit
                                 </a>
                             </li>

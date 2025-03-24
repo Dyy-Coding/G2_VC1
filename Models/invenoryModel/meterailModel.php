@@ -130,12 +130,16 @@ class Material {
         }
     }
 
-    // ✅ Helper method to prepare form data
-    public function prepareAddMaterialForm() {
-        return [
-            'categories' => $this->getCategories(),
-            'suppliers'  => $this->getSuppliers()
-        ];
+    public function getMaterialById($id) {
+        try {
+            $query = "SELECT * FROM Materials WHERE MaterialID = :id";
+            $stmt = $this->conn->prepare($query);
+            $stmt->execute(['id' => $id]);
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            error_log("Error fetching material by ID: " . $e->getMessage());
+            return false;
+        }
     }
 }
 

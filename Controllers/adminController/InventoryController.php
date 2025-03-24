@@ -99,4 +99,17 @@ class InventoryController extends BaseController {
     private function sanitizeInput($input) {
         return htmlspecialchars(trim($input), ENT_QUOTES, 'UTF-8');
     }
+
+    public function editMaterial($id) {
+        // Fetch the material with the given ID
+        $material = $this->material->getMaterialById($id);
+        if (!$material) {
+            // Handle the case where the material is not found
+            $this->renderView('errors/404', [], 404);
+            return;
+        }
+        // Return the edit view with the material data
+        $this->renderView('adminView/inventory/editMaterial', ['material' => $material]);
+    }
+    
 }

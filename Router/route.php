@@ -46,9 +46,9 @@ $route->group('inventory', function($route) {
     $route->post('Add/materials', [InventoryController::class, 'addMaterial']);
     $route->get('/inventory/addMaterial', [InventoryController::class, 'showAddForm']);
     $route->post('/materials/add', [InventoryController::class, 'addMaterial']);
+    $route->get('/inventory/edit/{id}', [InventoryController::class, 'editMaterial']); // Updated route
     $route->get('/category', [InventoryController::class, 'category']);
     $route->get('/order', [InventoryController::class, 'order']);
-
 });
 
 
