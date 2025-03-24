@@ -9,6 +9,7 @@ require_once "Controllers/adminController/authenicationController/loginControlle
 require_once "Controllers/adminController/authenicationController/forgotPasswordController.php";
 require_once "Controllers/adminController/authenicationController/registerController.php";
 require_once "Controllers/adminController/InventoryController.php";
+// require_once "Controllers/adminController/sales/salesController.php";
 require_once "Controllers/AdminController/DashboardController.php";
 require_once "Controllers/adminController/BashInfoController.php";
 require_once 'Controllers/errorController.php';
@@ -20,6 +21,12 @@ require_once "Controllers/adminController/accountController/adminUserListControl
 require_once 'Controllers/validateionHelper.php';
 require_once "Models/usersModel.php";
 require_once "Models/invenoryModel/meterailModel.php";
+
+
+
+// Customer Controller 
+
+require_once "Controllers/userController/welcomeController/welcomeController.php";
 
 // Initialize Router
 $route = new Router();
@@ -39,6 +46,10 @@ $route->group('auth', function($route) {
 $route->group('dashboard', function($route) {
     $route->get('/', [DashboardController::class, 'index']);
     $route->get('/user', [DashboardController::class, 'userDashboard']);
+});
+$route->group('welcome', function($route) {
+    $route->get('/welcome', [WelcomeController::class, 'welcome']);
+
 });
 
 $route->group('inventory', function($route) {

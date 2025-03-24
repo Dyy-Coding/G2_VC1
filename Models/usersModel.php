@@ -241,5 +241,31 @@ public function getUserByPassword($password) {
     }
 }
 
+    // Function to check if a user has a specific permission
+public function userHasPermission($user_id, $permission_name) {
+    // Query to check if the user's role has the specific permission
+    $query = "SELECT 1 
+              FROM users u
+              JOIN roles r ON u.role_id = r.role_id
+              JOIN permission_roles pr ON r.role_id = pr.role_id
+              JOIN permissions p ON pr.permission_id = p.permission_id
+              WHERE u.user_id = :user_id
+              AND p.permission_name = :permission_name
+              LIMIT 1";
+
+    $stmt = $this->conn->prepare($query);
+    $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
+    $stmt->bindParam(':permission_name', $permission_name, PDO::PARAM_STR);
+
+    $stmt->execute();
+
+    // If a row is found, the user has the permission
+    if ($stmt->rowCount() > 0) {
+        return true;
+    }
+    return false; // User does not have the permission
+}
+
+
 }
 ?>
