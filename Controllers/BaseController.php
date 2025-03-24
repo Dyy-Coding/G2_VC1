@@ -167,6 +167,8 @@ class BaseController
     private function loadLayout(string $layout, string $content, bool $isCustomer = false)
     {
         $authPages = ['login.php', 'register.php', 'forgot_password.php', 'reset_password.php'];
+        // handle page headerCustomer, navbarCustomer for this page
+        $customersPage = ['welcome.php', 'stock.php'];
         $currentPage = filter_input(INPUT_GET, 'page', FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?? '';
         $currentFile = basename($currentPage);
         $isAuthPage = in_array($currentFile, $authPages);
