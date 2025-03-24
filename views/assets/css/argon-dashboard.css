@@ -29244,7 +29244,8 @@ td .name span {
 
 #inventoryDropdown, #accountDropdown {
   display: none;
-  text-align: center;
+  position: relative;
+  left: 45px;
 }
 
 .input-group-text {
@@ -29285,3 +29286,8 @@ td .name span {
   
 }
 
+.td-product{
+  display: flex;
+  position: relative;
+  left: 30px;
+}
