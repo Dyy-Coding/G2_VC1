@@ -103,72 +103,72 @@
         </tr>
     </thead>
     <tbody>
-        <?php if (!empty($materials)): ?>
-            <?php foreach ($materials as $material): ?>
-                <tr>
-                    <!-- Checkbox -->
-                    <td>
-                        <input type="checkbox">
-                    </td>
-
-                    <!-- Product Column (Image + Name) -->
-                    <td class="td-product ">
-                        <img src="<?= htmlspecialchars($material['ImagePath']) ?>" 
-                             alt="Material Image" width="40" height="40" 
-                             style="object-fit: cover; border-radius: 5px; margin-right: 10px;">
-                        <span><?= htmlspecialchars($material['Name']) ?></span>
-                    </td>
-
-                    <td><?= htmlspecialchars($material['CategoryName']) ?></td>
-                    <td><?= htmlspecialchars($material['Quantity']) ?></td>
-
-                    <!-- Stock Status -->
-                    <td>
-                        <?php if ($material['Quantity'] == 0): ?>
-                            <span class="badge bg-danger">OUT OF STOCK</span>
-                        <?php elseif ($material['Quantity'] < 15): ?>
-                            <span class="badge bg-warning text-dark">LOW STOCK</span>
-                        <?php else: ?>
-                            <span class="badge bg-success">HIGH STOCK</span>
-                        <?php endif; ?>
-                    </td>
-
-                    <td><?= htmlspecialchars($material['Size']) ?></td>
-                    <td><?= htmlspecialchars($material['UnitPrice']) ?></td>
-
-                    <!-- Action Dropdown -->
-                    <td class="dropdown">
-                        <a href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="material-icons" style="font-size:34px;">more_vert</i>
-                        </a>
-
-                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuLink">
-                            <li>
-                                <a href="inventory/edit/<?= $material['MaterialID'] ?>" class="dropdown-item text-primary d-flex align-items-center">
-                                    <i class="material-icons me-2" style="font-size:18px;">edit</i> Edit
-                                </a>
-                            </li>
-                            <li>
-                                <a href="delete_material.php?id=<?= $material['MaterialID'] ?>" class="dropdown-item text-danger d-flex align-items-center"
-                                   onclick="return confirm('Are you sure?');">
-                                    <i class="material-icons me-2" style="font-size:18px;">delete</i> Delete
-                                </a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item d-flex align-items-center" href="details_material.php?id=<?= $material['MaterialID'] ?>">
-                                    <i class="material-icons me-2" style="font-size:18px;">visibility</i> View
-                                </a>
-                            </li>
-                        </ul>
-                    </td>
-                </tr>
-            <?php endforeach; ?>
-        <?php else: ?>
+    <?php if (!empty($materials)): ?>
+        <?php foreach ($materials as $material): ?>
             <tr>
-                <td colspan="8">No materials found.</td>
+                <!-- Checkbox -->
+                <td>
+                    <input type="checkbox">
+                </td>
+
+                <!-- Product Column (Image + Name) -->
+                <td class="td-product ">
+                    <img src="<?= htmlspecialchars($material['ImagePath']) ?>" 
+                         alt="Material Image" width="40" height="40" 
+                         style="object-fit: cover; border-radius: 5px; margin-right: 10px;">
+                    <span><?= htmlspecialchars($material['Name']) ?></span>
+                </td>
+
+                <td><?= htmlspecialchars($material['CategoryName']) ?></td>
+                <td><?= htmlspecialchars($material['Quantity']) ?></td>
+
+                <!-- Stock Status -->
+                <td>
+                    <?php if ($material['Quantity'] == 0): ?>
+                        <span class="badge bg-danger">OUT OF STOCK</span>
+                    <?php elseif ($material['Quantity'] < 15): ?>
+                        <span class="badge bg-warning text-dark">LOW STOCK</span>
+                    <?php else: ?>
+                        <span class="badge bg-success">HIGH STOCK</span>
+                    <?php endif; ?>
+                </td>
+
+                <td><?= htmlspecialchars($material['Size']) ?></td>
+                <td><?= htmlspecialchars($material['UnitPrice']) ?></td>
+
+                <!-- Action Dropdown -->
+                <td class="dropdown">
+                    <a href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="material-icons" style="font-size:34px;">more_vert</i>
+                    </a>
+
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuLink">
+                        <li>
+                            <a href="/editmaterial/<?= $material['MaterialID'] ?>" class="dropdown-item text-primary d-flex align-items-center">
+                                <i class="material-icons me-2" style="font-size:18px;">edit</i> Edit
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/materials/delete/<?= $material['MaterialID'] ?>" class="dropdown-item text-danger d-flex align-items-center"
+                               onclick="return confirm('Are you sure?');">
+                                <i class="material-icons me-2" style="font-size:18px;">delete</i> Delete
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center" href="/materials/view/<?= $material['MaterialID']; ?>">
+                                <i class="material-icons me-2" style="font-size:18px;">visibility</i> View
+                            </a>
+                        </li>
+                    </ul>
+                </td>
             </tr>
-        <?php endif; ?>
-    </tbody>
+        <?php endforeach; ?>
+    <?php else: ?>
+        <tr>
+            <td colspan="8">No materials found.</td>
+        </tr>
+    <?php endif; ?>
+</tbody>
 </table>
 
 

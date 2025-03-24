@@ -54,14 +54,16 @@ $route->group('welcome', function($route) {
 
 $route->group('inventory', function($route) {
     $route->get('/inventory', [InventoryController::class, 'inventory']);
-    $route->post('Add/materials', [InventoryController::class, 'addMaterial']);
-    $route->get('/inventory/addMaterial', [InventoryController::class, 'showAddForm']);
+    $route->get('/materials/add', [InventoryController::class, 'addMaterial']);
     $route->post('/materials/add', [InventoryController::class, 'addMaterial']);
-    $route->get('/inventory/edit/{id}', [InventoryController::class, 'editMaterial']); // Updated route
+    $route->get('/editmaterial/{id}', [InventoryController::class, 'materialEditForSome']);
+    $route->post('/materials/update', [InventoryController::class, 'updateMaterial']);
+    $route->get('/materials/delete/{id}', [InventoryController::class, 'deleteMaterial']);
     $route->get('/category', [InventoryController::class, 'category']);
     $route->get('/order', [InventoryController::class, 'order']);
+    // New View Route
+    $route->get('/materials/view/{id}', [InventoryController::class, 'viewMaterial']);
 });
-
 
 $route->group('profile', function($route) {
     $route->get('/addusersform', [AccountController::class, 'viewAddusersForm']);
