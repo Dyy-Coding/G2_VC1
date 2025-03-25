@@ -11,8 +11,6 @@ class ComposerStaticInit2185d2f99bcd56787481d9357a5972d3
     );
 
     public static $prefixLengthsPsr4 = array (
-<<<<<<< HEAD
-=======
         'Z' => 
         array (
             'ZipStream\\' => 10,
@@ -21,7 +19,6 @@ class ComposerStaticInit2185d2f99bcd56787481d9357a5972d3
         array (
             'Twilio\\' => 7,
         ),
->>>>>>> fc59e07a060dbf5847119d1c417ff047bfd7eea9
         'P' => 
         array (
             'Psr\\SimpleCache\\' => 16,
@@ -42,8 +39,6 @@ class ComposerStaticInit2185d2f99bcd56787481d9357a5972d3
     );
 
     public static $prefixDirsPsr4 = array (
-<<<<<<< HEAD
-=======
         'ZipStream\\' => 
         array (
             0 => __DIR__ . '/..' . '/maennchen/zipstream-php/src',
@@ -69,7 +64,6 @@ class ComposerStaticInit2185d2f99bcd56787481d9357a5972d3
         array (
             0 => __DIR__ . '/..' . '/phpoffice/phpspreadsheet/src/PhpSpreadsheet',
         ),
->>>>>>> fc59e07a060dbf5847119d1c417ff047bfd7eea9
         'PHPMailer\\PHPMailer\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpmailer/phpmailer/src',
