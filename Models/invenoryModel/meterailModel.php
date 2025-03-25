@@ -106,17 +106,7 @@ class Material {
         }
     }
 
-    // Fetch all categories
-    public function getCategories() {
-        try {
-            $stmt = $this->conn->prepare("SELECT CategoryID, CategoryName FROM Categories");
-            $stmt->execute();
-            return $stmt->fetchAll(PDO::FETCH_ASSOC);
-        } catch (PDOException $e) {
-            error_log("Error fetching categories: " . $e->getMessage());
-            return [];
-        }
-    }
+
 
     // Fetch all suppliers
     public function getSuppliers() {

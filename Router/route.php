@@ -20,6 +20,7 @@ require_once "Controllers/adminController/accountController/adminUserListControl
 require_once 'Controllers/validateionHelper.php';
 require_once "Models/usersModel.php";
 require_once "Models/invenoryModel/meterailModel.php";
+require_once "Models/invenoryModel/categoryModel.php";
 
 // Initialize Router
 $route = new Router();
@@ -45,7 +46,14 @@ $route->group('inventory', function($route) {
     $route->post('Add/materials', [InventoryController::class, 'addMaterial']);
     $route->get('/inventory/addMaterial', [InventoryController::class, 'showAddForm']);
     $route->post('/materials/add', [InventoryController::class, 'addMaterial']);
+    // Router Categories
     $route->get('/category', [InventoryController::class, 'category']);
+    $route->post('/category/add', [InventoryController::class, 'addCategory']);
+    $route->get('/category/delete/(.*)', [InventoryController::class, 'deleteCategory']);
+    $route->post('/category/deleteSelected', [InventoryController::class, 'deleteSelectedCategories']);
+    $route->get('/category/category_edit/(.*)', [InventoryController::class, 'editCategory']);
+    $route->post('/category/update/(.*)', [InventoryController::class, 'updateCategory']);
+
     $route->get('/order', [InventoryController::class, 'order']);
 
 });
