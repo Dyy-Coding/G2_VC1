@@ -87,7 +87,19 @@
           <ul class="dropdown-menu" id="inventoryDropdown" >
             <li><a class="dropdown-item" href="/category">Category</a></li>
             <li><a class="dropdown-item" href="/inventory">Material</a></li>
-            <li><a class="dropdown-item" href="/order">Order</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/inventory">
+            <div
+              class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="ni ni-calendar-grid-58 text-dark text-sm opacity-10"></i>
+            </div>
+            <span class="nav-link-text ms-1">Sales</span>
+          </a>
+          <ul class="dropdown-menu" id="inventoryDropdown" >
+          <li><a class="dropdown-item" href="/order">Order</a></li>
+            <li><a class="dropdown-item" href="/inven">OrderDetail</a></li>
           </ul>
         </li>
 
@@ -151,7 +163,8 @@
           </a>
           <ul class="dropdown-menu" id="accountDropdown" >
             <li><a class="dropdown-item" href="/profile">Profile</a></li>
-            <li><a class="dropdown-item" href="/userList">Employees</a></li>
+            <li><a class="dropdown-item" href="/userList">Users</a></li>
+            <li><a class="dropdown-item" href="/permission">Permission</a></li>
           </ul>
         </li>
 
