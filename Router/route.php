@@ -70,12 +70,19 @@ $route->group('welcome', function($route) {
 
 $route->group('inventory', function ($route) {
     $route->get('/inventory', [InventoryController::class, 'inventory']);
+    // Crud
     $route->get('/materials/add', [InventoryController::class, 'addMaterial']);
     $route->post('/materials/add', [InventoryController::class, 'addMaterial']);
     $route->get('/editmaterial/{id}', [InventoryController::class, 'materialEditForSome']);
     $route->post('/materials/update', [InventoryController::class, 'updateMaterial']);
     $route->get('/materials/delete/{id}', [InventoryController::class, 'deleteMaterial']);
+    // View detail
     $route->get('/materials/view/{id}', [InventoryController::class, 'viewMaterial']);
+    // Import and export
+    $route->get('/inventory/import', [InventoryController::class, 'importInventory']);
+    $route->post('/inventory/import', [InventoryController::class, 'importInventory']);
+
+
     $route->get('/category', [InventoryController::class, 'category']);
     $route->get('/order', [InventoryController::class, 'order']);
 

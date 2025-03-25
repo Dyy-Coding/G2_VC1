@@ -23,6 +23,34 @@ class Material {
         }
     }
 
+    public function getMaterialByName($name) {
+        try {
+            $query = "SELECT * FROM Materials WHERE Name = :name LIMIT 1";
+            $stmt = $this->conn->prepare($query);
+            $stmt->execute([':name' => $name]);
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            error_log("Error fetching material by name: " . $e->getMessage());
+            return false;
+        }
+    }
+
+    public function getMaterialById($id) {
+        try {
+            $query = "SELECT m.*, c.CategoryName, s.Name AS SupplierName 
+                      FROM Materials m
+                      LEFT JOIN Categories c ON m.CategoryID = c.CategoryID
+                      LEFT JOIN Suppliers s ON m.SupplierID = s.SupplierID
+                      WHERE m.MaterialID = :id";
+            $stmt = $this->conn->prepare($query);
+            $stmt->execute(['id' => $id]);
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            error_log("Error fetching material by ID: " . $e->getMessage());
+            return false;
+        }
+    }
+
     public function uploadImage($file) {
         if ($file['error'] !== UPLOAD_ERR_OK) {
             return ['error' => 'File upload error occurred.'];
@@ -88,44 +116,6 @@ class Material {
             return $this->conn->lastInsertId();
         } catch (PDOException $e) {
             error_log("Exception in addMaterial: " . $e->getMessage() . " | Data: " . json_encode($data));
-            return false;
-        }
-    }
-
-    public function getCategories() {
-        try {
-            $stmt = $this->conn->prepare("SELECT CategoryID, CategoryName FROM Categories");
-            $stmt->execute();
-            return $stmt->fetchAll(PDO::FETCH_ASSOC);
-        } catch (PDOException $e) {
-            error_log("Error fetching categories: " . $e->getMessage());
-            return [];
-        }
-    }
-
-    public function getSuppliers() {
-        try {
-            $stmt = $this->conn->prepare("SELECT SupplierID, Name FROM Suppliers");
-            $stmt->execute();
-            return $stmt->fetchAll(PDO::FETCH_ASSOC);
-        } catch (PDOException $e) {
-            error_log("Error fetching suppliers: " . $e->getMessage());
-            return [];
-        }
-    }
-
-    public function getMaterialById($id) {
-        try {
-            $query = "SELECT m.*, c.CategoryName, s.Name AS SupplierName 
-                      FROM Materials m
-                      LEFT JOIN Categories c ON m.CategoryID = c.CategoryID
-                      LEFT JOIN Suppliers s ON m.SupplierID = s.SupplierID
-                      WHERE m.MaterialID = :id";
-            $stmt = $this->conn->prepare($query);
-            $stmt->execute(['id' => $id]);
-            return $stmt->fetch(PDO::FETCH_ASSOC);
-        } catch (PDOException $e) {
-            error_log("Error fetching material by ID: " . $e->getMessage());
             return false;
         }
     }
@@ -197,6 +187,28 @@ class Material {
         } catch (PDOException $e) {
             error_log("Exception in deleteMaterial: " . $e->getMessage());
             return false;
+        }
+    }
+
+    public function getCategories() {
+        try {
+            $stmt = $this->conn->prepare("SELECT CategoryID, CategoryName FROM Categories");
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            error_log("Error fetching categories: " . $e->getMessage());
+            return [];
+        }
+    }
+
+    public function getSuppliers() {
+        try {
+            $stmt = $this->conn->prepare("SELECT SupplierID, Name FROM Suppliers");
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            error_log("Error fetching suppliers: " . $e->getMessage());
+            return [];
         }
     }
 }
