@@ -14,12 +14,9 @@ class Material {
                       LEFT JOIN Categories c ON m.CategoryID = c.CategoryID
                       LEFT JOIN Suppliers s ON m.SupplierID = s.SupplierID
                       ORDER BY m.CreatedAt DESC";
-            
             $stmt = $this->conn->prepare($query);
             $stmt->execute();
-            $materials = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            error_log("Fetched Materials: " . json_encode($materials));
-            return $materials;
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
             error_log("Error fetching materials: " . $e->getMessage());
             return [];
@@ -27,8 +24,8 @@ class Material {
     }
 
     public function uploadImage($file) {
-        if (!isset($file['name']) || $file['error'] !== 0) {
-            return ['error' => 'Invalid file upload.'];
+        if ($file['error'] !== UPLOAD_ERR_OK) {
+            return ['error' => 'File upload error occurred.'];
         }
 
         $targetDir = "uploads/images/";
@@ -42,11 +39,11 @@ class Material {
 
         $validTypes = ['jpg', 'jpeg', 'png', 'gif'];
         if (!in_array($fileType, $validTypes)) {
-            return ['error' => 'Only JPG, JPEG, PNG & GIF files are allowed.'];
+            return ['error' => 'Only JPG, JPEG, PNG, and GIF files are allowed.'];
         }
 
         if ($file['size'] > 5 * 1024 * 1024) {
-            return ['error' => 'File size should be less than 5MB.'];
+            return ['error' => 'File size must be less than 5MB.'];
         }
 
         if (!move_uploaded_file($file['tmp_name'], $filePath)) {
@@ -56,23 +53,13 @@ class Material {
         return ['success' => $filePath];
     }
 
-    public function addMaterial($data, $image) {
-        $requiredFields = ['name', 'categoryID', 'quantity', 'unitPrice', 'supplierID'];
+    public function addMaterial($data) {
+        $requiredFields = ['name', 'categoryID', 'supplierID', 'quantity', 'unitPrice'];
         foreach ($requiredFields as $field) {
-            if (empty($data[$field])) {
-                error_log("Validation Error: $field is required.");
+            if (!isset($data[$field]) || $data[$field] === '' || ($field === 'categoryID' && $data[$field] <= 0) || ($field === 'supplierID' && $data[$field] <= 0) || ($field === 'quantity' && $data[$field] < 0) || ($field === 'unitPrice' && $data[$field] < 0)) {
+                error_log("Validation Error: $field is invalid or missing. Value: " . ($data[$field] ?? 'unset'));
                 return false;
             }
-        }
-        
-        $imagePath = null;
-        if (!empty($image) && isset($image['name']) && $image['error'] === 0) {
-            $uploadResult = $this->uploadImage($image);
-            if (isset($uploadResult['error'])) {
-                error_log("Image Upload Error: " . $uploadResult['error']);
-                return false;
-            }
-            $imagePath = $uploadResult['success'];
         }
 
         $query = "INSERT INTO Materials (Name, CategoryID, Quantity, UnitPrice, SupplierID, MinStockLevel, ReorderLevel, UnitOfMeasure, Size, ImagePath, Description, CreatedAt, UpdatedAt, Brand, Location, SupplierContact, Status, WarrantyPeriod) 
@@ -90,7 +77,7 @@ class Material {
                 ':reorderLevel' => $data['reorderLevel'] ?? null,
                 ':unitOfMeasure' => $data['unitOfMeasure'] ?? null,
                 ':size' => $data['size'] ?? null,
-                ':imagePath' => $imagePath,
+                ':imagePath' => $data['imagePath'] ?? null,
                 ':description' => $data['description'] ?? null,
                 ':brand' => $data['brand'] ?? null,
                 ':location' => $data['location'] ?? null,
@@ -100,7 +87,7 @@ class Material {
             ]);
             return $this->conn->lastInsertId();
         } catch (PDOException $e) {
-            error_log("Exception in addMaterial: " . $e->getMessage());
+            error_log("Exception in addMaterial: " . $e->getMessage() . " | Data: " . json_encode($data));
             return false;
         }
     }
@@ -145,8 +132,6 @@ class Material {
 
     public function editMaterial($id, $data) {
         try {
-            error_log("Updating Size for Material ID $id: " . ($data['size'] ?? 'null'));
-
             $query = "UPDATE Materials SET 
                         Name = :name, 
                         CategoryID = :categoryID, 
@@ -196,7 +181,7 @@ class Material {
             }
             
             $stmt->execute($params);
-            return true;
+            return $stmt->rowCount() > 0;
         } catch (PDOException $e) {
             error_log("Exception in editMaterial: " . $e->getMessage() . " | Query: " . $query . " | Params: " . json_encode($params));
             return false;
@@ -212,54 +197,6 @@ class Material {
         } catch (PDOException $e) {
             error_log("Exception in deleteMaterial: " . $e->getMessage());
             return false;
-        }
-    }
-
-    // Helper method to fetch category by ID
-    public function getCategoryById($categoryId) {
-        try {
-            $query = "SELECT CategoryName FROM Categories WHERE CategoryID = :id";
-            $stmt = $this->conn->prepare($query);
-            $stmt->execute(['id' => $categoryId]);
-            return $stmt->fetch(PDO::FETCH_ASSOC);
-        } catch (PDOException $e) {
-            error_log("Error fetching category by ID: " . $e->getMessage());
-            return false;
-        }
-    }
-
-    // Helper method to fetch supplier by ID
-    public function getSupplierById($supplierId) {
-        try {
-            $query = "SELECT Name FROM Suppliers WHERE SupplierID = :id";
-            $stmt = $this->conn->prepare($query);
-            $stmt->execute(['id' => $supplierId]);
-            return $stmt->fetch(PDO::FETCH_ASSOC);
-        } catch (PDOException $e) {
-            error_log("Error fetching supplier by ID: " . $e->getMessage());
-            return false;
-        }
-    }
-
-    // New method to fetch related materials
-    public function getRelatedMaterials($categoryId, $excludeMaterialId) {
-        try {
-            $query = "SELECT m.*, c.CategoryName, s.Name AS SupplierName 
-                      FROM Materials m
-                      LEFT JOIN Categories c ON m.CategoryID = c.CategoryID
-                      LEFT JOIN Suppliers s ON m.SupplierID = s.SupplierID
-                      WHERE m.CategoryID = :categoryId AND m.MaterialID != :excludeId
-                      ORDER BY m.CreatedAt DESC
-                      LIMIT 5";
-            $stmt = $this->conn->prepare($query);
-            $stmt->execute([
-                ':categoryId' => $categoryId,
-                ':excludeId' => $excludeMaterialId
-            ]);
-            return $stmt->fetchAll(PDO::FETCH_ASSOC);
-        } catch (PDOException $e) {
-            error_log("Error fetching related materials: " . $e->getMessage());
-            return [];
         }
     }
 }

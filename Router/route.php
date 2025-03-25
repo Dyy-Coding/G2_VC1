@@ -75,6 +75,7 @@ $route->group('inventory', function ($route) {
     $route->get('/editmaterial/{id}', [InventoryController::class, 'materialEditForSome']);
     $route->post('/materials/update', [InventoryController::class, 'updateMaterial']);
     $route->get('/materials/delete/{id}', [InventoryController::class, 'deleteMaterial']);
+    $route->get('/materials/view/{id}', [InventoryController::class, 'viewMaterial']);
     $route->get('/category', [InventoryController::class, 'category']);
     $route->get('/order', [InventoryController::class, 'order']);
 
