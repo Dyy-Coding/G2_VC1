@@ -144,7 +144,7 @@
             <span class="nav-link-text ms-1">Account</span>
           </a>
           <ul class="dropdown-menu" id="accountDropdown" >
-            <li><a class="dropdown-item" href="/profile">Profile</a></li>
+            <li><a class="dropdown-item" href="/profile/account">Profile</a></li>
             <li><a class="dropdown-item" href="/userList">Employees</a></li>
           </ul>
         </li>
