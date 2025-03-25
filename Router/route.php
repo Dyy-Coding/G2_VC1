@@ -78,9 +78,12 @@ $route->group('inventory', function ($route) {
     $route->get('/materials/delete/{id}', [InventoryController::class, 'deleteMaterial']);
     // View detail
     $route->get('/materials/view/{id}', [InventoryController::class, 'viewMaterial']);
-    // Import and export
+    // Import 
     $route->get('/inventory/import', [InventoryController::class, 'importInventory']);
     $route->post('/inventory/import', [InventoryController::class, 'importInventory']);
+
+    // Export file
+    $route->get('/inventory/export', [InventoryController::class, 'exportInventory']);
 
 
     $route->get('/category', [InventoryController::class, 'category']);

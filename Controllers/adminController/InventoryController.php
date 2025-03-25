@@ -298,6 +298,74 @@ class InventoryController extends BaseController {
         }
     }
 
+    // New exportInventory method
+    public function exportInventory() {
+        try {
+            // Fetch all materials from the database
+            $materials = $this->material->getAllMaterials();
+
+            if (empty($materials)) {
+                $this->setFlashMessage('error', 'No materials found to export.');
+                $this->redirect('/inventory');
+                return;
+            }
+
+            // Create a new Spreadsheet object
+            $spreadsheet = new \PhpOffice\PhpSpreadsheet\Spreadsheet();
+            $sheet = $spreadsheet->getActiveSheet();
+
+            // Define the headers for the Excel file
+            $headers = [
+                'MaterialID', 'Name', 'CategoryID', 'CategoryName', 'SupplierID', 'SupplierName',
+                'Quantity', 'UnitPrice', 'MinStockLevel', 'ReorderLevel', 'UnitOfMeasure', 'Size',
+                'Description', 'Brand', 'Location', 'SupplierContact', 'Status', 'WarrantyPeriod',
+                'CreatedAt', 'UpdatedAt'
+            ];
+
+            // Set the headers in the first row
+            $column = 1;
+            foreach ($headers as $header) {
+                $sheet->setCellValueByColumnAndRow($column, 1, $header);
+                $column++;
+            }
+
+            // Populate the data rows
+            $row = 2;
+            foreach ($materials as $material) {
+                $column = 1;
+                foreach ($headers as $header) {
+                    $sheet->setCellValueByColumnAndRow($column, $row, $material[$header] ?? '');
+                    $column++;
+                }
+                $row++;
+            }
+
+            // Auto-size columns for better readability
+            foreach (range(1, count($headers)) as $columnIndex) {
+                $sheet->getColumnDimensionByColumn($columnIndex)->setAutoSize(true);
+            }
+
+            // Set the title of the sheet
+            $sheet->setTitle('Inventory Export');
+
+            // Create a writer to save the spreadsheet as an Excel file
+            $writer = new \PhpOffice\PhpSpreadsheet\Writer\Xlsx($spreadsheet);
+
+            // Set headers to force download
+            header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+            header('Content-Disposition: attachment;filename="inventory_export_' . date('Ymd_His') . '.xlsx"');
+            header('Cache-Control: max-age=0');
+
+            // Output the file to the browser
+            $writer->save('php://output');
+            exit;
+        } catch (\Exception $e) {
+            error_log("Error exporting inventory: " . $e->getMessage());
+            $this->setFlashMessage('error', 'Error exporting inventory: ' . $e->getMessage());
+            $this->redirect('/inventory');
+        }
+    }
+
     private function setFlashMessage($type, $message) {
         $_SESSION['flash_message'] = ['type' => $type, 'message' => $message];
     }

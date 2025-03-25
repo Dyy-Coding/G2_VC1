@@ -211,4 +211,22 @@ class Material {
             return [];
         }
     }
+
+    // In Material.php
+    public function getMaterialsByCategory($categoryID) {
+        try {
+            $query = "SELECT m.*, c.CategoryName, s.Name AS SupplierName 
+                    FROM Materials m
+                    LEFT JOIN Categories c ON m.CategoryID = c.CategoryID
+                    LEFT JOIN Suppliers s ON m.SupplierID = s.SupplierID
+                    WHERE m.CategoryID = :categoryID
+                    ORDER BY m.CreatedAt DESC";
+            $stmt = $this->conn->prepare($query);
+            $stmt->execute([':categoryID' => $categoryID]);
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            error_log("Error fetching materials by category: " . $e->getMessage());
+            return [];
+        }
+    }
 }
