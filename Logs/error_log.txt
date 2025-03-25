@@ -194,6 +194,7 @@
 [2025-03-21 12:53:44] Error 404: View not found
 [2025-03-21 13:07:11] Error 404: View not found
 
+<<<<<<< HEAD
 [2025-03-22 08:05:19] Error 404: View not found
 [2025-03-22 08:08:00] Error 404: View not found
 [2025-03-22 08:08:02] Error 404: View not found
@@ -251,3 +252,16 @@
 [2025-03-24 09:08:58] Error 404: View not found
 [2025-03-24 09:09:09] Error 404: View not found
 [2025-03-24 09:09:29] Error 404: View not found
+=======
+=======
+>>>>>>> origin
+>>>>>>> feature/addmeterial
+[2025-03-23 02:54:54] Error 404: View not found
+[2025-03-23 02:55:06] Error 404: View not found
+[2025-03-23 03:43:34] Error 404: View not found
+[2025-03-23 03:43:41] Error 404: View not found
+[2025-03-23 08:50:12] Error 404: View not found
+[2025-03-23 08:50:22] Error 404: View not found
+[2025-03-24 01:17:33] Error 404: View not found
+[2025-03-24 01:18:37] Error 404: View not found
+>>>>>>> 8c8c6bf454272d0befa01d059d0e8b2e2257e0bc

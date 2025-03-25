@@ -3,7 +3,11 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
+<<<<<<< HEAD
 -- Generation Time: Mar 24, 2025 at 02:38 PM
+=======
+-- Generation Time: Mar 20, 2025 at 03:00 PM
+>>>>>>> 8c8c6bf454272d0befa01d059d0e8b2e2257e0bc
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -41,6 +45,7 @@ CREATE TABLE `audit_logs` (
 --
 
 INSERT INTO `audit_logs` (`id`, `user_id`, `action`, `ip_address`, `user_agent`, `created_at`) VALUES
+<<<<<<< HEAD
 (126, 5, 'User logged in', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', '2025-03-23 10:03:43'),
 (127, NULL, 'Failed login (wrong email) for email: panha9999@gmail.com', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', '2025-03-24 01:01:27'),
 (128, NULL, 'Failed login (wrong email) for email: panha9999@gmail.com', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', '2025-03-24 01:01:37'),
@@ -73,6 +78,30 @@ INSERT INTO `audit_logs` (`id`, `user_id`, `action`, `ip_address`, `user_agent`,
 (155, 6, 'User logged out', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', '2025-03-24 09:07:00'),
 (156, 6, 'User logged in', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', '2025-03-24 09:07:02'),
 (157, 7, 'Customer registered successfully.', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', '2025-03-24 11:48:30');
+=======
+(1, 1, 'User registered successfully.', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', '2025-03-18 00:19:37'),
+(2, 1, 'User logged out', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', '2025-03-18 00:20:31'),
+(3, 1, 'User logged in', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', '2025-03-18 00:20:43'),
+(4, 1, 'User logged in', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', '2025-03-18 02:11:59'),
+(5, 1, 'User logged in', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', '2025-03-18 05:45:05'),
+(6, 1, 'User logged in', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', '2025-03-18 11:13:10'),
+(7, 1, 'User logged in', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', '2025-03-19 04:55:24'),
+(8, 1, 'User logged in', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', '2025-03-20 02:21:29'),
+(9, 1, 'User logged out', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', '2025-03-20 02:21:39'),
+(10, NULL, 'Failed login attempt for email: chandyneat9999@gmail.com', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', '2025-03-20 02:21:44'),
+(11, NULL, 'Failed login attempt for email: chandyneat9999@gmail.com', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', '2025-03-20 02:21:58'),
+(12, 1, 'User logged in', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', '2025-03-20 02:22:15'),
+(13, 1, 'User logged in', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', '2025-03-20 05:21:32'),
+(14, 1, 'User logged in', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', '2025-03-20 10:30:29'),
+(15, 1, 'User logged out', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', '2025-03-20 11:09:41'),
+(16, 1, 'User logged in', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', '2025-03-20 11:10:47'),
+(17, 1, 'User logged out', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', '2025-03-20 11:10:53'),
+(18, 2, 'User registered successfully.', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', '2025-03-20 11:11:26'),
+(19, 2, 'User logged out', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', '2025-03-20 11:12:04'),
+(20, 2, 'User logged in', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', '2025-03-20 11:13:09'),
+(21, 2, 'User logged out', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', '2025-03-20 11:16:21'),
+(22, 1, 'User logged in', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', '2025-03-20 11:16:37');
+>>>>>>> 8c8c6bf454272d0befa01d059d0e8b2e2257e0bc
 
 -- --------------------------------------------------------
 
@@ -120,6 +149,7 @@ INSERT INTO `categories` (`CategoryID`, `CategoryName`, `Description`, `CreatedA
 -- --------------------------------------------------------
 
 --
+<<<<<<< HEAD
 -- Table structure for table `customers`
 --
 
@@ -199,6 +229,8 @@ INSERT INTO `goodsreceived` (`GoodsReceivedID`, `PurchaseOrderID`, `ReceivedDate
 -- --------------------------------------------------------
 
 --
+=======
+>>>>>>> 8c8c6bf454272d0befa01d059d0e8b2e2257e0bc
 -- Table structure for table `materials`
 --
 
@@ -229,6 +261,7 @@ CREATE TABLE `materials` (
 --
 
 INSERT INTO `materials` (`MaterialID`, `Name`, `CategoryID`, `Quantity`, `UnitPrice`, `SupplierID`, `MinStockLevel`, `ReorderLevel`, `UnitOfMeasure`, `Size`, `ImagePath`, `Description`, `CreatedAt`, `UpdatedAt`, `Brand`, `Location`, `SupplierContact`, `Status`, `WarrantyPeriod`) VALUES
+<<<<<<< HEAD
 (10, 'Portland Cement', 1, 200, 5.50, 1, 50, 100, 'Bag', '50kg', 'images/cement.jpg', 'High-quality Portland cement', '2025-03-24 19:30:04', '2025-03-24 19:30:04', 'UltraBuild', 'Warehouse A', 'supplier1@example.com', '', 12),
 (11, 'Steel Rods 12mm', 2, 150, 2.30, 2, 30, 70, 'Kg', '12mm', 'images/steel.jpg', 'TMT Steel rods', '2025-03-24 19:30:04', '2025-03-24 19:30:04', 'IronFlex', 'Warehouse B', 'supplier2@example.com', '', 5),
 (12, 'Red Clay Bricks', 3, 1000, 0.30, 1, 200, 500, 'Piece', 'Standard', 'images/bricks.jpg', 'High-quality red clay bricks', '2025-03-24 19:30:04', '2025-03-24 19:30:04', 'BrickMaster', 'Yard', 'supplier1@example.com', '', 0),
@@ -254,6 +287,17 @@ INSERT INTO `materials` (`MaterialID`, `Name`, `CategoryID`, `Quantity`, `UnitPr
 (32, 'Wall Screws', 2, 800, 0.05, 3, 200, 300, 'Piece', '1.5 inch', 'images/screws.jpg', 'Galvanized wall screws', '2025-03-24 19:30:04', '2025-03-24 19:30:04', 'FixitPro', 'Warehouse A', 'supplier3@example.com', '', 0),
 (33, 'Door Lock Set', 2, 70, 12.50, 2, 20, 30, 'Set', 'Standard', 'images/lock.jpg', 'Complete door lock set', '2025-03-24 19:30:04', '2025-03-24 19:30:04', 'SecureHome', 'Warehouse D', 'supplier2@example.com', '', 3),
 (34, 'Flexible Conduit Pipe', 2, 130, 1.80, 1, 30, 70, 'Roll', '25m', 'images/conduit.jpg', 'Plastic flexible conduit', '2025-03-24 19:30:04', '2025-03-24 19:30:04', 'PipeMaster', 'Warehouse C', 'supplier1@example.com', '', 5);
+=======
+(1, 'Fan', 1, 70, 5.99, 2, 2, 7, 'kg', 'm', NULL, 'jhjhttr', '2025-03-18 17:48:45', '2025-03-18 17:48:45', 'K cement', 'Phnom penh', '07654352424', '', 2),
+(2, 'Fan', 1, 70, 5.99, 2, 2, 7, 'kg', 'm', NULL, 'jhjhttr', '2025-03-18 17:49:22', '2025-03-18 17:49:22', 'K cement', 'Phnom penh', '07654352424', '', 2),
+(3, 'Fan', 2, 0, 9.99, 1, 3, 6, 'kg', 'm3', NULL, 'gddddf', '2025-03-18 18:05:14', '2025-03-20 19:08:36', 'K cement', 'Phnom penh', '07654352424', '', 2),
+(4, 'Fan', 1, 3, 5.89, 1, 3, 6, 'kg', 'm3', NULL, 'hdhdgsg', '2025-03-18 18:12:19', '2025-03-20 19:17:32', 'K cement', 'Phnom penh', '07654352424', '', 2),
+(5, 'Fan', 1, 90, 5.89, 1, 3, 6, 'kg', 'm3', NULL, 'hdhdgsg', '2025-03-18 18:12:54', '2025-03-18 18:12:54', 'K cement', 'Phnom penh', '07654352424', '', 2),
+(6, 'lymeng', 1, 90, 5.88, 3, 2, 6, 'kg', 'kg', NULL, 'man', '2025-03-18 18:26:43', '2025-03-18 18:26:43', 'K cementmong', 'Phnom penh', '07654352486', '', 1),
+(7, 'chandy_neat', 1, 67, 5.99, 1, 2, 6, 'Bav', 'kg', NULL, 'nnnnnnbb', '2025-03-18 19:02:07', '2025-03-18 19:02:07', 'K cementmong', 'Phnom penh', '07654352486', '', 2),
+(8, 'chandy_neat', 1, 67, 5.99, 1, 2, 6, 'Bav', 'kg', NULL, 'nnnnnnbb', '2025-03-18 19:06:38', '2025-03-18 19:06:38', 'K cementmong', 'Phnom penh', '07654352486', '', 2),
+(9, 'lymeng', 19, 90, 7.99, 2, 3, 9, 'Bav', 'kg', NULL, 'hdhfdhdh', '2025-03-18 19:42:44', '2025-03-18 19:42:44', 'K cementmong', 'Phnom penh', '07654352409', '', 2);
+>>>>>>> 8c8c6bf454272d0befa01d059d0e8b2e2257e0bc
 
 -- --------------------------------------------------------
 
@@ -270,6 +314,7 @@ CREATE TABLE `password_resets` (
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+<<<<<<< HEAD
 --
 -- Dumping data for table `password_resets`
 --
@@ -414,6 +459,8 @@ INSERT INTO `purchaseorders` (`PurchaseOrderID`, `SupplierID`, `OrderDate`, `Exp
 (6, 2, '2025-03-12', '2025-03-30', 'Pending'),
 (7, 3, '2025-03-10', '2025-04-15', 'Completed');
 
+=======
+>>>>>>> 8c8c6bf454272d0befa01d059d0e8b2e2257e0bc
 -- --------------------------------------------------------
 
 --
@@ -434,7 +481,11 @@ CREATE TABLE `roles` (
 
 INSERT INTO `roles` (`role_id`, `role_name`, `description`, `created_at`, `updated_at`) VALUES
 (1, 'Admin', 'Has full access to the system, can manage all data.', '2025-01-01 02:00:00', '2025-03-20 03:00:00'),
+<<<<<<< HEAD
 (2, 'User', 'Can buy materials, orders materials, and Give feedback.', '2025-02-01 03:30:00', '2025-03-23 09:52:04'),
+=======
+(2, 'Manager', 'Can manage inventory, suppliers, and sales orders.', '2025-02-01 03:30:00', '2025-03-20 04:15:00'),
+>>>>>>> 8c8c6bf454272d0befa01d059d0e8b2e2257e0bc
 (3, 'Employee', 'Can update work logs and view sales and inventory.', '2025-03-01 07:00:00', '2025-03-20 05:00:00'),
 (4, 'Sales', 'Can only view and manage sales-related information.', '2025-03-05 01:30:00', '2025-03-20 06:30:00'),
 (5, 'Inventory Staff', 'Manages inventory stock levels and warehouse data.', '2025-03-10 09:45:00', '2025-03-20 07:00:00');
@@ -442,6 +493,7 @@ INSERT INTO `roles` (`role_id`, `role_name`, `description`, `created_at`, `updat
 -- --------------------------------------------------------
 
 --
+<<<<<<< HEAD
 -- Table structure for table `salesorderdetails`
 --
 
@@ -494,6 +546,8 @@ INSERT INTO `salesorders` (`SalesOrderID`, `CustomerID`, `OrderDate`, `DeliveryD
 -- --------------------------------------------------------
 
 --
+=======
+>>>>>>> 8c8c6bf454272d0befa01d059d0e8b2e2257e0bc
 -- Table structure for table `suppliers`
 --
 
@@ -543,21 +597,31 @@ CREATE TABLE `users` (
   `address` text DEFAULT NULL,
   `street_address` text DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+<<<<<<< HEAD
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `reset_token_hash` varchar(64) DEFAULT NULL,
   `reset_token_expires_at` datetime DEFAULT NULL
+=======
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+>>>>>>> 8c8c6bf454272d0befa01d059d0e8b2e2257e0bc
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `users`
 --
 
+<<<<<<< HEAD
 INSERT INTO `users` (`user_id`, `select_user`, `profile_image`, `first_name`, `last_name`, `email`, `phone`, `role_id`, `password`, `address`, `street_address`, `created_at`, `updated_at`, `reset_token_hash`, `reset_token_expires_at`) VALUES
 (2, 'default_value', '/public/Images/1742797703_cbfb2e265b7c88c565d101aad179352c.jpg', 'Chandy', 'Neat', 'chandyneat9999@gmail.com', '093967654', 1, '$2y$10$mjuFzLjv1SiJ51x0B2VOYem7g9eRz/dDkB.zLk9i0ekuvq.Z1Pqye', 'Phnom Penh', 'Chomka Duong', '2025-03-20 11:11:26', '2025-03-24 07:52:08', NULL, NULL),
 (3, 'Customer', 'uploads/profile1.jpg', 'Sopean', 'Phouk', 'sophean.phouk@example.com', '1234567890', 1, '$2y$10$tH5w6oJtY1rE0Te6lC.03OpsX5Jz7Fy5ipo778b0cjtuie7Skiv0C', '123 Main Street, New York, NY', 'Main Street, Apt 4B', '2025-03-21 13:33:07', '2025-03-21 13:35:53', NULL, NULL),
 (5, 'default_value', NULL, 'Chandy', 'Neat', 'chandyneat94@gmail.com', '', 2, '$2y$10$6U.SJXYRYXBO.pUpjlpUwuAOdvBqHPqSDTO7kRypTKthRSM2jsTtG', '', '', '2025-03-23 10:01:30', '2025-03-24 06:34:20', NULL, NULL),
 (6, 'default_value', NULL, 'Dyy', 'Development', 'chandy.neat@student.passerellesnumeriques.org', '', 2, '$2y$10$Mr7//LTRbwrTC8mjCDnSYuBXxPUrznsvVXPiwNdMv0BSv.vcm7hBy', '', '', '2025-03-24 03:44:09', '2025-03-24 03:44:09', NULL, NULL),
 (7, 'default_value', NULL, 'Senghin', 'Loem', 'senghin@gmail.com', '', 2, '$2y$10$WHA25lbzEwgZzN3jm/HOIerawwNst2h7AaePH0rr/qcbeXBVfTNVC', '', '', '2025-03-24 11:48:30', '2025-03-24 11:48:30', NULL, NULL);
+=======
+INSERT INTO `users` (`user_id`, `select_user`, `profile_image`, `first_name`, `last_name`, `email`, `phone`, `role_id`, `password`, `address`, `street_address`, `created_at`, `updated_at`) VALUES
+(1, 'default_value', NULL, 'chandy', 'neat', 'chandyneat94@gmail.com', '', 1, '$2y$10$w/vX6KMPNUfArPcVyViX4uQAf5R1iG9z.53o8pKpqnw0wztt83ICC', 'Chomka Duong', '', '2025-03-18 00:19:37', '2025-03-18 00:20:20'),
+(2, 'default_value', NULL, 'Chandy', 'Neat', 'chandyneat9999@gmail.com', '', 2, '$2y$10$oyNswhcyN11Bd3BEcYrcfuhSS11GZG5d0QKhacwkYDijvEWkvSqVO', 'Phnom Penh', '', '2025-03-20 11:11:26', '2025-03-20 11:11:26');
+>>>>>>> 8c8c6bf454272d0befa01d059d0e8b2e2257e0bc
 
 --
 -- Indexes for dumped tables
@@ -578,6 +642,7 @@ ALTER TABLE `categories`
   ADD UNIQUE KEY `CategoryName` (`CategoryName`);
 
 --
+<<<<<<< HEAD
 -- Indexes for table `customers`
 --
 ALTER TABLE `customers`
@@ -601,6 +666,8 @@ ALTER TABLE `goodsreceived`
   ADD KEY `EmployeeID` (`EmployeeID`);
 
 --
+=======
+>>>>>>> 8c8c6bf454272d0befa01d059d0e8b2e2257e0bc
 -- Indexes for table `materials`
 --
 ALTER TABLE `materials`
@@ -617,6 +684,7 @@ ALTER TABLE `password_resets`
   ADD KEY `user_id` (`user_id`);
 
 --
+<<<<<<< HEAD
 -- Indexes for table `payments`
 --
 ALTER TABLE `payments`
@@ -645,6 +713,8 @@ ALTER TABLE `purchaseorders`
   ADD PRIMARY KEY (`PurchaseOrderID`);
 
 --
+=======
+>>>>>>> 8c8c6bf454272d0befa01d059d0e8b2e2257e0bc
 -- Indexes for table `roles`
 --
 ALTER TABLE `roles`
@@ -652,6 +722,7 @@ ALTER TABLE `roles`
   ADD UNIQUE KEY `role_name` (`role_name`);
 
 --
+<<<<<<< HEAD
 -- Indexes for table `salesorderdetails`
 --
 ALTER TABLE `salesorderdetails`
@@ -667,6 +738,8 @@ ALTER TABLE `salesorders`
   ADD KEY `CustomerID` (`CustomerID`);
 
 --
+=======
+>>>>>>> 8c8c6bf454272d0befa01d059d0e8b2e2257e0bc
 -- Indexes for table `suppliers`
 --
 ALTER TABLE `suppliers`
@@ -677,8 +750,12 @@ ALTER TABLE `suppliers`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`user_id`),
+<<<<<<< HEAD
   ADD UNIQUE KEY `email` (`email`),
   ADD UNIQUE KEY `reset_token_hash` (`reset_token_hash`);
+=======
+  ADD UNIQUE KEY `email` (`email`);
+>>>>>>> 8c8c6bf454272d0befa01d059d0e8b2e2257e0bc
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -688,7 +765,11 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `audit_logs`
 --
 ALTER TABLE `audit_logs`
+<<<<<<< HEAD
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=158;
+=======
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+>>>>>>> 8c8c6bf454272d0befa01d059d0e8b2e2257e0bc
 
 --
 -- AUTO_INCREMENT for table `categories`
@@ -697,6 +778,7 @@ ALTER TABLE `categories`
   MODIFY `CategoryID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
+<<<<<<< HEAD
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
@@ -719,11 +801,18 @@ ALTER TABLE `goodsreceived`
 --
 ALTER TABLE `materials`
   MODIFY `MaterialID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+=======
+-- AUTO_INCREMENT for table `materials`
+--
+ALTER TABLE `materials`
+  MODIFY `MaterialID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+>>>>>>> 8c8c6bf454272d0befa01d059d0e8b2e2257e0bc
 
 --
 -- AUTO_INCREMENT for table `password_resets`
 --
 ALTER TABLE `password_resets`
+<<<<<<< HEAD
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
@@ -749,6 +838,9 @@ ALTER TABLE `permission_roles`
 --
 ALTER TABLE `purchaseorders`
   MODIFY `PurchaseOrderID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+=======
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+>>>>>>> 8c8c6bf454272d0befa01d059d0e8b2e2257e0bc
 
 --
 -- AUTO_INCREMENT for table `roles`
@@ -757,6 +849,7 @@ ALTER TABLE `roles`
   MODIFY `role_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
+<<<<<<< HEAD
 -- AUTO_INCREMENT for table `salesorderdetails`
 --
 ALTER TABLE `salesorderdetails`
@@ -769,6 +862,8 @@ ALTER TABLE `salesorders`
   MODIFY `SalesOrderID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
+=======
+>>>>>>> 8c8c6bf454272d0befa01d059d0e8b2e2257e0bc
 -- AUTO_INCREMENT for table `suppliers`
 --
 ALTER TABLE `suppliers`
@@ -778,7 +873,11 @@ ALTER TABLE `suppliers`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
+<<<<<<< HEAD
   MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+=======
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+>>>>>>> 8c8c6bf454272d0befa01d059d0e8b2e2257e0bc
 
 --
 -- Constraints for dumped tables
@@ -791,6 +890,7 @@ ALTER TABLE `audit_logs`
   ADD CONSTRAINT `audit_logs_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE SET NULL;
 
 --
+<<<<<<< HEAD
 -- Constraints for table `goodsreceived`
 --
 ALTER TABLE `goodsreceived`
@@ -798,6 +898,8 @@ ALTER TABLE `goodsreceived`
   ADD CONSTRAINT `goodsreceived_ibfk_2` FOREIGN KEY (`EmployeeID`) REFERENCES `employees` (`EmployeeID`);
 
 --
+=======
+>>>>>>> 8c8c6bf454272d0befa01d059d0e8b2e2257e0bc
 -- Constraints for table `materials`
 --
 ALTER TABLE `materials`
@@ -809,6 +911,7 @@ ALTER TABLE `materials`
 --
 ALTER TABLE `password_resets`
   ADD CONSTRAINT `password_resets_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE;
+<<<<<<< HEAD
 
 --
 -- Constraints for table `payments`
@@ -835,11 +938,14 @@ ALTER TABLE `salesorderdetails`
 --
 ALTER TABLE `salesorders`
   ADD CONSTRAINT `salesorders_ibfk_1` FOREIGN KEY (`CustomerID`) REFERENCES `customers` (`CustomerID`);
+=======
+>>>>>>> 8c8c6bf454272d0befa01d059d0e8b2e2257e0bc
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+<<<<<<< HEAD
 
 
 --------------------------------------------------------------
@@ -862,3 +968,5 @@ FOREIGN KEY (role_id)
 REFERENCES roles(role_id);
 
 --------------------------------------------------------------
+=======
+>>>>>>> 8c8c6bf454272d0befa01d059d0e8b2e2257e0bc

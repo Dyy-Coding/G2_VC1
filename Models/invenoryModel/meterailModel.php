@@ -105,6 +105,7 @@ class Material {
         }
     }
 
+<<<<<<< HEAD
     public function getCategories() {
         try {
             $stmt = $this->conn->prepare("SELECT CategoryID, CategoryName FROM Categories");
@@ -115,6 +116,9 @@ class Material {
             return [];
         }
     }
+=======
+
+>>>>>>> 8c8c6bf454272d0befa01d059d0e8b2e2257e0bc
 
     public function getSuppliers() {
         try {
