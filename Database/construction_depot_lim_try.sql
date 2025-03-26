@@ -627,6 +627,12 @@ INSERT INTO `users` (`user_id`, `select_user`, `profile_image`, `first_name`, `l
 -- Indexes for dumped tables
 --
 
+
+-- Update image for user table 
+UPDATE users 
+SET profile_image = '/uploads/profile.jpg' 
+WHERE user_id = 1;
+
 --
 -- Indexes for table `audit_logs`
 --

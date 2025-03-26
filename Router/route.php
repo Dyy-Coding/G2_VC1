@@ -89,6 +89,9 @@ $route->group('inventory', function ($route) {
 });
 
 $route->group('profile', function ($route) {
+    // Profile admin
+    $route->get('/profile/account', [ProfileAccountController::class, 'profileadmin']);
+
     // $route->get('/addusersform', [AccountController::class, 'viewAddusersForm']);
     $route->get('/userList', [AccountListController::class, 'viewUsersAccListProfile']);
     $route->get('/userdetail', [AccountListController::class, 'viewUserDetail']);
