@@ -12,6 +12,7 @@ class AccountListController extends BaseController
     function __construct()
     {
         $this->model = new AdminUserListModel();
+        
     }
 
     // get all users from database

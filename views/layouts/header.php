@@ -23,6 +23,12 @@
 <script src="views/assets/JavaScript/adminuseraccount/userlist.js" defer></script>
 <link rel="stylesheet" href="views/assets/css/adminaccountuser/adminUserList.css">
 
+<!-- admin account -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<link rel="stylesheet" href="views/assets/css/adminprofile/adminprofile.css">
+
+
 <!-- three-dot menu for user list -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -35,8 +41,9 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 
+
 <!-- CSS Files -->
-<link id="pagestyle" href="views/assets/css/argon-dashboard.css?v=2.1.0" rel="stylesheet" />
+<link id="pagestyle" href="/views/assets/css/argon-dashboard.css?v=2.1.0" rel="stylesheet" />
 
 </head>
 <body class="g-sidenav-show   bg-gray-100">
@@ -49,7 +56,7 @@
         aria-hidden="true" id="iconSidenav"></i>
       <a class="navbar-brand m-0" href=" #"
         target="_blank">
-        <img src="views/assets/img/logos/logo.png" width="26px" height="26px" class="navbar-brand-img h-100"
+        <img src="views/assets/img/logo-ct-dark.png" width="30%" height="30%" class="navbar-brand-img h-100"
           alt="main_logo">
         <span class="ms-1 font-weight-bold">Lim Try</span>
       </a>

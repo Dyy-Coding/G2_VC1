@@ -29259,7 +29259,8 @@ feature/account
 
 #inventoryDropdown, #accountDropdown {
   display: none;
-  text-align: center;
+  position: relative;
+  left: 45px;
 }
 
 .input-group-text {
@@ -29300,3 +29301,16 @@ feature/account
   
 }
 
+.td-product{
+  display: flex;
+  position: relative;
+  left: 30px;
+}
+
+.btn-detail{
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  gap: 15px;
+  margin-top: 3%;
+}

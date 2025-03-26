@@ -64,24 +64,29 @@ class Router
     public function route()
     {
         $currentUri = trim($this->uri, '/'); // Clean the current URI
-
+    
         foreach ($this->routes as $route) {
             $routeUri = trim($route['uri'], '/'); // Clean the route URI
-
+    
             // Match dynamic URL segments like {id}
             $pattern = preg_replace('/\{([a-zA-Z0-9_]+)\}/', '(?P<$1>[a-zA-Z0-9_]+)', $routeUri);
-
+    
             // Check if the current URI matches the route pattern and method
             if ($this->method === $route['method'] && preg_match("#^{$pattern}$#", $currentUri, $matches)) {
                 array_shift($matches); // Remove the full match (we don't need it)
-
+    
                 // Extract controller and method
                 $controllerClass = $route['action'][0];
                 $method = $route['action'][1];
-
+    
                 // Instantiate controller and call the method
                 if (class_exists($controllerClass) && method_exists($controllerClass, $method)) {
                     $controller = new $controllerClass();
+    
+                    // Filter out named keys from $matches (keep only positional values)
+                    $matches = array_values($matches);
+    
+                    // Call the controller method with positional arguments
                     call_user_func_array([$controller, $method], $matches);
                     return;
                 } else {
@@ -90,11 +95,11 @@ class Router
                 }
             }
         }
-
+    
         // No matching route found
         $this->handleError(404, "Page '{$this->uri}' does not exist.");
     }
-
+    
     // Method to handle error responses
     private function handleError($statusCode, $message)
     {
