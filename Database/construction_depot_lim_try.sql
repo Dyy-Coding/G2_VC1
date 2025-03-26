@@ -3,11 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
-<<<<<<< HEAD
--- Generation Time: Mar 24, 2025 at 02:38 PM
-=======
--- Generation Time: Mar 20, 2025 at 03:00 PM
->>>>>>> 8c8c6bf454272d0befa01d059d0e8b2e2257e0bc
+-- Generation Time: Mar 26, 2025 at 11:55 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -45,40 +41,6 @@ CREATE TABLE `audit_logs` (
 --
 
 INSERT INTO `audit_logs` (`id`, `user_id`, `action`, `ip_address`, `user_agent`, `created_at`) VALUES
-<<<<<<< HEAD
-(126, 5, 'User logged in', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', '2025-03-23 10:03:43'),
-(127, NULL, 'Failed login (wrong email) for email: panha9999@gmail.com', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', '2025-03-24 01:01:27'),
-(128, NULL, 'Failed login (wrong email) for email: panha9999@gmail.com', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', '2025-03-24 01:01:37'),
-(129, 2, 'User logged in', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', '2025-03-24 01:01:56'),
-(130, 2, 'User logged out', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', '2025-03-24 01:34:10'),
-(131, 6, 'Customer registered successfully.', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', '2025-03-24 03:44:09'),
-(132, 6, 'User logged out', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', '2025-03-24 03:44:17'),
-(133, 2, 'Password reset token generated.', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', '2025-03-24 04:20:19'),
-(134, 2, 'Password reset token generated.', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', '2025-03-24 05:34:06'),
-(135, 2, 'Password reset token generated.', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', '2025-03-24 05:40:06'),
-(136, 2, 'Password reset token generated.', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', '2025-03-24 05:46:13'),
-(137, 2, 'Password reset token generated.', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', '2025-03-24 05:49:16'),
-(138, 2, 'Password reset token generated.', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', '2025-03-24 05:55:28'),
-(139, 2, 'Password reset token generated.', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', '2025-03-24 06:00:03'),
-(140, 2, 'Password reset token generated.', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', '2025-03-24 06:06:29'),
-(141, 2, 'Password reset token generated.', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', '2025-03-24 06:11:33'),
-(142, 2, 'Password reset token generated.', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', '2025-03-24 06:18:19'),
-(143, 2, 'User logged in', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', '2025-03-24 06:26:11'),
-(144, 2, 'User logged out', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', '2025-03-24 06:28:58'),
-(145, NULL, 'Failed login (wrong password) for email: chandyneat9999@gmail.com', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', '2025-03-24 06:33:31'),
-(146, NULL, 'Failed login (wrong password) for email: chandyneat9999@gmail.com', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', '2025-03-24 06:33:46'),
-(147, NULL, 'Failed login (wrong password) for email: chandyneat94@gmail.com', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', '2025-03-24 06:34:04'),
-(148, NULL, 'Failed login (wrong password) for email: chandyneat94@gmail.com', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', '2025-03-24 06:34:38'),
-(149, 2, 'Password reset token generated.', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', '2025-03-24 07:48:08'),
-(150, 2, 'Password reset token generated.', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', '2025-03-24 07:55:00'),
-(151, 6, 'Password reset token generated.', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', '2025-03-24 07:56:22'),
-(152, 2, 'Password reset token generated.', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', '2025-03-24 08:06:45'),
-(153, 2, 'Password reset token generated.', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', '2025-03-24 08:29:19'),
-(154, 6, 'User logged in', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', '2025-03-24 08:37:41'),
-(155, 6, 'User logged out', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', '2025-03-24 09:07:00'),
-(156, 6, 'User logged in', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', '2025-03-24 09:07:02'),
-(157, 7, 'Customer registered successfully.', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', '2025-03-24 11:48:30');
-=======
 (1, 1, 'User registered successfully.', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', '2025-03-18 00:19:37'),
 (2, 1, 'User logged out', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', '2025-03-18 00:20:31'),
 (3, 1, 'User logged in', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', '2025-03-18 00:20:43'),
@@ -101,7 +63,6 @@ INSERT INTO `audit_logs` (`id`, `user_id`, `action`, `ip_address`, `user_agent`,
 (20, 2, 'User logged in', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', '2025-03-20 11:13:09'),
 (21, 2, 'User logged out', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', '2025-03-20 11:16:21'),
 (22, 1, 'User logged in', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', '2025-03-20 11:16:37');
->>>>>>> 8c8c6bf454272d0befa01d059d0e8b2e2257e0bc
 
 -- --------------------------------------------------------
 
@@ -149,7 +110,6 @@ INSERT INTO `categories` (`CategoryID`, `CategoryName`, `Description`, `CreatedA
 -- --------------------------------------------------------
 
 --
-<<<<<<< HEAD
 -- Table structure for table `customers`
 --
 
@@ -159,20 +119,60 @@ CREATE TABLE `customers` (
   `ContactPerson` varchar(100) DEFAULT NULL,
   `Phone` varchar(20) NOT NULL,
   `Email` varchar(100) NOT NULL,
-  `Address` text NOT NULL,
-  `CreatedAt` timestamp NOT NULL DEFAULT current_timestamp(),
-  `UpdatedAt` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `Address` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `customers`
 --
 
-INSERT INTO `customers` (`CustomerID`, `Name`, `ContactPerson`, `Phone`, `Email`, `Address`, `CreatedAt`, `UpdatedAt`) VALUES
-(1, 'John Doe', 'John Doe', '123-456-7890', 'john.doe@example.com', '1234 Elm Street, Springfield', '2025-03-21 13:53:38', '2025-03-21 13:53:38'),
-(2, 'Jane Smith', 'Jane Smith', '987-654-3210', 'jane.smith@example.com', '5678 Oak Avenue, Rivertown', '2025-03-21 13:53:38', '2025-03-21 13:53:38'),
-(3, 'Acme Corp.', 'Michael Johnson', '555-123-4567', 'contact@acmecorp.com', '4321 Maple Lane, Business City', '2025-03-21 13:53:38', '2025-03-21 13:53:38'),
-(4, 'Tech Solutions', 'Sarah Lee', '666-987-6543', 'sarah.lee@techsol.com', '8765 Pine Road, Tech City', '2025-03-21 13:53:38', '2025-03-21 13:53:38');
+INSERT INTO `customers` (`CustomerID`, `Name`, `ContactPerson`, `Phone`, `Email`, `Address`) VALUES
+(47, 'Kingdom Builders', 'John Doe', '123-456-7890', 'contact@kingdombuilders.com', '123 Building St, City, Country'),
+(48, 'Urban Developers', 'Jane Smith', '234-567-8901', 'info@urbandesign.com', '456 City Rd, City, Country'),
+(49, 'Metro Construction', 'Robert Brown', '345-678-9012', 'robert@metroconstruction.com', '789 Industrial Ave, City, Country'),
+(50, 'Bright Future Co.', 'Emily Clark', '456-789-0123', 'emily@brightfuture.com', '101 Business Blvd, City, Country'),
+(51, 'Rapid Builders', 'Michael Green', '567-890-1234', 'michael@rapidbuilders.com', '202 Fast Lane, City, Country'),
+(52, 'Skyline Construction', 'Alice Johnson', '678-901-2345', 'alice@skylineconstr.com', '303 Sky High St, City, Country'),
+(53, 'Pioneer Developers', 'David Wilson', '789-012-3456', 'david@pioneerdevelopers.com', '404 Pioneer Rd, City, Country'),
+(54, 'Grand Build Ltd.', 'Sarah Miller', '890-123-4567', 'sarah@grandbuild.com', '505 Grand Ave, City, Country'),
+(55, 'Prestige Construction', 'William Taylor', '901-234-5678', 'william@prestigeconstruct.com', '606 Prestige Blvd, City, Country'),
+(56, 'Elite Builders', 'Olivia Lee', '012-345-6789', 'olivia@elitebuilders.com', '707 Elite Rd, City, Country'),
+(57, 'Advance Engineering', 'James Harris', '123-456-7892', 'james@advanceeng.com', '808 Advance St, City, Country'),
+(58, 'Sunrise Construction', 'Sophia Clark', '234-567-8903', 'sophia@sunriseconstr.com', '909 Sunrise Blvd, City, Country'),
+(59, 'Solid Foundations', 'Liam Lewis', '345-678-9013', 'liam@solidfoundations.com', '1010 Solid Ave, City, Country'),
+(60, 'Northern Builders', 'Benjamin Walker', '456-789-0124', 'benjamin@northernbuilders.com', '1111 Northern St, City, Country'),
+(61, 'Vista Builders', 'Lucas Allen', '567-890-1235', 'lucas@vistabuilders.com', '1212 Vista Rd, City, Country'),
+(62, 'Urban Dynamics', 'Charlotte Young', '678-901-2346', 'charlotte@urbandynamics.com', '1313 Urban Ave, City, Country'),
+(63, 'Innovative Constructions', 'Henry King', '789-012-3457', 'henry@innovativeconstr.com', '1414 Innovation Blvd, City, Country'),
+(64, 'Diamond Construction', 'Amelia Scott', '890-123-4568', 'amelia@diamondconstruction.com', '1515 Diamond St, City, Country'),
+(65, 'Ocean Builders', 'Ethan Adams', '901-234-5679', 'ethan@oceanbuilders.com', '1616 Ocean Blvd, City, Country'),
+(66, 'Core Developers', 'Grace Baker', '012-345-6790', 'grace@coredevelopers.com', '1717 Core Rd, City, Country'),
+(67, 'Golden Age Construction', 'Alexander Moore', '123-456-7893', 'alexander@goldenage.com', '1818 Golden St, City, Country'),
+(68, 'NextGen Builders', 'Mason Lee', '234-567-8904', 'mason@nextgenbuilders.com', '1919 Nextgen Blvd, City, Country'),
+(69, 'Evergreen Builders', 'Isabella Davis', '345-678-9014', 'isabella@evergreenbuilders.com', '2020 Evergreen Rd, City, Country'),
+(70, 'Premier Construction', 'Mia Rodriguez', '456-789-0125', 'mia@premierconstruction.com', '2121 Premier Ave, City, Country'),
+(71, 'Genesis Construction', 'Elijah Martinez', '567-890-1236', 'elijah@genesisconstruction.com', '2222 Genesis St, City, Country'),
+(72, 'Noble Builders', 'Zoe Gonzalez', '678-901-2347', 'zoe@noblebuilders.com', '2323 Noble Rd, City, Country'),
+(73, 'Focus Construction', 'Jack Wilson', '789-012-3458', 'jack@focusconstruction.com', '2424 Focus Ave, City, Country'),
+(74, 'Brilliant Builders', 'Harper White', '890-123-4569', 'harper@brilliantbuilders.com', '2525 Brilliant Blvd, City, Country'),
+(75, 'Mighty Construction', 'Sebastian King', '901-234-5680', 'sebastian@mightyconstruction.com', '2626 Mighty Rd, City, Country'),
+(76, 'Next Level Builders', 'Amos Harris', '012-345-6791', 'amos@nextlevelbuilders.com', '2727 Next Level St, City, Country'),
+(77, 'Horizon Builders', 'Jackie Clark', '123-456-7894', 'jackie@horizonbuilders.com', '2828 Horizon Ave, City, Country'),
+(78, 'Infinity Construction', 'Evelyn Martinez', '234-567-8905', 'evelyn@infinityconstruction.com', '2929 Infinity Rd, City, Country'),
+(79, 'Visionary Builders', 'Lily Thompson', '345-678-9015', 'lily@visionarybuilders.com', '3030 Visionary Blvd, City, Country'),
+(80, 'Precision Construction', 'Daniel Allen', '456-789-0126', 'daniel@precisionconstruction.com', '3131 Precision St, City, Country'),
+(81, 'Skyline Engineering', 'Ella White', '567-890-1237', 'ella@skylineeng.com', '3232 Skyline Rd, City, Country'),
+(82, 'Titan Builders', 'Aiden Harris', '678-901-2348', 'aiden@titanbuilders.com', '3333 Titan Ave, City, Country'),
+(83, 'Metro City Developers', 'Nora King', '789-012-3459', 'nora@metrocities.com', '3434 Metro City Blvd, City, Country'),
+(84, 'Silverstone Construction', 'Leo Moore', '890-123-4570', 'leo@silverstoneconstruction.com', '3535 Silverstone Rd, City, Country'),
+(85, 'Majestic Builders', 'Liam Clark', '901-234-5681', 'liam@majesticbuilders.com', '3636 Majestic St, City, Country'),
+(86, 'Premier Development', 'Ella Lee', '012-345-6792', 'ella@premierdevelopment.com', '3737 Premier Blvd, City, Country'),
+(87, 'NorthStar Construction', 'Chloe Taylor', '123-456-7895', 'chloe@northstarconstruction.com', '3838 NorthStar Rd, City, Country'),
+(88, 'Pinnacle Builders', 'Ethan Brown', '234-567-8906', 'ethan@pinnaclebuilders.com', '3939 Pinnacle St, City, Country'),
+(89, 'Benchmark Construction', 'Liam Johnson', '345-678-9016', 'liam@benchmarkconstruction.com', '4040 Benchmark Ave, City, Country'),
+(90, 'Elite Engineering', 'Amelia Green', '456-789-0127', 'amelia@eliteengineering.com', '4141 Elite Rd, City, Country'),
+(91, 'Grand Design Builders', 'Sophia Carter', '567-890-1238', 'sophia@granddesign.com', '4242 Grand Design Blvd, City, Country'),
+(92, 'SilverRock Developers', 'Jacob Walker', '678-901-2349', 'jacob@silverrock.com', '4343 SilverRock Rd, City, Country');
 
 -- --------------------------------------------------------
 
@@ -182,24 +182,60 @@ INSERT INTO `customers` (`CustomerID`, `Name`, `ContactPerson`, `Phone`, `Email`
 
 CREATE TABLE `employees` (
   `EmployeeID` int(11) NOT NULL,
-  `Name` varchar(100) DEFAULT NULL,
-  `Position` varchar(100) DEFAULT NULL,
+  `Name` varchar(100) NOT NULL,
+  `Position` varchar(100) NOT NULL,
   `Phone` varchar(20) DEFAULT NULL,
   `Email` varchar(100) DEFAULT NULL,
-  `Salary` decimal(10,2) DEFAULT NULL,
-  `HireDate` date DEFAULT NULL
+  `Salary` decimal(10,2) NOT NULL CHECK (`Salary` >= 0),
+  `HireDate` date NOT NULL,
+  `CreatedAt` timestamp NOT NULL DEFAULT current_timestamp(),
+  `UpdatedAt` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `employees`
 --
 
-INSERT INTO `employees` (`EmployeeID`, `Name`, `Position`, `Phone`, `Email`, `Salary`, `HireDate`) VALUES
-(1, 'John Doe', 'Manager', '123-456-7890', 'johndoe@example.com', 5000.00, '2025-03-01'),
-(2, 'Jane Smith', 'Assistant Manager', '123-456-7891', 'janesmith@example.com', 4000.00, '2024-11-15'),
-(3, 'Mike Johnson', 'Sales Representative', '123-456-7892', 'mikejohnson@example.com', 3000.00, '2023-06-20'),
-(4, 'Emily Davis', 'Warehouse Supervisor', '123-456-7893', 'emilydavis@example.com', 3500.00, '2022-08-10'),
-(5, 'David Clark', 'Logistics Coordinator', '123-456-7894', 'davidclark@example.com', 3800.00, '2023-02-25');
+INSERT INTO `employees` (`EmployeeID`, `Name`, `Position`, `Phone`, `Email`, `Salary`, `HireDate`, `CreatedAt`, `UpdatedAt`) VALUES
+(1, 'John Doe', 'Site Manager', '0123456789', 'johndoe@example.com', 3500.00, '2020-05-10', '2025-03-26 07:49:58', '2025-03-26 07:49:58'),
+(2, 'Jane Smith', 'Project Engineer', '0987654321', 'janesmith@example.com', 4500.00, '2019-08-15', '2025-03-26 07:49:58', '2025-03-26 07:49:58'),
+(3, 'Michael Brown', 'Foreman', '0112233445', 'michaelbrown@example.com', 2800.00, '2021-03-20', '2025-03-26 07:49:58', '2025-03-26 07:49:58'),
+(4, 'Emily Davis', 'Safety Officer', '0156789012', 'emilydavis@example.com', 3200.00, '2022-01-10', '2025-03-26 07:49:58', '2025-03-26 07:49:58'),
+(5, 'Robert Wilson', 'Civil Engineer', '0176543210', 'robertwilson@example.com', 5000.00, '2018-06-25', '2025-03-26 07:49:58', '2025-03-26 07:49:58'),
+(6, 'Sarah Johnson', 'Accountant', '0134455667', 'sarahjohnson@example.com', 4000.00, '2020-09-12', '2025-03-26 07:49:58', '2025-03-26 07:49:58'),
+(7, 'David Martinez', 'Warehouse Supervisor', '0192837465', 'davidmartinez@example.com', 3700.00, '2021-07-05', '2025-03-26 07:49:58', '2025-03-26 07:49:58'),
+(8, 'Linda Anderson', 'Procurement Officer', '0167483920', 'lindaanderson@example.com', 4200.00, '2019-11-30', '2025-03-26 07:49:58', '2025-03-26 07:49:58'),
+(9, 'James Thomas', 'Electrician', '0129384756', 'jamesthomas@example.com', 2700.00, '2023-02-14', '2025-03-26 07:49:58', '2025-03-26 07:49:58'),
+(10, 'Jessica White', 'HR Manager', '0148392756', 'jessicawhite@example.com', 4300.00, '2017-04-18', '2025-03-26 07:49:58', '2025-03-26 07:49:58'),
+(33, 'John Doe', 'Site Manager', '0923456789', 'johndy@example.com', 3500.00, '2020-05-10', '2025-03-26 07:53:57', '2025-03-26 07:53:57'),
+(34, 'Jane Smith', 'Project Engineer', '0587654321', 'dysmith@example.com', 4500.00, '2019-08-15', '2025-03-26 07:53:57', '2025-03-26 07:53:57');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `expenses`
+--
+
+CREATE TABLE `expenses` (
+  `ExpenseID` int(11) NOT NULL,
+  `Description` text NOT NULL,
+  `Amount` decimal(10,2) NOT NULL,
+  `date_expenses` date DEFAULT NULL,
+  `EmployeeID` int(11) DEFAULT NULL,
+  `Category` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `expenses`
+--
+
+INSERT INTO `expenses` (`ExpenseID`, `Description`, `Amount`, `date_expenses`, `EmployeeID`, `Category`) VALUES
+(1, 'Material purchase for site A', 250.50, '2024-03-01', 1, 'Materials'),
+(2, 'Transportation fees for delivery', 75.00, '2024-03-02', 2, 'Logistics'),
+(3, 'Employee training seminar', 200.00, '2024-03-03', 3, 'Training'),
+(4, 'Safety equipment purchase', 120.00, '2024-03-04', 4, 'Safety'),
+(5, 'Site cleaning and maintenance', 100.00, '2024-03-05', 5, 'Maintenance'),
+(6, 'Office rent for March', 500.00, '2025-03-26', 6, 'Rent');
 
 -- --------------------------------------------------------
 
@@ -210,27 +246,52 @@ INSERT INTO `employees` (`EmployeeID`, `Name`, `Position`, `Phone`, `Email`, `Sa
 CREATE TABLE `goodsreceived` (
   `GoodsReceivedID` int(11) NOT NULL,
   `PurchaseOrderID` int(11) DEFAULT NULL,
-  `ReceivedDate` date DEFAULT NULL,
-  `EmployeeID` int(11) DEFAULT NULL
+  `ReceivedDate` date NOT NULL,
+  `EmployeeID` int(11) DEFAULT NULL,
+  `TotalReceivedAmount` decimal(10,2) DEFAULT NULL,
+  `Status` enum('Pending','Completed','Partially Received') DEFAULT 'Pending',
+  `CreatedAt` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `goodsreceived`
 --
 
-INSERT INTO `goodsreceived` (`GoodsReceivedID`, `PurchaseOrderID`, `ReceivedDate`, `EmployeeID`) VALUES
-(7, 1, '2025-04-05', 1),
-(8, 2, '2025-04-01', 2),
-(9, 3, '2025-04-10', 3),
-(10, 5, '2025-03-28', 1),
-(11, 6, '2025-03-30', 4),
-(12, 7, '2025-04-15', 2);
+INSERT INTO `goodsreceived` (`GoodsReceivedID`, `PurchaseOrderID`, `ReceivedDate`, `EmployeeID`, `TotalReceivedAmount`, `Status`, `CreatedAt`) VALUES
+(1, 1, '2024-03-06', 3, 350.00, 'Completed', '2025-03-26 07:56:37'),
+(2, 2, '2024-03-08', 1, 400.00, 'Partially Received', '2025-03-26 07:56:37'),
+(3, 1, '2024-03-06', 3, 350.00, 'Completed', '2025-03-26 07:57:18'),
+(4, 2, '2024-03-08', 1, 400.00, 'Partially Received', '2025-03-26 07:57:18'),
+(5, NULL, '2025-03-26', NULL, 800.00, 'Pending', '2025-03-26 10:46:39');
 
 -- --------------------------------------------------------
 
 --
-=======
->>>>>>> 8c8c6bf454272d0befa01d059d0e8b2e2257e0bc
+-- Table structure for table `invoices`
+--
+
+CREATE TABLE `invoices` (
+  `InvoiceID` int(11) NOT NULL,
+  `SalesOrderID` int(11) DEFAULT NULL,
+  `InvoiceDate` date NOT NULL,
+  `PaymentStatus` enum('Paid','Pending','Overdue') NOT NULL,
+  `Amount` decimal(10,2) NOT NULL,
+  `payment_status` enum('Pending','Paid','Failed') DEFAULT 'Pending'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `invoices`
+--
+
+INSERT INTO `invoices` (`InvoiceID`, `SalesOrderID`, `InvoiceDate`, `PaymentStatus`, `Amount`, `payment_status`) VALUES
+(1, NULL, '2025-03-26', 'Paid', 300.00, 'Paid'),
+(7, 3, '2024-03-06', 'Paid', 1200.00, 'Pending'),
+(8, 4, '2024-03-07', 'Pending', 800.00, 'Pending'),
+(9, 5, '2024-03-08', 'Overdue', 650.00, 'Pending');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `materials`
 --
 
@@ -261,33 +322,6 @@ CREATE TABLE `materials` (
 --
 
 INSERT INTO `materials` (`MaterialID`, `Name`, `CategoryID`, `Quantity`, `UnitPrice`, `SupplierID`, `MinStockLevel`, `ReorderLevel`, `UnitOfMeasure`, `Size`, `ImagePath`, `Description`, `CreatedAt`, `UpdatedAt`, `Brand`, `Location`, `SupplierContact`, `Status`, `WarrantyPeriod`) VALUES
-<<<<<<< HEAD
-(10, 'Portland Cement', 1, 200, 5.50, 1, 50, 100, 'Bag', '50kg', 'images/cement.jpg', 'High-quality Portland cement', '2025-03-24 19:30:04', '2025-03-24 19:30:04', 'UltraBuild', 'Warehouse A', 'supplier1@example.com', '', 12),
-(11, 'Steel Rods 12mm', 2, 150, 2.30, 2, 30, 70, 'Kg', '12mm', 'images/steel.jpg', 'TMT Steel rods', '2025-03-24 19:30:04', '2025-03-24 19:30:04', 'IronFlex', 'Warehouse B', 'supplier2@example.com', '', 5),
-(12, 'Red Clay Bricks', 3, 1000, 0.30, 1, 200, 500, 'Piece', 'Standard', 'images/bricks.jpg', 'High-quality red clay bricks', '2025-03-24 19:30:04', '2025-03-24 19:30:04', 'BrickMaster', 'Yard', 'supplier1@example.com', '', 0),
-(13, 'River Sand', 1, 300, 12.00, 3, 50, 150, 'Cubic Meter', 'Standard', 'images/sand.jpg', 'Clean river sand', '2025-03-24 19:30:04', '2025-03-24 19:30:04', 'SandPro', 'Warehouse C', 'supplier3@example.com', '', 0),
-(14, 'Ceramic Floor Tiles', 4, 80, 20.00, 2, 20, 40, 'Box', '24x24', 'images/tiles.jpg', 'Ceramic tiles for flooring', '2025-03-24 19:30:04', '2025-03-24 19:30:04', 'TileZone', 'Warehouse A', 'supplier2@example.com', '', 2),
-(15, 'White Paint (Interior)', 5, 60, 18.00, 4, 10, 25, 'Gallon', '4L', 'images/paint.jpg', 'Interior white wall paint', '2025-03-24 19:30:04', '2025-03-24 19:30:04', 'ColorTech', 'Warehouse D', 'supplier4@example.com', '', 3),
-(16, 'Plywood Sheet 12mm', 1, 100, 15.00, 3, 20, 50, 'Piece', '12mm', 'images/plywood.jpg', 'Construction grade plywood', '2025-03-24 19:30:04', '2025-03-24 19:30:04', 'WoodWorks', 'Warehouse B', 'supplier3@example.com', '', 2),
-(17, 'PVC Pipes 2 Inch', 2, 250, 3.00, 1, 60, 120, 'Piece', '2 inch', 'images/pvc_pipe.jpg', 'PVC pipe for plumbing', '2025-03-24 19:30:04', '2025-03-24 19:30:04', 'PipeMaster', 'Warehouse C', 'supplier1@example.com', '', 10),
-(18, 'Electrical Wire 1.5mm', 2, 400, 0.80, 2, 100, 200, 'Roll', '1.5mm', 'images/wire.jpg', 'Copper electrical wire', '2025-03-24 19:30:04', '2025-03-24 19:30:04', 'ElectroFlex', 'Warehouse D', 'supplier2@example.com', '', 5),
-(19, 'Switch Box (Plastic)', 2, 150, 1.20, 4, 30, 70, 'Piece', 'Standard', 'images/switchbox.jpg', 'Plastic electrical switch box', '2025-03-24 19:30:04', '2025-03-24 19:30:04', 'SafeElectro', 'Warehouse A', 'supplier4@example.com', '', 2),
-(20, 'Concrete Hollow Blocks', 3, 800, 0.60, 1, 150, 300, 'Piece', '6 inch', 'images/blocks.jpg', 'Cement-based hollow blocks', '2025-03-24 19:30:04', '2025-03-24 19:30:04', 'BuildSolid', 'Yard', 'supplier1@example.com', '', 0),
-(21, 'Roofing Sheets (GI)', 4, 100, 22.00, 3, 20, 50, 'Piece', '8ft', 'images/roofing.jpg', 'Galvanized roofing sheet', '2025-03-24 19:30:04', '2025-03-24 19:30:04', 'RoofMax', 'Warehouse B', 'supplier3@example.com', '', 7),
-(22, 'Wall Putty', 5, 60, 6.50, 2, 10, 30, 'Bucket', '20kg', 'images/putty.jpg', 'Pre-mix wall putty', '2025-03-24 19:30:04', '2025-03-24 19:30:04', 'SmoothWalls', 'Warehouse D', 'supplier2@example.com', '', 2),
-(23, 'Glass Window Panels', 4, 30, 40.00, 5, 10, 20, 'Piece', '48x48', 'images/glass.jpg', 'Tempered glass panel', '2025-03-24 19:30:04', '2025-03-24 19:30:04', 'GlassWorks', 'Warehouse C', 'supplier5@example.com', '', 10),
-(24, 'Masonry Nails', 2, 500, 0.02, 1, 100, 250, 'Kg', '2 inch', 'images/nails.jpg', 'Iron masonry nails', '2025-03-24 19:30:04', '2025-03-24 19:30:04', 'FixitPro', 'Warehouse A', 'supplier1@example.com', '', 0),
-(25, 'Paint Brushes', 5, 200, 1.50, 4, 50, 100, 'Piece', '4 inch', 'images/brush.jpg', 'Bristle brushes for painting', '2025-03-24 19:30:04', '2025-03-24 19:30:04', 'PaintEase', 'Warehouse D', 'supplier4@example.com', '', 1),
-(26, 'Angle Bars', 2, 120, 12.00, 2, 20, 60, 'Piece', '1x1 inch', 'images/anglebar.jpg', 'Steel angle bars', '2025-03-24 19:30:04', '2025-03-24 19:30:04', 'IronFlex', 'Warehouse B', 'supplier2@example.com', '', 5),
-(27, 'Ladders (Aluminum)', 4, 25, 35.00, 3, 5, 15, 'Piece', '6ft', 'images/ladder.jpg', 'Aluminum ladder', '2025-03-24 19:30:04', '2025-03-24 19:30:04', 'SafeSteps', 'Warehouse A', 'supplier3@example.com', '', 10),
-(28, 'Door Hinges', 2, 300, 0.75, 1, 60, 150, 'Piece', 'Standard', 'images/hinge.jpg', 'Metal door hinges', '2025-03-24 19:30:04', '2025-03-24 19:30:04', 'FixitPro', 'Warehouse B', 'supplier1@example.com', '', 3),
-(29, 'Waterproof Membrane', 5, 40, 28.00, 4, 10, 20, 'Roll', '10m', 'images/waterproof.jpg', 'Bituminous waterproof layer', '2025-03-24 19:30:04', '2025-03-24 19:30:04', 'SealTight', 'Warehouse C', 'supplier4@example.com', '', 5),
-(30, 'Aluminum Composite Panel', 4, 35, 45.00, 2, 10, 20, 'Sheet', '4x8 ft', 'images/acp.jpg', 'ACP sheets for cladding', '2025-03-24 19:30:04', '2025-03-24 19:30:04', 'AluTech', 'Warehouse B', 'supplier2@example.com', '', 7),
-(31, 'Binding Wire', 2, 500, 0.40, 1, 100, 200, 'Roll', '1kg', 'images/bindingwire.jpg', 'Binding wire for reinforcement', '2025-03-24 19:30:04', '2025-03-24 19:30:04', 'WireZone', 'Warehouse C', 'supplier1@example.com', '', 0),
-(32, 'Wall Screws', 2, 800, 0.05, 3, 200, 300, 'Piece', '1.5 inch', 'images/screws.jpg', 'Galvanized wall screws', '2025-03-24 19:30:04', '2025-03-24 19:30:04', 'FixitPro', 'Warehouse A', 'supplier3@example.com', '', 0),
-(33, 'Door Lock Set', 2, 70, 12.50, 2, 20, 30, 'Set', 'Standard', 'images/lock.jpg', 'Complete door lock set', '2025-03-24 19:30:04', '2025-03-24 19:30:04', 'SecureHome', 'Warehouse D', 'supplier2@example.com', '', 3),
-(34, 'Flexible Conduit Pipe', 2, 130, 1.80, 1, 30, 70, 'Roll', '25m', 'images/conduit.jpg', 'Plastic flexible conduit', '2025-03-24 19:30:04', '2025-03-24 19:30:04', 'PipeMaster', 'Warehouse C', 'supplier1@example.com', '', 5);
-=======
 (1, 'Fan', 1, 70, 5.99, 2, 2, 7, 'kg', 'm', NULL, 'jhjhttr', '2025-03-18 17:48:45', '2025-03-18 17:48:45', 'K cement', 'Phnom penh', '07654352424', '', 2),
 (2, 'Fan', 1, 70, 5.99, 2, 2, 7, 'kg', 'm', NULL, 'jhjhttr', '2025-03-18 17:49:22', '2025-03-18 17:49:22', 'K cement', 'Phnom penh', '07654352424', '', 2),
 (3, 'Fan', 2, 0, 9.99, 1, 3, 6, 'kg', 'm3', NULL, 'gddddf', '2025-03-18 18:05:14', '2025-03-20 19:08:36', 'K cement', 'Phnom penh', '07654352424', '', 2),
@@ -296,8 +330,14 @@ INSERT INTO `materials` (`MaterialID`, `Name`, `CategoryID`, `Quantity`, `UnitPr
 (6, 'lymeng', 1, 90, 5.88, 3, 2, 6, 'kg', 'kg', NULL, 'man', '2025-03-18 18:26:43', '2025-03-18 18:26:43', 'K cementmong', 'Phnom penh', '07654352486', '', 1),
 (7, 'chandy_neat', 1, 67, 5.99, 1, 2, 6, 'Bav', 'kg', NULL, 'nnnnnnbb', '2025-03-18 19:02:07', '2025-03-18 19:02:07', 'K cementmong', 'Phnom penh', '07654352486', '', 2),
 (8, 'chandy_neat', 1, 67, 5.99, 1, 2, 6, 'Bav', 'kg', NULL, 'nnnnnnbb', '2025-03-18 19:06:38', '2025-03-18 19:06:38', 'K cementmong', 'Phnom penh', '07654352486', '', 2),
-(9, 'lymeng', 19, 90, 7.99, 2, 3, 9, 'Bav', 'kg', NULL, 'hdhfdhdh', '2025-03-18 19:42:44', '2025-03-18 19:42:44', 'K cementmong', 'Phnom penh', '07654352409', '', 2);
->>>>>>> 8c8c6bf454272d0befa01d059d0e8b2e2257e0bc
+(9, 'lymeng', 19, 90, 7.99, 2, 3, 9, 'Bav', 'kg', NULL, 'hdhfdhdh', '2025-03-18 19:42:44', '2025-03-18 19:42:44', 'K cementmong', 'Phnom penh', '07654352409', '', 2),
+(16, 'Cement', 1, 500, 7.50, 2, 50, 100, 'Bags', '50kg', 'images/cement.jpg', 'High quality cement for construction works.', '2025-03-26 16:18:55', '2025-03-26 16:18:55', 'BrandA', 'Warehouse A', 'John Doe, 0123456789', 'Active', 12),
+(17, 'Steel Bars', 2, 1000, 3.00, 3, 100, 200, 'Meters', '10mm', 'images/steel_bars.jpg', 'Steel bars for reinforcement in concrete.', '2025-03-26 16:18:55', '2025-03-26 16:18:55', 'BrandB', 'Warehouse B', 'Jane Smith, 0123456790', 'Active', 24),
+(18, 'Bricks', 3, 3000, 0.50, 4, 200, 400, 'Pieces', 'Standard', 'images/bricks.jpg', 'Standard red bricks for construction.', '2025-03-26 16:18:55', '2025-03-26 16:18:55', 'BrandC', 'Warehouse C', 'Sam Lee, 0123456791', 'Pending', NULL),
+(19, 'Sand', 4, 2000, 2.00, 5, 150, 300, 'Cubic Meters', 'Large', 'images/sand.jpg', 'River sand for concrete mixing and building work.', '2025-03-26 16:18:55', '2025-03-26 16:18:55', 'BrandD', 'Warehouse D', 'Alice Brown, 0123456792', 'Active', NULL),
+(20, 'Gravel', 4, 1500, 1.50, 6, 100, 200, 'Cubic Meters', 'Medium', 'images/gravel.jpg', 'Gravel for foundation works.', '2025-03-26 16:18:55', '2025-03-26 16:18:55', 'BrandE', 'Warehouse E', 'Bob White, 0123456793', 'Active', NULL),
+(21, 'Paint', 5, 800, 15.00, 7, 50, 100, 'Gallons', '5L', 'images/paint.jpg', 'Waterproof paint for external surfaces.', '2025-03-26 16:18:55', '2025-03-26 16:18:55', 'BrandF', 'Warehouse F', 'Charlie Green, 0123456794', 'Discontinued', 36),
+(22, 'Tiles', 6, 1200, 2.50, 8, 100, 200, 'Square Meters', '30x30cm', 'images/tiles.jpg', 'Ceramic tiles for flooring and wall tiling.', '2025-03-26 16:18:55', '2025-03-26 16:18:55', 'BrandG', 'Warehouse G', 'David Black, 0123456795', 'Active', NULL);
 
 -- --------------------------------------------------------
 
@@ -314,33 +354,6 @@ CREATE TABLE `password_resets` (
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-<<<<<<< HEAD
---
--- Dumping data for table `password_resets`
---
-
-INSERT INTO `password_resets` (`id`, `user_id`, `email`, `token`, `expiration`, `created_at`) VALUES
-(4, 3, 'sophean.phouk@example.com', '0b731cbb2fb8f6c6d4ec8a1429717e0c', '2025-03-21 15:34:30', '2025-03-21 13:34:30'),
-(5, 3, 'sophean.phouk@example.com', '7a0f92ec51079d3f9389ec0af53e525e', '2025-03-21 15:35:36', '2025-03-21 13:35:36'),
-(8, 2, NULL, '10e2017a9f75190d465a9361800fcb137ba1122f035b1a428609a18ac3db57a9', '2025-03-24 06:19:58', '2025-03-24 04:19:58'),
-(9, 2, NULL, 'fa4fc67faf0c43c1478f1d540fe548c33c8e7a23f715c263de46cd4b76bac64a', '2025-03-24 07:33:56', '2025-03-24 05:33:56'),
-(10, 2, NULL, 'f089f7b3cdf337ddcf3a0b1defd914736a6ca0b381add58665dd69fc676203cd', '2025-03-24 07:39:45', '2025-03-24 05:39:45'),
-(11, 2, NULL, '952f614c115fbd0a8dc023c9642feba7352470cc83e45714718d964436d63947', '2025-03-24 07:46:11', '2025-03-24 05:46:11'),
-(12, 2, NULL, 'c257665921ebd9591ba73ed2b946d75c80a5459ba6dfc4445fb54e3ccc0d0c11', '2025-03-24 07:49:14', '2025-03-24 05:49:14'),
-(13, 2, NULL, '557a268287a638296b6bcc5af6424e0e2ac1d3416aefa89daecba4249694356f', '2025-03-24 07:55:26', '2025-03-24 05:55:26'),
-(14, 2, NULL, 'b7d07fdf8a4ce3c8a0ed4bf6e1db638cc8165f18273c5b0b3b59883269b801b9', '2025-03-24 08:00:01', '2025-03-24 06:00:01'),
-(15, 2, NULL, 'bc51d93ffaa095dc6da7eb330b8ecbc38ffd77b7cb7e0766a4205106664d136e', '2025-03-24 08:06:26', '2025-03-24 06:06:26'),
-(16, 2, NULL, 'e6d3d67c265fd7828ef8470312348a110358e67083f6c20af7f8f9d19bc02e22', '2025-03-24 08:11:31', '2025-03-24 06:11:31'),
-(17, 2, NULL, 'f4e1408e75254a6198f8a03780b0829214eef42ba92105d92117867ef2e99e80', '2025-03-24 08:18:16', '2025-03-24 06:18:16'),
-(18, 5, 'chandyneat94@gmail.com', '1c9be01c3b4471a54c100d4bdda2c84a', '2025-03-24 08:29:03', '2025-03-24 06:29:03'),
-(19, 5, 'chandyneat94@gmail.com', '7e58c0df2eef6eb14d10f8ba4d14e097', '2025-03-24 08:33:06', '2025-03-24 06:33:06'),
-(20, 5, 'chandyneat94@gmail.com', '1d9e041da079f2b5a96574bb35c4eab7', '2025-03-24 08:34:10', '2025-03-24 06:34:10'),
-(21, 2, NULL, '033d7a1f7d76e53cd10bc3758cb5797528b53c03d5207488902439007729298c', '2025-03-24 09:48:06', '2025-03-24 07:48:06'),
-(22, 2, NULL, '0a775685abd0735a49e68f43331a84d9cceb9f512147ced7fca1a22ae2268464', '2025-03-24 09:54:58', '2025-03-24 07:54:58'),
-(23, 6, NULL, 'd64ad6e0151c9cf71f1791b576a3705708642ffa0856f4ad887c37694722f973', '2025-03-24 09:56:20', '2025-03-24 07:56:20'),
-(24, 2, NULL, '99663ffd618197adc37eeff0f8d631cb29443b4eb66d202212ea9daa48e6d236', '2025-03-24 10:06:43', '2025-03-24 08:06:43'),
-(25, 2, NULL, '55914da3b964859002cfaba2927197ed05f9c60722c053cab6db447b452d6d3a', '2025-03-24 10:29:17', '2025-03-24 08:29:17');
-
 -- --------------------------------------------------------
 
 --
@@ -349,88 +362,51 @@ INSERT INTO `password_resets` (`id`, `user_id`, `email`, `token`, `expiration`, 
 
 CREATE TABLE `payments` (
   `PaymentID` int(11) NOT NULL,
-  `SalesOrderID` int(11) DEFAULT NULL,
-  `PaymentDate` date DEFAULT NULL,
-  `Amount` decimal(10,2) DEFAULT NULL,
-  `PaymentMethod` enum('Cash','Credit Card','Bank Transfer','Other') DEFAULT NULL
+  `OrderID` int(11) DEFAULT NULL,
+  `PaymentDate` date NOT NULL,
+  `Amount` decimal(10,2) NOT NULL,
+  `PaymentMethod` enum('Cash','Credit Card','Bank Transfer','Other') NOT NULL,
+  `payment_status` enum('Pending','Completed','Failed') DEFAULT 'Pending'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `payments`
 --
 
-INSERT INTO `payments` (`PaymentID`, `SalesOrderID`, `PaymentDate`, `Amount`, `PaymentMethod`) VALUES
-(1, 1, '2025-03-01', 500.00, 'Cash'),
-(2, 2, '2025-03-02', 750.00, 'Credit Card'),
-(3, 3, '2025-03-03', 1200.00, 'Bank Transfer'),
-(4, 4, '2025-03-04', 300.00, 'Other'),
-(5, 5, '2025-03-05', 950.00, 'Credit Card');
+INSERT INTO `payments` (`PaymentID`, `OrderID`, `PaymentDate`, `Amount`, `PaymentMethod`, `payment_status`) VALUES
+(1, 1, '2024-03-06', 1200.00, 'Cash', 'Pending'),
+(2, 2, '2024-03-07', 800.00, 'Credit Card', 'Completed'),
+(3, 3, '2024-03-08', 500.00, 'Bank Transfer', 'Completed'),
+(4, 4, '2024-03-09', 1500.00, 'Other', 'Pending'),
+(5, 5, '2025-03-26', 1000.00, '', 'Pending');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `permissions`
+-- Table structure for table `purchaseorderdetails`
 --
 
-CREATE TABLE `permissions` (
-  `permission_id` int(11) NOT NULL,
-  `permission_name` varchar(100) NOT NULL,
-  `description` text DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+CREATE TABLE `purchaseorderdetails` (
+  `ID` int(11) NOT NULL,
+  `PurchaseOrderID` int(11) DEFAULT NULL,
+  `MaterialID` int(11) DEFAULT NULL,
+  `Quantity` int(11) NOT NULL,
+  `UnitPrice` decimal(10,2) NOT NULL,
+  `OrderDate` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `permissions`
+-- Dumping data for table `purchaseorderdetails`
 --
 
-INSERT INTO `permissions` (`permission_id`, `permission_name`, `description`, `created_at`, `updated_at`) VALUES
-(1, 'manage_users', 'Add, edit, delete users', '2025-03-22 08:55:04', '2025-03-22 08:55:04'),
-(2, 'manage_inventory', 'View, add, update, delete inventory items', '2025-03-22 08:55:04', '2025-03-22 08:55:04'),
-(3, 'manage_sales', 'Process sales orders and invoices', '2025-03-22 08:55:04', '2025-03-22 08:55:04'),
-(4, 'view_reports', 'View sales, inventory, and finance reports', '2025-03-22 08:55:04', '2025-03-22 08:55:04'),
-(5, 'manage_finance', 'Handle payments, expenses, and budgets', '2025-03-22 08:55:04', '2025-03-22 08:55:04'),
-(6, 'manage_suppliers', 'Add, update, and delete supplier details', '2025-03-22 08:55:04', '2025-03-22 08:55:04'),
-(7, 'buy_materials', 'Allows customers to purchase materials', '2025-03-23 09:57:28', '2025-03-23 09:57:28'),
-(8, 'feedback', 'Allows customers to submit feedback', '2025-03-23 09:57:28', '2025-03-23 09:57:28'),
-(9, 'orders', 'Allows customers to create and manage orders', '2025-03-23 09:57:28', '2025-03-23 09:57:28'),
-(10, 'view_profile', 'Allows customers to view their profile information', '2025-03-23 09:57:28', '2025-03-23 09:57:28'),
-(11, 'view_help', 'Allows customers to access help resources', '2025-03-23 09:57:28', '2025-03-23 09:57:28');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `permission_roles`
---
-
-CREATE TABLE `permission_roles` (
-  `id` int(11) NOT NULL,
-  `role_id` int(11) NOT NULL,
-  `permission_id` int(11) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `permission_roles`
---
-
-INSERT INTO `permission_roles` (`id`, `role_id`, `permission_id`, `created_at`) VALUES
-(1, 1, 1, '2025-03-22 09:04:22'),
-(2, 1, 2, '2025-03-22 09:04:22'),
-(3, 1, 3, '2025-03-22 09:04:22'),
-(4, 1, 4, '2025-03-22 09:04:22'),
-(5, 1, 5, '2025-03-22 09:04:22'),
-(6, 1, 6, '2025-03-22 09:04:22'),
-(11, 3, 4, '2025-03-22 09:04:22'),
-(12, 4, 3, '2025-03-22 09:04:22'),
-(13, 4, 4, '2025-03-22 09:04:22'),
-(14, 5, 2, '2025-03-22 09:04:22'),
-(15, 5, 6, '2025-03-22 09:04:22'),
-(16, 2, 7, '2025-03-23 10:00:06'),
-(17, 2, 8, '2025-03-23 10:00:06'),
-(18, 2, 9, '2025-03-23 10:00:06'),
-(19, 2, 10, '2025-03-23 10:00:06'),
-(20, 2, 11, '2025-03-23 10:00:06');
+INSERT INTO `purchaseorderdetails` (`ID`, `PurchaseOrderID`, `MaterialID`, `Quantity`, `UnitPrice`, `OrderDate`) VALUES
+(81, 2, 16, 50, 4.50, '2024-03-01'),
+(82, 4, 17, 100, 2.75, '2024-03-01'),
+(83, 2, 18, 200, 3.00, '2024-03-02'),
+(84, 2, 19, 150, 5.25, '2024-03-02'),
+(85, 3, 20, 300, 1.80, '2024-03-03'),
+(86, 3, 21, 100, 6.00, '2024-03-03'),
+(87, 4, 22, 80, 2.50, '2024-03-04');
 
 -- --------------------------------------------------------
 
@@ -441,26 +417,27 @@ INSERT INTO `permission_roles` (`id`, `role_id`, `permission_id`, `created_at`) 
 CREATE TABLE `purchaseorders` (
   `PurchaseOrderID` int(11) NOT NULL,
   `SupplierID` int(11) DEFAULT NULL,
-  `OrderDate` date DEFAULT NULL,
+  `OrderDate` date NOT NULL,
   `ExpectedDeliveryDate` date DEFAULT NULL,
-  `Status` enum('Pending','Completed','Cancelled') DEFAULT NULL
+  `TotalAmount` decimal(10,2) DEFAULT NULL,
+  `Status` enum('Pending','Completed','Cancelled') DEFAULT 'Pending',
+  `CreatedAt` timestamp NOT NULL DEFAULT current_timestamp(),
+  `UpdatedAt` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `purchaseorders`
 --
 
-INSERT INTO `purchaseorders` (`PurchaseOrderID`, `SupplierID`, `OrderDate`, `ExpectedDeliveryDate`, `Status`) VALUES
-(1, 1, '2025-03-24', '2025-04-05', 'Pending'),
-(2, 2, '2025-03-23', '2025-04-01', 'Completed'),
-(3, 3, '2025-03-20', '2025-04-10', 'Pending'),
-(4, 4, '2025-03-18', '2025-04-03', 'Cancelled'),
-(5, 1, '2025-03-15', '2025-03-28', 'Completed'),
-(6, 2, '2025-03-12', '2025-03-30', 'Pending'),
-(7, 3, '2025-03-10', '2025-04-15', 'Completed');
+INSERT INTO `purchaseorders` (`PurchaseOrderID`, `SupplierID`, `OrderDate`, `ExpectedDeliveryDate`, `TotalAmount`, `Status`, `CreatedAt`, `UpdatedAt`) VALUES
+(1, 4, '2024-03-01', '2024-03-05', 700.00, 'Pending', '2025-03-26 07:56:36', '2025-03-26 09:11:48'),
+(2, 7, '2024-03-02', '2024-03-07', 750.00, 'Completed', '2025-03-26 07:56:36', '2025-03-26 09:12:01'),
+(3, 3, '2024-03-03', '2024-03-10', 750.00, 'Cancelled', '2025-03-26 07:56:36', '2025-03-26 09:12:22'),
+(4, 4, '2024-03-01', '2024-03-05', 700.00, 'Pending', '2025-03-26 07:57:18', '2025-03-26 09:12:28'),
+(5, 7, '2024-03-02', '2024-03-07', 750.00, 'Completed', '2025-03-26 07:57:18', '2025-03-26 09:12:35'),
+(6, 3, '2024-03-03', '2024-03-10', 700.00, 'Cancelled', '2025-03-26 07:57:18', '2025-03-26 09:12:43'),
+(7, NULL, '2025-03-26', NULL, 1500.00, 'Pending', '2025-03-26 10:46:01', '2025-03-26 10:46:01');
 
-=======
->>>>>>> 8c8c6bf454272d0befa01d059d0e8b2e2257e0bc
 -- --------------------------------------------------------
 
 --
@@ -481,11 +458,7 @@ CREATE TABLE `roles` (
 
 INSERT INTO `roles` (`role_id`, `role_name`, `description`, `created_at`, `updated_at`) VALUES
 (1, 'Admin', 'Has full access to the system, can manage all data.', '2025-01-01 02:00:00', '2025-03-20 03:00:00'),
-<<<<<<< HEAD
-(2, 'User', 'Can buy materials, orders materials, and Give feedback.', '2025-02-01 03:30:00', '2025-03-23 09:52:04'),
-=======
 (2, 'Manager', 'Can manage inventory, suppliers, and sales orders.', '2025-02-01 03:30:00', '2025-03-20 04:15:00'),
->>>>>>> 8c8c6bf454272d0befa01d059d0e8b2e2257e0bc
 (3, 'Employee', 'Can update work logs and view sales and inventory.', '2025-03-01 07:00:00', '2025-03-20 05:00:00'),
 (4, 'Sales', 'Can only view and manage sales-related information.', '2025-03-05 01:30:00', '2025-03-20 06:30:00'),
 (5, 'Inventory Staff', 'Manages inventory stock levels and warehouse data.', '2025-03-10 09:45:00', '2025-03-20 07:00:00');
@@ -493,30 +466,41 @@ INSERT INTO `roles` (`role_id`, `role_name`, `description`, `created_at`, `updat
 -- --------------------------------------------------------
 
 --
-<<<<<<< HEAD
 -- Table structure for table `salesorderdetails`
 --
 
 CREATE TABLE `salesorderdetails` (
-  `ID` int(11) NOT NULL,
+  `SalesOrderDetailID` int(11) NOT NULL,
   `SalesOrderID` int(11) DEFAULT NULL,
   `MaterialID` int(11) DEFAULT NULL,
-  `Quantity` int(11) DEFAULT NULL,
-  `UnitPrice` decimal(10,2) DEFAULT NULL,
-  `Total` decimal(10,2) DEFAULT NULL
+  `Quantity` int(11) NOT NULL,
+  `UnitPrice` decimal(10,2) NOT NULL,
+  `Total` decimal(10,2) GENERATED ALWAYS AS (`Quantity` * `UnitPrice`) STORED,
+  `SalesOrderDetail_Date` date NOT NULL,
+  `CreatedAt` timestamp NOT NULL DEFAULT current_timestamp(),
+  `UpdatedAt` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `salesorderdetails`
 --
 
-INSERT INTO `salesorderdetails` (`ID`, `SalesOrderID`, `MaterialID`, `Quantity`, `UnitPrice`, `Total`) VALUES
-(61, 1, 10, 50, 5.50, 275.00),
-(62, 1, 11, 100, 2.30, 230.00),
-(63, 1, 12, 500, 0.30, 150.00),
-(64, 2, 13, 200, 12.00, 2400.00),
-(65, 2, 14, 40, 20.00, 800.00),
-(66, 2, 15, 30, 18.00, 540.00);
+INSERT INTO `salesorderdetails` (`SalesOrderDetailID`, `SalesOrderID`, `MaterialID`, `Quantity`, `UnitPrice`, `SalesOrderDetail_Date`, `CreatedAt`, `UpdatedAt`) VALUES
+(1, 1, 1, 50, 4.50, '2024-03-01', '2025-03-26 08:21:55', '2025-03-26 08:21:55'),
+(2, 1, 2, 100, 2.75, '2024-03-01', '2025-03-26 08:21:55', '2025-03-26 08:21:55'),
+(3, 2, 3, 500, 0.80, '2024-03-03', '2025-03-26 08:21:55', '2025-03-26 08:21:55'),
+(4, 3, 1, 30, 4.50, '2024-03-05', '2025-03-26 08:21:55', '2025-03-26 08:21:55'),
+(5, 4, 1, 100, 4.25, '2024-03-06', '2025-03-26 10:26:40', '2025-03-26 10:26:40'),
+(6, 4, 2, 150, 3.00, '2024-03-06', '2025-03-26 10:26:40', '2025-03-26 10:26:40'),
+(7, 5, 3, 200, 1.50, '2024-03-07', '2025-03-26 10:26:40', '2025-03-26 10:26:40'),
+(8, 5, 4, 75, 2.75, '2024-03-07', '2025-03-26 10:26:40', '2025-03-26 10:26:40'),
+(9, 6, 1, 120, 4.75, '2024-03-08', '2025-03-26 10:26:40', '2025-03-26 10:26:40'),
+(10, 6, 5, 180, 3.50, '2024-03-08', '2025-03-26 10:26:40', '2025-03-26 10:26:40'),
+(11, 7, 2, 130, 3.00, '2024-03-09', '2025-03-26 10:26:40', '2025-03-26 10:26:40'),
+(12, 7, 3, 100, 0.80, '2024-03-09', '2025-03-26 10:26:40', '2025-03-26 10:26:40'),
+(13, 8, 6, 50, 2.00, '2024-03-10', '2025-03-26 10:26:40', '2025-03-26 10:26:40'),
+(14, 8, 4, 200, 3.00, '2024-03-10', '2025-03-26 10:26:40', '2025-03-26 10:26:40'),
+(15, 1, 1, 50, 4.50, '2025-03-26', '2025-03-26 10:40:53', '2025-03-26 10:40:53');
 
 -- --------------------------------------------------------
 
@@ -526,28 +510,32 @@ INSERT INTO `salesorderdetails` (`ID`, `SalesOrderID`, `MaterialID`, `Quantity`,
 
 CREATE TABLE `salesorders` (
   `SalesOrderID` int(11) NOT NULL,
-  `CustomerID` int(11) DEFAULT NULL,
-  `OrderDate` date DEFAULT NULL,
-  `DeliveryDate` date DEFAULT NULL,
-  `Status` enum('Pending','Shipped','Delivered','Canceled') DEFAULT NULL
+  `CustomerName` varchar(100) NOT NULL,
+  `OrderDate` date NOT NULL,
+  `TotalAmount` decimal(10,2) NOT NULL,
+  `Status` enum('Pending','Completed','Cancelled') DEFAULT 'Pending',
+  `CreatedAt` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `salesorders`
 --
 
-INSERT INTO `salesorders` (`SalesOrderID`, `CustomerID`, `OrderDate`, `DeliveryDate`, `Status`) VALUES
-(1, 1, '2025-03-01', '2025-03-05', 'Pending'),
-(2, 2, '2025-03-02', '2025-03-06', 'Shipped'),
-(3, 3, '2025-03-03', '2025-03-07', 'Delivered'),
-(4, 1, '2025-03-04', '2025-03-08', 'Canceled'),
-(5, 2, '2025-03-05', '2025-03-10', 'Delivered');
+INSERT INTO `salesorders` (`SalesOrderID`, `CustomerName`, `OrderDate`, `TotalAmount`, `Status`, `CreatedAt`) VALUES
+(1, 'Kingdom Builders', '2024-03-04', 1200.00, 'Completed', '2025-03-26 07:57:18'),
+(2, 'Urban Developers', '2024-03-05', 800.00, 'Pending', '2025-03-26 07:57:18'),
+(3, 'Kingdom Builders', '2024-03-06', 1200.00, 'Completed', '2025-03-26 08:09:05'),
+(4, 'Urban Developers', '2024-03-07', 800.00, 'Pending', '2025-03-26 08:09:05'),
+(5, 'Metro Construction', '2024-03-08', 650.00, 'Completed', '2025-03-26 08:09:05'),
+(6, 'Elite Builders', '2024-03-09', 900.00, '', '2025-03-26 08:15:10'),
+(7, 'Prime Construction', '2024-03-10', 1100.00, 'Completed', '2025-03-26 08:15:10'),
+(8, 'Skyline Developers', '2024-03-11', 1500.00, 'Pending', '2025-03-26 08:15:10'),
+(9, 'Innovative Structures', '2024-03-12', 1300.00, 'Completed', '2025-03-26 08:15:10'),
+(10, 'City Constructors', '2024-03-13', 1000.00, '', '2025-03-26 08:15:10');
 
 -- --------------------------------------------------------
 
 --
-=======
->>>>>>> 8c8c6bf454272d0befa01d059d0e8b2e2257e0bc
 -- Table structure for table `suppliers`
 --
 
@@ -576,7 +564,30 @@ INSERT INTO `suppliers` (`SupplierID`, `Name`, `ContactPerson`, `Phone`, `Email`
 (7, 'ElectroTech Supplies', 'Mark Lim', '09789012345', 'mark@electrotech.com', '77 Electric Blvd, Volt City', '2025-03-18 00:13:58', '2025-03-18 00:13:58'),
 (8, 'PaintWorks Inc.', 'Anna dela Cruz', '09890123456', 'anna@paintworks.com', '32 Color Street, Hueville', '2025-03-18 00:13:58', '2025-03-18 00:13:58'),
 (9, 'SafeTools PH', 'Chris Uy', '09901234567', 'chris@safetoolsph.com', '88 Safety Way, Securetown', '2025-03-18 00:13:58', '2025-03-18 00:13:58'),
-(10, 'HeavyDuty Machinery', 'Rachel Santos', '09012345678', 'rachel@heavyduty.com', '99 Machine Zone, Power City', '2025-03-18 00:13:58', '2025-03-18 00:13:58');
+(10, 'HeavyDuty Machinery', 'Rachel Santos', '09012345678', 'rachel@heavyduty.com', '99 Machine Zone, Power City', '2025-03-18 00:13:58', '2025-03-18 00:13:58'),
+(11, 'ABC Construction Supply', 'Alice Johnson', '0991234567', 'alice@abc.com', '123 Main St, Phnom Penh', '2025-03-26 07:53:57', '2025-03-26 07:53:57'),
+(12, 'XYZ Hardware', 'Bob Smith', '0887654321', 'bob@xyz.com', '456 Industrial Rd, Siem Reap', '2025-03-26 07:53:57', '2025-03-26 07:53:57'),
+(13, 'BuildPro Materials', 'Charlie Lee', '0976543210', 'charlie@buildpro.com', '789 Depot Ave, Sihanoukville', '2025-03-26 07:53:57', '2025-03-26 07:53:57'),
+(14, 'ABC Construction Supply', 'Alice Johnson', '0991234567', 'alice@abc.com', '123 Main St, Phnom Penh', '2025-03-26 07:54:23', '2025-03-26 07:54:23'),
+(15, 'XYZ Hardware', 'Bob Smith', '0887654321', 'bob@xyz.com', '456 Industrial Rd, Siem Reap', '2025-03-26 07:54:23', '2025-03-26 07:54:23'),
+(16, 'BuildPro Materials', 'Charlie Lee', '0976543210', 'charlie@buildpro.com', '789 Depot Ave, Sihanoukville', '2025-03-26 07:54:23', '2025-03-26 07:54:23'),
+(17, 'ABC Construction Supply', 'Alice Johnson', '0991234567', 'alice@abc.com', '123 Main St, Phnom Penh', '2025-03-26 07:54:32', '2025-03-26 07:54:32'),
+(18, 'XYZ Hardware', 'Bob Smith', '0887654321', 'bob@xyz.com', '456 Industrial Rd, Siem Reap', '2025-03-26 07:54:32', '2025-03-26 07:54:32'),
+(19, 'BuildPro Materials', 'Charlie Lee', '0976543210', 'charlie@buildpro.com', '789 Depot Ave, Sihanoukville', '2025-03-26 07:54:32', '2025-03-26 07:54:32');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `today_money`
+--
+
+CREATE TABLE `today_money` (
+  `id` int(11) NOT NULL,
+  `total_income` decimal(10,2) DEFAULT NULL,
+  `total_expenses` decimal(10,2) DEFAULT NULL,
+  `today_money` decimal(10,2) DEFAULT NULL,
+  `date` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -597,31 +608,16 @@ CREATE TABLE `users` (
   `address` text DEFAULT NULL,
   `street_address` text DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-<<<<<<< HEAD
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `reset_token_hash` varchar(64) DEFAULT NULL,
-  `reset_token_expires_at` datetime DEFAULT NULL
-=======
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
->>>>>>> 8c8c6bf454272d0befa01d059d0e8b2e2257e0bc
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-<<<<<<< HEAD
-INSERT INTO `users` (`user_id`, `select_user`, `profile_image`, `first_name`, `last_name`, `email`, `phone`, `role_id`, `password`, `address`, `street_address`, `created_at`, `updated_at`, `reset_token_hash`, `reset_token_expires_at`) VALUES
-(2, 'default_value', '/public/Images/1742797703_cbfb2e265b7c88c565d101aad179352c.jpg', 'Chandy', 'Neat', 'chandyneat9999@gmail.com', '093967654', 1, '$2y$10$mjuFzLjv1SiJ51x0B2VOYem7g9eRz/dDkB.zLk9i0ekuvq.Z1Pqye', 'Phnom Penh', 'Chomka Duong', '2025-03-20 11:11:26', '2025-03-24 07:52:08', NULL, NULL),
-(3, 'Customer', 'uploads/profile1.jpg', 'Sopean', 'Phouk', 'sophean.phouk@example.com', '1234567890', 1, '$2y$10$tH5w6oJtY1rE0Te6lC.03OpsX5Jz7Fy5ipo778b0cjtuie7Skiv0C', '123 Main Street, New York, NY', 'Main Street, Apt 4B', '2025-03-21 13:33:07', '2025-03-21 13:35:53', NULL, NULL),
-(5, 'default_value', NULL, 'Chandy', 'Neat', 'chandyneat94@gmail.com', '', 2, '$2y$10$6U.SJXYRYXBO.pUpjlpUwuAOdvBqHPqSDTO7kRypTKthRSM2jsTtG', '', '', '2025-03-23 10:01:30', '2025-03-24 06:34:20', NULL, NULL),
-(6, 'default_value', NULL, 'Dyy', 'Development', 'chandy.neat@student.passerellesnumeriques.org', '', 2, '$2y$10$Mr7//LTRbwrTC8mjCDnSYuBXxPUrznsvVXPiwNdMv0BSv.vcm7hBy', '', '', '2025-03-24 03:44:09', '2025-03-24 03:44:09', NULL, NULL),
-(7, 'default_value', NULL, 'Senghin', 'Loem', 'senghin@gmail.com', '', 2, '$2y$10$WHA25lbzEwgZzN3jm/HOIerawwNst2h7AaePH0rr/qcbeXBVfTNVC', '', '', '2025-03-24 11:48:30', '2025-03-24 11:48:30', NULL, NULL);
-=======
 INSERT INTO `users` (`user_id`, `select_user`, `profile_image`, `first_name`, `last_name`, `email`, `phone`, `role_id`, `password`, `address`, `street_address`, `created_at`, `updated_at`) VALUES
 (1, 'default_value', NULL, 'chandy', 'neat', 'chandyneat94@gmail.com', '', 1, '$2y$10$w/vX6KMPNUfArPcVyViX4uQAf5R1iG9z.53o8pKpqnw0wztt83ICC', 'Chomka Duong', '', '2025-03-18 00:19:37', '2025-03-18 00:20:20'),
 (2, 'default_value', NULL, 'Chandy', 'Neat', 'chandyneat9999@gmail.com', '', 2, '$2y$10$oyNswhcyN11Bd3BEcYrcfuhSS11GZG5d0QKhacwkYDijvEWkvSqVO', 'Phnom Penh', '', '2025-03-20 11:11:26', '2025-03-20 11:11:26');
->>>>>>> 8c8c6bf454272d0befa01d059d0e8b2e2257e0bc
 
 --
 -- Indexes for dumped tables
@@ -642,7 +638,6 @@ ALTER TABLE `categories`
   ADD UNIQUE KEY `CategoryName` (`CategoryName`);
 
 --
-<<<<<<< HEAD
 -- Indexes for table `customers`
 --
 ALTER TABLE `customers`
@@ -655,7 +650,16 @@ ALTER TABLE `customers`
 --
 ALTER TABLE `employees`
   ADD PRIMARY KEY (`EmployeeID`),
-  ADD UNIQUE KEY `Email` (`Email`);
+  ADD UNIQUE KEY `Phone` (`Phone`),
+  ADD UNIQUE KEY `Email` (`Email`),
+  ADD KEY `idx_employee_name` (`Name`);
+
+--
+-- Indexes for table `expenses`
+--
+ALTER TABLE `expenses`
+  ADD PRIMARY KEY (`ExpenseID`),
+  ADD KEY `EmployeeID` (`EmployeeID`);
 
 --
 -- Indexes for table `goodsreceived`
@@ -666,8 +670,13 @@ ALTER TABLE `goodsreceived`
   ADD KEY `EmployeeID` (`EmployeeID`);
 
 --
-=======
->>>>>>> 8c8c6bf454272d0befa01d059d0e8b2e2257e0bc
+-- Indexes for table `invoices`
+--
+ALTER TABLE `invoices`
+  ADD PRIMARY KEY (`InvoiceID`),
+  ADD KEY `SalesOrderID` (`SalesOrderID`);
+
+--
 -- Indexes for table `materials`
 --
 ALTER TABLE `materials`
@@ -684,37 +693,28 @@ ALTER TABLE `password_resets`
   ADD KEY `user_id` (`user_id`);
 
 --
-<<<<<<< HEAD
 -- Indexes for table `payments`
 --
 ALTER TABLE `payments`
   ADD PRIMARY KEY (`PaymentID`),
-  ADD KEY `SalesOrderID` (`SalesOrderID`);
+  ADD KEY `OrderID` (`OrderID`);
 
 --
--- Indexes for table `permissions`
+-- Indexes for table `purchaseorderdetails`
 --
-ALTER TABLE `permissions`
-  ADD PRIMARY KEY (`permission_id`),
-  ADD UNIQUE KEY `permission_name` (`permission_name`);
-
---
--- Indexes for table `permission_roles`
---
-ALTER TABLE `permission_roles`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `role_id` (`role_id`,`permission_id`),
-  ADD KEY `permission_id` (`permission_id`);
+ALTER TABLE `purchaseorderdetails`
+  ADD PRIMARY KEY (`ID`),
+  ADD KEY `PurchaseOrderID` (`PurchaseOrderID`),
+  ADD KEY `MaterialID` (`MaterialID`);
 
 --
 -- Indexes for table `purchaseorders`
 --
 ALTER TABLE `purchaseorders`
-  ADD PRIMARY KEY (`PurchaseOrderID`);
+  ADD PRIMARY KEY (`PurchaseOrderID`),
+  ADD KEY `SupplierID` (`SupplierID`);
 
 --
-=======
->>>>>>> 8c8c6bf454272d0befa01d059d0e8b2e2257e0bc
 -- Indexes for table `roles`
 --
 ALTER TABLE `roles`
@@ -722,11 +722,10 @@ ALTER TABLE `roles`
   ADD UNIQUE KEY `role_name` (`role_name`);
 
 --
-<<<<<<< HEAD
 -- Indexes for table `salesorderdetails`
 --
 ALTER TABLE `salesorderdetails`
-  ADD PRIMARY KEY (`ID`),
+  ADD PRIMARY KEY (`SalesOrderDetailID`),
   ADD KEY `SalesOrderID` (`SalesOrderID`),
   ADD KEY `MaterialID` (`MaterialID`);
 
@@ -734,28 +733,26 @@ ALTER TABLE `salesorderdetails`
 -- Indexes for table `salesorders`
 --
 ALTER TABLE `salesorders`
-  ADD PRIMARY KEY (`SalesOrderID`),
-  ADD KEY `CustomerID` (`CustomerID`);
+  ADD PRIMARY KEY (`SalesOrderID`);
 
 --
-=======
->>>>>>> 8c8c6bf454272d0befa01d059d0e8b2e2257e0bc
 -- Indexes for table `suppliers`
 --
 ALTER TABLE `suppliers`
   ADD PRIMARY KEY (`SupplierID`);
 
 --
+-- Indexes for table `today_money`
+--
+ALTER TABLE `today_money`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`user_id`),
-<<<<<<< HEAD
-  ADD UNIQUE KEY `email` (`email`),
-  ADD UNIQUE KEY `reset_token_hash` (`reset_token_hash`);
-=======
   ADD UNIQUE KEY `email` (`email`);
->>>>>>> 8c8c6bf454272d0befa01d059d0e8b2e2257e0bc
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -765,11 +762,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `audit_logs`
 --
 ALTER TABLE `audit_logs`
-<<<<<<< HEAD
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=158;
-=======
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
->>>>>>> 8c8c6bf454272d0befa01d059d0e8b2e2257e0bc
 
 --
 -- AUTO_INCREMENT for table `categories`
@@ -778,42 +771,46 @@ ALTER TABLE `categories`
   MODIFY `CategoryID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
-<<<<<<< HEAD
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `CustomerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `CustomerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=93;
 
 --
 -- AUTO_INCREMENT for table `employees`
 --
 ALTER TABLE `employees`
-  MODIFY `EmployeeID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `EmployeeID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+
+--
+-- AUTO_INCREMENT for table `expenses`
+--
+ALTER TABLE `expenses`
+  MODIFY `ExpenseID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `goodsreceived`
 --
 ALTER TABLE `goodsreceived`
-  MODIFY `GoodsReceivedID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `GoodsReceivedID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `invoices`
+--
+ALTER TABLE `invoices`
+  MODIFY `InvoiceID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `materials`
 --
 ALTER TABLE `materials`
-  MODIFY `MaterialID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
-=======
--- AUTO_INCREMENT for table `materials`
---
-ALTER TABLE `materials`
-  MODIFY `MaterialID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
->>>>>>> 8c8c6bf454272d0befa01d059d0e8b2e2257e0bc
+  MODIFY `MaterialID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `password_resets`
 --
 ALTER TABLE `password_resets`
-<<<<<<< HEAD
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `payments`
@@ -822,25 +819,16 @@ ALTER TABLE `payments`
   MODIFY `PaymentID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT for table `permissions`
+-- AUTO_INCREMENT for table `purchaseorderdetails`
 --
-ALTER TABLE `permissions`
-  MODIFY `permission_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
-
---
--- AUTO_INCREMENT for table `permission_roles`
---
-ALTER TABLE `permission_roles`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+ALTER TABLE `purchaseorderdetails`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=88;
 
 --
 -- AUTO_INCREMENT for table `purchaseorders`
 --
 ALTER TABLE `purchaseorders`
   MODIFY `PurchaseOrderID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-=======
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
->>>>>>> 8c8c6bf454272d0befa01d059d0e8b2e2257e0bc
 
 --
 -- AUTO_INCREMENT for table `roles`
@@ -849,35 +837,34 @@ ALTER TABLE `roles`
   MODIFY `role_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
-<<<<<<< HEAD
 -- AUTO_INCREMENT for table `salesorderdetails`
 --
 ALTER TABLE `salesorderdetails`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
+  MODIFY `SalesOrderDetailID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `salesorders`
 --
 ALTER TABLE `salesorders`
-  MODIFY `SalesOrderID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `SalesOrderID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
-=======
->>>>>>> 8c8c6bf454272d0befa01d059d0e8b2e2257e0bc
 -- AUTO_INCREMENT for table `suppliers`
 --
 ALTER TABLE `suppliers`
-  MODIFY `SupplierID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `SupplierID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+
+--
+-- AUTO_INCREMENT for table `today_money`
+--
+ALTER TABLE `today_money`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-<<<<<<< HEAD
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-=======
   MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
->>>>>>> 8c8c6bf454272d0befa01d059d0e8b2e2257e0bc
 
 --
 -- Constraints for dumped tables
@@ -890,16 +877,25 @@ ALTER TABLE `audit_logs`
   ADD CONSTRAINT `audit_logs_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE SET NULL;
 
 --
-<<<<<<< HEAD
+-- Constraints for table `expenses`
+--
+ALTER TABLE `expenses`
+  ADD CONSTRAINT `expenses_ibfk_1` FOREIGN KEY (`EmployeeID`) REFERENCES `employees` (`EmployeeID`) ON DELETE SET NULL;
+
+--
 -- Constraints for table `goodsreceived`
 --
 ALTER TABLE `goodsreceived`
-  ADD CONSTRAINT `goodsreceived_ibfk_1` FOREIGN KEY (`PurchaseOrderID`) REFERENCES `purchaseorders` (`PurchaseOrderID`),
-  ADD CONSTRAINT `goodsreceived_ibfk_2` FOREIGN KEY (`EmployeeID`) REFERENCES `employees` (`EmployeeID`);
+  ADD CONSTRAINT `goodsreceived_ibfk_1` FOREIGN KEY (`PurchaseOrderID`) REFERENCES `purchaseorders` (`PurchaseOrderID`) ON DELETE CASCADE,
+  ADD CONSTRAINT `goodsreceived_ibfk_2` FOREIGN KEY (`EmployeeID`) REFERENCES `employees` (`EmployeeID`) ON DELETE SET NULL;
 
 --
-=======
->>>>>>> 8c8c6bf454272d0befa01d059d0e8b2e2257e0bc
+-- Constraints for table `invoices`
+--
+ALTER TABLE `invoices`
+  ADD CONSTRAINT `invoices_ibfk_1` FOREIGN KEY (`SalesOrderID`) REFERENCES `salesorders` (`SalesOrderID`) ON DELETE CASCADE;
+
+--
 -- Constraints for table `materials`
 --
 ALTER TABLE `materials`
@@ -911,62 +907,34 @@ ALTER TABLE `materials`
 --
 ALTER TABLE `password_resets`
   ADD CONSTRAINT `password_resets_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE;
-<<<<<<< HEAD
 
 --
 -- Constraints for table `payments`
 --
 ALTER TABLE `payments`
-  ADD CONSTRAINT `payments_ibfk_1` FOREIGN KEY (`SalesOrderID`) REFERENCES `salesorders` (`SalesOrderID`);
+  ADD CONSTRAINT `payments_ibfk_1` FOREIGN KEY (`OrderID`) REFERENCES `salesorders` (`SalesOrderID`) ON DELETE CASCADE;
 
 --
--- Constraints for table `permission_roles`
+-- Constraints for table `purchaseorderdetails`
 --
-ALTER TABLE `permission_roles`
-  ADD CONSTRAINT `permission_roles_ibfk_1` FOREIGN KEY (`role_id`) REFERENCES `roles` (`role_id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `permission_roles_ibfk_2` FOREIGN KEY (`permission_id`) REFERENCES `permissions` (`permission_id`) ON DELETE CASCADE;
+ALTER TABLE `purchaseorderdetails`
+  ADD CONSTRAINT `purchaseorderdetails_ibfk_1` FOREIGN KEY (`PurchaseOrderID`) REFERENCES `purchaseorders` (`PurchaseOrderID`) ON DELETE CASCADE,
+  ADD CONSTRAINT `purchaseorderdetails_ibfk_2` FOREIGN KEY (`MaterialID`) REFERENCES `materials` (`MaterialID`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `purchaseorders`
+--
+ALTER TABLE `purchaseorders`
+  ADD CONSTRAINT `purchaseorders_ibfk_1` FOREIGN KEY (`SupplierID`) REFERENCES `suppliers` (`SupplierID`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `salesorderdetails`
 --
 ALTER TABLE `salesorderdetails`
-  ADD CONSTRAINT `salesorderdetails_ibfk_1` FOREIGN KEY (`SalesOrderID`) REFERENCES `salesorders` (`SalesOrderID`),
-  ADD CONSTRAINT `salesorderdetails_ibfk_2` FOREIGN KEY (`MaterialID`) REFERENCES `materials` (`MaterialID`);
-
---
--- Constraints for table `salesorders`
---
-ALTER TABLE `salesorders`
-  ADD CONSTRAINT `salesorders_ibfk_1` FOREIGN KEY (`CustomerID`) REFERENCES `customers` (`CustomerID`);
-=======
->>>>>>> 8c8c6bf454272d0befa01d059d0e8b2e2257e0bc
+  ADD CONSTRAINT `salesorderdetails_ibfk_1` FOREIGN KEY (`SalesOrderID`) REFERENCES `salesorders` (`SalesOrderID`) ON DELETE CASCADE,
+  ADD CONSTRAINT `salesorderdetails_ibfk_2` FOREIGN KEY (`MaterialID`) REFERENCES `materials` (`MaterialID`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-<<<<<<< HEAD
-
-
---------------------------------------------------------------
--- Adds a foreign key constraint between user and role
--- 1. Identify Invalid role_id Values:
-SELECT u.role_id
-FROM users u
-LEFT JOIN roles r ON u.role_id = r.role_id
-WHERE r.role_id IS NULL;
-
--- 2. Fix the Invalid Data:
-UPDATE users
-SET role_id = 1
-WHERE role_id NOT IN (SELECT role_id FROM roles);
-
--- 3. Add the Foreign Key Constraint:
-ALTER TABLE users
-ADD CONSTRAINT fk_user_role
-FOREIGN KEY (role_id)
-REFERENCES roles(role_id);
-
---------------------------------------------------------------
-=======
->>>>>>> 8c8c6bf454272d0befa01d059d0e8b2e2257e0bc
