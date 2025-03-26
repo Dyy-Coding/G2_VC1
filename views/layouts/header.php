@@ -23,6 +23,12 @@
 <script src="views/assets/JavaScript/adminuseraccount/userlist.js" defer></script>
 <link rel="stylesheet" href="views/assets/css/adminaccountuser/adminUserList.css">
 
+<!-- admin account -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<link rel="stylesheet" href="views/assets/css/adminprofile/adminprofile.css">
+
+
 <!-- three-dot menu for user list -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -41,6 +47,8 @@
 }
 
 </style>
+
+
 <!-- CSS Files -->
 <link id="pagestyle" href="/views/assets/css/argon-dashboard.css?v=2.1.0" rel="stylesheet" />
 
@@ -162,9 +170,8 @@
             <span class="nav-link-text ms-1">Account</span>
           </a>
           <ul class="dropdown-menu" id="accountDropdown" >
-            <li><a class="dropdown-item" href="/profile">Profile</a></li>
-            <li><a class="dropdown-item" href="/userList">Users</a></li>
-            <li><a class="dropdown-item" href="/permission">Permission</a></li>
+            <li><a class="dropdown-item" href="/profile/account">Profile</a></li>
+            <li><a class="dropdown-item" href="/userList">Employees</a></li>
           </ul>
         </li>
 
