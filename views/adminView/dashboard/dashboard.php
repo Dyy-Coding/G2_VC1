@@ -15,7 +15,7 @@
                                 <span class="text-success text-sm font-weight-bolder">
                                     <?php 
                                         $percentage_change = ($total_expenses != 0) ? (($today_money - $total_expenses) / $total_expenses) * 100 : 0;
-                                        echo '+' . number_format($percentage_change, 2) . '%'; 
+                                        echo  number_format($percentage_change, 2) . '%'; 
                                     ?>
                                 </span>
                                 since yesterday
