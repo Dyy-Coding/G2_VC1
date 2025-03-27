@@ -264,18 +264,10 @@ class InventoryController extends BaseController {
         $this->redirect('/category');
     }
 
+    public function DeleteSelectedCategories() {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST['categoryIDs'])) {
+            $categoryIDs = $_POST['categoryIDs']; 
     
-    public function deleteSelectedCategories() {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['categoryIDs'])) {
-            $categoryIDs = $_POST['categoryIDs']; // Get selected category IDs from form
-    
-            if (empty($categoryIDs)) {
-                $this->setFlashMessage('error', 'No categories selected for deletion!');
-                $this->redirect('/category');
-                return;
-            }
-    
-            // Delete only the selected categories
             $deleteSuccess = $this->category->deleteSelectedCategories($categoryIDs);
     
             if ($deleteSuccess) {
@@ -283,10 +275,13 @@ class InventoryController extends BaseController {
             } else {
                 $this->setFlashMessage('error', 'Failed to delete selected categories.');
             }
-    
-            $this->redirect('/category');
+        } else {
+            $this->setFlashMessage('error', 'Please select at least one category to delete.');
         }
+    
+        $this->redirect('/category');
     }
+    
     
 
     public function editCategory($categoryID) {

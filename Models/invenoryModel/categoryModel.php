@@ -98,14 +98,12 @@ class Category {
         }
     }
 
-
     public function deleteSelectedCategories($categoryIDs) {
         try {
             if (empty($categoryIDs)) {
                 return false; // No categories selected
             }
     
-            // Convert array of IDs into a comma-separated string for SQL IN clause
             $placeholders = implode(',', array_fill(0, count($categoryIDs), '?'));
             $stmt = $this->conn->prepare("DELETE FROM Categories WHERE CategoryID IN ($placeholders)");
     
@@ -117,7 +115,9 @@ class Category {
             error_log("Error deleting selected categories: " . $e->getMessage());
             return false;
         }
-    } 
+    }
+
+    
     
 }
 

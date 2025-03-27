@@ -82,7 +82,7 @@ $route->group('inventory', function ($route) {
     $route->get('/category/delete/(.*)', [InventoryController::class, 'deleteCategory']);
     $route->post('/category/deleteSelected', [InventoryController::class, 'deleteSelectedCategories']);
     $route->get('/category/category_edit/(.*)', [InventoryController::class, 'editCategory']);
-    $route->post('/category/update/(.*)', [InventoryController::class, 'updateCategory']);
+    $route->post('/category/update/(.*)', [CategoriesController::class, 'updateCategory']);
 
     $route->get('/order', [InventoryController::class, 'order']);
 
