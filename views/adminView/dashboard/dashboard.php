@@ -1,55 +1,70 @@
 <div class="container-fluid py-4">
   <div class="row">
-    <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-      <div class="card">
-        <div class="card-body p-3">
-          <div class="row">
-            <div class="col-8">
-              <div class="numbers">
-                <p class="text-sm mb-0 text-uppercase font-weight-bold">Today's Money</p>
-                <h5 class="font-weight-bolder">
-                  $53,000
-                </h5>
-                <p class="mb-0">
-                  <span class="text-success text-sm font-weight-bolder">+55%</span>
-                  since yesterday
-                </p>
-              </div>
+<!-- today money -->
+      <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+        <div class="card">
+            <div class="card-body p-3">
+                <div class="row">
+                    <div class="col-8">
+                        <div class="numbers">
+                            <p class="text-sm mb-0 text-uppercase font-weight-bold">Today's Money</p>
+                            <h5 class="font-weight-bolder">
+                                $<?php echo number_format($today_money, 2); ?>
+                            </h5>
+                            <p class="mb-0">
+                                <span class="text-success text-sm font-weight-bolder">
+                                    <?php 
+                                        $percentage_change = ($total_expenses != 0) ? (($today_money - $total_expenses) / $total_expenses) * 100 : 0;
+                                        echo  number_format($percentage_change, 2) . '%'; 
+                                    ?>
+                                </span>
+                                since yesterday
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-4 text-end">
+                        <div class="icon icon-shape bg-gradient-primary shadow-primary text-center rounded-circle">
+                            <i class="ni ni-money-coins text-lg opacity-10" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="col-4 text-end">
-              <div class="icon icon-shape bg-gradient-primary shadow-primary text-center rounded-circle">
-                <i class="ni ni-money-coins text-lg opacity-10" aria-hidden="true"></i>
-              </div>
-            </div>
+        </div>
+    </div>
+<!-- Today Customers -->
+
+<div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+  <div class="card">
+    <div class="card-body p-3">
+      <div class="row">
+        <div class="col-8">
+          <div class="numbers">
+            <p class="text-sm mb-0 text-uppercase font-weight-bold">Today's Customer</p>
+            <h5 class="font-weight-bolder">
+              <?php echo number_format($total_customers_today); ?>
+            </h5>
+            <p class="mb-0">
+              <span class="text-success text-sm font-weight-bolder">
+                <?php 
+                  // Display percentage change (add "+" sign if positive)
+                  echo ($customer_percentage_change > 0 ? "+" : "") . number_format($customer_percentage_change, 2) . "%"; 
+                ?>
+              </span>
+              since yesterday
+            </p>
+          </div>
+        </div>
+        <div class="col-4 text-end">
+          <div class="icon icon-shape bg-gradient-danger shadow-danger text-center rounded-circle">
+            <i class="ni ni-world text-lg opacity-10" aria-hidden="true"></i>
           </div>
         </div>
       </div>
     </div>
-    <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-      <div class="card">
-        <div class="card-body p-3">
-          <div class="row">
-            <div class="col-8">
-              <div class="numbers">
-                <p class="text-sm mb-0 text-uppercase font-weight-bold">Today's Users</p>
-                <h5 class="font-weight-bolder">
-                  2,300
-                </h5>
-                <p class="mb-0">
-                  <span class="text-success text-sm font-weight-bolder">+3%</span>
-                  since last week
-                </p>
-              </div>
-            </div>
-            <div class="col-4 text-end">
-              <div class="icon icon-shape bg-gradient-danger shadow-danger text-center rounded-circle">
-                <i class="ni ni-world text-lg opacity-10" aria-hidden="true"></i>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+  </div>
+</div>
+
+
     <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
       <div class="card">
         <div class="card-body p-3">

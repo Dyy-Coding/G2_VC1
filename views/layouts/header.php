@@ -23,6 +23,12 @@
 <script src="views/assets/JavaScript/adminuseraccount/userlist.js" defer></script>
 <link rel="stylesheet" href="views/assets/css/adminaccountuser/adminUserList.css">
 
+<!-- admin account -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<link rel="stylesheet" href="views/assets/css/adminprofile/adminprofile.css">
+
+
 <!-- three-dot menu for user list -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -41,6 +47,8 @@
 }
 
 </style>
+
+
 <!-- CSS Files -->
 <link id="pagestyle" href="/views/assets/css/argon-dashboard.css?v=2.1.0" rel="stylesheet" />
 
@@ -87,7 +95,19 @@
           <ul class="dropdown-menu" id="inventoryDropdown" >
             <li><a class="dropdown-item" href="/category">Category</a></li>
             <li><a class="dropdown-item" href="/inventory">Material</a></li>
-            <li><a class="dropdown-item" href="/order">Order</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/inventory">
+            <div
+              class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="ni ni-calendar-grid-58 text-dark text-sm opacity-10"></i>
+            </div>
+            <span class="nav-link-text ms-1">Sales</span>
+          </a>
+          <ul class="dropdown-menu" id="inventoryDropdown" >
+          <li><a class="dropdown-item" href="/order">Order</a></li>
+            <li><a class="dropdown-item" href="/inven">OrderDetail</a></li>
           </ul>
         </li>
 
@@ -150,7 +170,7 @@
             <span class="nav-link-text ms-1">Account</span>
           </a>
           <ul class="dropdown-menu" id="accountDropdown" >
-            <li><a class="dropdown-item" href="/profile">Profile</a></li>
+            <li><a class="dropdown-item" href="/profile/account">Profile</a></li>
             <li><a class="dropdown-item" href="/userList">Employees</a></li>
           </ul>
         </li>

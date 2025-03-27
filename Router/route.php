@@ -22,6 +22,7 @@ require_once 'Controllers/validateionHelper.php';
 require_once "Models/usersModel.php";
 require_once "Models/invenoryModel/meterailModel.php";
 require_once "Models/invenoryModel/categoryModel.php";
+require_once "Models/dashboard/todayMoneyModel.php";
 
 
 
@@ -89,6 +90,9 @@ $route->group('inventory', function ($route) {
 });
 
 $route->group('profile', function ($route) {
+    // Profile admin
+    $route->get('/profile/account', [ProfileAccountController::class, 'profileadmin']);
+
     // $route->get('/addusersform', [AccountController::class, 'viewAddusersForm']);
     $route->get('/userList', [AccountListController::class, 'viewUsersAccListProfile']);
     $route->get('/userdetail', [AccountListController::class, 'viewUserDetail']);
