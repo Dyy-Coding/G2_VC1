@@ -12,7 +12,7 @@ class AccountListController extends BaseController
     function __construct()
     {
         $this->model = new AdminUserListModel();
-        
+
     }
 
     // get all users from database
@@ -79,7 +79,6 @@ class AccountListController extends BaseController
         $email = $_POST['email'] ?? '';
         $password = $_POST['password'] ?? '';
         $phone = $_POST['phone'] ?? '';
-        $roleId = (int) ($_POST['role'] ?? 2); // Default to role_id 2 (non-admin)
         $address = $_POST['address'] ?? null;
         $streetAddress = $_POST['street'] ?? null;
 
@@ -88,20 +87,24 @@ class AccountListController extends BaseController
         if (isset($_FILES['profile']) && $_FILES['profile']['error'] === UPLOAD_ERR_OK) {
             $uploadDir = 'uploads/'; // Ensure this directory exists and is writable
             if (!is_dir($uploadDir)) {
-                mkdir($uploadDir, 0755, true);
+                if (!mkdir($uploadDir, 0755, true)) {
+                    $error = "Failed to create upload directory.";
+                    $this->renderView('adminView/accounts/adminUserList/listuser/createuser', ['error' => $error]);
+                    return;
+                }
             }
-            $uploadFile = $uploadDir . basename($_FILES['profile']['name']);
-            if (move_uploaded_file($_FILES['profile']['tmp_name'], $uploadFile)) {
-                $profileImage = $uploadFile;
-            } else {
-                $error = "Failed to upload profile image.";
+
+            $uploadFile = $uploadDir . time() . '_' . basename($_FILES['profile']['name']);
+            if (!move_uploaded_file($_FILES['profile']['tmp_name'], $uploadFile)) {
+                $error = "Failed to upload profile image. Please check file permissions or server configuration.";
                 $this->renderView('adminView/accounts/adminUserList/listuser/createuser', ['error' => $error]);
                 return;
             }
+            $profileImage = $uploadFile;
         }
 
         // Validation
-        if (empty($firstName) || empty($lastName) || empty($email) || empty($password) || empty($phone) || empty($roleId)) {
+        if (empty($firstName) || empty($lastName) || empty($email) || empty($password) || empty($phone)) {
             $error = "All required fields must be filled.";
             $this->renderView('adminView/accounts/adminUserList/listuser/createuser', ['error' => $error]);
             return;
@@ -148,7 +151,6 @@ class AccountListController extends BaseController
             $this->renderView('adminView/accounts/adminUserList/listuser/createuser', ['error' => $error]);
         }
     }
-
     // edit user
     public function editUserAccProfile()
     {
