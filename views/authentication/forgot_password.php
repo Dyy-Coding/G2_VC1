@@ -18,13 +18,18 @@
 <body class="min-h-screen flex items-center justify-center">
     <div class="container max-w-md bg-white p-5 rounded-xl shadow-lg w-full">
         <h2 class="text-center text-2xl font-bold text-gray-800 mb-4">Forgot Your Password?</h2>
+<<<<<<< HEAD
         <p class="text-center text-gray-500 mb-4">Choose how you'd like to reset your password: via email or phone number.</p>
+=======
+        <p class="text-center text-gray-500 mb-4">Enter your email or phone number below, and we’ll send you a reset link.</p>
+>>>>>>> 8104dbc494eba992687c0e453de81dec9bbedc0a
 
-        <form action="/forgotpasswordform" method="POST">
+        <form action="/reset-password" method="POST">
             <!-- Hidden Token Field -->
             <input type="hidden" name="token" value="<?php echo htmlspecialchars($token); ?>">
 
             <div class="mb-4">
+<<<<<<< HEAD
                 <label class="block text-sm font-medium text-gray-700">Choose a method</label>
                 <div class="flex items-center space-x-4">
                     <!-- Radio Buttons for Email or Phone Number -->
@@ -49,6 +54,12 @@
             <div class="mb-4 reset-option phone-option hidden">
                 <label for="phone" class="form-label block text-sm font-medium text-gray-700">Phone number</label>
                 <input type="tel" name="phone" id="phone" class="form-control block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="+1 (555) 123-4567">
+=======
+                <label for="contact" class="form-label block text-sm font-medium text-gray-700">Email or Phone Number</label>
+                <input type="text" name="contact" id="contact"
+                    class="form-control block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    placeholder="you@example.com or +1234567890" required>
+>>>>>>> 8104dbc494eba992687c0e453de81dec9bbedc0a
             </div>
 
             <div class="d-grid">
