@@ -67,7 +67,6 @@ $route->group('dashboard', function($route) {
 });
 $route->group('welcome', function($route) {
     $route->get('/welcome', [WelcomeController::class, 'welcome']);
-
 });
 
 $route->group('inventory', function ($route) {
