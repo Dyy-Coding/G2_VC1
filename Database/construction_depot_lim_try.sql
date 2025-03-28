@@ -865,13 +865,6 @@ ALTER TABLE `suppliers`
 --
 ALTER TABLE `today_money`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-  MODIFY `SupplierID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
-
---
--- AUTO_INCREMENT for table `today_money`
---
-ALTER TABLE `today_money`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -888,12 +881,6 @@ ALTER TABLE `users`
 --
 ALTER TABLE `audit_logs`
   ADD CONSTRAINT `audit_logs_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE SET NULL;
-
---
--- Constraints for table `expenses`
---
-ALTER TABLE `expenses`
-  ADD CONSTRAINT `expenses_ibfk_1` FOREIGN KEY (`EmployeeID`) REFERENCES `employees` (`EmployeeID`) ON DELETE SET NULL;
 
 --
 -- Constraints for table `expenses`
@@ -941,7 +928,6 @@ ALTER TABLE `purchaseorderdetails`
   ADD CONSTRAINT `purchaseorderdetails_ibfk_2` FOREIGN KEY (`MaterialID`) REFERENCES `materials` (`MaterialID`) ON DELETE CASCADE;
 
 --
--- Constraints for table `purchaseorders`
 -- Constraints for table `purchaseorders`
 --
 ALTER TABLE `purchaseorders`
