@@ -88,7 +88,6 @@
             <input type="search" id="form1" class="form-control" style="width:100%" placeholder="Search"/>
         </div>
     </div>
-    <button class="btn btn-danger m-3" style="width: 5%; font-size: small; padding: 5px;">Delete</button>
     <table class="table text-center align-middle" style="table-layout: fixed; width: 100%;">
     <thead>
         <tr >
