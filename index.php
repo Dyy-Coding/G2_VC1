@@ -1,5 +1,1 @@
-<?php 
-require("Router/route.php") 
-// require("views/adminView/sales/materialSales.php") ;
-
-?>
+<?php require("Router/route.php") ?>
