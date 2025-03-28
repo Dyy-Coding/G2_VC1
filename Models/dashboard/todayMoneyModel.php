@@ -104,6 +104,49 @@ class TodayMoneyModel {
         }
     }
 
+
+      /**
+     * Fetch the total number of customers added today.
+     */  // Existing method to get today's customers
+    public function getTodayCustomers() {
+        $query = "SELECT COUNT(*) AS total_customers_today FROM Customers WHERE DATE(created) = CURDATE()";
+        $stmt = $this->conn->query($query);
+
+        if ($stmt) {
+            $row = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $row ? $row['total_customers_today'] : 0;
+        }
+        return 0;
+    }
+
+    // New method to get yesterday's customers
+    public function getYesterdayCustomers() {
+        $query = "SELECT COUNT(*) AS total_customers_yesterday FROM Customers WHERE DATE(created) = CURDATE() - INTERVAL 1 DAY";
+        $stmt = $this->conn->query($query);
+
+        if ($stmt) {
+            $row = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $row ? $row['total_customers_yesterday'] : 0;
+        }
+        return 0;
+    }
+
+    // Method to calculate the percentage change
+    public function getCustomerPercentageChange() {
+        $todayCustomers = $this->getTodayCustomers();
+        $yesterdayCustomers = $this->getYesterdayCustomers();
+
+        if ($yesterdayCustomers > 0) {
+            // Calculate percentage change
+            $percentageChange = (($todayCustomers - $yesterdayCustomers) / $yesterdayCustomers) * 100;
+        } else {
+            // If no customers yesterday, consider the percentage change as 100% increase
+            $percentageChange = 100;
+        }
+
+        return $percentageChange;
+    }
+
     // Destructor to close the connection
     public function __destruct() {
         // Close the connection explicitly if needed
