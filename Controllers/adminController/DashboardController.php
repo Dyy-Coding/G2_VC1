@@ -19,6 +19,9 @@ public function index() {
     // Calculate the percentage change in customers
     $customerPercentageChange = $this->todayMoneyModel->getCustomerPercentageChange();
 
+    $totalSuppliers = $this->todayMoneyModel->getTotalSuppliers();
+    $totalPurchaseorders = $this->todayMoneyModel->getTotalPurchaseorders();
+    $percentageChange = -2; // xample: you can dynamically calculate this if needed
     // Retrieve today's money data
     $todayMoneyData = $this->todayMoneyModel->getTodayMoneyData();
 
@@ -29,6 +32,10 @@ public function index() {
         'total_expenses' => $todayMoneyData['total_expenses'],
         'total_customers_today' => $todayCustomers,
         'customer_percentage_change' => $customerPercentageChange, // Pass percentage change to the view
+        'totalSuppliers' => $totalSuppliers,
+        'percentageChange' => $percentageChange,
+        'totalPurchaseorders' => $totalPurchaseorders
+
     ]);
 }
 }

@@ -22,7 +22,7 @@ require_once 'Controllers/validateionHelper.php';
 require_once "Models/usersModel.php";
 require_once "Models/invenoryModel/meterailModel.php";
 require_once "Models/invenoryModel/categoryModel.php";
-require_once "Models/dashboard/todayMoneyModel.php";
+require_once "Models/dashboard/dashboardModel.php";
 
 
 
