@@ -14,6 +14,10 @@ require_once "Controllers/AdminController/DashboardController.php";
 require_once "Controllers/adminController/BashInfoController.php";
 require_once 'Controllers/errorController.php';
 
+// require_one Controllers/adminController/dashboardController/stockListController.php;
+require_once 'Controllers/adminController/dashboardController/stockListController.php';
+
+
 // Database link files
 require_once __DIR__ . '/../Database/Database.php';
 require_once "Controllers/adminController/accountController/adminProfileController.php";
