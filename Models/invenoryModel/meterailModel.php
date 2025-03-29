@@ -5,6 +5,9 @@ class Material {
 
     public function __construct() {
         $this->conn = Database::getConnection();
+        if (!$this->conn) {
+            die("Database connection failed!");
+        } // Assumes Database class exists
     }
 
     public function getAllMaterials() {
@@ -19,6 +22,51 @@ class Material {
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
             error_log("Error fetching materials: " . $e->getMessage());
+            return [];
+        }
+    }
+
+    public function getCategories() {
+        try {
+            $stmt = $this->conn->prepare("SELECT CategoryID, CategoryName FROM Categories ORDER BY CategoryName ASC;");
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            error_log("Error fetching categories: " . $e->getMessage());
+            return [];
+        }
+    }
+
+    public function getAllCategories() { // Kept for completeness
+        try {
+            $stmt = $this->conn->prepare("SELECT CategoryID, CategoryName, Description, UpdatedAt FROM Categories");
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            error_log("Error fetching categories: " . $e->getMessage());
+            return [];
+        }
+    }
+
+    public function getCategoryById($categoryID) {
+        try {
+            $stmt = $this->conn->prepare("SELECT * FROM Categories WHERE CategoryID = :categoryID");
+            $stmt->bindParam(':categoryID', $categoryID, PDO::PARAM_INT);
+            $stmt->execute();
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            error_log("Error fetching category: " . $e->getMessage());
+            return null;
+        }
+    }
+
+    public function getSuppliers() {
+        try {
+            $stmt = $this->conn->prepare("SELECT SupplierID, Name FROM Suppliers");
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            error_log("Error fetching suppliers: " . $e->getMessage());
             return [];
         }
     }
@@ -56,7 +104,11 @@ class Material {
     public function addMaterial($data) {
         $requiredFields = ['name', 'categoryID', 'supplierID', 'quantity', 'unitPrice'];
         foreach ($requiredFields as $field) {
-            if (!isset($data[$field]) || $data[$field] === '' || ($field === 'categoryID' && $data[$field] <= 0) || ($field === 'supplierID' && $data[$field] <= 0) || ($field === 'quantity' && $data[$field] < 0) || ($field === 'unitPrice' && $data[$field] < 0)) {
+            if (!isset($data[$field]) || $data[$field] === '' || 
+                ($field === 'categoryID' && $data[$field] <= 0) || 
+                ($field === 'supplierID' && $data[$field] <= 0) || 
+                ($field === 'quantity' && $data[$field] < 0) || 
+                ($field === 'unitPrice' && $data[$field] < 0)) {
                 error_log("Validation Error: $field is invalid or missing. Value: " . ($data[$field] ?? 'unset'));
                 return false;
             }
@@ -89,28 +141,6 @@ class Material {
         } catch (PDOException $e) {
             error_log("Exception in addMaterial: " . $e->getMessage() . " | Data: " . json_encode($data));
             return false;
-        }
-    }
-
-    public function getCategories() {
-        try {
-            $stmt = $this->conn->prepare("SELECT CategoryID, CategoryName FROM Categories");
-            $stmt->execute();
-            return $stmt->fetchAll(PDO::FETCH_ASSOC);
-        } catch (PDOException $e) {
-            error_log("Error fetching categories: " . $e->getMessage());
-            return [];
-        }
-    }
-
-    public function getSuppliers() {
-        try {
-            $stmt = $this->conn->prepare("SELECT SupplierID, Name FROM Suppliers");
-            $stmt->execute();
-            return $stmt->fetchAll(PDO::FETCH_ASSOC);
-        } catch (PDOException $e) {
-            error_log("Error fetching suppliers: " . $e->getMessage());
-            return [];
         }
     }
 

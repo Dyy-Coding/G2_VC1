@@ -8,25 +8,15 @@ class InventoryController extends BaseController {
     }
 
     public function inventory() {
-        $categories = $this->material->getCategories();
         $suppliers = $this->material->getSuppliers();
         $materials = $this->material->getAllMaterials();
     
         $this->renderView("adminView/inventory/stock", [
-            'categories' => $categories,
             'suppliers' => $suppliers,
-            'materials'  => $materials,
+            'materials' => $materials,
             'flash_message' => $_SESSION['flash_message'] ?? null
         ]);
         unset($_SESSION['flash_message']);
-    }
-
-    public function category() {
-        $this->renderView('adminView/inventory/category');
-    }
-
-    public function order() {
-        $this->renderView('adminView/inventory/order');
     }
 
     public function addMaterial() {
@@ -48,14 +38,13 @@ class InventoryController extends BaseController {
                 'status' => $this->sanitizeInput($_POST['status'] ?? ''),
                 'warrantyPeriod' => $this->sanitizeInput($_POST['warrantyPeriod'] ?? ''),
             ];
-    
-            // Validate required fields: name, categoryID, supplierID, quantity, unitPrice
+
             if (empty($data['name']) || $data['categoryID'] <= 0 || $data['supplierID'] <= 0 || $data['quantity'] < 0 || $data['unitPrice'] < 0) {
                 $this->setFlashMessage('error', 'Name, Category, Supplier, Quantity, and Unit Price are required and must be valid!');
                 $this->redirect('/materials/add');
                 return;
             }
-    
+
             $imagePath = null;
             if (!empty($_FILES['image']['name']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
                 $uploadResult = $this->material->uploadImage($_FILES['image']);
@@ -66,10 +55,10 @@ class InventoryController extends BaseController {
                 }
                 $imagePath = $uploadResult['success'];
             }
-    
+
             $data['imagePath'] = $imagePath;
             $insertSuccess = $this->material->addMaterial($data);
-    
+
             if ($insertSuccess) {
                 $this->setFlashMessage('success', 'Material added successfully!');
                 $this->redirect('/inventory');
@@ -81,8 +70,11 @@ class InventoryController extends BaseController {
         } else {
             $this->renderView('adminView/inventory/stock', [
                 'categories' => $this->material->getCategories(),
-                'suppliers' => $this->material->getSuppliers()
+                'suppliers' => $this->material->getSuppliers(),
+                'materials' => $this->material->getAllMaterials(),
+                'flash_message' => $_SESSION['flash_message'] ?? null
             ]);
+            unset($_SESSION['flash_message']);
         }
     }
 
@@ -107,7 +99,7 @@ class InventoryController extends BaseController {
 
     public function updateMaterial() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $id = (int) $_POST['materialID'] ?? 0;
+            $id = (int) ($_POST['materialID'] ?? 0);
             $material = $this->material->getMaterialById($id);
 
             if (!$material) {
@@ -118,23 +110,21 @@ class InventoryController extends BaseController {
 
             $data = [
                 'name' => $this->sanitizeInput($_POST['Name'] ?? ''),
-                'categoryID' => (int) $_POST['categoryID'] ?? 0,
-                'quantity' => (int) $_POST['Quantity'] ?? 0,
-                'unitPrice' => (float) $_POST['UnitPrice'] ?? 0.0,
-                'supplierID' => (int) $_POST['supplierID'] ?? 0,
+                'categoryID' => (int) ($_POST['categoryID'] ?? 0),
+                'quantity' => (int) ($_POST['Quantity'] ?? 0),
+                'unitPrice' => (float) ($_POST['UnitPrice'] ?? 0.0),
+                'supplierID' => (int) ($_POST['supplierID'] ?? 0),
                 'description' => $this->sanitizeInput($_POST['Description'] ?? ''),
                 'brand' => $this->sanitizeInput($_POST['Brand'] ?? ''),
                 'status' => $this->sanitizeInput($_POST['Status'] ?? ''),
-                'minStockLevel' => (int) $_POST['minStockLevel'] ?? 0,
-                'reorderLevel' => (int) $_POST['reorderLevel'] ?? 0,
+                'minStockLevel' => (int) ($_POST['minStockLevel'] ?? 0),
+                'reorderLevel' => (int) ($_POST['reorderLevel'] ?? 0),
                 'unitOfMeasure' => $this->sanitizeInput($_POST['unitOfMeasure'] ?? ''),
                 'size' => $this->sanitizeInput($_POST['Size'] ?? ''),
                 'location' => $this->sanitizeInput($_POST['location'] ?? ''),
                 'supplierContact' => $this->sanitizeInput($_POST['supplierContact'] ?? ''),
                 'warrantyPeriod' => $this->sanitizeInput($_POST['warrantyPeriod'] ?? ''),
             ];
-
-            error_log("Submitted Size: " . $data['size']);
 
             if (empty($data['name']) || empty($data['categoryID']) || empty($data['supplierID'])) {
                 $this->setFlashMessage('error', 'Name, Category, and Supplier are required!');
@@ -192,21 +182,6 @@ class InventoryController extends BaseController {
         }
 
         $this->redirect('/inventory');
-    }
-
-    public function viewMaterial($id) {
-        $material = $this->material->getMaterialById($id);
-        
-        if (!$material) {
-            $this->renderView('errors/404', [], 404);
-            return;
-        }
-
-        $this->renderView('adminView/inventory/viewMaterial', [
-            'material' => $material,
-            'flash_message' => $_SESSION['flash_message'] ?? null
-        ]);
-        unset($_SESSION['flash_message']);
     }
 
     private function setFlashMessage($type, $message) {

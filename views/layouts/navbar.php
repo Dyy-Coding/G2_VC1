@@ -11,24 +11,12 @@
         </nav>
         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4 d-flex flex-row align-items-center justify-content-center" id="navbar">
           <div class="ms-md-auto pe-md-3 d-flex align-items-center">
-            <form id="searchForm" action="/category" method="GET">
-              <div class="input">
-                <span class="text-body"><i class="fas fa-search"></i></span>
-                <input type="search" name="q" class="form-control border-0" placeholder="Type here..." required>
-              </div>
-            </form>
+          <form id="searchForm" action="/searchbar" method="GET">
+              <input type="search" name="q" id="search" class="form-control border-0" placeholder="Search everything..." required>
+              <div id="searchResults" class="search-dropdown" style="display: none; position: absolute; background: white; width: 100%; border: 1px solid #ddd;"></div>
+          </form>
+
           </div>
-          <!-- <li class="nav-item dropdown d-flex align-items-center">
-            <a href="#" class="nav-link text-white font-weight-bold px-2 d-flex align-items-center gap-2 dropdown-toggle"
-              role="button" id="languageDropdownToggle" data-bs-toggle="dropdown" aria-expanded="false">
-              <i class="ni ni-world-2 text-white text-sm"></i>
-              <span id="selectedLanguage">English</span>
-            </a>
-            <ul class="dropdown-menu" id="languageDropdown">
-              <li><a class="dropdown-item language-option" data-language="English" href="#">English</a></li>
-              <li><a class="dropdown-item language-option" data-language="Khmer" href="#">Khmer</a></li>
-            </ul>
-          </li> -->
           <li class="nav-item dropdown d-flex flex-row align-items-center">
             <!-- <label for="myDropdown" class="text-white font-weight-bold px-2 d-flex align-items-center gap-2">Choose an option:</label> -->
               <i class="ni ni-world-2 text-white text-sm"></i>

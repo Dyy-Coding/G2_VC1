@@ -1,47 +1,35 @@
 <?php
 
+
 class DashboardController extends BaseController {
-    
-    public function index() {
-        // Check if the user is logged in
-        if (!isset($_SESSION['user_id'])) {
-            $this->redirect('/login'); // Redirect to login if not authenticated
-            exit;
-        }
 
-        // Optional: Check user role (for admin-only access)
-        if ($_SESSION['role_id'] !== 1) { // Assuming role_id 1 = Admin
-            $this->redirect('/user'); // Redirect non-admin users
-            exit;
-        }
+private $todayMoneyModel;
 
-        // Retrieve user details
-        $first_name = $_SESSION['first_name'] ?? 'User';
-        $last_name = $_SESSION['last_name'] ?? '';
-
-        // Load the admin dashboard view
-        $this->renderView('adminView/dashboard/dashboard', [
-            'first_name' => $first_name,
-            'last_name' => $last_name
-        ]);
-    }
-
-    public function userDashboard() {
-        // Check if the user is logged in
-        if (!isset($_SESSION['user_id'])) {
-            $this->redirect('/login');
-            exit;
-        }
-
-        // Retrieve user details
-        $first_name = $_SESSION['first_name'] ?? 'User';
-        $last_name = $_SESSION['last_name'] ?? '';
-
-        // Load the user dashboard view
-        $this->renderView('adminView/dashboard/dashboard', [
-            'first_name' => $first_name,
-            'last_name' => $last_name
-        ]);
-    }
+public function __construct() {
+    $this->todayMoneyModel = new TodayMoneyModel();
 }
-?>
+
+public function index() {
+    // Retrieve today's customer count
+    $todayCustomers = $this->todayMoneyModel->getTodayCustomers();
+
+    // Retrieve yesterday's customer count
+    $yesterdayCustomers = $this->todayMoneyModel->getYesterdayCustomers();
+
+    // Calculate the percentage change in customers
+    $customerPercentageChange = $this->todayMoneyModel->getCustomerPercentageChange();
+
+    // Retrieve today's money data
+    $todayMoneyData = $this->todayMoneyModel->getTodayMoneyData();
+
+    // Load the view and pass the data
+    $this->renderView('adminView/dashboard/dashboard', [
+        'today_money' => $todayMoneyData['today_money'],
+        'total_income' => $todayMoneyData['total_income'],
+        'total_expenses' => $todayMoneyData['total_expenses'],
+        'total_customers_today' => $todayCustomers,
+        'customer_percentage_change' => $customerPercentageChange, // Pass percentage change to the view
+    ]);
+}
+}
+

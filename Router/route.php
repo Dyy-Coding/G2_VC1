@@ -21,6 +21,8 @@ require_once "Controllers/adminController/accountController/adminUserListControl
 require_once 'Controllers/validateionHelper.php';
 require_once "Models/usersModel.php";
 require_once "Models/invenoryModel/meterailModel.php";
+require_once "Models/invenoryModel/categoryModel.php";
+require_once "Models/dashboard/todayMoneyModel.php";
 
 
 
@@ -77,11 +79,20 @@ $route->group('inventory', function ($route) {
     $route->get('/materials/delete/{id}', [InventoryController::class, 'deleteMaterial']);
     $route->get('/materials/view/{id}', [InventoryController::class, 'viewMaterial']);
     $route->get('/category', [InventoryController::class, 'category']);
+    $route->post('/category/add', [InventoryController::class, 'addCategory']);
+    $route->get('/category/delete/(.*)', [InventoryController::class, 'deleteCategory']);
+    $route->post('/category/deleteSelected', [InventoryController::class, 'deleteSelectedCategories']);
+    $route->get('/category/category_edit/(.*)', [InventoryController::class, 'editCategory']);
+    $route->post('/category/update/(.*)', [InventoryController::class, 'updateCategory']);
+
     $route->get('/order', [InventoryController::class, 'order']);
 
 });
 
 $route->group('profile', function ($route) {
+    // Profile admin
+    $route->get('/profile/account', [ProfileAccountController::class, 'profileadmin']);
+
     // $route->get('/addusersform', [AccountController::class, 'viewAddusersForm']);
     $route->get('/userList', [AccountListController::class, 'viewUsersAccListProfile']);
     $route->get('/userdetail', [AccountListController::class, 'viewUserDetail']);
@@ -98,6 +109,7 @@ $route->group('profile', function ($route) {
     $route->post('/deleteuser', [AccountListController::class, 'destroyUserAccProfile']);
 });
 
+$route->get('/api/global-search', [SearchController::class, 'globalSearch']);
 $route->get('/error', [ErrorController::class, 'error']);
 
 // $route->printRoutes();
