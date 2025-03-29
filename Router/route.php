@@ -14,10 +14,14 @@ require_once "Controllers/AdminController/DashboardController.php";
 require_once "Controllers/adminController/BashInfoController.php";
 require_once 'Controllers/errorController.php';
 
+// require_one Controllers/adminController/dashboardController/stockListController.php;
+require_once 'Controllers/adminController/dashboardController/stockListController.php';
+
+
 // Database link files
 require_once __DIR__ . '/../Database/Database.php';
-require_once "Controllers/adminController/accountController/adminUserFormController.php";
-require_once "Controllers/adminController/accountController/adminUserListController.php";
+require_once "Controllers/adminController/accountController/adminProfileController.php";
+require_once "Controllers/adminController/accountController/listUserController.php";
 require_once 'Controllers/validateionHelper.php';
 require_once "Models/usersModel.php";
 require_once "Models/invenoryModel/meterailModel.php";
@@ -67,7 +71,6 @@ $route->group('dashboard', function($route) {
 });
 $route->group('welcome', function($route) {
     $route->get('/welcome', [WelcomeController::class, 'welcome']);
-
 });
 
 $route->group('inventory', function ($route) {

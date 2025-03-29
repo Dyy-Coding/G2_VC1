@@ -14,19 +14,22 @@ class AdminUserListModel
     public function getUsersAccount()
     {
         $sql = "SELECT 
-                users.user_id, 
-                users.profile_image, 
-                users.first_name, 
-                users.last_name, 
-                users.email, 
-                users.phone, 
-                users.role_id, 
-                roles.role_name
-            FROM users
-            LEFT JOIN roles ON users.role_id = roles.role_id
-            WHERE users.user_id != :admin_id"; // Exclude admin user if needed
+            users.user_id, 
+            users.profile_image, 
+            users.first_name, 
+            users.last_name, 
+            users.email, 
+            users.phone, 
+            users.role_id, 
+            roles.role_name
+        FROM users
+        LEFT JOIN roles ON users.role_id = roles.role_id
+        WHERE users.user_id != :admin_id AND users.role_id != :admin_role_id"; // Exclude admin user and admin role
         $stmt = $this->dsn->prepare($sql);
-        $stmt->execute([':admin_id' => 1]); // Assuming admin user_id is 1
+        $stmt->execute([
+            ':admin_id' => 1, // Assuming admin user_id is 1
+            ':admin_role_id' => 1 // Exclude role_id 1 (admin role)
+        ]);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
