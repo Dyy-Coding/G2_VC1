@@ -147,6 +147,22 @@ class TodayMoneyModel {
         return $percentageChange;
     }
 
+
+    public function getTotalSuppliers() {
+        $query = "SELECT COUNT(*) AS total FROM suppliers";
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $result['total'];
+    }
+    public function getTotalPurchaseorders() {
+        $query = "SELECT COUNT(*) AS totalPurchaseorders FROM `purchaseorders`;";
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $result['totalPurchaseorders'];
+    }
+
     // Destructor to close the connection
     public function __destruct() {
         // Close the connection explicitly if needed
@@ -154,5 +170,7 @@ class TodayMoneyModel {
             $this->conn = null; // Closing the PDO connection
         }
     }
+
+ 
 }
 ?>
