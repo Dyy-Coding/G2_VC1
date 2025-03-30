@@ -1,35 +1,41 @@
-function handleGlobalSearch(event) {
-    event.preventDefault();
-    const searchQuery = document.getElementById('searchbar').value.trim();
-    const selectedLang = document.getElementById('myDropdown').value;
+// // Example 3: DOM Search
+// function searchInPage() {
+//     const searchText = document.getElementById("domSearchInput").value;
+//     const elements = document.getElementsByTagName("*");
+//     const results = [];
     
-    if (searchQuery) {
-        const form = document.getElementById('searchForm');
-        // Include language parameter in search
-        form.action = `/search?q=${encodeURIComponent(searchQuery)}&lang=${selectedLang}`;
-        form.submit();
-    }
-}
+//     for (let element of elements) {
+//         if (element.textContent.toLowerCase().includes(searchText.toLowerCase()) && 
+//             element.tagName !== "SCRIPT" && element.tagName !== "STYLE") {
+//             results.push(element.textContent.trim());
+//         }
+//     }
+    
+//     const resultDiv = document.getElementById("domResults");
+//     if (results.length > 0) {
+//         resultDiv.innerHTML = "<strong>Found in page:</strong><br>" + results.join("<br>");
+//     } else {
+//         resultDiv.innerHTML = "No matches found on the page.";
+//     }
+// }
 
-// Language dropdown handler
-document.getElementById("myDropdown").addEventListener("change", function () {
-    const selectedLang = this.value;
-    console.log("Language selected: " + selectedLang);
-    // Optional: Trigger search with new language if there's a query
-    const searchQuery = document.getElementById('searchbar').value.trim();
-    if (searchQuery) {
-        document.getElementById('searchForm').dispatchEvent(new Event('submit'));
-    }
-});
-
-
-const express = require('express');
-const app = express();
-// Example Express.js backend
-app.get('/search', (req, res) => {
-    const query = req.query.q;
-    const lang = req.query.lang || 'english';
-    // Implement global search across your data
-    const results = performGlobalSearch(query, lang);
-    res.render('search-results', { results, query, lang });
-});
+// // Example 4: API Search
+// async function searchWeb() {
+//     const query = document.getElementById("apiSearchInput").value;
+//     const resultDiv = document.getElementById("apiResults");
+    
+//     try {
+//         // Using a public API (e.g., JSONPlaceholder for demo purposes)
+//         const response = await fetch(`https://jsonplaceholder.typicode.com/posts?q=${query}`);
+//         const data = await response.json();
+        
+//         if (data.length > 0) {
+//             const results = data.slice(0, 5).map(post => post.title); // Limit to 5 results
+//             resultDiv.innerHTML = "<strong>API Results:</strong><br>" + results.join("<br>");
+//         } else {
+//             resultDiv.innerHTML = "No results found from the API.";
+//         }
+//     } catch (error) {
+//         resultDiv.innerHTML = "Error fetching data: " + error.message;
+//     }
+// }

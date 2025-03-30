@@ -11,8 +11,11 @@
         </nav>
         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4 d-flex flex-row align-items-center justify-content-center" id="navbar">
           <div class="ms-md-auto pe-md-3 d-flex align-items-center">
-                <input type="search" id= "search"name="q" placeholder="Enter search term" value="">
-
+                <form id="searchForm" action="/category" method="GET">
+                    <div class="input">
+                        <input type="search"  name="q" class="form-control border-0" placeholder="Type here..." required>
+                    </div>
+                </form>
           </div>
           <li class="nav-item dropdown d-flex flex-row align-items-center">
             <!-- <label for="myDropdown" class="text-white font-weight-bold px-2 d-flex align-items-center gap-2">Choose an option:</label> -->

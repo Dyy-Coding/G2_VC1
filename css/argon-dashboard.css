@@ -23977,3 +23977,7 @@ pre[class*=language-] {
     overflow: auto !important;
   }
 }/*# sourceMappingURL=argon-dashboard.css.map */
+
+
+.section { margin-bottom: 20px; }
+#domResults, #apiResults { margin-top: 10px; padding: 10px; border: 1px solid #ccc; }
