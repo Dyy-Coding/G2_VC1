@@ -1,5 +1,4 @@
-
-    <style>
+<style>
    
    #addMeterial {
         display: none;
@@ -85,10 +84,10 @@
             </div>
         </div>
         <div class="form-outline ">
-            <input type="search" id="form1" class="form-control" style="width:100%" placeholder="Search"/>
+            <input type="search" id="search" class="form-control" style="width:100%" placeholder="Search materials" />
         </div>
+
     </div>
-    <button class="btn btn-danger m-3" style="width: 5%; font-size: small; padding: 5px;">Delete</button>
     <table class="table text-center align-middle" style="table-layout: fixed; width: 100%;">
     <thead>
         <tr >
@@ -196,7 +195,9 @@
                     <select class="form-select" id="categoryID" name="categoryID" required>
                         <option value="" selected>Select Category</option>
                         <?php foreach ($categories as $category): ?>
-                            <option value="<?= $category['CategoryID']; ?>"><?= htmlspecialchars($category['CategoryName']); ?></option>
+                            <option value="<?= htmlspecialchars($category['CategoryID']) ?>">
+                                <?= htmlspecialchars($category['CategoryName']) ?>
+                            </option>
                         <?php endforeach; ?>
                     </select>
                 </div>
@@ -308,7 +309,3 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 });
 </script>
-
-
-
-

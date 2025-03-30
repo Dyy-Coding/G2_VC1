@@ -128,4 +128,7 @@ class Router
 
         $this->uri = $originalPrefix;
     }
+    public function loadView($view) {
+        require_once "views/$view.php";
+    }
 }
