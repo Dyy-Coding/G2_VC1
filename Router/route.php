@@ -15,7 +15,7 @@ require_once "Controllers/adminController/BashInfoController.php";
 require_once 'Controllers/errorController.php';
 
 // Database link files
-require_once __DIR__ . '/../Database/Database.php';
+require_once 'Database/Database.php';
 require_once "Controllers/adminController/accountController/adminUserFormController.php";
 require_once "Controllers/adminController/accountController/adminUserListController.php";
 require_once 'Controllers/validateionHelper.php';

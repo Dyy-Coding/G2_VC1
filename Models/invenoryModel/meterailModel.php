@@ -5,9 +5,6 @@ class Material {
 
     public function __construct() {
         $this->conn = Database::getConnection();
-        if (!$this->conn) {
-            die("Database connection failed!");
-        } // Assumes Database class exists
     }
 
     public function getAllMaterials() {
@@ -26,18 +23,8 @@ class Material {
         }
     }
 
-    public function getCategories() {
-        try {
-            $stmt = $this->conn->prepare("SELECT CategoryID, CategoryName FROM Categories ORDER BY CategoryName ASC;");
-            $stmt->execute();
-            return $stmt->fetchAll(PDO::FETCH_ASSOC);
-        } catch (PDOException $e) {
-            error_log("Error fetching categories: " . $e->getMessage());
-            return [];
-        }
-    }
-
-    public function getAllCategories() { // Kept for completeness
+    // Fetch all categories with Description and UpdatedAt
+    public function getAllCategories() {
         try {
             $stmt = $this->conn->prepare("SELECT CategoryID, CategoryName, Description, UpdatedAt FROM Categories");
             $stmt->execute();
@@ -48,6 +35,7 @@ class Material {
         }
     }
 
+    // Method to get all categories 
     public function getCategoryById($categoryID) {
         try {
             $stmt = $this->conn->prepare("SELECT * FROM Categories WHERE CategoryID = :categoryID");
@@ -57,17 +45,6 @@ class Material {
         } catch (PDOException $e) {
             error_log("Error fetching category: " . $e->getMessage());
             return null;
-        }
-    }
-
-    public function getSuppliers() {
-        try {
-            $stmt = $this->conn->prepare("SELECT SupplierID, Name FROM Suppliers");
-            $stmt->execute();
-            return $stmt->fetchAll(PDO::FETCH_ASSOC);
-        } catch (PDOException $e) {
-            error_log("Error fetching suppliers: " . $e->getMessage());
-            return [];
         }
     }
 
@@ -104,11 +81,7 @@ class Material {
     public function addMaterial($data) {
         $requiredFields = ['name', 'categoryID', 'supplierID', 'quantity', 'unitPrice'];
         foreach ($requiredFields as $field) {
-            if (!isset($data[$field]) || $data[$field] === '' || 
-                ($field === 'categoryID' && $data[$field] <= 0) || 
-                ($field === 'supplierID' && $data[$field] <= 0) || 
-                ($field === 'quantity' && $data[$field] < 0) || 
-                ($field === 'unitPrice' && $data[$field] < 0)) {
+            if (!isset($data[$field]) || $data[$field] === '' || ($field === 'categoryID' && $data[$field] <= 0) || ($field === 'supplierID' && $data[$field] <= 0) || ($field === 'quantity' && $data[$field] < 0) || ($field === 'unitPrice' && $data[$field] < 0)) {
                 error_log("Validation Error: $field is invalid or missing. Value: " . ($data[$field] ?? 'unset'));
                 return false;
             }
@@ -141,6 +114,18 @@ class Material {
         } catch (PDOException $e) {
             error_log("Exception in addMaterial: " . $e->getMessage() . " | Data: " . json_encode($data));
             return false;
+        }
+    }
+
+
+    public function getSuppliers() {
+        try {
+            $stmt = $this->conn->prepare("SELECT SupplierID, Name FROM Suppliers");
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            error_log("Error fetching suppliers: " . $e->getMessage());
+            return [];
         }
     }
 
@@ -228,5 +213,11 @@ class Material {
             error_log("Exception in deleteMaterial: " . $e->getMessage());
             return false;
         }
+    }
+
+    public function searchProducts($query) {
+        $stmt = $this->pdo->prepare("SELECT name, url FROM products WHERE name LIKE ?");
+        $stmt->execute(["%$query%"]);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 }

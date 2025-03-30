@@ -11,10 +11,7 @@
         </nav>
         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4 d-flex flex-row align-items-center justify-content-center" id="navbar">
           <div class="ms-md-auto pe-md-3 d-flex align-items-center">
-          <form id="searchForm" action="/searchbar" method="GET">
-              <input type="search" name="q" id="search" class="form-control border-0" placeholder="Search everything..." required>
-              <div id="searchResults" class="search-dropdown" style="display: none; position: absolute; background: white; width: 100%; border: 1px solid #ddd;"></div>
-          </form>
+                <input type="search" id= "search"name="q" placeholder="Enter search term" value="">
 
           </div>
           <li class="nav-item dropdown d-flex flex-row align-items-center">
