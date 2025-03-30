@@ -14,10 +14,14 @@ require_once "Controllers/AdminController/DashboardController.php";
 require_once "Controllers/adminController/BashInfoController.php";
 require_once 'Controllers/errorController.php';
 
+// require_one Controllers/adminController/dashboardController/stockListController.php;
+require_once 'Controllers/adminController/dashboardController/stockListController.php';
+
+
 // Database link files
-require_once 'Database/Database.php';
-require_once "Controllers/adminController/accountController/adminUserFormController.php";
-require_once "Controllers/adminController/accountController/adminUserListController.php";
+require_once __DIR__ . '/../Database/Database.php';
+require_once "Controllers/adminController/accountController/adminProfileController.php";
+require_once "Controllers/adminController/accountController/listUserController.php";
 require_once 'Controllers/validateionHelper.php';
 require_once "Models/usersModel.php";
 require_once "Models/invenoryModel/meterailModel.php";
@@ -67,7 +71,6 @@ $route->group('dashboard', function($route) {
 });
 $route->group('welcome', function($route) {
     $route->get('/welcome', [WelcomeController::class, 'welcome']);
-
 });
 
 $route->group('inventory', function ($route) {
@@ -107,9 +110,15 @@ $route->group('profile', function ($route) {
 
     // delete user
     $route->post('/deleteuser', [AccountListController::class, 'destroyUserAccProfile']);
+    // Add this new route for single user deletion
+    $route->get('/deleteuser/{id}', [AccountListController::class, 'destroySingleUserAccProfile']);
 });
 
-$route->get('/api/global-search', [SearchController::class, 'globalSearch']);
+
+/**
+ * Defines a GET route for handling error pages
+ * Maps the '/error' URI to the 'error' method of the ErrorController
+ */
 $route->get('/error', [ErrorController::class, 'error']);
 
 // $route->printRoutes();
