@@ -14,14 +14,19 @@ require_once "Controllers/AdminController/DashboardController.php";
 require_once "Controllers/adminController/BashInfoController.php";
 require_once 'Controllers/errorController.php';
 
+// require_one Controllers/adminController/dashboardController/stockListController.php;
+require_once 'Controllers/adminController/dashboardController/stockListController.php';
+
+
 // Database link files
 require_once __DIR__ . '/../Database/Database.php';
-require_once "Controllers/adminController/accountController/adminUserFormController.php";
-require_once "Controllers/adminController/accountController/adminUserListController.php";
+require_once "Controllers/adminController/accountController/adminProfileController.php";
+require_once "Controllers/adminController/accountController/listUserController.php";
 require_once 'Controllers/validateionHelper.php';
 require_once "Models/usersModel.php";
 require_once "Models/invenoryModel/meterailModel.php";
 require_once "Models/invenoryModel/categoryModel.php";
+require_once "Models/dashboard/dashboardModel.php";
 
 
 
@@ -66,7 +71,6 @@ $route->group('dashboard', function($route) {
 });
 $route->group('welcome', function($route) {
     $route->get('/welcome', [WelcomeController::class, 'welcome']);
-
 });
 
 $route->group('inventory', function ($route) {
@@ -99,6 +103,9 @@ $route->group('inventory', function ($route) {
 });
 
 $route->group('profile', function ($route) {
+    // Profile admin
+    $route->get('/profile/account', [ProfileAccountController::class, 'profileadmin']);
+
     // $route->get('/addusersform', [AccountController::class, 'viewAddusersForm']);
     $route->get('/userList', [AccountListController::class, 'viewUsersAccListProfile']);
     $route->get('/userdetail', [AccountListController::class, 'viewUserDetail']);
@@ -113,7 +120,10 @@ $route->group('profile', function ($route) {
 
     // delete user
     $route->post('/deleteuser', [AccountListController::class, 'destroyUserAccProfile']);
+    // Add this new route for single user deletion
+    $route->get('/deleteuser/{id}', [AccountListController::class, 'destroySingleUserAccProfile']);
 });
+
 
 $route->get('/error', [ErrorController::class, 'error']);
 
