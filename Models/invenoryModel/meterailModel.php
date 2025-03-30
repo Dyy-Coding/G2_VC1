@@ -14,43 +14,21 @@ class Material {
                       LEFT JOIN Categories c ON m.CategoryID = c.CategoryID
                       LEFT JOIN Suppliers s ON m.SupplierID = s.SupplierID
                       ORDER BY m.CreatedAt DESC";
+
             $stmt = $this->conn->prepare($query);
             $stmt->execute();
-            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $materials = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            error_log("Fetched Materials: " . json_encode($materials));
+            return $materials;
         } catch (PDOException $e) {
             error_log("Error fetching materials: " . $e->getMessage());
             return [];
         }
     }
 
-    // Fetch all categories with Description and UpdatedAt
-    public function getAllCategories() {
-        try {
-            $stmt = $this->conn->prepare("SELECT CategoryID, CategoryName, Description, UpdatedAt FROM Categories");
-            $stmt->execute();
-            return $stmt->fetchAll(PDO::FETCH_ASSOC);
-        } catch (PDOException $e) {
-            error_log("Error fetching categories: " . $e->getMessage());
-            return [];
-        }
-    }
-
-    // Method to get all categories 
-    public function getCategoryById($categoryID) {
-        try {
-            $stmt = $this->conn->prepare("SELECT * FROM Categories WHERE CategoryID = :categoryID");
-            $stmt->bindParam(':categoryID', $categoryID, PDO::PARAM_INT);
-            $stmt->execute();
-            return $stmt->fetch(PDO::FETCH_ASSOC);
-        } catch (PDOException $e) {
-            error_log("Error fetching category: " . $e->getMessage());
-            return null;
-        }
-    }
-
     public function uploadImage($file) {
-        if ($file['error'] !== UPLOAD_ERR_OK) {
-            return ['error' => 'File upload error occurred.'];
+        if (!isset($file['name']) || $file['error'] !== UPLOAD_ERR_OK) {
+            return ['error' => 'Invalid file upload.'];
         }
 
         $targetDir = "uploads/images/";
@@ -64,7 +42,7 @@ class Material {
 
         $validTypes = ['jpg', 'jpeg', 'png', 'gif'];
         if (!in_array($fileType, $validTypes)) {
-            return ['error' => 'Only JPG, JPEG, PNG, and GIF files are allowed.'];
+            return ['error' => 'Only JPG, JPEG, PNG & GIF files are allowed.'];
         }
 
         if ($file['size'] > 5 * 1024 * 1024) {
@@ -80,8 +58,9 @@ class Material {
 
     public function addMaterial($data) {
         $requiredFields = ['name', 'categoryID', 'supplierID', 'quantity', 'unitPrice'];
+
         foreach ($requiredFields as $field) {
-            if (!isset($data[$field]) || $data[$field] === '' || ($field === 'categoryID' && $data[$field] <= 0) || ($field === 'supplierID' && $data[$field] <= 0) || ($field === 'quantity' && $data[$field] < 0) || ($field === 'unitPrice' && $data[$field] < 0)) {
+            if (empty($data[$field]) || ($field === 'categoryID' && $data[$field] <= 0) || ($field === 'supplierID' && $data[$field] <= 0) || ($field === 'quantity' && $data[$field] < 0) || ($field === 'unitPrice' && $data[$field] < 0)) {
                 error_log("Validation Error: $field is invalid or missing. Value: " . ($data[$field] ?? 'unset'));
                 return false;
             }
@@ -89,7 +68,7 @@ class Material {
 
         $query = "INSERT INTO Materials (Name, CategoryID, Quantity, UnitPrice, SupplierID, MinStockLevel, ReorderLevel, UnitOfMeasure, Size, ImagePath, Description, CreatedAt, UpdatedAt, Brand, Location, SupplierContact, Status, WarrantyPeriod) 
                   VALUES (:name, :categoryID, :quantity, :unitPrice, :supplierID, :minStockLevel, :reorderLevel, :unitOfMeasure, :size, :imagePath, :description, NOW(), NOW(), :brand, :location, :supplierContact, :status, :warrantyPeriod)";
-        
+
         try {
             $stmt = $this->conn->prepare($query);
             $stmt->execute([
@@ -117,6 +96,16 @@ class Material {
         }
     }
 
+    public function getCategories() {
+        try {
+            $stmt = $this->conn->prepare("SELECT CategoryID, CategoryName FROM Categories");
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            error_log("Error fetching categories: " . $e->getMessage());
+            return [];
+        }
+    }
 
     public function getSuppliers() {
         try {
@@ -126,80 +115,6 @@ class Material {
         } catch (PDOException $e) {
             error_log("Error fetching suppliers: " . $e->getMessage());
             return [];
-        }
-    }
-
-    public function getMaterialById($id) {
-        try {
-            $query = "SELECT m.*, c.CategoryName, s.Name AS SupplierName 
-                      FROM Materials m
-                      LEFT JOIN Categories c ON m.CategoryID = c.CategoryID
-                      LEFT JOIN Suppliers s ON m.SupplierID = s.SupplierID
-                      WHERE m.MaterialID = :id";
-            $stmt = $this->conn->prepare($query);
-            $stmt->execute(['id' => $id]);
-            return $stmt->fetch(PDO::FETCH_ASSOC);
-        } catch (PDOException $e) {
-            error_log("Error fetching material by ID: " . $e->getMessage());
-            return false;
-        }
-    }
-
-    public function editMaterial($id, $data) {
-        try {
-            $query = "UPDATE Materials SET 
-                        Name = :name, 
-                        CategoryID = :categoryID, 
-                        Quantity = :quantity, 
-                        UnitPrice = :unitPrice, 
-                        SupplierID = :supplierID, 
-                        MinStockLevel = :minStockLevel, 
-                        ReorderLevel = :reorderLevel, 
-                        UnitOfMeasure = :unitOfMeasure, 
-                        Size = :size, 
-                        Description = :description, 
-                        Brand = :brand, 
-                        Location = :location, 
-                        SupplierContact = :supplierContact, 
-                        Status = :status, 
-                        WarrantyPeriod = :warrantyPeriod, 
-                        UpdatedAt = NOW()";
-
-            if (isset($data['imagePath'])) {
-                $query .= ", ImagePath = :imagePath";
-            }
-
-            $query .= " WHERE MaterialID = :id";
-            
-            $stmt = $this->conn->prepare($query);
-            $params = [
-                ':id' => $id,
-                ':name' => $data['name'],
-                ':categoryID' => $data['categoryID'],
-                ':quantity' => $data['quantity'],
-                ':unitPrice' => $data['unitPrice'],
-                ':supplierID' => $data['supplierID'],
-                ':minStockLevel' => $data['minStockLevel'] ?? null,
-                ':reorderLevel' => $data['reorderLevel'] ?? null,
-                ':unitOfMeasure' => $data['unitOfMeasure'] ?? null,
-                ':size' => $data['size'] ?? null,
-                ':description' => $data['description'] ?? null,
-                ':brand' => $data['brand'] ?? null,
-                ':location' => $data['location'] ?? null,
-                ':supplierContact' => $data['supplierContact'] ?? null,
-                ':status' => $data['status'] ?? null,
-                ':warrantyPeriod' => $data['warrantyPeriod'] ?? null
-            ];
-
-            if (isset($data['imagePath'])) {
-                $params[':imagePath'] = $data['imagePath'];
-            }
-            
-            $stmt->execute($params);
-            return $stmt->rowCount() > 0;
-        } catch (PDOException $e) {
-            error_log("Exception in editMaterial: " . $e->getMessage() . " | Query: " . $query . " | Params: " . json_encode($params));
-            return false;
         }
     }
 
@@ -213,11 +128,5 @@ class Material {
             error_log("Exception in deleteMaterial: " . $e->getMessage());
             return false;
         }
-    }
-
-    public function searchProducts($query) {
-        $stmt = $this->pdo->prepare("SELECT name, url FROM products WHERE name LIKE ?");
-        $stmt->execute(["%$query%"]);
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 }
