@@ -107,7 +107,10 @@ $route->group('profile', function ($route) {
 
     // delete user
     $route->post('/deleteuser', [AccountListController::class, 'destroyUserAccProfile']);
+    // Add this new route for single user deletion
+    $route->get('/deleteuser/{id}', [AccountListController::class, 'destroySingleUserAccProfile']);
 });
+
 
 $route->get('/error', [ErrorController::class, 'error']);
 
