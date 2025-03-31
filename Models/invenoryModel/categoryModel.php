@@ -117,6 +117,15 @@ class Category {
         }
     }
 
+public function getMaterialCountByCategory() {
+    $sql = "SELECT c.CategoryID, c.CategoryName, COUNT(m.MaterialID) AS MaterialCount
+            FROM categories c
+            LEFT JOIN materials m ON c.CategoryID = m.CategoryID
+            GROUP BY c.CategoryID, c.CategoryName";
+    
+    return $this->db->fetchAll($sql);
+}
+
     
     
 }

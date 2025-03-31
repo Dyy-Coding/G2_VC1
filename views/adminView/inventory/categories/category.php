@@ -60,7 +60,7 @@
                                         <!-- Action Dropdown -->
                                     <td class="dropdown">
                                         <a href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                                            <i class="material-icons" style="font-size:34px;">more_vert</i>
+                                            <i class="material-icons" style="font-size:30px;">more_vert</i>
                                         </a>
 
                                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuLink">
@@ -73,6 +73,11 @@
                                             <a href="/category/delete/<?= htmlspecialchars($category['CategoryID']) ?>" class="dropdown-item text-danger d-flex align-items-center"
                                                 onclick="return confirm('Are you sure?');">
                                                     <i class="material-icons me-2" style="font-size:18px;">delete</i> Delete
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item d-flex align-items-center" href="/category/detail/<?= $category['CategoryID']; ?>">
+                                                    <i class="material-icons me-2" style="font-size:18px;">visibility</i> View
                                                 </a>
                                             </li>
                                         </ul>
