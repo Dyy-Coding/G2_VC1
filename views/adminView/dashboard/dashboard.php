@@ -1,7 +1,7 @@
 <div class="container-fluid py-4">
   <div class="row">
     <!-- today money -->
-    <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+
       <div class="card">
         <div class="card-body p-3">
           <div class="row">
@@ -40,7 +40,7 @@
 </div>
 <!-- Today Customers -->
 
-<div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+
   <div class="card">
     <div class="card-body p-3">
       <div class="row">
@@ -70,13 +70,8 @@
     </div>
   </div>
 </div>
-<<<<<<< HEAD
 <!-- Supplier  -->
-=======
 
-
->>>>>>> Development
-<div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
   <div class="card">
     <div class="card-body p-3">
       <div class="row">
@@ -101,11 +96,10 @@
     </div>
   </div>
 </div>
-<<<<<<< HEAD
 
 <!-- Sales Dashboard -->
 
-<div class="col-xl-3 col-sm-6">
+
     <div class="card">
         <div class="card-body p-3">
             <div class="row">
@@ -128,31 +122,9 @@
                     </div>
                 </div>
             </div>
-=======
-<div class="col-xl-3 col-sm-6">
-  <div class="card">
-    <div class="card-body p-3">
-      <div class="row">
-        <div class="col-8">
-          <div class="numbers">
-            <p class="text-sm mb-0 text-uppercase font-weight-bold">Sales</p>
-            <h5 class="font-weight-bolder">
-              $103,430
-            </h5>
-            <p class="mb-0">
-              <span class="text-success text-sm font-weight-bolder">+5%</span> than last month
-            </p>
-          </div>
-        </div>
-        <div class="col-4 text-end">
-          <div class="icon icon-shape bg-gradient-warning shadow-warning text-center rounded-circle">
-            <i class="ni ni-cart text-lg opacity-10" aria-hidden="true"></i>
-          </div>
->>>>>>> Development
         </div>
     </div>
-<<<<<<< HEAD
-</div>
+
 
 
   <div class="row mt-4">
@@ -174,80 +146,6 @@
       </div>
 
     <div class="col-lg-5">
-=======
-  </div>
-</div>
-</div>
-<div class="row mt-4">
-  <div class="col-lg-7 mb-lg-0 mb-4">
-    <div class="card z-index-2 h-100">
-      <div class="card-header pb-0 pt-3 bg-transparent">
-        <h6 class="text-capitalize">Sales overview</h6>
-        <p class="text-sm mb-0">
-          <i class="fa fa-arrow-up text-success"></i>
-          <span class="font-weight-bold">4% more</span> in 2021
-        </p>
-      </div>
-      <div class="card-body p-3">
-        <div class="chart">
-          <canvas id="chart-line-1" class="chart-canvas" height="300"></canvas>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-
-  <!-- update code -->
-  <div class="col-lg-5">
-    <div class="col-lg-12">
-      <div class="card">
-        <div class="card-header pb-0 p-1">
-          <div class="d-flex justify-content-between">
-            <h3 class="mb-2 p-2">Stock Lists</h3>
-          </div>
-        </div>
-        <table class="table align-middle bg-white">
-          <thead>
-            <tr>
-              <th style="font-size: 16px;">Material</th>
-              <th style="font-size: 16px;">Category</th>
-              <th style="font-size: 16px;">Status</th>
-            </tr>
-          </thead>
-          <tbody>
-            <?php if (!empty($stockListData)): ?>
-              <?php foreach ($stockListData as $material): ?>
-                <tr>
-                  <td>
-                    <div class="text-center"><?php echo htmlspecialchars($material['MaterialName']); ?></div>
-                  </td>
-                  <td class="text-center"><?php echo htmlspecialchars($material['CategoryName'] ?? 'N/A'); ?></td>
-                  <td>
-                    <div class="text-center">
-                      <button type="button" class="btn btn-<?php echo $material['StockColor']; ?> btn-sm btn-rounded">
-                        <?php echo htmlspecialchars($material['StockStatus']); ?>
-                      </button>
-                    </div>
-                  </td>
-                </tr>
-              <?php endforeach; ?>
-            <?php else: ?>
-              <tr>
-                <td colspan="3" class="text-center">No materials found in material.</td>
-              </tr>
-            <?php endif; ?>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-
-
-
-
-  <!-- <div class="col-lg-5">
->>>>>>> Development
     <div class="col-lg-12 ">
       <div class="card">
         <div class="card-header pb-0 p-1">
@@ -622,7 +520,3 @@
     </div>
   </div>
 </div>
-<<<<<<< HEAD
-=======
-</div>
->>>>>>> Development

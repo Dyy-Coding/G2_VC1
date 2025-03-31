@@ -73,6 +73,7 @@ public function index() {
         'totalPurchaseorders' => $totalPurchaseorders,
         'totalSales' => $totalSales,
         'percentageChange' => $percentageChange,
+        'percentageChangesales' => $percentageChangesales,
 
     ]);
 }
