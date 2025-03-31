@@ -14,3 +14,5 @@ class BashInfomController extends BaseController {
         $this->renderView('adminView/accounts/adminUserForm');
     }
 }
+
+
