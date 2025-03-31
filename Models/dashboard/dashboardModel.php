@@ -141,7 +141,7 @@ class TodayMoneyModel {
             $percentageChange = (($todayCustomers - $yesterdayCustomers) / $yesterdayCustomers) * 100;
         } else {
             // If no customers yesterday, consider the percentage change as 100% increase
-            $percentageChange = 100;
+            $percentageChange = 0;
         }
 
         return $percentageChange;
@@ -156,7 +156,7 @@ class TodayMoneyModel {
         return $result['total'];
     }
     public function getTotalPurchaseorders() {
-        $query = "SELECT COUNT(*) AS totalPurchaseorders FROM `purchaseorders`;";
+        $query = "SELECT COUNT(*) AS totalPurchaseorders FROM `purchaseorders`;s";
         $stmt = $this->conn->prepare($query);
         $stmt->execute();
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
