@@ -15,6 +15,8 @@
           </div>
         </div> -->
 </footer>
+
+
 <!--   Core JS Files   -->
 <script src="views/assets/js/core/popper.min.js"></script>
 <script src="views/assets/js/core/bootstrap.min.js"></script>
@@ -22,89 +24,89 @@
 <script src="views/assets/js/plugins/smooth-scrollbar.min.js"></script>
 <script src="views/assets/js/plugins/chartjs.min.js"></script>
 <script src="views/assets/js/inventory/categories.js"></script>
+<script src="views/assets/js/inventory/material.js"></script>
 <script>
-  var ctx1 = document.getElementById("chart-line-1").getContext("2d");
+
   var ctx2 = document.getElementById("chart-line-2").getContext("2d");
 
   var gradientStroke1 = ctx1.createLinearGradient(0, 230, 0, 50);
   gradientStroke1.addColorStop(1, 'rgba(94, 114, 228, 0.2)');
   gradientStroke1.addColorStop(0.2, 'rgba(94, 114, 228, 0.0)');
   gradientStroke1.addColorStop(0, 'rgba(94, 114, 228, 0)');
+  
+/ var salesData = <?php echo $salesOverview; ?>;  // Sales data from PHP
+    var labels = <?php echo $salesLabels; ?>;  // Month labels from PHP
 
-  // First chart (Line chart)
-  new Chart(ctx1, {
-    type: "line",
-    data: {
-      labels: ["Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-      datasets: [{
-        label: "Mobile apps",
-        tension: 0.4,
-        borderWidth: 0,
-        pointRadius: 0,
-        borderColor: "#5e72e4",
-        backgroundColor: gradientStroke1,
-        borderWidth: 3,
-        fill: true,
-        data: [50, 40, 300, 220, 500, 250, 400, 230, 500],
-        maxBarThickness: 6
-      }],
-    },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      plugins: {
-        legend: {
-          display: false,
+    var ctx1 = document.getElementById("chart-line-1").getContext("2d");
+
+    // Create the chart
+    new Chart(ctx1, {
+        type: "line",
+        data: {
+            labels: labels,  // Use the labels (months)
+            datasets: [{
+                label: "Sales Overview",
+                data: salesData, // Use the sales data from PHP
+                borderColor: "#5e72e4", // Line color
+                backgroundColor: "rgba(94, 114, 228, 0.2)", // Fill color
+                borderWidth: 2,
+                fill: true // Area under the line
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    display: false // Hide legend
+                }
+            },
+            scales: {
+                y: {
+                    grid: {
+                        drawBorder: false,
+                        display: true,
+                        drawOnChartArea: true,
+                        drawTicks: false,
+                        borderDash: [5, 5]
+                    },
+                    ticks: {
+                        display: true,
+                        padding: 10,
+                        color: "#fbfbfb",
+                        font: {
+                            size: 11,
+                            family: "Open Sans",
+                            style: "normal",
+                            lineHeight: 2
+                        }
+                    }
+                },
+                x: {
+                    grid: {
+                        drawBorder: false,
+                        display: false,
+                        drawOnChartArea: false,
+                        drawTicks: false,
+                        borderDash: [5, 5]
+                    },
+                    ticks: {
+                        display: true,
+                        color: "#ccc",
+                        padding: 20,
+                        font: {
+                            size: 11,
+                            family: "Open Sans",
+                            style: "normal",
+                            lineHeight: 2
+                        }
+                    }
+                }
+            }
         }
-      },
-      interaction: {
-        intersect: false,
-        mode: 'index',
-      },
-      scales: {
-        y: {
-          grid: {
-            drawBorder: false,
-            display: true,
-            drawOnChartArea: true,
-            drawTicks: false,
-            borderDash: [5, 5]
-          },
-          ticks: {
-            display: true,
-            padding: 10,
-            color: '#fbfbfb',
-            font: {
-              size: 11,
-              family: "Open Sans",
-              style: 'normal',
-              lineHeight: 2
-            },
-          }
-        },
-        x: {
-          grid: {
-            drawBorder: false,
-            display: false,
-            drawOnChartArea: false,
-            drawTicks: false,
-            borderDash: [5, 5]
-          },
-          ticks: {
-            display: true,
-            color: '#ccc',
-            padding: 20,
-            font: {
-              size: 11,
-              family: "Open Sans",
-              style: 'normal',
-              lineHeight: 2
-            },
-          }
-        },
-      },
-    },
-  });
+    });
+
+
 
   // Second chart (Bar chart)
   new Chart(ctx2, {
@@ -177,7 +179,10 @@
       },
     },
   });
-</script>
+
+  </script>
+
+
 <script>
   var win = navigator.platform.indexOf('Win') > -1;
   if (win && document.querySelector('#sidenav-scrollbar')) {
@@ -191,6 +196,7 @@
 <script async defer src="https://buttons.github.io/buttons.js"></script>
 <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
 <script src="views/assets/js/argon-dashboard.min.js?v=2.1.0"></script>
+<script src="views/assets/JavaScript/searchbar.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 
