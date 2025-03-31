@@ -9,13 +9,14 @@ require_once "Controllers/adminController/authenicationController/loginControlle
 require_once "Controllers/adminController/authenicationController/forgotPasswordController.php";
 require_once "Controllers/adminController/authenicationController/registerController.php";
 require_once "Controllers/adminController/InventoryController.php";
+require_once "Controllers/adminController/InventoryController/categoriesController.php";
 // require_once "Controllers/adminController/sales/salesController.php";
 require_once "Controllers/AdminController/DashboardController.php";
 require_once "Controllers/adminController/BashInfoController.php";
 require_once 'Controllers/errorController.php';
 
-// Supplier
-require_once "Controllers/adminController/supplierController/SupplierControoler.php";
+// require_one Controllers/adminController/dashboardController/stockListController.php;
+require_once 'Controllers/adminController/dashboardController/stockListController.php';
 
 
 // Database link files
@@ -26,7 +27,7 @@ require_once 'Controllers/validateionHelper.php';
 require_once "Models/usersModel.php";
 require_once "Models/invenoryModel/meterailModel.php";
 require_once "Models/invenoryModel/categoryModel.php";
-require_once "Models/dashboard/todayMoneyModel.php";
+require_once "Models/dashboard/dashboardModel.php";
 
 
 
@@ -71,7 +72,6 @@ $route->group('dashboard', function ($route) {
 });
 $route->group('welcome', function ($route) {
     $route->get('/welcome', [WelcomeController::class, 'welcome']);
-
 });
 
 $route->group('inventory', function ($route) {
@@ -81,17 +81,23 @@ $route->group('inventory', function ($route) {
     $route->get('/editmaterial/{id}', [InventoryController::class, 'materialEditForSome']);
     $route->post('/materials/update', [InventoryController::class, 'updateMaterial']);
     $route->get('/materials/delete/{id}', [InventoryController::class, 'deleteMaterial']);
-    // Router Categories
-    $route->get('/category', [InventoryController::class, 'category']);
-    $route->post('/category/add', [InventoryController::class, 'addCategory']);
-    $route->get('/category/delete/(.*)', [InventoryController::class, 'deleteCategory']);
-    $route->post('/category/deleteSelected', [InventoryController::class, 'deleteSelectedCategories']);
-    $route->get('/category/category_edit/(.*)', [InventoryController::class, 'editCategory']);
-    $route->post('/category/update/(.*)', [InventoryController::class, 'updateCategory']);
 
     $route->get('/order', [InventoryController::class, 'order']);
 
 });
+
+     // Router Categories 
+$route->group('category', function ($route) {
+    $route->get('/category', [CategoriesController::class, 'category']);
+    $route->post('/category/add', [CategoriesController::class, 'addCategory']);
+    $route->get('/category/delete/(.*)', [CategoriesController::class, 'deleteCategory']);
+    $route->post('/category/deleteSelected', [CategoriesController::class, 'deleteSelectedCategories']);
+    $route->get('/category/category_edit/(.*)', [CategoriesController::class, 'editCategory']);
+    $route->post('/category/update/(.*)', [CategoriesController::class, 'updateCategory']);
+    $route->get('/category/detail/{id}', [CategoriesController::class, 'categoryDetail']);
+
+});
+
 
 $route->group('profile', function ($route) {
     // Profile admin
