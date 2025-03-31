@@ -80,7 +80,7 @@ $route->group('inventory', function ($route) {
     $route->get('/editmaterial/{id}', [InventoryController::class, 'materialEditForSome']);
     $route->post('/materials/update', [InventoryController::class, 'updateMaterial']);
     $route->get('/materials/delete/{id}', [InventoryController::class, 'deleteMaterial']);
-    // Router Categories
+    $route->get('/materials/view/{id}', [InventoryController::class, 'viewMaterial']);
     $route->get('/category', [InventoryController::class, 'category']);
     $route->post('/category/add', [InventoryController::class, 'addCategory']);
     $route->get('/category/delete/(.*)', [InventoryController::class, 'deleteCategory']);
@@ -115,6 +115,10 @@ $route->group('profile', function ($route) {
 });
 
 
+/**
+ * Defines a GET route for handling error pages
+ * Maps the '/error' URI to the 'error' method of the ErrorController
+ */
 $route->get('/error', [ErrorController::class, 'error']);
 
 // $route->printRoutes();
