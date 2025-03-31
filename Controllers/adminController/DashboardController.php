@@ -19,10 +19,9 @@ public function index() {
     // Calculate the percentage change in customers
     $customerPercentageChange = $this->todayMoneyModel->getCustomerPercentageChange();
 
-    // Retrieve total suppliers and purchase orders
     $totalSuppliers = $this->todayMoneyModel->getTotalSuppliers();
     $totalPurchaseorders = $this->todayMoneyModel->getTotalPurchaseorders();
-
+    $percentageChange = -2; // xample: you can dynamically calculate this if needed
     // Retrieve today's money data
     $todayMoneyData = $this->todayMoneyModel->getTodayMoneyData();
 
@@ -69,16 +68,12 @@ public function index() {
         'total_income' => $todayMoneyData['total_income'],
         'total_expenses' => $todayMoneyData['total_expenses'],
         'total_customers_today' => $todayCustomers,
-        'customer_percentage_change' => $customerPercentageChange,  // Pass percentage change for customers
+        'customer_percentage_change' => $customerPercentageChange, // Pass percentage change to the view
         'totalSuppliers' => $totalSuppliers,
         'totalPurchaseorders' => $totalPurchaseorders,
         'totalSales' => $totalSales,
         'percentageChange' => $percentageChange,
-        'currentYearSales' => $currentYearSalesFormatted,
-        'previousYearSales' => $previousYearSalesFormatted,
-        'percentageChangesales' => $percentageChangeFormatted,
-        'salesOverview' => json_encode($salesData),  // Sales data for the chart
-        'salesLabels' => json_encode($labels)        // Labels for the chart
+
     ]);
 }
 }

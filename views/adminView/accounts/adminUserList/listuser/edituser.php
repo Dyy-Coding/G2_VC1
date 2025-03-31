@@ -55,6 +55,7 @@
                         </div>
                     </div>
                 </div>
+                
 
                 <!-- Email and Password -->
                 <div class="row g-2 mb-3">
