@@ -75,12 +75,12 @@
     <div class="input-group-meterails mt-2 mb-0">
         <div class="inline-controls-meterails">
             <div class="form-check ">
-                <input class="form-check-input" type="checkbox" id="showOutOfStock">
+                <input class="form-check-input" type="checkbox" id="show-out-of-stock-checkbox">
                 <label class="form-check-label" for="showOutOfStock">Show out of stock</label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="showOutOfStock">
-                <label class="form-check-label" for="showOutOfStock">Select all</label>
+                <input class="form-check-input " type="checkbox" id="selectAll">
+                <label class="form-check-label" for="selectAll">Select all</label>
             </div>
         </div>
         <div class="form-outline ">
@@ -106,7 +106,7 @@
         <?php foreach ($materials as $material): ?>
             <tr>
                 <!-- Checkbox -->
-                <td>
+                <td class="row-checkbox">
                     <input type="checkbox">
                 </td>
 

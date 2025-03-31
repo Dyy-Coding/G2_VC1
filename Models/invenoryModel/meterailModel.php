@@ -129,4 +129,21 @@ class Material {
             return false;
         }
     }
+
+
+    public function getMaterialById($id) {
+        try {
+            $query = "SELECT m.*, c.CategoryName, s.Name AS SupplierName 
+                      FROM Materials m
+                      LEFT JOIN Categories c ON m.CategoryID = c.CategoryID
+                      LEFT JOIN Suppliers s ON m.SupplierID = s.SupplierID
+                      WHERE m.MaterialID = :id";
+            $stmt = $this->conn->prepare($query);
+            $stmt->execute(['id' => $id]);
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            error_log("Error fetching material by ID: " . $e->getMessage());
+            return false;
+        }
+    }
 }
