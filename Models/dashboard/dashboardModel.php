@@ -104,6 +104,36 @@ class TodayMoneyModel {
         }
     }
 
+     /**
+     * Get total sales and total sales orders for the sales overview
+     */
+    public function getTotalSalesAndOrders() {
+        $query = "
+            SELECT 
+                SUM(TotalAmount) AS total_sales, 
+                COUNT(*) AS total_sales_orders 
+            FROM salesorders
+            WHERE DATE(CreatedAt) = CURDATE();
+        ";
+    
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute();
+        $todaySales = $stmt->fetch(PDO::FETCH_ASSOC);
+    
+        $queryYesterday = "
+            SELECT 
+                SUM(TotalAmount) AS yesterday_sales
+            FROM salesorders
+            WHERE DATE(CreatedAt) = CURDATE() - INTERVAL 1 DAY;
+        ";
+    
+        $stmtYesterday = $this->conn->prepare($queryYesterday);
+        $stmtYesterday->execute();
+        $yesterdaySales = $stmtYesterday->fetch(PDO::FETCH_ASSOC);
+    
+        return array_merge($todaySales, $yesterdaySales);
+    }
+
 
       /**
      * Fetch the total number of customers added today.

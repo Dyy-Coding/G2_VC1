@@ -2,9 +2,11 @@
  
  class InventoryController extends BaseController {
      private $material;
+     private $category;
  
      public function __construct() {
          $this->material = new Material();
+         $this->category = new Category();
      }
  
      public function inventory() {

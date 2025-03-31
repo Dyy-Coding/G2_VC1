@@ -24,11 +24,7 @@
 <script src="views/assets/js/plugins/smooth-scrollbar.min.js"></script>
 <script src="views/assets/js/plugins/chartjs.min.js"></script>
 <script src="views/assets/js/inventory/categories.js"></script>
-<<<<<<< HEAD
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-=======
 <script src="views/assets/js/inventory/material.js"></script>
->>>>>>> feature/Inventory
 <script>
 
   var ctx2 = document.getElementById("chart-line-2").getContext("2d");
