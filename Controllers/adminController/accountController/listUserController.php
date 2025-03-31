@@ -316,4 +316,18 @@ class AccountListController extends BaseController
             $this->redirect('/userList?error=No user selected');
         }
     }
+    public function destroySingleUserAccProfile($userId = null)
+    {
+        // Check if we have a user ID (could come from URL parameter)
+        if ($userId === null && isset($_GET['id'])) {
+            $userId = $_GET['id'];
+        }
+
+        if ($userId) {
+            $this->model->deleteUserAccountById($userId);
+            $this->redirect('/userList?success=User deleted successfully');
+        } else {
+            $this->redirect('/userList?error=No user ID provided');
+        }
+    }
 }

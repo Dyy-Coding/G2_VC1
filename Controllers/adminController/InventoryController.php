@@ -16,6 +16,7 @@ class InventoryController extends BaseController {
         $this->renderView("adminView/inventory/stock", [
             'suppliers' => $suppliers,
             'materials'  => $materials,
+            'categories' => $this->category->getAllCategories(),
             'flash_message' => $_SESSION['flash_message'] ?? null
         ]);
         unset($_SESSION['flash_message']);
@@ -75,7 +76,7 @@ class InventoryController extends BaseController {
             }
         } else {
             $this->renderView('adminView/inventory/addMaterial', [
-                'categories' => $this->material->getCategories(),
+                'categories' => $this->category->getAllCategories(),
                 'suppliers' => $this->material->getSuppliers()
             ]);
         }
@@ -84,7 +85,7 @@ class InventoryController extends BaseController {
     public function materialEditForSome($id) {
         $material = $this->material->getMaterialById($id);
         $suppliers = $this->material->getSuppliers();
-        $categories = $this->material->getCategories();
+        $categories = $this->category->getAllCategories();
         
         if (!$material) {
             $this->renderView('errors/404', [], 404);
