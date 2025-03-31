@@ -108,80 +108,6 @@ class Material {
         }
     }
 
-    public function getMaterialById($id) {
-        try {
-            $query = "SELECT m.*, c.CategoryName, s.Name AS SupplierName 
-                      FROM Materials m
-                      LEFT JOIN Categories c ON m.CategoryID = c.CategoryID
-                      LEFT JOIN Suppliers s ON m.SupplierID = s.SupplierID
-                      WHERE m.MaterialID = :id";
-            $stmt = $this->conn->prepare($query);
-            $stmt->execute(['id' => $id]);
-            return $stmt->fetch(PDO::FETCH_ASSOC);
-        } catch (PDOException $e) {
-            error_log("Error fetching material by ID: " . $e->getMessage());
-            return false;
-        }
-    }
-
-    public function editMaterial($id, $data) {
-        try {
-            $query = "UPDATE Materials SET 
-                        Name = :name, 
-                        CategoryID = :categoryID, 
-                        Quantity = :quantity, 
-                        UnitPrice = :unitPrice, 
-                        SupplierID = :supplierID, 
-                        MinStockLevel = :minStockLevel, 
-                        ReorderLevel = :reorderLevel, 
-                        UnitOfMeasure = :unitOfMeasure, 
-                        Size = :size, 
-                        Description = :description, 
-                        Brand = :brand, 
-                        Location = :location, 
-                        SupplierContact = :supplierContact, 
-                        Status = :status, 
-                        WarrantyPeriod = :warrantyPeriod, 
-                        UpdatedAt = NOW()";
-
-            if (isset($data['imagePath'])) {
-                $query .= ", ImagePath = :imagePath";
-            }
-
-            $query .= " WHERE MaterialID = :id";
-            
-            $stmt = $this->conn->prepare($query);
-            $params = [
-                ':id' => $id,
-                ':name' => $data['name'],
-                ':categoryID' => $data['categoryID'],
-                ':quantity' => $data['quantity'],
-                ':unitPrice' => $data['unitPrice'],
-                ':supplierID' => $data['supplierID'],
-                ':minStockLevel' => $data['minStockLevel'] ?? null,
-                ':reorderLevel' => $data['reorderLevel'] ?? null,
-                ':unitOfMeasure' => $data['unitOfMeasure'] ?? null,
-                ':size' => $data['size'] ?? null,
-                ':description' => $data['description'] ?? null,
-                ':brand' => $data['brand'] ?? null,
-                ':location' => $data['location'] ?? null,
-                ':supplierContact' => $data['supplierContact'] ?? null,
-                ':status' => $data['status'] ?? null,
-                ':warrantyPeriod' => $data['warrantyPeriod'] ?? null
-            ];
-
-            if (isset($data['imagePath'])) {
-                $params[':imagePath'] = $data['imagePath'];
-            }
-            
-            $stmt->execute($params);
-            return $stmt->rowCount() > 0;
-        } catch (PDOException $e) {
-            error_log("Exception in editMaterial: " . $e->getMessage() . " | Query: " . $query . " | Params: " . json_encode($params));
-            return false;
-        }
-    }
-
     public function deleteMaterial($id) {
         try {
             $query = "DELETE FROM Materials WHERE MaterialID = :id";
@@ -195,21 +121,19 @@ class Material {
     }
 
 
-    // In Material.php
-    public function getMaterialsByCategory($categoryID) {
+    public function getMaterialById($id) {
         try {
             $query = "SELECT m.*, c.CategoryName, s.Name AS SupplierName 
-                    FROM Materials m
-                    LEFT JOIN Categories c ON m.CategoryID = c.CategoryID
-                    LEFT JOIN Suppliers s ON m.SupplierID = s.SupplierID
-                    WHERE m.CategoryID = :categoryID
-                    ORDER BY m.CreatedAt DESC";
+                      FROM Materials m
+                      LEFT JOIN Categories c ON m.CategoryID = c.CategoryID
+                      LEFT JOIN Suppliers s ON m.SupplierID = s.SupplierID
+                      WHERE m.MaterialID = :id";
             $stmt = $this->conn->prepare($query);
-            $stmt->execute([':categoryID' => $categoryID]);
-            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $stmt->execute(['id' => $id]);
+            return $stmt->fetch(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
-            error_log("Error fetching materials by category: " . $e->getMessage());
-            return [];
+            error_log("Error fetching material by ID: " . $e->getMessage());
+            return false;
         }
     }
 }
