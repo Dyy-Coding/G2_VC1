@@ -156,7 +156,7 @@ class TodayMoneyModel {
         return $result['total'];
     }
     public function getTotalPurchaseorders() {
-        $query = "SELECT COUNT(*) AS totalPurchaseorders FROM `purchaseorders`;s";
+        $query = "SELECT COUNT(*) AS totalPurchaseorders FROM `purchaseorders`;";
         $stmt = $this->conn->prepare($query);
         $stmt->execute();
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
