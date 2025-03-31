@@ -133,7 +133,7 @@
                 </td>
 
                 <td><?= htmlspecialchars($material['Size']) ?></td>
-                <td><?= htmlspecialchars($material['UnitPrice']) ?></td>
+                <td><?= htmlspecialchars($material['UnitPrice']) ?> $</td>
 
                 <!-- Action Dropdown -->
                 <td class="dropdown">
