@@ -8,6 +8,40 @@ class TodayMoneyModel {
         $this->conn = Database::getConnection();
     }
 
+
+   // Function to get total sales for the last 12 months
+    // Function to get total sales for the last 12 months
+    /**
+     * Get sales data for the last 12 months
+     */
+    public function getSalesForLast12Months() {
+        $query = "
+            SELECT 
+                YEAR(OrderDate) AS year,
+                MONTH(OrderDate) AS month,
+                SUM(totalAmount) AS totalSalesAmount
+            FROM salesorders
+            WHERE OrderDate >= CURDATE() - INTERVAL 12 MONTH
+            GROUP BY YEAR(OrderDate), MONTH(OrderDate)
+            ORDER BY year DESC, month DESC
+        ";
+
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute();
+        $salesData = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        // Convert month number to full name
+        foreach ($salesData as &$data) {
+            $data['month'] = date("M", mktime(0, 0, 0, $data['month'], 1));
+            $data['totalSalesAmount'] = number_format($data['totalSalesAmount'], 2);
+        }
+
+        return $salesData ?: [];
+    }
+    
+
+
+
     /**
      * Fetch today's total income and total expenses.
      */
