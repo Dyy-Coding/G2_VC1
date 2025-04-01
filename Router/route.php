@@ -15,6 +15,11 @@ require_once "Controllers/AdminController/DashboardController.php";
 require_once "Controllers/adminController/BashInfoController.php";
 require_once 'Controllers/errorController.php';
 
+// Supplier feature
+require_once 'Controllers/adminController/supplierController/SupplierControoler.php';
+require_once 'Controllers/adminController/supplierController/DetailSupplierController.php';
+
+
 // require_one Controllers/adminController/dashboardController/stockListController.php;
 require_once 'Controllers/adminController/dashboardController/stockListController.php';
 
@@ -39,7 +44,7 @@ require_once "Controllers/userController/welcomeController/welcomeController.php
 $route = new Router();
 
 // Group routes by controller for better organization
-$route->group('auth', function($route) {
+$route->group('auth', function ($route) {
     // Login Routes
     $route->get('/login', [LoginController::class, 'login']);  // Display Login Form (GET)
     $route->post('/login', [LoginController::class, 'login']); // Handle Login (POST)
@@ -66,11 +71,11 @@ $route->group('auth', function($route) {
 
 
 
-$route->group('dashboard', function($route) {
+$route->group('dashboard', function ($route) {
     $route->get('/', [DashboardController::class, 'index']);
     $route->get('/user', [DashboardController::class, 'userDashboard']);
 });
-$route->group('welcome', function($route) {
+$route->group('welcome', function ($route) {
     $route->get('/welcome', [WelcomeController::class, 'welcome']);
 });
 
@@ -86,7 +91,7 @@ $route->group('inventory', function ($route) {
 
 });
 
-     // Router Categories 
+// Router Categories 
 $route->group('category', function ($route) {
     $route->get('/category', [CategoriesController::class, 'category']);
     $route->post('/category/add', [CategoriesController::class, 'addCategory']);
@@ -119,6 +124,31 @@ $route->group('profile', function ($route) {
     $route->post('/deleteuser', [AccountListController::class, 'destroyUserAccProfile']);
     // Add this new route for single user deletion
     $route->get('/deleteuser/{id}', [AccountListController::class, 'destroySingleUserAccProfile']);
+});
+
+
+$route->group('supplier', function ($route) {
+    // read 
+    $route->get('/suppliers', [supplierController::class, 'suppliersInfo']);
+
+    // create
+    $route->get('/add/supplier', [supplierController::class, 'addSupplierInfo']);
+    $route->post('/store/supplier', [supplierController::class, 'storeSupplierInfo']);
+
+    // edit
+    $route->get('/supplier/edit/{id}', [supplierController::class, 'getSupplier']);
+    $route->post('/supplier/update/{id}', [SupplierController::class, 'updateSupplier']);
+
+    // delete
+    $route->post('/supplier/delete/{id}', [supplierController::class, 'destroySupplier']);
+
+    // supplier detail
+    $route->get('/supplier/detail', [SupplierDetailController::class, 'suppliersInfoDetails']);
+
+
+    // export supplier detail
+    $route->get('/suppliers/export/{format}', [SupplierController::class, 'exportSuppliers']);
+
 });
 
 

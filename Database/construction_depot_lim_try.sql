@@ -550,6 +550,14 @@ CREATE TABLE `suppliers` (
   `UpdatedAt` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+-- 
+-- update suplliers
+-- 
+ALTER TABLE suppliers
+ADD COLUMN CategoryID INT(11) AFTER SupplierID;
+
+
+
 --
 -- Dumping data for table `suppliers`
 --
@@ -759,6 +767,25 @@ ALTER TABLE `today_money`
 ALTER TABLE `users`
   ADD PRIMARY KEY (`user_id`),
   ADD UNIQUE KEY `email` (`email`);
+
+--------------------------------------------------------------
+-- Adds a foreign key constraint between user and role
+-- 1. Identify Invalid role_id Values:
+SELECT u.role_id
+FROM users u
+LEFT JOIN roles r ON u.role_id = r.role_id
+WHERE r.role_id IS NULL;
+
+-- 2. Fix the Invalid Data:
+UPDATE users
+SET role_id = 1
+WHERE role_id NOT IN (SELECT role_id FROM roles);
+
+-- 3. Add the Foreign Key Constraint:
+ALTER TABLE users
+ADD CONSTRAINT fk_user_role
+FOREIGN KEY (role_id)
+REFERENCES roles(role_id);
 
 --
 -- AUTO_INCREMENT for dumped tables
