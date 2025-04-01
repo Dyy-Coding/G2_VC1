@@ -168,7 +168,7 @@ document.addEventListener("DOMContentLoaded", function () {
     updateDeleteButton();
 });
 
-// Function to confirm before deletion
-function confirmDelete() {
-    return confirm("Are you sure you want to delete all selected categories?");
-}
+
+
+
+    
