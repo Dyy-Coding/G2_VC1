@@ -95,6 +95,7 @@
             <div class="container">
                 <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-8">Categories</h2>
                 <div class="row row-cols-1 row-cols-md-4 g-4">
+                
                     <div class="col">
                         <div class="bg-white rounded-lg shadow-md p-4 hover:shadow-lg transition-transform transform hover:scale-105">
                             <img src="https://m.media-amazon.com/images/I/71lMSi5mQaL._AC_UF894,1000_QL80_.jpg" class="w-full h-32 object-contain p-4" alt="Clothes">
@@ -105,36 +106,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col">
-                        <div class="bg-white rounded-lg shadow-md p-4 hover:shadow-lg transition-transform transform hover:scale-105">
-                            <img src="https://www.gmat.co.uk/wp-content/uploads/2023/04/Types-of-Construction-Sand.jpg" class="w-full h-32 object-contain p-4" alt="Footwear">
-                            <div class="text-center">
-                                <h5 class="text-lg font-semibold text-gray-800">Footwear</h5>
-                                <p class="text-gray-500 text-sm">(30)</p>
-                                <a href="#" class="mt-2 inline-block bg-indigo-600 text-white py-2 px-4 rounded-full hover:bg-indigo-700 transition-colors">Show All</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="bg-white rounded-lg shadow-md p-4 hover:shadow-lg transition-transform transform hover:scale-105">
-                            <img src="./images/icons/jewelry.svg" class="w-full h-32 object-contain p-4" alt="Jewelry">
-                            <div class="text-center">
-                                <h5 class="text-lg font-semibold text-gray-800">Jewelry</h5>
-                                <p class="text-gray-500 text-sm">(25)</p>
-                                <a href="#" class="mt-2 inline-block bg-indigo-600 text-white py-2 px-4 rounded-full hover:bg-indigo-700 transition-colors">Show All</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="bg-white rounded-lg shadow-md p-4 hover:shadow-lg transition-transform transform hover:scale-105">
-                            <img src="./images/icons/bag.svg" class="w-full h-32 object-contain p-4" alt="Bags">
-                            <div class="text-center">
-                                <h5 class="text-lg font-semibold text-gray-800">Bags</h5>
-                                <p class="text-gray-500 text-sm">(20)</p>
-                                <a href="#" class="mt-2 inline-block bg-indigo-600 text-white py-2 px-4 rounded-full hover:bg-indigo-700 transition-colors">Show All</a>
-                            </div>
-                        </div>
-                    </div>
+ 
                 </div>
             </div>
         </section>
