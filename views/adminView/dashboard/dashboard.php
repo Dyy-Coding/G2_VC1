@@ -29,99 +29,92 @@
             </div>
           </div>
         </div>
-        <div class="col-4 text-end">
-          <div class="icon icon-shape bg-gradient-primary shadow-primary text-center rounded-circle">
-            <i class="ni ni-money-coins text-lg opacity-10" aria-hidden="true"></i>
+      </div>
+    </div>
+    <!-- Today Customers -->
+    <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+      <div class="card">
+        <div class="card-body p-3">
+          <div class="row">
+            <div class="col-8">
+              <div class="numbers">
+                <p class="text-sm mb-0 text-uppercase font-weight-bold">Customer</p>
+                <h5 class="font-weight-bolder">
+                  <?php echo number_format($total_customers_today); ?>
+                </h5>
+                <p class="mb-0">
+                  <span class="text-success text-sm font-weight-bolder">
+                    <?php
+                    // Display percentage change (add "+" sign if positive)
+                    echo ($customer_percentage_change > 0 ? "+" : "") . number_format($customer_percentage_change, 2) . "%";
+                    ?>
+                  </span>
+                  since yesterday
+                </p>
+              </div>
+            </div>
+            <div class="col-4 text-end">
+              <div class="icon icon-shape bg-gradient-danger shadow-danger text-center rounded-circle">
+                <i class="ni ni-world text-lg opacity-10" aria-hidden="true"></i>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
+    <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+      <div class="card">
+        <div class="card-body p-3">
+          <div class="row">
+            <div class="col-8">
+              <div class="numbers">
+                <p class="text-sm mb-0 text-uppercase font-weight-bold">New Clients</p>
+                <h5 class="font-weight-bolder">
+                  +3,462
+                </h5>
+                <p class="mb-0">
+                  <span class="text-danger text-sm font-weight-bolder">-2%</span>
+                  since last quarter
+                </p>
+              </div>
+            </div>
+            <div class="col-4 text-end">
+              <div class="icon icon-shape bg-gradient-success shadow-success text-center rounded-circle">
+                <i class="ni ni-paper-diploma text-lg opacity-10" aria-hidden="true"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-3 col-sm-6">
+    <div class="card">
+      <div class="card-body p-3">
+        <div class="row">
+          <div class="col-8">
+            <div class="numbers">
+              <p class="text-sm mb-0 text-uppercase font-weight-bold">Sales</p>
+              <h5 class="font-weight-bolder">
+                $103,430
+              </h5>
+              <p class="mb-0">
+                <span class="text-success text-sm font-weight-bolder">+5%</span> than last month
+              </p>
+            </div>
+          </div>
+          <div class="col-4 text-end">
+            <div class="icon icon-shape bg-gradient-warning shadow-warning text-center rounded-circle">
+              <i class="ni ni-cart text-lg opacity-10" aria-hidden="true"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
   </div>
 </div>
-<!-- Today Customers -->
 
-<div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-  <div class="card">
-    <div class="card-body p-3">
-      <div class="row">
-        <div class="col-8">
-          <div class="numbers">
-            <p class="text-sm mb-0 text-uppercase font-weight-bold">Today's Customer</p>
-            <h5 class="font-weight-bolder">
-              <?php echo number_format($total_customers_today); ?>
-            </h5>
-            <p class="mb-0">
-              <span class="text-success text-sm font-weight-bolder">
-                <?php
-                // Display percentage change (add "+" sign if positive)
-                echo ($customer_percentage_change > 0 ? "+" : "") . number_format($customer_percentage_change, 2) . "%";
-                ?>
-              </span>
-              since yesterday
-            </p>
-          </div>
-        </div>
-        <div class="col-4 text-end">
-          <div class="icon icon-shape bg-gradient-danger shadow-danger text-center rounded-circle">
-            <i class="ni ni-world text-lg opacity-10" aria-hidden="true"></i>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
 
-
-<div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-  <div class="card">
-    <div class="card-body p-3">
-      <div class="row">
-        <div class="col-8">
-          <div class="numbers">
-            <p class="text-sm mb-0 text-uppercase font-weight-bold">New Clients</p>
-            <h5 class="font-weight-bolder">
-              +3,462
-            </h5>
-            <p class="mb-0">
-              <span class="text-danger text-sm font-weight-bolder">-2%</span>
-              since last quarter
-            </p>
-          </div>
-        </div>
-        <div class="col-4 text-end">
-          <div class="icon icon-shape bg-gradient-success shadow-success text-center rounded-circle">
-            <i class="ni ni-paper-diploma text-lg opacity-10" aria-hidden="true"></i>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="col-xl-3 col-sm-6">
-  <div class="card">
-    <div class="card-body p-3">
-      <div class="row">
-        <div class="col-8">
-          <div class="numbers">
-            <p class="text-sm mb-0 text-uppercase font-weight-bold">Sales</p>
-            <h5 class="font-weight-bolder">
-              $103,430
-            </h5>
-            <p class="mb-0">
-              <span class="text-success text-sm font-weight-bolder">+5%</span> than last month
-            </p>
-          </div>
-        </div>
-        <div class="col-4 text-end">
-          <div class="icon icon-shape bg-gradient-warning shadow-warning text-center rounded-circle">
-            <i class="ni ni-cart text-lg opacity-10" aria-hidden="true"></i>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-</div>
 <div class="row mt-4">
   <div class="col-lg-7 mb-lg-0 mb-4">
     <div class="card z-index-2 h-100">
@@ -186,88 +179,6 @@
       </div>
     </div>
   </div>
-
-
-
-
-  <!-- <div class="col-lg-5">
-    <div class="col-lg-12 ">
-      <div class="card">
-        <div class="card-header pb-0 p-1">
-          <div class="d-flex justify-content-between">
-            <h3 class="mb-2 p-2">Stock Lists</h3>
-          </div>
-        </div>
-        <table class="table align-middle bg-white">
-          <thead>
-            <tr>
-              <th style="font-size: 16px;">Material</th>
-              <th style="font-size: 16px;">Category</th>
-              <th style="font-size: 16px;">Status</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                <div class="text-center">Phone</div>
-              </td>
-              <td class="text-center">Electronic</td>
-              <td>
-                <div class="text-center">
-                  <button type="button" class="btn btn-success btn-sm btn-rounded">Have in stock</button>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <div class="text-center">Laptop</div>
-              </td>
-              <td class="text-center">Electronic</td>
-              <td>
-                <div class="text-center">
-                  <button type="button" class="btn btn-danger btn-sm btn-rounded">Out of stock</button>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <div class="text-center">T-Shirt</div>
-              </td>
-              <td class="text-center">Clothing</td>
-              <td>
-                <div class="text-center">
-                  <button type="button" class="btn btn-success btn-sm btn-rounded">Have in stock</button>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <div class="text-center">Shoes</div>
-              </td>
-              <td class="text-center">Footwear</td>
-              <td>
-                <div class="text-center">
-                  <button type="button" class="btn btn-danger btn-sm btn-rounded">Out of stock</button>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <div class="text-center">Shoes</div>
-              </td>
-              <td class="text-center">Footwear</td>
-              <td>
-                <div class="text-center">
-                  <button type="button" class="btn btn-danger btn-sm btn-rounded">Out of stock</button>
-                </div>
-              </td>
-            </tr>
-
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div> -->
 
 
 </div>
