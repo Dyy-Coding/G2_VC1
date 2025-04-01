@@ -116,6 +116,7 @@
   </div>
 
   <!-- Sales Overview -->
+
   <div class="row mt-2">
     <div class="col-lg-7 mb-lg-0 mb-4">
       <div class="card z-index-2 h-100 shadow-sm">
@@ -128,11 +129,15 @@
         </div>
         <div class="card-body p-3">
           <div class="chart">
-            <canvas id="chart-line-1" class="chart-canvas" height="300"></canvas>
+          <canvas id="chart-line-1" class="chart-canvas" height="300"></canvas>
+
           </div>
         </div>
       </div>
     </div>
+
+
+    <script src="views/assets/JavaScript/chartSalesOverview/salesData.js"></script>
 
     <!-- Stock Lists -->
     <div class="col-lg-5">
@@ -144,9 +149,9 @@
           <table class="table align-middle bg-white">
             <thead>
               <tr>
-                <th>Material</th>
-                <th>Category</th>
-                <th>Status</th>
+                <th class="text-center">Material</th>
+                <th class="text-center">Category</th>
+                <th class="text-center">Status</th>
               </tr>
             </thead>
             <tbody>
@@ -200,27 +205,12 @@
     </div>
   </div>
 
-  <?php 
-// For debugging the chart data
-$labels = $viewData['labels'] ?? [];
-$salesData = $viewData['salesData'] ?? [];
-$labelsJson = $viewData['labelsJson'] ?? '[]';
-$salesDataJson = $viewData['salesDataJson'] ?? '[]';
-
-var_dump($labels);
-var_dump($salesData);
-var_dump($labelsJson);
-var_dump($salesDataJson);
-?>
-
-
-
   <!-- Users List -->
   <div class="row mt-4">
     <div class="col-lg-12 mb-lg-0 mb-4">
       <div class="card shadow-sm">
         <div class="card-header pb-0 p-3">
-          <h3 class="mb-2">Users List</h3>
+          <h3 class="mb-2 align-items-center">Users List</h3>
         </div>
         <div class="table-responsive">
           <table class="table align-items-center">
@@ -232,6 +222,7 @@ var_dump($salesDataJson);
               </tr>
             </thead>
             <tbody>
+              <!-- User entries go here -->
               <tr>
                 <td>
                   <div class="d-flex align-items-center">
@@ -270,7 +261,4 @@ var_dump($salesDataJson);
       </div>
     </div>
   </div>
-  <div
-
-
-
+</div>
