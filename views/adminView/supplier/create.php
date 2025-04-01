@@ -2,7 +2,7 @@
     <div class="container d-flex align-items-center justify-content-between mb-3">
         <div class="container">
             <h3 class="mb-4 mt-4">Enter Supplier Info</h3>
-            <form action="/store/supplier" method="POST">
+            <form action="/store/supplier" method="POST" enctype="multipart/form-data">
                 <div class="row g-2 mb-3">
                     <div class="col-md-6">
                         <label for="contact-person" class="form-label">Contact Person *</label>
@@ -40,6 +40,14 @@
                     <div class="col-md-6">
                         <label for="address" class="form-label">Address (Optional)</label>
                         <textarea id="address" name="address" class="form-control" rows="2"></textarea>
+                    </div>
+                </div>
+
+                <!-- Add File Input for Profile Image -->
+                <div class="row g-2 mb-3">
+                    <div class="col-md-6">
+                        <label for="profile-supplier" class="form-label">Profile Image (Optional)</label>
+                        <input type="file" id="profile-supplier" name="profile_supplier" class="form-control" accept="image/*">
                     </div>
                 </div>
 

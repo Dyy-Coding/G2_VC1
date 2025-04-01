@@ -15,6 +15,11 @@ require_once "Controllers/AdminController/DashboardController.php";
 require_once "Controllers/adminController/BashInfoController.php";
 require_once 'Controllers/errorController.php';
 
+// Supplier feature
+require_once 'Controllers/adminController/supplierController/SupplierControoler.php';
+require_once 'Controllers/adminController/supplierController/DetailSupplierController.php';
+
+
 // require_one Controllers/adminController/dashboardController/stockListController.php;
 require_once 'Controllers/adminController/dashboardController/stockListController.php';
 
@@ -86,7 +91,7 @@ $route->group('inventory', function ($route) {
 
 });
 
-     // Router Categories 
+// Router Categories 
 $route->group('category', function ($route) {
     $route->get('/category', [CategoriesController::class, 'category']);
     $route->post('/category/add', [CategoriesController::class, 'addCategory']);
@@ -136,7 +141,14 @@ $route->group('supplier', function ($route) {
 
     // delete
     $route->post('/supplier/delete/{id}', [supplierController::class, 'destroySupplier']);
-    
+
+    // supplier detail
+    $route->get('/supplier/detail', [SupplierDetailController::class, 'suppliersInfoDetails']);
+
+
+    // export supplier detail
+    $route->get('/suppliers/export/{format}', [SupplierController::class, 'exportSuppliers']);
+
 });
 
 
