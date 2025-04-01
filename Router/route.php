@@ -30,6 +30,9 @@ require_once "Models/invenoryModel/categoryModel.php";
 require_once "Models/dashboard/dashboardModel.php";
 
 
+// require_once "Models/dashboard/dataSalesOverviewModel.php";
+
+
 
 // Customer Controller 
 
@@ -122,6 +125,10 @@ $route->group('profile', function ($route) {
 });
 
 
+/**
+ * Defines a GET route for handling error pages
+ * Maps the '/error' URI to the 'error' method of the ErrorController
+ */
 $route->get('/error', [ErrorController::class, 'error']);
 
 // $route->printRoutes();

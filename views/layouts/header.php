@@ -38,6 +38,7 @@
 
 <!-- Font Awesome Icons -->
 <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <style>
   .aside_high {
