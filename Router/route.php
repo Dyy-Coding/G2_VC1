@@ -19,7 +19,7 @@ require_once 'Controllers/adminController/supplierController/SupplierControoler.
 require_once 'Controllers/adminController/supplierController/DetailSupplierController.php';
 
 // Sale order
-
+require_once 'Controllers/adminController/saleController/salesOrderController.php';
 
 
 // require_one Controllers/adminController/dashboardController/stockListController.php;
@@ -91,6 +91,13 @@ $route->group('inventory', function ($route) {
 
     $route->get('/order', [InventoryController::class, 'order']);
 
+});
+
+// Sale order route group
+$route->group('sale', function ($route) {
+    $route->get('/sale/order', [SaleOrderController::class, 'saleInfo']);
+    $route->get('/admin/saleorder/add', [SaleOrderController::class, 'addSaleOrder']);
+    $route->post('/admin/saleorder/add', [SaleOrderController::class, 'addSaleOrder']);
 });
 
 // Router Categories 
