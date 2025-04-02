@@ -8,6 +8,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Icon -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <style>
         .carousel-item img {
             height: 500px;
@@ -93,7 +95,7 @@
             </div>
             <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                 <div class="flex shrink-0 items-center">
-                <img class="h-8 w-auto" src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=500" alt="Your Company">
+                <img class="h-8 w-auto" src="https://as1.ftcdn.net/v2/jpg/03/49/15/22/1000_F_349152257_LWXemAKac8x18qvLyVHPnRXfsGIAF9oR.jpg" alt="Your Company">
                 </div>
                 <div class="hidden sm:ml-6 sm:block">
                 <div class="flex space-x-4">
@@ -177,7 +179,7 @@
         </div>
 
         <!-- Categories -->
-        <section class="py-12">
+        <section class="py-12 ">
             <div class="container">
                 <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-8">Categories</h2>
                 <div class="scrollable-container">
@@ -196,13 +198,13 @@
                         <!-- Scrollable Content -->
                         <div class="scroll-container">
                             <?php foreach ($categories as $category) : ?>
-                                <div class="bg-white rounded-lg shadow-md p-4 w-64 hover:shadow-lg transition-transform transform hover:scale-105">
-                                <img src="https://m.media-amazon.com/images/I/71lMSi5mQaL._AC_UF894,1000_QL80_.jpg" class="w-full h-32 object-contain p-4" alt="Clothes">
-                                <div class="text-center">
-                                    <h5 class="text-lg font-semibold text-gray-800"><?= htmlspecialchars($category['CategoryName']) ?></h5>
-                                    <p class="text-gray-500 text-sm"><?= htmlspecialchars($category['CategoryName']) ?></p>
-                                    <a href="/category" class="mt-2 inline-block bg-indigo-600 text-white py-2 px-4 rounded-full hover:bg-indigo-700 transition-colors">Show All</a>
-                                </div>
+                                <div class="bg-white rounded-lg shadow-md mb-10 p-4 w-64 hover:shadow-lg transition-transform transform hover:scale-105">
+                                    <img src="https://m.media-amazon.com/images/I/71lMSi5mQaL._AC_UF894,1000_QL80_.jpg" class="w-full h-32 object-contain p-4" alt="Clothes">
+                                    <div class="text-center">
+                                        <h5 class="text-lg font-semibold text-gray-800"><?= htmlspecialchars($category['CategoryName']) ?></h5>
+                                        <p class="text-gray-500 text-sm"><?= htmlspecialchars($category['CategoryName']) ?></p>
+                                        <a href="/category" class="mt-2 inline-block bg-indigo-600 text-white py-2 px-4 rounded-full hover:bg-indigo-700 transition-colors">Show All</a>
+                                    </div>
                                 </div>
                             <?php endforeach; ?>
                         </div>
@@ -329,9 +331,38 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-6">
-        <div class="container text-center">
-            <p class="text-gray-300">© 2025 Store. All rights reserved.</p>
+    <footer class="text-white px-8 py-6 bg-blue-950">
+        <div class="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-4">
+            <div class="mb-8 md:mb-0">
+                <h3 class="text-lg font-bold mb-4">About Us</h3>
+                <p class="mb-2 w-80">At Lim Tri depot, we are dedicated to providing high-quality construction materials to builders, contractors, and DIY enthusiasts. With years of experience in the industry, we pride ourselves on our commitment to excellence and customer satisfaction.</p>
+            </div>
+            <div class="mb-8 md:mb-0">
+                <h3 class="text-lg font-bold mb-4">Products</h3>
+                <ul>
+                    <li><a href="#" class="hover:text-yellow-400">Concrete & Cement</a></li>
+                    <li><a href="#" class="hover:text-yellow-400">Aggregates</a></li>
+                    <li><a href="#" class="hover:text-yellow-400">Steel & Rebar</a></li>
+                    <li><a href="#" class="hover:text-yellow-400">Insulation Materials</a></li>
+                    <li><a href="#" class="hover:text-yellow-400">Roofing Supplies</a></li>
+                    <li><a href="#" class="hover:text-yellow-400">Tools & Equipment</a></li>
+                </ul>
+            </div>
+            <div class="mb-8 md:mb-0">
+                <h3 class="text-lg font-bold mb-4">Services</h3>
+                <ul>
+                    <li><a href="#" class="hover:text-yellow-400">Delivery Services</a></li>
+                    <li><a href="#" class="hover:text-yellow-400">Custom Orders</a></li>
+                    <li><a href="#" class="hover:text-yellow-400">Consultation & Support</a></li>
+                </ul>
+            </div>
+            <div class="mb-8 md:mb-0">
+                <h3 class="text-lg font-bold mb-4">Location</h3>
+                <p class="mb-2"><a href="https://maps.app.goo.gl/YjR875jimR99F8J36"><i class="material-icons md-18">location_on</i> Street 103, Khan SekSok, Phnom Penh, Cambodia</a></p>
+                <p class="mb-2"><a href="tel:+1514890000" class="hover:text-yellow-400">1-514-890-0000</a></p>
+                <p><a href="mailto:calinscompagnies@calins.com"
+                        class="hover:text-yellow-400">limtri@gmail.com</a></p>
+            </div>
         </div>
     </footer>
 
