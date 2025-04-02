@@ -107,7 +107,7 @@
             <tr>
                 <!-- Checkbox -->
                 <td class="row-checkbox">
-                    <input type="checkbox">
+                <input type="checkbox" name="categoryIDs[]" value="<?= $material['MaterialID'] ?>">
                 </td>
 
                 <!-- Product Column (Image + Name) -->

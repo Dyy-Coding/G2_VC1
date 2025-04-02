@@ -226,7 +226,7 @@ class UserModel {
     }
 
     public function checkUserByEmailOrPhone($contact)
-{
+    {
     try {
         // Check if the input is an email or phone number
         if (filter_var($contact, FILTER_VALIDATE_EMAIL)) {
@@ -253,7 +253,7 @@ class UserModel {
         echo "Error: " . $e->getMessage();
         return null;
     }
-}
+    }
 
 
     public function clearAllExpiredResetTokens() {
