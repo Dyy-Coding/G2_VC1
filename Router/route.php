@@ -17,6 +17,10 @@ require_once 'Controllers/errorController.php';
 // require_one Controllers/adminController/dashboardController/stockListController.php;
 require_once 'Controllers/adminController/dashboardController/stockListController.php';
 
+// help and support
+require_once "Controllers/helpController/helpManeController.php";
+
+
 
 // Database link files
 require_once __DIR__ . '/../Database/Database.php';
@@ -38,7 +42,7 @@ require_once "Controllers/userController/welcomeController/welcomeController.php
 $route = new Router();
 
 // Group routes by controller for better organization
-$route->group('auth', function($route) {
+$route->group('auth', function ($route) {
     // Login Routes
     $route->get('/login', [LoginController::class, 'login']);  // Display Login Form (GET)
     $route->post('/login', [LoginController::class, 'login']); // Handle Login (POST)
@@ -65,11 +69,11 @@ $route->group('auth', function($route) {
 
 
 
-$route->group('dashboard', function($route) {
+$route->group('dashboard', function ($route) {
     $route->get('/', [DashboardController::class, 'index']);
     $route->get('/user', [DashboardController::class, 'userDashboard']);
 });
-$route->group('welcome', function($route) {
+$route->group('welcome', function ($route) {
     $route->get('/welcome', [WelcomeController::class, 'welcome']);
 });
 
@@ -89,7 +93,6 @@ $route->group('inventory', function ($route) {
     $route->post('/category/update/(.*)', [InventoryController::class, 'updateCategory']);
 
     $route->get('/order', [InventoryController::class, 'order']);
-
 });
 
 $route->group('profile', function ($route) {
@@ -112,6 +115,10 @@ $route->group('profile', function ($route) {
     $route->post('/deleteuser', [AccountListController::class, 'destroyUserAccProfile']);
     // Add this new route for single user deletion
     $route->get('/deleteuser/{id}', [AccountListController::class, 'destroySingleUserAccProfile']);
+});
+
+$route->group('help', function ($route) {
+    $route->get('/help/support', [helpManagementController::class, 'helpmanegement']);
 });
 
 
