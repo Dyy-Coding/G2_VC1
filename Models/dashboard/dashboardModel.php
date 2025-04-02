@@ -7,6 +7,49 @@ class TodayMoneyModel {
         $this->conn = Database::getConnection();
     }
 
+    public function getSuppliersData() {
+        // Query to fetch all the supplier data
+        $query = "
+            SELECT 
+                SupplierID, 
+                Name, 
+                ContactPerson, 
+                Phone, 
+                image, 
+                Email, 
+                Address, 
+                CreatedAt, 
+                UpdatedAt
+            FROM suppliers
+        ";
+        
+        // Prepare and execute the query
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute();
+    
+        $suppliersData = [];
+    
+        // Fetch the results
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            // Add the supplier data to the array
+            $suppliersData[] = [
+                'SupplierID' => $row['SupplierID'],
+                'Name' => $row['Name'],
+                'ContactPerson' => $row['ContactPerson'],
+                'Phone' => $row['Phone'],
+                'Image' => $row['image'],
+                'Email' => $row['Email'],
+                'Address' => $row['Address'],
+                'CreatedAt' => $row['CreatedAt'],
+                'UpdatedAt' => $row['UpdatedAt'],
+            ];
+        }
+    
+        // Return the suppliers data
+        return $suppliersData;
+    }
+    
+
     public function getOrderOverview() {
         $query = "SELECT COUNT(*) AS total_orders, SUM(TotalAmount) AS total_revenue FROM salesorders";
         $stmt = $this->conn->prepare($query);
@@ -14,8 +57,15 @@ class TodayMoneyModel {
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function getAllUsers() {
-        $stmt = $this->conn->prepare("SELECT * FROM users");
+    public function getAllworkers() {
+        $stmt = $this->conn->prepare("SELECT u.*, r.role_name FROM Users u 
+          JOIN roles r ON u.role_id = r.role_id 
+          WHERE u.role_id != 2");
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+    public function getAllCustomers() {
+        $stmt = $this->conn->prepare("SELECT * FROM customers");
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
@@ -79,16 +129,25 @@ class TodayMoneyModel {
     public function getCustomerPercentageChange() {
         $todayCustomers = $this->getTodayCustomers();
         $yesterdayCustomers = $this->getYesterdayCustomers();
-        return ($yesterdayCustomers > 0) ? (($todayCustomers - $yesterdayCustomers) / $yesterdayCustomers) * 100 : 0;
+    
+        // Avoid division by zero error and return 0 if there were no customers yesterday.
+        if ($yesterdayCustomers == 0) {
+            return 100; // If there were no customers yesterday, any number of customers today would be 100% increase
+        }
+    
+        // Calculate the percentage change and cap it at 100%.
+        $percentageChange = abs(($todayCustomers - $yesterdayCustomers) / $yesterdayCustomers) * 100;
+        return min($percentageChange, 100); // Cap at 100% if the change exceeds it.
     }
+    
 
     public function getTodayCustomers() {
-        $query = "SELECT COUNT(*) AS total_customers_today FROM Customers WHERE DATE(created) = CURDATE()";
+        $query = "SELECT COUNT(*) AS total_customers_today FROM Users WHERE role_id = 2 AND DATE(created_at) = CURDATE()";
         return $this->conn->query($query)->fetchColumn();
     }
 
     public function getYesterdayCustomers() {
-        $query = "SELECT COUNT(*) AS total_customers_yesterday FROM Customers WHERE DATE(created) = CURDATE() - INTERVAL 1 DAY";
+        $query = "SELECT COUNT(*) AS total_customers_yesterday FROM users WHERE role_id = 2 AND DATE(created_at) = CURDATE() - INTERVAL 1 DAY";
         return $this->conn->query($query)->fetchColumn();
     }
 

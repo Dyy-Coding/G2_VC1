@@ -47,6 +47,10 @@
 /* Enables scrolling if needed */
 }
 
+/* Custom class for smaller text */
+
+
+
 </style>
 
 
@@ -55,7 +59,7 @@
 
 </head>
 <body class="g-sidenav-show   bg-gray-100">
-  <div class="min-height-300 bg-dark position-fixed w-100 "></div>
+  <div class="min-height-300  position-fixed w-100 " style="background-color:rgb(104, 212, 255);"></div>
   <aside
     class="sidenav bg-white navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 "
     id="sidenav-main">

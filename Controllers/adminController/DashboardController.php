@@ -9,6 +9,11 @@ class DashboardController extends BaseController {
         $this->todayMoneyModel = new TodayMoneyModel();
         $this->stockModel = new StockModel();
     }
+ 
+
+// Assuming a connection to the database is already established
+
+
     
     public function index() {
         try {
@@ -24,6 +29,8 @@ class DashboardController extends BaseController {
             $todayMoneyData = $this->todayMoneyModel->getTodayMoneyData();
 
             $stockListData = $this->stockModel->getStockList();
+            $purchaseListData = $this->stockModel->getTopPurchasedMaterials();
+         
 
             // --- Total Sales & Orders ---
             $salesAndOrders = $this->todayMoneyModel->getTotalSalesAndOrders();
@@ -42,8 +49,11 @@ class DashboardController extends BaseController {
 
 
             // users data 
-            $users = $this->todayMoneyModel->getAllUsers();
-            var_dump($users);
+            $customers = $this->todayMoneyModel->getAllCustomers();
+            // var_dump( $customers);
+            $workers = $this->todayMoneyModel->getAllworkers();
+            $SuppliersData = $this->todayMoneyModel->getSuppliersData();
+            // var_dump( $workers);
                
             $labels = [];
             $salesData = [];
@@ -82,7 +92,10 @@ class DashboardController extends BaseController {
                 'labels'                   => $labels,
                 'salesData'                => $salesData,
                 'orderOverview'            => $orderOverview, // Added order overview
-                'users'                    => $users // Added order overview
+                'customers'                =>  $customers,
+                'workers'                  =>  $workers,
+                'purchaseListData'         =>  $purchaseListData,
+                'SuppliersData'         =>  $SuppliersData
             ];
 
             // Render the dashboard view with all data
