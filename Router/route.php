@@ -9,6 +9,7 @@ require_once "Controllers/adminController/authenicationController/loginControlle
 require_once "Controllers/adminController/authenicationController/forgotPasswordController.php";
 require_once "Controllers/adminController/authenicationController/registerController.php";
 require_once "Controllers/adminController/InventoryController.php";
+require_once "Controllers/adminController/InventoryController/categoriesController.php";
 // require_once "Controllers/adminController/sales/salesController.php";
 require_once "Controllers/AdminController/DashboardController.php";
 require_once "Controllers/adminController/BashInfoController.php";
@@ -102,6 +103,19 @@ $route->group('inventory', function ($route) {
     $route->get('/order', [InventoryController::class, 'order']);
 
 });
+
+     // Router Categories 
+$route->group('category', function ($route) {
+    $route->get('/category', [CategoriesController::class, 'category']);
+    $route->post('/category/add', [CategoriesController::class, 'addCategory']);
+    $route->get('/category/delete/(.*)', [CategoriesController::class, 'deleteCategory']);
+    $route->post('/category/deleteSelected', [CategoriesController::class, 'deleteSelectedCategories']);
+    $route->get('/category/category_edit/(.*)', [CategoriesController::class, 'editCategory']);
+    $route->post('/category/update/(.*)', [CategoriesController::class, 'updateCategory']);
+    $route->get('/category/detail/{id}', [CategoriesController::class, 'categoryDetail']);
+
+});
+
 
 $route->group('profile', function ($route) {
     // Profile admin

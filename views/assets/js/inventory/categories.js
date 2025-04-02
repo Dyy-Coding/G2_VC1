@@ -114,38 +114,61 @@
         updateRowsPerPage();
     });
 
-    document.addEventListener("DOMContentLoaded", function () {
-    const deleteAllBtn = document.getElementById("deleteAllBtn");
+//     document.addEventListener("DOMContentLoaded", function () {
+//     const deleteAllBtn = document.getElementById("deleteAllBtn");
     
-    deleteAllBtn.addEventListener("click", function () {
-        const selectedCheckboxes = document.querySelectorAll("table tbody input[type='checkbox']:checked");
-        const selectedCategories = Array.from(selectedCheckboxes).map(checkbox => checkbox.closest("tr").dataset.categoryId);
+//     deleteAllBtn.addEventListener("click", function () {
+//         const selectedCheckboxes = document.querySelectorAll("table tbody input[type='checkbox']:checked");
+//         const selectedCategories = Array.from(selectedCheckboxes).map(checkbox => checkbox.closest("tr").dataset.categoryId);
         
-        if (selectedCategories.length === 0) {
-            alert("Please select at least one category to delete.");
-            return;
-        }
+//         if (selectedCategories.length === 0) {
+//             alert("Please select at least one category to delete.");
+//             return;
+//         }
 
-        if (confirm("Are you sure you want to delete the selected categories?")) {
-            fetch('/category/delete_all', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ categoryIds: selectedCategories })
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    alert("Selected categories deleted successfully.");
-                    location.reload();
-                } else {
-                    alert("Error deleting categories.");
-                }
-            })
-            .catch(error => console.error("Error:", error));
-        }
+//         if (confirm("Are you sure you want to delete the selected categories?")) {
+//             fetch('/category/delete_all', {
+//                 method: 'POST',
+//                 headers: {
+//                     'Content-Type': 'application/json'
+//                 },
+//                 body: JSON.stringify({ categoryIds: selectedCategories })
+//             })
+//             .then(response => response.json())
+//             .then(data => {
+//                 if (data.success) {
+//                     alert("Selected categories deleted successfully.");
+//                     location.reload();
+//                 } else {
+//                     alert("Error deleting categories.");
+//                 }
+//             })
+//             .catch(error => console.error("Error:", error));
+//         }
+//     });
+// });
+
+document.addEventListener("DOMContentLoaded", function () {
+    const selectAllCheckbox = document.getElementById("selectAll");
+    const checkboxes = document.querySelectorAll('input[name="categoryIDs[]"]');
+    const deleteButton = document.querySelector('button[type="submit"]');
+
+    function updateDeleteButton() {
+        const anyChecked = Array.from(checkboxes).some(checkbox => checkbox.checked);
+        deleteButton.disabled = !anyChecked;
+    }
+
+    selectAllCheckbox.addEventListener("change", function () {
+        checkboxes.forEach(checkbox => checkbox.checked = selectAllCheckbox.checked);
+        updateDeleteButton();
     });
+
+    checkboxes.forEach(checkbox => checkbox.addEventListener("change", updateDeleteButton));
+
+    updateDeleteButton();
 });
 
-    
+// Function to confirm before deletion
+function confirmDelete() {
+    return confirm("Are you sure you want to delete all selected categories?");
+}
