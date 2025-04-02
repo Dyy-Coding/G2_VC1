@@ -35,6 +35,10 @@ require_once "Models/dashboard/dashboardModel.php";
 
 require_once "Controllers/userController/welcomeController/welcomeController.php";
 
+
+// User View Controller
+require_once "Controllers/userController/ShopController/salesController.php";
+
 // Initialize Router
 $route = new Router();
 
@@ -121,6 +125,11 @@ $route->group('profile', function ($route) {
     $route->get('/deleteuser/{id}', [AccountListController::class, 'destroySingleUserAccProfile']);
 });
 
+
+// UserView
+$route->group('shop', function($route) {
+    $route->get('/sales', [SalesController::class, 'sales']);
+});
 
 $route->get('/error', [ErrorController::class, 'error']);
 
