@@ -21,6 +21,9 @@ require_once 'Controllers/adminController/supplierController/DetailSupplierContr
 // Sale order
 require_once 'Controllers/adminController/saleController/salesOrderController.php';
 
+// customers
+require_once 'Controllers/adminController/customerController.php/customerListController.php';
+
 
 // require_one Controllers/adminController/dashboardController/stockListController.php;
 require_once 'Controllers/adminController/dashboardController/stockListController.php';
@@ -159,6 +162,8 @@ $route->group('supplier', function ($route) {
     $route->get('/suppliers/export/{format}', [SupplierController::class, 'exportSuppliers']);
 
 });
+
+
 
 
 $route->get('/error', [ErrorController::class, 'error']);

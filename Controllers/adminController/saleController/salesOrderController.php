@@ -5,26 +5,23 @@ require_once "Models/salesModel/salesOrderModel.php";
 class SaleOrderController extends BaseController {
     private $model;
 
-    function __construct() {
+    public function __construct() {
         $this->model = new SaleOrderManagementModel();
     }
 
-    function saleInfo() {
+    public function saleInfo() {
         try {
             $salesOrders = $this->model->getAllSalesOrders();
             
-            // Debug output (remove in production)
-            error_log("Fetched orders count: " . count($salesOrders));
-            
             $this->renderView('adminView/sales/saleorder/orderlist', [
-                'salesOrders' => $salesOrders
+                'salesOrders' => $salesOrders,
+                'success' => $_GET['success'] ?? null
             ]);
             
         } catch (Exception $e) {
-            error_log("Error in saleInfo: " . $e->getMessage());
             $this->renderView('adminView/sales/saleorder/orderlist', [
                 'salesOrders' => [],
-                'error' => 'Failed to load sales orders'
+                'error' => 'Failed to load sales orders: ' . $e->getMessage()
             ]);
         }
     }
