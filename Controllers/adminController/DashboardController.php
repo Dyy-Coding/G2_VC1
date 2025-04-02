@@ -39,7 +39,12 @@ class DashboardController extends BaseController {
 
             // --- Sales Overview for Last 12 Months ---
             $salesOverview = $this->todayMoneyModel->getSalesForLast12Months();
-           
+
+
+            // users data 
+            $users = $this->todayMoneyModel->getAllUsers();
+            var_dump($users);
+               
             $labels = [];
             $salesData = [];
 
@@ -76,7 +81,8 @@ class DashboardController extends BaseController {
                 'stockListData'            => $stockListData,
                 'labels'                   => $labels,
                 'salesData'                => $salesData,
-                'orderOverview'            => $orderOverview // Added order overview
+                'orderOverview'            => $orderOverview, // Added order overview
+                'users'                    => $users // Added order overview
             ];
 
             // Render the dashboard view with all data

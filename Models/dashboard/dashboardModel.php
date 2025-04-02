@@ -14,6 +14,12 @@ class TodayMoneyModel {
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
+    public function getAllUsers() {
+        $stmt = $this->conn->prepare("SELECT * FROM users");
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
     public function getSalesForLast12Months() {
         $query = "
             SELECT 

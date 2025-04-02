@@ -1,3 +1,5 @@
+
+
 <div class="container-fluid py-4">
   <div class="row">
     <!-- Today Money -->
@@ -137,7 +139,7 @@
     </div>
 
 
-    <script src="views/assets/JavaScript/chartSalesOverview/salesData.js"></script>
+    
 
     <!-- Stock Lists -->
     <div class="col-lg-5">
@@ -204,61 +206,120 @@
       </div>
     </div>
   </div>
-
-  <!-- Users List -->
-  <div class="row mt-4">
-    <div class="col-lg-12 mb-lg-0 mb-4">
-      <div class="card shadow-sm">
-        <div class="card-header pb-0 p-3">
-          <h3 class="mb-2 align-items-center">Users List</h3>
-        </div>
-        <div class="table-responsive">
-          <table class="table align-items-center">
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Role</th>
-              </tr>
-            </thead>
-            <tbody>
-              <!-- User entries go here -->
-              <tr>
-                <td>
-                  <div class="d-flex align-items-center">
-                    <img src="/views/assets/img/team-1.jpg" alt="User avatar" style="width: 40px; height: 40px" class="rounded-circle">
-                    <div class="ms-3">
-                      <h6 class="text-sm mb-0">John Doe</h6>
+  <script src="views/assets/JavaScript/chartSalesOverview/salesData.js"></script>
+  <!-- <script src="views/assets/JavaScript/chartOrderOverView/chartOrderOverView.js"></script> -->
+<!-- Users List -->
+<div class="row mt-4">
+  <div class="col-lg-12 mb-lg-0 mb-4">
+    <div class="card shadow-sm">
+      <div class="card-header pb-0 p-3">
+        <h3 class="mb-2 align-items-center">Users List</h3>
+      </div>
+      <div class="table-responsive">
+        <table class="table align-items-center">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Status</th> <!-- Changed from Role to Status -->
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Example user entries, replace with dynamic PHP -->
+            <?php if (!empty($users)): ?>
+              <?php foreach ($users as $user): ?>
+                <tr>
+                  <td>
+                    <div class="d-flex align-items-center">
+                      <img src="<?php echo htmlspecialchars($user['profile_image']); ?>" alt="User avatar" style="width: 40px; height: 40px" class="rounded-circle">
+                      <div class="ms-3">
+                        <h6 class="text-sm mb-0"><?php echo htmlspecialchars($user['first_name'] . " " . $user['last_name']); ?></h6>
+                      </div>
                     </div>
-                  </div>
-                </td>
-                <td class="text-center">
-                  <h6 class="text-sm mb-0">john@example.com</h6>
-                </td>
-                <td class="text-center">
-                  <h6 class="text-sm mb-0">Admin</h6>
-                </td>
-              </tr>
+                  </td>
+                  <td class="text-center">
+                    <h6 class="text-sm mb-0"><?php echo htmlspecialchars($user['email']); ?></h6>
+                  </td>
+                  <td class="text-center">
+                    <h6 class="text-sm mb-0"><?php echo htmlspecialchars($user['status']); ?></h6> <!-- Changed from role to status -->
+                  </td>
+                </tr>
+              <?php endforeach; ?>
+            <?php else: ?>
               <tr>
-                <td>
-                  <div class="d-flex align-items-center">
-                    <img src="/views/assets/img/team-2.jpg" alt="User avatar" style="width: 40px; height: 40px" class="rounded-circle">
-                    <div class="ms-3">
-                      <h6 class="text-sm mb-0">Jane Smith</h6>
-                    </div>
-                  </div>
-                </td>
-                <td class="text-center">
-                  <h6 class="text-sm mb-0">jane@example.com</h6>
-                </td>
-                <td class="text-center">
-                  <h6 class="text-sm mb-0">User</h6>
-                </td>
+                <td colspan="3" class="text-center">No users found.</td>
               </tr>
-            </tbody>
-          </table>
-        </div>
+            <?php endif; ?>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>
 </div>
+
+
+<!-- Manage Purchase Order -->
+<div class="row mt-4">
+  <!-- Purchase Order Overview -->
+  <div class="col-lg-5 mb-lg-0 mb-4">
+    <div class="card z-index-2 h-100 shadow-sm">
+      <div class="card-header pb-0 pt-3 bg-transparent">
+        <h6 class="text-capitalize">Manage Purchase Order</h6>
+        <p class="text-sm mb-0">
+          <i class="fa fa-arrow-up text-success"></i>
+          <span class="font-weight-bold">10% more</span> in 2021
+        </p>
+      </div>
+      <div class="card-body p-3">
+        <div class="chart">
+          <!-- Add a container for the chart with a loading indicator -->
+          <div id="chart-container" style="position: relative; height: 400px;">
+            <canvas id="purchase-order-chart"></canvas>
+            <div id="loading-indicator" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); display: none;">
+              <div class="spinner"></div> <!-- Custom or CSS spinner -->
+              <p>Loading data...</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stock Lists -->
+  <div class="col-lg-7">
+    <div class="card shadow-sm">
+      <div class="card-header pb-0 p-1">
+        <h4 class="m-4">Stock Lists</h4>
+      </div>
+      <div class="table-container" style="max-height: 400px; overflow-y: auto;">
+        <table class="table align-middle bg-white">
+          <thead>
+            <tr>
+              <th class="text-center">Material</th>
+              <th class="text-center">Category</th>
+              <th class="text-center">Purchase Order Quantity</th>
+              <th class="text-center">Total Amount</th>
+            </tr>
+          </thead>
+          <tbody>
+            <?php if (!empty($stockListData)): ?>
+              <?php foreach ($stockListData as $material): ?>
+                <tr>
+                  <td class="text-center"><?php echo htmlspecialchars($material['MaterialName']); ?></td>
+                  <td class="text-center"><?php echo htmlspecialchars($material['CategoryName'] ?? 'N/A'); ?></td>
+                  <td class="text-center"><?php echo htmlspecialchars($material['cQuantity'] ?? 'N/A'); ?></td>
+                  <td class="text-center"><?php echo htmlspecialchars($material['TotalAmount'] ?? 'N/A'); ?></td>
+                </tr>
+              <?php endforeach; ?>
+            <?php else: ?>
+              <tr>
+                <td colspan="4" class="text-center">No materials found with purchase orders.</td>
+              </tr>
+            <?php endif; ?>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="views/assets/JavaScript/purchaseOrderChart/purchase.js"></script>

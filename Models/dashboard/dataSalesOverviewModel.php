@@ -9,7 +9,15 @@ if ($conn->connect_error) {
     exit;
 }
 
-$sql = "SELECT MONTHNAME(OrderDate) AS month, SUM(TotalAmount) AS totalSalesAmount FROM salesorders GROUP BY MONTH(OrderDate)";
+$sql = "SELECT 
+    MONTHNAME(OrderDate) AS month, 
+    SUM(TotalAmount) AS totalSalesAmount
+FROM salesorders
+WHERE OrderDate >= DATE_FORMAT(DATE_SUB(CURDATE(), INTERVAL 12 MONTH), '%Y-%m-01')
+AND OrderDate <= LAST_DAY(CURDATE())
+GROUP BY YEAR(OrderDate), MONTH(OrderDate)
+ORDER BY YEAR(OrderDate), MONTH(OrderDate);
+";
 $result = $conn->query($sql);
 
 $data = [];
