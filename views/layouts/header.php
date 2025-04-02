@@ -19,7 +19,6 @@
 
 
 
-
 <!--Start link or script for account feature -->
 
 <!-- JS for userlist.php -->
