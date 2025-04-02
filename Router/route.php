@@ -10,7 +10,6 @@ require_once "Controllers/adminController/authenicationController/forgotPassword
 require_once "Controllers/adminController/authenicationController/registerController.php";
 require_once "Controllers/adminController/InventoryController.php";
 require_once "Controllers/adminController/InventoryController/categoriesController.php";
-// require_once "Controllers/adminController/sales/salesController.php";
 require_once "Controllers/AdminController/DashboardController.php";
 require_once "Controllers/adminController/BashInfoController.php";
 require_once 'Controllers/errorController.php';
@@ -18,6 +17,9 @@ require_once 'Controllers/errorController.php';
 // Supplier feature
 require_once 'Controllers/adminController/supplierController/SupplierControoler.php';
 require_once 'Controllers/adminController/supplierController/DetailSupplierController.php';
+
+// Sale order
+
 
 
 // require_one Controllers/adminController/dashboardController/stockListController.php;
