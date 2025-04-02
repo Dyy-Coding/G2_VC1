@@ -56,6 +56,37 @@ class Material {
         return ['success' => $filePath];
     }
 
+    public function editMaterial($id, $data) {
+        $query = "UPDATE Materials SET Name = :name, CategoryID = :categoryID, Quantity = :quantity, UnitPrice = :unitPrice, SupplierID = :supplierID, MinStockLevel = :minStockLevel, ReorderLevel = :reorderLevel, UnitOfMeasure = :unitOfMeasure, Size = :size, ImagePath = :imagePath, Description = :description, UpdatedAt = NOW(), Brand = :brand, Location = :location, SupplierContact = :supplierContact, Status = :status, WarrantyPeriod = :warrantyPeriod WHERE MaterialID = :id";
+
+        try {
+            $stmt = $this->conn->prepare($query);
+            $stmt->execute([
+                ':id' => $id,
+                ':name' => $data['name'],
+                ':categoryID' => $data['categoryID'],
+                ':quantity' => $data['quantity'],
+                ':unitPrice' => $data['unitPrice'],
+                ':supplierID' => $data['supplierID'],
+                ':minStockLevel' => $data['minStockLevel'] ?? null,
+                ':reorderLevel' => $data['reorderLevel'] ?? null,
+                ':unitOfMeasure' => $data['unitOfMeasure'] ?? null,
+                ':size' => $data['size'] ?? null,
+                ':imagePath' => $data['imagePath'] ?? null,
+                ':description' => $data['description'] ?? null,
+                ':brand' => $data['brand'] ?? null,
+                ':location' => $data['location'] ?? null,
+                ':supplierContact' => $data['supplierContact'] ?? null,
+                ':status' => $data['status'] ?? null,
+                ':warrantyPeriod' => $data['warrantyPeriod'] ?? null
+            ]);
+            return $stmt->rowCount() > 0;
+        } catch (PDOException $e) {
+            error_log("Exception in editMaterial: " . $e->getMessage());
+            return false;
+        }
+    }
+
     public function addMaterial($data) {
         $requiredFields = ['name', 'categoryID', 'supplierID', 'quantity', 'unitPrice'];
 

@@ -2,9 +2,11 @@
  
  class InventoryController extends BaseController {
      private $material;
+     private $category;
  
      public function __construct() {
          $this->material = new Material();
+         $this->category = new Category();
      }
  
      public function inventory() {
@@ -82,7 +84,7 @@
         } else {
             // Render view when not a POST request
             $this->renderView('adminView/inventory/addMaterial', [
-                'categories' => $this->material->getCategories(),
+                'categories' => $this->category->getAllCategories(),
                 'suppliers' => $this->material->getSuppliers()
             ]);
         }
