@@ -29,23 +29,30 @@
             background-color: #f5f5f5;
         }
 
-        /* Main Container */
         .container {
-            display: flex;
-            max-width: 1200px;
-            margin: 20px auto;
-            gap: 20px;
-        }
+        display: flex;
+        max-width: 1200px;
+        margin: 20px auto;
+        padding-left: 270px; /* Push content to the right to make space for fixed sidebar */
+        gap: 20px;
+        align-items: flex-start;
+    }
 
-        /* Sidebar */
+         /* Sidebar */
         .sidebar {
-            width: 230px;
+            position: fixed;
+            top: 15%;
+            left: 0;
+            height: 100vh;
+            width: 250px;
+            margin-left: 20px;
             background-color: #fff;
             padding: 20px;
-            margin-left: -100px;
+            overflow-y: auto;
             border-radius: 10px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
+
 
         .sidebar h3 {
             margin-bottom: 20px;
@@ -65,8 +72,9 @@
         }
 
         .sidebar ul li img {
-            width: 20px;
-            height: 20px;
+            width: 30px;
+            height: 30px;
+            border-radius: 6px;
         }
 
         .sidebar ul li a {
@@ -208,10 +216,10 @@
                 <li><img src="https://media.sortly.com/wp-content/uploads/2023/08/24210510/iStock-1484751645-1024x683.jpg" alt="Footwear"> <a href="#">Steel</a></li>
                 <li><img src="https://wooddesigner.org/wp-content/uploads/2021/05/planed-timber.jpg" alt="Jewelry"> <a href="#">Roofing</a></li>
                 <li><img src="https://5.imimg.com/data5/SELLER/Default/2021/12/HW/KG/SQ/143354869/syp-wood-timber-plank.jpg" alt="Perfume"> <a href="#">Wood</a></li>
-                <li><img src="https://via.placeholder.com/20" alt="Cosmetics"> <a href="#">Plumbing</a></li>
+                <li><img src="https://images.jdmagicbox.com/rep/b2b/plumbing-material/plumbing-material-7.jpg" alt="Cosmetics"> <a href="#">Plumbing</a></li>
                 <li><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQl5hDcnZSGHDNpy6S8lyLSefic9iuvGuXPbQ&s" alt="Glasses"> <a href="#">Electrical</a></li>
                 <li><img src="https://www.nobroker.in/blog/wp-content/uploads/2023/07/emulsion-paint-1200x673.webp" alt="Bags"> <a href="#">Paint</a></li>
-                <li><img src="https://via.placeholder.com/20" alt="Electronics"> <a href="#">Flooring</a></li>
+                <li><img src="https://www.martinsflooring.com/wp-content/uploads/2023/02/flooring-samples.jpg" alt="Electronics"> <a href="#">Flooring</a></li>
                 <li><img src="https://dailycivil.com/wp-content/uploads/2021/05/types-of-sand-in-construction.webp" alt="Electronics"> <a href="#">Sand</a></li>
             </ul>
         </div>
@@ -224,7 +232,7 @@
                 <div class="bg-gray-50 rounded-lg shadow-md p-4 hover:shadow-lg transition-all">
                     <img src="https://www.nobroker.in/blog/wp-content/uploads/2023/07/emulsion-paint-1200x673.webp" class="w-full h-48 object-cover rounded-t-lg" alt="Jacket">
                     <div class="p-4">
-                        <h5 class="text-lg font-semibold text-gray-800">Winter Jacket</h5>
+                        <h5 class="text-lg font-semibold text-gray-800">Paint</h5>
                         <p class="text-gray-500 text-sm">New Arrival!</p>
                         <div class="flex justify-between items-center mt-3">
                             <div>
@@ -239,9 +247,9 @@
 
             <div class="col">
                 <div class="bg-gray-50 rounded-lg shadow-md p-4 hover:shadow-lg transition-all">
-                    <img src="https://gotinoconstruction.com/wp-content/uploads/2022/09/Construction-Materials.jpg" class="w-full h-48 object-cover rounded-t-lg" alt="Jacket">
+                    <img src="https://5.imimg.com/data5/SELLER/Default/2023/10/355485683/HS/WR/FW/79376408/construction-river-sand-500x500.jpg" class="w-full h-48 object-cover rounded-t-lg" alt="Jacket">
                     <div class="p-4">
-                        <h5 class="text-lg font-semibold text-gray-800">Winter Jacket</h5>
+                        <h5 class="text-lg font-semibold text-gray-800">Sand</h5>
                         <p class="text-gray-500 text-sm">New Arrival!</p>
                         <div class="flex justify-between items-center mt-3">
                             <div>
@@ -256,9 +264,9 @@
 
             <div class="col">
                 <div class="bg-gray-50 rounded-lg shadow-md p-4 hover:shadow-lg transition-all">
-                    <img src="https://gotinoconstruction.com/wp-content/uploads/2022/09/Construction-Materials.jpg" class="w-full h-48 object-cover rounded-t-lg" alt="Jacket">
+                    <img src="https://m.media-amazon.com/images/I/410yA733NdL.jpg" class="w-full h-48 object-cover rounded-t-lg" alt="Jacket">
                     <div class="p-4">
-                        <h5 class="text-lg font-semibold text-gray-800">Winter Jacket</h5>
+                        <h5 class="text-lg font-semibold text-gray-800">Camera</h5>
                         <p class="text-gray-500 text-sm">New Arrival!</p>
                         <div class="flex justify-between items-center mt-3">
                             <div>
