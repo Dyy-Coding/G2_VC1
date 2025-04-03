@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 02, 2025 at 01:38 PM
+-- Generation Time: Apr 03, 2025 at 05:07 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -87,7 +87,17 @@ INSERT INTO `audit_logs` (`id`, `user_id`, `action`, `ip_address`, `user_agent`,
 (44, NULL, 'Failed login (wrong password) for email: ronaldosmos94@gmail.com', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', '2025-04-02 10:53:38'),
 (45, 10, 'Customer registered successfully.', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', '2025-04-02 10:55:25'),
 (46, 10, 'User logged out', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', '2025-04-02 10:55:31'),
-(47, 2, 'User logged in', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', '2025-04-02 10:55:45');
+(47, 2, 'User logged in', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', '2025-04-02 10:55:45'),
+(48, 11, 'Customer registered successfully.', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', '2025-04-03 00:27:47'),
+(49, 11, 'User logged out', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', '2025-04-03 00:28:00'),
+(50, 2, 'User logged in', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', '2025-04-03 00:28:03'),
+(51, 2, 'User logged out', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', '2025-04-03 01:28:12'),
+(52, 2, 'User logged in', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', '2025-04-03 01:28:13'),
+(53, 2, 'User logged out', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', '2025-04-03 01:32:50'),
+(54, 2, 'User logged in', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', '2025-04-03 01:32:52'),
+(55, 2, 'User logged out', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', '2025-04-03 03:03:55'),
+(56, 2, 'Password reset token generated.', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', '2025-04-03 03:04:35'),
+(57, 2, 'User logged in', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', '2025-04-03 03:04:56');
 
 -- --------------------------------------------------------
 
@@ -315,6 +325,35 @@ INSERT INTO `materials` (`MaterialID`, `Name`, `CategoryID`, `Quantity`, `UnitPr
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `pages`
+--
+
+CREATE TABLE `pages` (
+  `id` int(11) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `url` varchar(255) NOT NULL,
+  `description` text DEFAULT NULL,
+  `category` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `pages`
+--
+
+INSERT INTO `pages` (`id`, `title`, `url`, `description`, `category`) VALUES
+(1, 'Dashboard', '/', 'Overview of the system', 'General'),
+(2, 'Inventory Management', '/inventory', 'Manage stock and warehouse items', 'Inventory'),
+(3, 'Categories', '/category', 'Manage product categories', 'Inventory'),
+(4, 'Materials', '/materials', 'Manage raw materials and supplies', 'Inventory'),
+(5, 'Customers', '/customer', 'Customer management system', 'Sales'),
+(6, 'Employees', '/employees', 'Employee records and roles', 'HR'),
+(7, 'Sales Reports', '/sales', 'View and analyze sales reports', 'Sales'),
+(8, 'Purchase Orders', '/purchasesOrder', 'Track and manage supplier purchases', 'Purchasing'),
+(9, 'Work Logs', '/work_logs', 'Employee work logs and task tracking', 'HR');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `password_resets`
 --
 
@@ -326,6 +365,13 @@ CREATE TABLE `password_resets` (
   `expiration` datetime NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `password_resets`
+--
+
+INSERT INTO `password_resets` (`id`, `user_id`, `email`, `token`, `expiration`, `created_at`) VALUES
+(1, 2, NULL, 'b08b5fa8b149bf092805590205d287c5ec2c15ac295ced6fb23029b634c88179', '2025-04-03 06:04:33', '2025-04-03 03:04:33');
 
 -- --------------------------------------------------------
 
@@ -762,6 +808,7 @@ CREATE TABLE `suppliers` (
   `Name` varchar(150) NOT NULL,
   `ContactPerson` varchar(100) DEFAULT NULL,
   `Phone` varchar(20) DEFAULT NULL,
+  `image` varchar(255) DEFAULT NULL,
   `Email` varchar(150) DEFAULT NULL,
   `Address` text DEFAULT NULL,
   `CreatedAt` timestamp NOT NULL DEFAULT current_timestamp(),
@@ -772,26 +819,26 @@ CREATE TABLE `suppliers` (
 -- Dumping data for table `suppliers`
 --
 
-INSERT INTO `suppliers` (`SupplierID`, `Name`, `ContactPerson`, `Phone`, `Email`, `Address`, `CreatedAt`, `UpdatedAt`) VALUES
-(1, 'BuildMaster Supplies Co.', 'John Carter', '09123456789', 'john@buildmaster.com', '123 Industrial Zone, Metro City', '2025-03-18 00:13:58', '2025-03-18 00:13:58'),
-(2, 'Concrete Plus Ltd.', 'Maria Gonzales', '09234567890', 'maria@concreteplus.com', '456 Cement Road, Capital Town', '2025-03-18 00:13:58', '2025-03-18 00:13:58'),
-(3, 'SteelStrong Corp.', 'Alex Tan', '09345678901', 'alex@steelstrong.com', '789 Steel Avenue, Iron District', '2025-03-18 00:13:58', '2025-03-18 00:13:58'),
-(4, 'TimberTrade Inc.', 'Lucy Reyes', '09456789012', 'lucy@timbertrade.com', '101 Wood Street, Forest Park', '2025-03-18 00:13:58', '2025-03-18 00:13:58'),
-(5, 'RoofTop Materials', 'Daniel Cruz', '09567890123', 'daniel@rooftopmaterials.com', '55 Roofline Drive, Skyline City', '2025-03-18 00:13:58', '2025-03-18 00:13:58'),
-(6, 'PlumbPro Solutions', 'Nina Herrera', '09678901234', 'nina@plumbpro.com', '23 Pipe Lane, Flow Town', '2025-03-18 00:13:58', '2025-03-18 00:13:58'),
-(7, 'ElectroTech Supplies', 'Mark Lim', '09789012345', 'mark@electrotech.com', '77 Electric Blvd, Volt City', '2025-03-18 00:13:58', '2025-03-18 00:13:58'),
-(8, 'PaintWorks Inc.', 'Anna dela Cruz', '09890123456', 'anna@paintworks.com', '32 Color Street, Hueville', '2025-03-18 00:13:58', '2025-03-18 00:13:58'),
-(9, 'SafeTools PH', 'Chris Uy', '09901234567', 'chris@safetoolsph.com', '88 Safety Way, Securetown', '2025-03-18 00:13:58', '2025-03-18 00:13:58'),
-(10, 'HeavyDuty Machinery', 'Rachel Santos', '09012345678', 'rachel@heavyduty.com', '99 Machine Zone, Power City', '2025-03-18 00:13:58', '2025-03-18 00:13:58'),
-(11, 'ABC Construction Supply', 'Alice Johnson', '0991234567', 'alice@abc.com', '123 Main St, Phnom Penh', '2025-03-26 07:53:57', '2025-03-26 07:53:57'),
-(12, 'XYZ Hardware', 'Bob Smith', '0887654321', 'bob@xyz.com', '456 Industrial Rd, Siem Reap', '2025-03-26 07:53:57', '2025-03-26 07:53:57'),
-(13, 'BuildPro Materials', 'Charlie Lee', '0976543210', 'charlie@buildpro.com', '789 Depot Ave, Sihanoukville', '2025-03-26 07:53:57', '2025-03-26 07:53:57'),
-(14, 'ABC Construction Supply', 'Alice Johnson', '0991234567', 'alice@abc.com', '123 Main St, Phnom Penh', '2025-03-26 07:54:23', '2025-03-26 07:54:23'),
-(15, 'XYZ Hardware', 'Bob Smith', '0887654321', 'bob@xyz.com', '456 Industrial Rd, Siem Reap', '2025-03-26 07:54:23', '2025-03-26 07:54:23'),
-(16, 'BuildPro Materials', 'Charlie Lee', '0976543210', 'charlie@buildpro.com', '789 Depot Ave, Sihanoukville', '2025-03-26 07:54:23', '2025-03-26 07:54:23'),
-(17, 'ABC Construction Supply', 'Alice Johnson', '0991234567', 'alice@abc.com', '123 Main St, Phnom Penh', '2025-03-26 07:54:32', '2025-03-26 07:54:32'),
-(18, 'XYZ Hardware', 'Bob Smith', '0887654321', 'bob@xyz.com', '456 Industrial Rd, Siem Reap', '2025-03-26 07:54:32', '2025-03-26 07:54:32'),
-(19, 'BuildPro Materials', 'Charlie Lee', '0976543210', 'charlie@buildpro.com', '789 Depot Ave, Sihanoukville', '2025-03-26 07:54:32', '2025-03-26 07:54:32');
+INSERT INTO `suppliers` (`SupplierID`, `Name`, `ContactPerson`, `Phone`, `image`, `Email`, `Address`, `CreatedAt`, `UpdatedAt`) VALUES
+(1, 'BuildMaster Supplies Co.', 'John Carter', '09123456789', NULL, 'john@buildmaster.com', '123 Industrial Zone, Metro City', '2025-03-18 00:13:58', '2025-03-18 00:13:58'),
+(2, 'Concrete Plus Ltd.', 'Maria Gonzales', '09234567890', NULL, 'maria@concreteplus.com', '456 Cement Road, Capital Town', '2025-03-18 00:13:58', '2025-03-18 00:13:58'),
+(3, 'SteelStrong Corp.', 'Alex Tan', '09345678901', NULL, 'alex@steelstrong.com', '789 Steel Avenue, Iron District', '2025-03-18 00:13:58', '2025-03-18 00:13:58'),
+(4, 'TimberTrade Inc.', 'Lucy Reyes', '09456789012', NULL, 'lucy@timbertrade.com', '101 Wood Street, Forest Park', '2025-03-18 00:13:58', '2025-03-18 00:13:58'),
+(5, 'RoofTop Materials', 'Daniel Cruz', '09567890123', NULL, 'daniel@rooftopmaterials.com', '55 Roofline Drive, Skyline City', '2025-03-18 00:13:58', '2025-03-18 00:13:58'),
+(6, 'PlumbPro Solutions', 'Nina Herrera', '09678901234', NULL, 'nina@plumbpro.com', '23 Pipe Lane, Flow Town', '2025-03-18 00:13:58', '2025-03-18 00:13:58'),
+(7, 'ElectroTech Supplies', 'Mark Lim', '09789012345', NULL, 'mark@electrotech.com', '77 Electric Blvd, Volt City', '2025-03-18 00:13:58', '2025-03-18 00:13:58'),
+(8, 'PaintWorks Inc.', 'Anna dela Cruz', '09890123456', NULL, 'anna@paintworks.com', '32 Color Street, Hueville', '2025-03-18 00:13:58', '2025-03-18 00:13:58'),
+(9, 'SafeTools PH', 'Chris Uy', '09901234567', NULL, 'chris@safetoolsph.com', '88 Safety Way, Securetown', '2025-03-18 00:13:58', '2025-03-18 00:13:58'),
+(10, 'HeavyDuty Machinery', 'Rachel Santos', '09012345678', NULL, 'rachel@heavyduty.com', '99 Machine Zone, Power City', '2025-03-18 00:13:58', '2025-03-18 00:13:58'),
+(11, 'ABC Construction Supply', 'Alice Johnson', '0991234567', NULL, 'alice@abc.com', '123 Main St, Phnom Penh', '2025-03-26 07:53:57', '2025-03-26 07:53:57'),
+(12, 'XYZ Hardware', 'Bob Smith', '0887654321', NULL, 'bob@xyz.com', '456 Industrial Rd, Siem Reap', '2025-03-26 07:53:57', '2025-03-26 07:53:57'),
+(13, 'BuildPro Materials', 'Charlie Lee', '0976543210', NULL, 'charlie@buildpro.com', '789 Depot Ave, Sihanoukville', '2025-03-26 07:53:57', '2025-03-26 07:53:57'),
+(14, 'ABC Construction Supply', 'Alice Johnson', '0991234567', NULL, 'alice@abc.com', '123 Main St, Phnom Penh', '2025-03-26 07:54:23', '2025-03-26 07:54:23'),
+(15, 'XYZ Hardware', 'Bob Smith', '0887654321', NULL, 'bob@xyz.com', '456 Industrial Rd, Siem Reap', '2025-03-26 07:54:23', '2025-03-26 07:54:23'),
+(16, 'BuildPro Materials', 'Charlie Lee', '0976543210', NULL, 'charlie@buildpro.com', '789 Depot Ave, Sihanoukville', '2025-03-26 07:54:23', '2025-03-26 07:54:23'),
+(17, 'ABC Construction Supply', 'Alice Johnson', '0991234567', NULL, 'alice@abc.com', '123 Main St, Phnom Penh', '2025-03-26 07:54:32', '2025-03-26 07:54:32'),
+(18, 'XYZ Hardware', 'Bob Smith', '0887654321', NULL, 'bob@xyz.com', '456 Industrial Rd, Siem Reap', '2025-03-26 07:54:32', '2025-03-26 07:54:32'),
+(19, 'BuildPro Materials', 'Charlie Lee', '0976543210', NULL, 'charlie@buildpro.com', '789 Depot Ave, Sihanoukville', '2025-03-26 07:54:32', '2025-03-26 07:54:32');
 
 -- --------------------------------------------------------
 
@@ -841,7 +888,8 @@ INSERT INTO `users` (`user_id`, `select_user`, `profile_image`, `first_name`, `l
 (5, 'default_value', NULL, 'Chandy', 'Neat', 'chandyneat89@gmail.com', '', 2, '$2y$10$aZe.pYH4ioXD97p9.5TxkuoMC.iEUzBKEUKTVQyx1codqnK3jI1rC', '', '', '2025-04-02 08:13:17', '2025-04-02 10:08:01'),
 (7, 'default_value', 'uploads/1743590713_332d9c658b26340cd0f5808371458659.jpg', 'Ronaldo', 'Smos', 'ronaldosmos94@gmail.com', '093967654', 6, '$2y$10$500ShBTa8VRimQprJXZrC.93AaGddNRf.9cEDxNXjx4xAlj4O.wkK', 'Cambodia Phnom Penh', 'Chomka Duong', '2025-04-02 10:45:13', '2025-04-02 10:51:39'),
 (8, 'default_value', 'uploads/1743590925_06ae800957fd7efabe894de3d1c0611b.jpg', 'Dyy', 'Development', 'chandyneat0094@gmail.com', '093967689', 4, '$2y$10$8ZN5cT/Gc.eoJo0uW2ATAe3q6dV.AHK9FHL3YODqmlCMKybx/uom2', 'Cambodia Phnom Penh', 'Chomka Duong', '2025-04-02 10:48:45', '2025-04-02 10:48:45'),
-(10, 'default_value', NULL, 'Darin', 'Development', 'darin94@gmail.com', '', 2, '$2y$10$W/y5b415UMXbNMbvlYB2fej/PCrMAhPhusWo.hZIwow2PtXGSLx/u', '', '', '2025-04-02 10:55:25', '2025-04-02 10:55:25');
+(10, 'default_value', NULL, 'Darin', 'Development', 'darin94@gmail.com', '', 2, '$2y$10$W/y5b415UMXbNMbvlYB2fej/PCrMAhPhusWo.hZIwow2PtXGSLx/u', '', '', '2025-04-02 10:55:25', '2025-04-02 10:55:25'),
+(11, 'default_value', NULL, 'Chantha', 'Dy', 'chantha9999@gmail.com', '', 2, '$2y$10$uhWzwOZtwBOcw.ba/jtLN.F6bsLCavxcm7cLw5oRmQBINK1EwfXRO', '', '', '2025-04-03 00:27:47', '2025-04-03 00:27:47');
 
 -- --------------------------------------------------------
 
@@ -908,6 +956,12 @@ ALTER TABLE `materials`
   ADD PRIMARY KEY (`MaterialID`),
   ADD KEY `CategoryID` (`CategoryID`),
   ADD KEY `SupplierID` (`SupplierID`);
+
+--
+-- Indexes for table `pages`
+--
+ALTER TABLE `pages`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `password_resets`
@@ -987,7 +1041,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `audit_logs`
 --
 ALTER TABLE `audit_logs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
 
 --
 -- AUTO_INCREMENT for table `categories`
@@ -1026,10 +1080,16 @@ ALTER TABLE `materials`
   MODIFY `MaterialID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
+-- AUTO_INCREMENT for table `pages`
+--
+ALTER TABLE `pages`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
 -- AUTO_INCREMENT for table `password_resets`
 --
 ALTER TABLE `password_resets`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `payments`
@@ -1053,7 +1113,7 @@ ALTER TABLE `purchaseorders`
 -- AUTO_INCREMENT for table `roles`
 --
 ALTER TABLE `roles`
-  MODIFY `role_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `role_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `salesorderdetails`
@@ -1083,7 +1143,7 @@ ALTER TABLE `today_money`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- Constraints for dumped tables
