@@ -27,6 +27,7 @@ require_once 'Controllers/adminController/customerController.php/customerListCon
 
 // require_one Controllers/adminController/dashboardController/stockListController.php;
 require_once 'Controllers/adminController/dashboardController/stockListController.php';
+// require_once 'Models/dashboard/purchaseOrderModel.php';
 
 
 // Database link files
@@ -38,6 +39,12 @@ require_once "Models/usersModel.php";
 require_once "Models/invenoryModel/meterailModel.php";
 require_once "Models/invenoryModel/categoryModel.php";
 require_once "Models/dashboard/dashboardModel.php";
+
+// sreach required 
+require_once "Controllers/adminController/dashboardController/seachController/routesSearchController.php";
+
+
+// require_once "Models/dashboard/dataSalesOverviewModel.php";
 
 
 
@@ -168,7 +175,12 @@ $route->group('customers', function ($route) {
 });
 
 
+/**
+ * Defines a GET route for handling error pages
+ * Maps the '/error' URI to the 'error' method of the ErrorController
+ */
 $route->get('/error', [ErrorController::class, 'error']);
+$route->get('/search', [SearchController::class, 'handleSearchRequest']);
 
 // $route->printRoutes();
 

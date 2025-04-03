@@ -1,22 +1,49 @@
+
+<!-- Custom CSS -->
+
+<!-- Custom CSS -->
+<style>
+  /* Table styling */
+  .table {
+    border-radius: 8px;
+  }
+
+  .table th, .table td {
+    padding: 8px;
+    text-align: center;
+  }
+
+  /* Make sure text contrasts well with background */
+  .text-dark {
+    color: #333 !important;
+  }
+
+  /* Small text class for smaller font */
+  .small-text {
+    font-size: 0.75rem;
+   
+  }
+</style>
 <div class="container-fluid py-4">
   <div class="row">
-    <!-- today money -->
-    <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-      <div class="card">
+    <!-- Today Money -->
+    <div class="col-xl-3 col-lg-4 col-sm-6 mb-4">
+      <div class="card shadow-sm">
         <div class="card-body p-3">
-          <div class="row">
+          <div class="row align-items-center">
             <div class="col-8">
               <div class="numbers">
                 <p class="text-sm mb-0 text-uppercase font-weight-bold">Today's Money</p>
                 <h5 class="font-weight-bolder">
-                  $<?php echo number_format($today_money, 2); ?>
+                  $<?php echo number_format((float)$today_money, 2); ?>
                 </h5>
                 <p class="mb-0">
-                  <span class="text-success text-sm font-weight-bolder">
-                    <?php
+                  <?php 
                     $percentage_change = ($total_expenses != 0) ? (($today_money - $total_expenses) / $total_expenses) * 100 : 0;
-                    echo number_format($percentage_change, 2) . '%';
-                    ?>
+                    $changeClass = $percentage_change >= 0 ? 'text-success' : 'text-danger';
+                  ?>
+                  <span class="<?= $changeClass ?> text-sm font-weight-bolder">
+                    <?= ($percentage_change >= 0 ? '+' : '') . number_format($percentage_change, 2) ?>%
                   </span>
                   since yesterday
                 </p>
@@ -29,156 +56,222 @@
             </div>
           </div>
         </div>
-        <div class="col-4 text-end">
-          <div class="icon icon-shape bg-gradient-primary shadow-primary text-center rounded-circle">
-            <i class="ni ni-money-coins text-lg opacity-10" aria-hidden="true"></i>
-          </div>
-        </div>
       </div>
     </div>
-  </div>
-</div>
-<!-- Today Customers -->
 
-<div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-  <div class="card">
-    <div class="card-body p-3">
-      <div class="row">
-        <div class="col-8">
-          <div class="numbers">
-            <p class="text-sm mb-0 text-uppercase font-weight-bold">Today's Customer</p>
-            <h5 class="font-weight-bolder">
-              <?php echo number_format($total_customers_today); ?>
-            </h5>
-            <p class="mb-0">
-              <span class="text-success text-sm font-weight-bolder">
-                <?php
-                // Display percentage change (add "+" sign if positive)
-                echo ($customer_percentage_change > 0 ? "+" : "") . number_format($customer_percentage_change, 2) . "%";
-                ?>
-              </span>
-              since yesterday
-            </p>
-          </div>
-        </div>
-        <div class="col-4 text-end">
-          <div class="icon icon-shape bg-gradient-danger shadow-danger text-center rounded-circle">
-            <i class="ni ni-world text-lg opacity-10" aria-hidden="true"></i>
+    <!-- Today's Customers -->
+    <div class="col-xl-3 col-lg-4 col-sm-6 mb-4">
+      <div class="card shadow-sm">
+        <div class="card-body p-3">
+          <div class="row align-items-center">
+            <div class="col-8">
+              <div class="numbers">
+                <p class="text-sm mb-0 text-uppercase font-weight-bold"> Today's Customers</p>
+                <h5 class="font-weight-bolder">
+                  <?php echo number_format("+".(float)$total_customers_today); ?>
+                </h5>
+                <p class="mb-0">
+                  <?php $customerClass = $customer_percentage_change >= 0 ? 'text-success' : 'text-danger'; ?>
+                  <span class="<?= $customerClass ?> text-sm font-weight-bolder">
+                    <?= ($customer_percentage_change >= 0 ? '+' : '') . number_format($customer_percentage_change, 2) ?>%
+                  </span>
+                  since yesterday
+                </p>
+              </div>
+            </div>
+            <div class="col-4 text-end">
+              <div class="icon icon-shape bg-gradient-danger shadow-danger text-center rounded-circle">
+                <i class="ni ni-world text-lg opacity-10" aria-hidden="true"></i>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</div>
 
+    <!-- Suppliers and Purchase Orders -->
+    <div class="col-xl-3 col-lg-4 col-sm-6 mb-4">
+      <div class="card shadow-sm">
+        <div class="card-body p-3">
+          <div class="row align-items-center">
+            <div class="col-8">
+              <div class="numbers">
+                <p class="text-sm mb-0 text-uppercase font-weight-bold">Suppliers</p>
+                <h5 class="font-weight-bolder"><?php echo number_format((float)$totalSuppliers); ?></h5>
+                <p class="mb-0">
+                  Our purchase orders <strong>:</strong>
+                  <span class="text-success text-sm font-weight-bolder"> <?=  number_format((float)$totalPurchaseOrders) ?></span> Purchase orders
+                </p>
+              </div>
+            </div>
+            <div class="col-4 text-end">
+              <div class="icon icon-shape bg-gradient-success shadow-success text-center rounded-circle">
+                <i class="ni ni-paper-diploma text-lg opacity-10" aria-hidden="true"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-<div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-  <div class="card">
-    <div class="card-body p-3">
-      <div class="row">
-        <div class="col-8">
-          <div class="numbers">
-            <p class="text-sm mb-0 text-uppercase font-weight-bold">New Clients</p>
-            <h5 class="font-weight-bolder">
-              +3,462
-            </h5>
-            <p class="mb-0">
-              <span class="text-danger text-sm font-weight-bolder">-2%</span>
-              since last quarter
-            </p>
-          </div>
-        </div>
-        <div class="col-4 text-end">
-          <div class="icon icon-shape bg-gradient-success shadow-success text-center rounded-circle">
-            <i class="ni ni-paper-diploma text-lg opacity-10" aria-hidden="true"></i>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="col-xl-3 col-sm-6">
-  <div class="card">
-    <div class="card-body p-3">
-      <div class="row">
-        <div class="col-8">
-          <div class="numbers">
-            <p class="text-sm mb-0 text-uppercase font-weight-bold">Sales</p>
-            <h5 class="font-weight-bolder">
-              $103,430
-            </h5>
-            <p class="mb-0">
-              <span class="text-success text-sm font-weight-bolder">+5%</span> than last month
-            </p>
-          </div>
-        </div>
-        <div class="col-4 text-end">
-          <div class="icon icon-shape bg-gradient-warning shadow-warning text-center rounded-circle">
-            <i class="ni ni-cart text-lg opacity-10" aria-hidden="true"></i>
+    <!-- Sales -->
+    <div class="col-xl-3 col-lg-4 col-sm-6 mb-4">
+      <div class="card shadow-sm">
+        <div class="card-body p-3">
+          <div class="row align-items-center">
+            <div class="col-8">
+              <div class="numbers">
+                <p class="text-sm mb-0 text-uppercase font-weight-bold">Sales</p>
+                <h5 class="font-weight-bolder">
+                  $<?php echo number_format((float)$totalSalesAmount, 2); ?>
+                </h5>
+                <p class="mb-0">
+                  <span class="text-success text-sm font-weight-bolder"><?php echo number_format((float)$totalSalesOrders); ?></span> sales orders since yesterday
+                </p>
+              </div>
+            </div>
+            <div class="col-4 text-end">
+              <div class="icon icon-shape bg-gradient-warning shadow-warning text-center rounded-circle">
+                <i class="ni ni-cart text-lg opacity-10" aria-hidden="true"></i>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
-</div>
-<div class="row mt-4">
-  <div class="col-lg-7 mb-lg-0 mb-4">
-    <div class="card z-index-2 h-100">
-      <div class="card-header pb-0 pt-3 bg-transparent">
-        <h6 class="text-capitalize">Sales overview</h6>
-        <p class="text-sm mb-0">
-          <i class="fa fa-arrow-up text-success"></i>
-          <span class="font-weight-bold">4% more</span> in 2021
-        </p>
-      </div>
-      <div class="card-body p-3">
-        <div class="chart">
+
+  <!-- Sales Overview -->
+
+  <div class="row mt-2">
+    <div class="col-lg-7 mb-lg-0 mb-4">
+      <div class="card z-index-2 h-100 shadow-sm">
+        <div class="card-header pb-0 pt-3 bg-transparent">
+          <h6 class="text-capitalize">Sales Overview</h6>
+        </div>
+        <div class="card-body p-3">
+          <div class="chart">
           <canvas id="chart-line-1" class="chart-canvas" height="300"></canvas>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    
+
+    <!-- Stock Lists -->
+    <div class="col-lg-5">
+      <div class="card shadow-sm">
+        <div class="card-header pb-0 p-1">
+          <h4 class="m-4">Stock</h4>
+        </div>
+        <div class="table-container" style="max-height: 400px; overflow-y: auto;">
+          <table class="table align-middle bg-white">
+            <thead>
+              <tr>
+                <th class="text-center">Material</th>
+                <th class="text-center">Category</th>
+                <th class="text-center">Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <?php if (!empty($stockListData)): ?>
+                <?php foreach ($stockListData as $material): ?>
+                  <tr>
+                    <td class="text-center"><?php echo htmlspecialchars($material['MaterialName']); ?></td>
+                    <td class="text-center"><?php echo htmlspecialchars($material['CategoryName'] ?? 'N/A'); ?></td>
+                    <td class="text-center">
+                      <?php 
+                        // Determine stock status based on stock quantity
+                        $stockQuantity = $material['Quantity']; // Assuming 'Quantity' is passed in the data
+                        $status = ($stockQuantity <= 0) ? 'Out of Stock' : (($stockQuantity <= 5) ? 'Low Stock' : 'In Stock');
+                        $color = ($stockQuantity <= 0) ? 'danger' : (($stockQuantity <= 5) ? 'warning' : 'success');
+                      ?>
+                      <button type="button" class="btn btn-<?php echo $color; ?> btn-sm btn-rounded">
+                        <?php echo htmlspecialchars($status); ?>
+                      </button>
+                    </td>
+                  </tr>
+                <?php endforeach; ?>
+              <?php else: ?>
+                <tr>
+                  <td colspan="3" class="text-center">No materials found.</td>
+                </tr>
+              <?php endif; ?>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
   </div>
 
-
-
-  <!-- update code -->
-  <div class="col-lg-5">
-    <div class="col-lg-12">
-      <div class="card">
-        <div class="card-header pb-0 p-1">
-          <div class="d-flex justify-content-between">
-            <h3 class="mb-2 p-2">Stock Lists</h3>
+  <!-- Orders Overview -->
+  <div class="row mt-4">
+    <div class="col-lg-12 mb-lg-0 mb-4">
+      <div class="card shadow-sm">
+        <div class="card-header pb-0 pt-3 bg-transparent">
+          <h6 class="text-capitalize"> Sales Orders Overview</h6>
+        </div>
+        <div class="card-body p-3">
+          <div class="chart">
+            <canvas id="chart-line-2" class="chart-canvas" height="300"></canvas>
           </div>
         </div>
-        <table class="table align-middle bg-white">
+      </div>
+    </div>
+  </div>
+  <script src="views/assets/JavaScript/chartSalesOverview/salesData.js"></script>
+  <!-- <script src="views/assets/JavaScript/chartOrderOverView/chartOrderOverView.js"></script> -->
+<!-- Users List -->
+<div class="row mt-4">
+  <!-- Customer List -->
+  <div class="col-lg-4 mb-lg-0 mb-4">
+    <div class="card shadow-sm hover:shadow-lg transition-all duration-300 ease-in-out">
+      <div class="card-header pb-0 p-3 bg-gradient-to-r from-blue-400 via-indigo-500 to-blue-600 text-white">
+        <h4 class="mb-2 align-items-center">Customer Lists</h4>
+      </div>
+      <div class="table-responsive" style="max-height: 400px; overflow-y: auto;">
+        <table class="table align-items-center text-sm">
           <thead>
-            <tr>
-              <th style="font-size: 16px;">Material</th>
-              <th style="font-size: 16px;">Category</th>
-              <th style="font-size: 16px;">Status</th>
+            <tr class="text-gray-700 bg-gray-200">
+              <th class="text-center">Profile</th>
+              <th class="text-center">Name</th>
+              <th class="text-center">Status</th>
             </tr>
           </thead>
           <tbody>
-            <?php if (!empty($stockListData)): ?>
-              <?php foreach ($stockListData as $material): ?>
-                <tr>
-                  <td>
-                    <div class="text-center"><?php echo htmlspecialchars($material['MaterialName']); ?></div>
+            <!-- Loop through customers -->
+            <?php if (!empty($customers)): ?>
+              <?php foreach ($customers as $customer): ?>
+                <tr class="hover:bg-gray-100 transition-all duration-300">
+                  <td class="text-center">
+                    <img src="<?php echo htmlspecialchars($customer['profile_image']); ?>" alt="User avatar" class="rounded-circle" style="width: 35px; height: 35px;" data-toggle="tooltip" title="Profile Picture">
                   </td>
-                  <td class="text-center"><?php echo htmlspecialchars($material['CategoryName'] ?? 'N/A'); ?></td>
-                  <td>
-                    <div class="text-center">
-                      <button type="button" class="btn btn-<?php echo $material['StockColor']; ?> btn-sm btn-rounded">
-                        <?php echo htmlspecialchars($material['StockStatus']); ?>
-                      </button>
+                  <td class="text-center">
+                    <div class="d-flex align-items-center">
+                      <div class="ms-3">
+                        <h6 class="mb-0"><?php echo htmlspecialchars($customer['first_name'] . " " . $customer['last_name']); ?></h6>
+                      </div>
                     </div>
+                  </td>
+                  <td class="text-center">
+                      <h6 class="text-sm mb-0">
+                          <?php
+                          if (isset($_SESSION['status']) && $_SESSION['status'] == 'Online') {
+                              echo '<span class="text-success">Online</span>';
+                          } else {
+                              echo '<span class="text-danger">Offline</span>';
+                          }
+                          ?>
+                      </h6>
                   </td>
                 </tr>
               <?php endforeach; ?>
             <?php else: ?>
               <tr>
-                <td colspan="3" class="text-center">No materials found in material.</td>
+                <td colspan="4" class="text-center">No users found.</td>
               </tr>
             <?php endif; ?>
           </tbody>
@@ -187,382 +280,195 @@
     </div>
   </div>
 
-
-
-
-  <!-- <div class="col-lg-5">
-    <div class="col-lg-12 ">
-      <div class="card">
-        <div class="card-header pb-0 p-1">
-          <div class="d-flex justify-content-between">
-            <h3 class="mb-2 p-2">Stock Lists</h3>
-          </div>
-        </div>
-        <table class="table align-middle bg-white">
-          <thead>
+  <!-- Worker List (Users who are NOT role_id = 2) -->
+  <div class="col-lg-8 mb-lg-0 mb-4">
+    <div class="card shadow-sm hover:shadow-lg transition-all duration-300 ease-in-out" style="background-color:rgb(255, 255, 255);">
+      <div class="card-header pb-0 p-3 bg-gradient-to-r from-blue-500 via-indigo-600 to-blue-700 text-white">
+        <h4 class="mb-2 align-items-center">Worker Lists</h4>
+      </div>
+      <div class="table-responsive" style="max-height: 400px; overflow-y: auto;">
+        <table class="table align-items-center text-sm">
+          <thead class="bg-gray-200">
             <tr>
-              <th style="font-size: 16px;">Material</th>
-              <th style="font-size: 16px;">Category</th>
-              <th style="font-size: 16px;">Status</th>
+              <th class="text-center">Profile</th>
+              <th class="text-center">Name</th>
+              <th class="text-center">Email</th>
+              <th class="text-center">Status</th>
+              <th class="text-center">Position</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>
-                <div class="text-center">Phone</div>
-              </td>
-              <td class="text-center">Electronic</td>
-              <td>
-                <div class="text-center">
-                  <button type="button" class="btn btn-success btn-sm btn-rounded">Have in stock</button>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <div class="text-center">Laptop</div>
-              </td>
-              <td class="text-center">Electronic</td>
-              <td>
-                <div class="text-center">
-                  <button type="button" class="btn btn-danger btn-sm btn-rounded">Out of stock</button>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <div class="text-center">T-Shirt</div>
-              </td>
-              <td class="text-center">Clothing</td>
-              <td>
-                <div class="text-center">
-                  <button type="button" class="btn btn-success btn-sm btn-rounded">Have in stock</button>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <div class="text-center">Shoes</div>
-              </td>
-              <td class="text-center">Footwear</td>
-              <td>
-                <div class="text-center">
-                  <button type="button" class="btn btn-danger btn-sm btn-rounded">Out of stock</button>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <div class="text-center">Shoes</div>
-              </td>
-              <td class="text-center">Footwear</td>
-              <td>
-                <div class="text-center">
-                  <button type="button" class="btn btn-danger btn-sm btn-rounded">Out of stock</button>
-                </div>
-              </td>
-            </tr>
-
+            <!-- Loop through workers -->
+            <?php if (!empty($workers)): ?>
+              <?php foreach ($workers as $worker): ?>
+                <tr class="hover:bg-gray-100 transition-all duration-300">
+                  <td class="text-center">
+                    <img src="<?php echo htmlspecialchars($worker['profile_image']); ?>" alt="User avatar" class="rounded-circle" style="width: 35px; height: 35px;" data-toggle="tooltip" title="Profile Picture">
+                  </td>
+                  <td class="text-center">
+                    <h6 class="mb-0 text-black"><?php echo htmlspecialchars($worker['first_name'] . " " . $worker['last_name']); ?></h6>
+                  </td>
+                  <td class="text-center">
+                    <h6 class="mb-0 text-black"><?php echo htmlspecialchars($worker['email']); ?></h6>
+                  </td>
+                  <td class="text-center">
+                    <h6 class="mb-0 text-black">
+                      <?php 
+                        if (isset($worker['status']) && $worker['status'] == 'Online') {
+                          echo '<span class="text-success">Online</span>';
+                        } else {
+                          echo '<span class="text-danger">Offline</span>';
+                        }
+                      ?>
+                    </h6>
+                  </td>
+                  <td class="text-center">
+                    <h6 class="mb-0 text-black"><?php echo htmlspecialchars($worker['role_name']); ?></h6>
+                  </td>
+                </tr>
+              <?php endforeach; ?>
+            <?php else: ?>
+              <tr>
+                <td colspan="5" class="text-center text-black">No users found.</td>
+              </tr>
+            <?php endif; ?>
           </tbody>
         </table>
       </div>
     </div>
-  </div> -->
-
-
-</div>
-<div class="row mt-4">
-  <div class="col-lg-12 mb-lg-0 mb-4">
-    <div class="card z-index-2 h-100">
-      <div class="card-header pb-0 pt-3 bg-transparent">
-        <h6 class="text-capitalize">Orders overview</h6>
-        <p class="text-sm mb-0">
-          <i class="fa fa-arrow-up text-success"></i>
-          <span class="font-weight-bold">4% more</span> in 2021
-        </p>
-      </div>
-      <div class="card-body p-3">
-        <div class="chart">
-          <canvas id="chart-line-2" class="chart-canvas" height="300"></canvas>
-        </div>
-      </div>
-    </div>
   </div>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
 <div class="row mt-4">
-  <div class="col-lg-6 mb-lg-0 mb-4">
-    <div class="todo-card ">
-      <div class="card-header pb-4 p-3">
-        <div class="d-flex justify-content-between">
-          <h3 class="mb-2">Supplier</h3>
-        </div>
-      </div>
-      <table class="table align-middle bg-white">
+<!-- Suppliers lists -->
+<div class="col-lg-8 mb-lg-0 mb-4">
+  <div class="card shadow-sm hover:shadow-lg transition-all duration-300 ease-in-out">
+    <div class="card-header pb-0 p-3 bg-gradient-to-r from-blue-400 via-indigo-500 to-blue-600 text-white">
+      <h4 class="mb-2 align-items-center">Supplier lists</h4>
+    </div>
+    <div class="table-responsive" style="max-height: 400px; overflow-y: auto;">
+      <table class="table align-items-center text-sm">
+        <thead>
+          <tr class="text-gray-700 bg-gray-200">
+            <th class="text-center">Profile</th>
+            <th class="text-center">Name</th>
+            <th class="text-center">Email</th>
+            <th class="text-center">UpdatedAt</th>
+          </tr>
+        </thead>
         <tbody>
-          <tr>
-            <td>
-              <div class="d-flex align-items-center">
-                <img src="https://mdbootstrap.com/img/new/avatars/8.jpg" alt="" style="width: 45px; height: 45px"
-                  class="rounded-circle" />
-                <div class="ms-3">
-                  <p class="fw-bold mb-1">John Doe</p>
-                  <button type="button" class="btn btn-danger btn-sm">Offline</button>
-                </div>
-              </div>
-            </td>
-            <td>
-              <button type="button" class="btn btn-rounded ">
-                Edit
-              </button>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <div class="d-flex align-items-center">
-                <img src="https://mdbootstrap.com/img/new/avatars/6.jpg" class="rounded-circle" alt=""
-                  style="width: 45px; height: 45px" />
-                <div class="ms-3">
-                  <p class="fw-bold mb-1">Alex Ray</p>
-                  <button type="button" class="btn btn-success btn-sm">Online</button>
-                </div>
-              </div>
-            </td>
-            <td>
-              <button type="button" class="btn btn-rounded ">
-                Edit
-              </button>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <div class="d-flex align-items-center">
-                <img src="https://mdbootstrap.com/img/new/avatars/7.jpg" class="rounded-circle" alt=""
-                  style="width: 45px; height: 45px" />
-                <div class="ms-3">
-                  <p class="fw-bold mb-1">Kate Hunington</p>
-                  <button type="button" class="btn btn-danger btn-sm">Offline</button>
-                </div>
-              </div>
-            </td>
-            <td>
-              <button type="button" class="btn btn-rounded ">
-                Edit
-              </button>
-            </td>
-          </tr>
+          <!-- Loop through suppliers -->
+          <?php if (!empty($SuppliersData)): ?>
+            <?php foreach ($SuppliersData as $supplier): ?>
+              <tr class="hover:bg-gray-100 transition-all duration-300">
+                <td class="text-center">
+                  <img src="<?php echo htmlspecialchars($supplier['Image']); ?>" alt="User avatar" class="rounded-circle" style="width: 35px; height: 35px;" data-toggle="tooltip" title="Profile Picture">
+                </td>
+                <td class="text-center">
+                  <div class="d-flex align-items-center">
+                    <div class="ms-3">
+                      <h6 class="mb-0"><?php echo htmlspecialchars($supplier['Name']); ?></h6>
+                    </div>
+                  </div>
+                </td>
+                <td class="text-center">
+                  <div class="d-flex align-items-center">
+                    <div class="ms-3">
+                      <h6 class="mb-0"><?php echo htmlspecialchars($supplier['Email']); ?></h6>
+                    </div>
+                  </div>
+                </td>
+                <td class="text-center">
+                  <div class="d-flex align-items-center">
+                    <div class="ms-3">
+                      <h6 class="mb-0"><?php echo htmlspecialchars($supplier['UpdatedAt']); ?></h6>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            <?php endforeach; ?>
+          <?php else: ?>
+            <tr>
+              <td colspan="4" class="text-center">No suppliers found.</td>
+            </tr>
+          <?php endif; ?>
         </tbody>
       </table>
     </div>
   </div>
-  <div class="col-lg-6 mb-lg-2 mb-4">
-    <div class="todo-card">
-      <div class="container mt-3">
-        <h3>Progress Track</h3>
+</div>
 
-        <div class="d-flex align-items-center mb-3">
-          <i class="bi bi-info-circle me-2"></i>
-          <span>React Material Dashboard</span>
-        </div>
-        <div class="d-flex align-items-center mb-3">
-          <img src="/views/assets/img/carousel-3.jpg" alt="User avatar"
-            style="width: 40px; height: 40px; border-radius: 5px" class="me-2">
-          <div class="progress flex-grow-1">
-            <div class="progress-bar bg-warning" style="width: 70%;" role="progressbar" aria-valuenow="70"
-              aria-valuemin="0" aria-valuemax="100"></div>
+   <!-- Purchase Order Overview -->
+  <div class="col-lg-4 mb-lg-0 mb-4">
+    <div class="card z-index-2 h-100 shadow-sm">
+      <div class="card-header pb-0 pt-3 bg-transparent">
+        <h6 class="text-capitalize">Manage Purchase Order</h6>
+      </div>
+      <div class="card-body p-3">
+        <div class="chart">
+          <!-- Add a container for the chart with a loading indicator -->
+          <div id="chart-container" style="position: relative; height: 400px;">
+            <canvas id="purchase-order-chart"></canvas>
+            <div id="loading-indicator" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); display: none;">
+              <div class="spinner"></div> <!-- Custom or CSS spinner -->
+              <p>Loading data...</p>
+            </div>
           </div>
         </div>
-        <div class="line line-filled"></div>
-
-        <div class="d-flex align-items-center mb-3">
-          <i class="bi bi-eye me-2"></i>
-          <span>View Dashboard</span>
-        </div>
-        <div class="d-flex align-items-center mb-3">
-          <img src="/views/assets/img/carousel-2.jpg" alt="User avatar"
-            style="width: 40px; height: 40px; border-radius: 5px" class="me-2">
-          <div class="progress flex-grow-1">
-            <div class="progress-bar bg-primary" style="width: 60%;" role="progressbar" aria-valuenow="70"
-              aria-valuemin="0" aria-valuemax="100"></div>
-          </div>
-        </div>
-        <div class="line line-filled"></div>
-
-        <div class="d-flex align-items-center mb-3">
-          <i class="bi bi-check-circle me-2"></i>
-          <span>Task Completed</span>
-        </div>
-        <div class="d-flex align-items-center mb-3">
-          <img src="/views/assets/img/carousel-1.jpg" alt="User avatar"
-            style="width: 40px; height: 40px; border-radius: 5px" class="me-2">
-          <div class="progress flex-grow-1">
-            <div class="progress-bar bg-success" style="width: 70%;" role="progressbar" aria-valuenow="70"
-              aria-valuemin="0" aria-valuemax="100"></div>
-          </div>
-        </div>
-        <div class="line line-filled"></div>
-
       </div>
     </div>
   </div>
-
 </div>
-<!-- <div class="row mt-4">
-    <div class="col-lg-12 mb-lg-0 mb-4">
-      <div class="todo-card">
-        <div class="card-header pb-0 p-1">
-          <div class="d-flex justify-content-between">
-            <h3 class="mb-2">Stock Lists</h3>
-          </div>
-        </div>
+<!-- Manage Purchase Order -->
+<div class="row mt-4">
+   <!-- Stock Lists -->
+   <div class="col-lg-12">
+    <div class="card shadow-sm">
+      <div class="card-header pb-0 p-1">
+        <h4 class="m-4">Purchase Order Lists</h4>
+      </div>
+      <div class="table-container" style="max-height: 400px; overflow-y: auto;">
         <table class="table align-middle bg-white">
           <thead>
             <tr>
-              <th>Product</th>
-              <th>Category</th>
-              <th>Status</th>
+              <th class="text-center">Material</th>
+              <th class="text-center">Category</th>
+              <th class="text-center">Purchase Order Quantity</th>
+              <th class="text-center">Size/Type</th>
+              <th class="text-center">Total Amount</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>
-                <div class="text-center">Phone</div>
-              </td>
-              <td class="text-center">Electronic</td>
-              <td>
-                <div class="text-center">
-                  <button type="button" class="btn btn-success btn-sm btn-rounded">Have in stock</button>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <div class="text-center">Laptop</div>
-              </td>
-              <td class="text-center">Electronic</td>
-              <td>
-                <div class="text-center">
-                  <button type="button" class="btn btn-danger btn-sm btn-rounded">Out of stock</button>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <div class="text-center">T-Shirt</div>
-              </td>
-              <td class="text-center">Clothing</td>
-              <td>
-                <div class="text-center">
-                  <button type="button" class="btn btn-success btn-sm btn-rounded">Have in stock</button>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <div class="text-center">Shoes</div>
-              </td>
-              <td class="text-center">Footwear</td>
-              <td>
-                <div class="text-center">
-                  <button type="button" class="btn btn-danger btn-sm btn-rounded">Out of stock</button>
-                </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div> -->
-<div class="row mt-4">
-  <div class="col-lg-12 mb-lg-0 mb-4">
-    <div class="todo-card">
-      <div class="card-header pb-0 p-3">
-        <div class="d-flex justify-content-between">
-          <h3 class="mb-2">Users List</h3>
-        </div>
-      </div>
-      <div class="table-responsive">
-        <table class="table align-items-center">
-          <thead>
-            <tr>
-              <th style="font-size: 16px;">Name</th>
-              <th style="font-size: 16px;">Email</th>
-              <th style="font-size: 16px;">Role</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class="w-30">
-                <div class="d-flex px-2 py-1 align-items-center">
-                  <div>
-                    <img src="/views/assets/img/team-1.jpg" alt="User avatar" style="width: 40px; height: 40px"
-                      class="rounded-circle">
-                  </div>
-                  <div class="ms-4">
-                    <h6 class="text-sm mb-0">John Doe</h6>
-                  </div>
-                </div>
-              </td>
-              <td>
-                <div class="text-center">
-                  <h6 class="text-sm mb-0">john@example.com</h6>
-                </div>
-              </td>
-              <td>
-                <div class="text-center">
-                  <h6 class="text-sm mb-0">Admin</h6>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td class="w-30">
-                <div class="d-flex px-2 py-1 align-items-center">
-                  <div>
-                    <img src="/views/assets/img/team-2.jpg" alt="User avatar" style="width: 40px; height: 40px"
-                      class="rounded-circle">
-                  </div>
-                  <div class="ms-4">
-                    <h6 class="text-sm mb-0">Jane Smith</h6>
-                  </div>
-                </div>
-              </td>
-              <td>
-                <div class="text-center">
-                  <h6 class="text-sm mb-0">jane@example.com</h6>
-                </div>
-              </td>
-              <td>
-                <div class="text-center">
-                  <h6 class="text-sm mb-0">User</h6>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td class="w-30">
-                <div class="d-flex px-2 py-1 align-items-center">
-                  <div>
-                    <img src="/views/assets/img/team-3.jpg" alt="User avatar" style="width: 40px; height: 40px"
-                      class="rounded-circle">
-                  </div>
-                  <div class="ms-4">
-                    <h6 class="text-sm mb-0">Alice Johnson</h6>
-                  </div>
-                </div>
-              </td>
-              <td>
-                <div class="text-center">
-                  <h6 class="text-sm mb-0">alice@example.com</h6>
-                </div>
-              </td>
-              <td>
-                <div class="text-center">
-                  <h6 class="text-sm mb-0">Viewer</h6>
-                </div>
-              </td>
-            </tr>
+            <?php if (!empty($purchaseListData)): ?>
+              <?php foreach ($purchaseListData as $material): ?>
+                <tr>
+                  <td class="text-center"><?php echo htmlspecialchars($material['MaterialName']); ?></td>
+                  <td class="text-center"><?php echo htmlspecialchars($material['CategoryName'] ?? 'N/A'); ?></td>
+                  <td class="text-center"><?php echo htmlspecialchars($material['PurchaseOrderQuantity'] ?? 'N/A'); ?></td>
+                  <td class="text-center"><?php echo htmlspecialchars($material['MaterialSize'] ?? 'N/A'); ?></td>
+                  <td class="text-center">$<?php echo htmlspecialchars($material['TotalAmount'] ?? 'N/A'); ?></td>
+                </tr>
+              <?php endforeach; ?>
+            <?php else: ?>
+              <tr>
+                <td colspan="4" class="text-center">No materials found with purchase orders.</td>
+              </tr>
+            <?php endif; ?>
           </tbody>
         </table>
       </div>
     </div>
   </div>
 </div>
-</div>
+<script src="views/assets/JavaScript/purchaseOrderChart/purchase.js"></script>

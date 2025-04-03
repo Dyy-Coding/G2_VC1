@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sales Chart</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+    <div>
+        <canvas id="salesChart" width="400" height="200"></canvas>
+    </div>
+
+    <script>
+        // Your provided data
+        const salesData = [
+            { "year": 2025, "month": "May", "totalSalesAmount": 40500 },
+            { "year": 2025, "month": "Apr", "totalSalesAmount": 25000 },
+            { "year": 2025, "month": "Mar", "totalSalesAmount": 33365.92 },
+            { "year": 2025, "month": "Feb", "totalSalesAmount": 26500 },
+            { "year": 2025, "month": "Jan", "totalSalesAmount": 24000 },
+            { "year": 2024, "month": "Nov", "totalSalesAmount": 17000 },
+            { "year": 2024, "month": "Oct", "totalSalesAmount": 15400 },
+            { "year": 2024, "month": "Sep", "totalSalesAmount": 13800 },
+            { "year": 2024, "month": "Aug", "totalSalesAmount": 12200 },
+            { "year": 2024, "month": "Jul", "totalSalesAmount": 10600 },
+            { "year": 2024, "month": "Jun", "totalSalesAmount": 9000 },
+            { "year": 2024, "month": "May", "totalSalesAmount": 7000 },
+            { "year": 2024, "month": "Apr", "totalSalesAmount": 6500 }
+        ];
+
+        // Call the function to create the chart
+        createSalesChart(salesData, "line");
+
+        function createSalesChart(chartData, type) {
+            const ctx1 = document.getElementById("salesChart").getContext("2d");
+
+            // Create gradient for background color
+            const gradientStroke1 = ctx1.createLinearGradient(0, 0, 0, 300);
+            gradientStroke1.addColorStop(0, "rgba(75, 192, 192, 0.2)");
+            gradientStroke1.addColorStop(1, "rgba(75, 192, 192, 0)");
+
+            // Create the chart
+            new Chart(ctx1, {
+                type: type, // 'line' or any other chart type
+                data: {
+                    labels: chartData.map(item => item.month),  // Mapping months for the x-axis
+                    datasets: [{
+                        label: "Sales Data",
+                        tension: 0.4,
+                        borderWidth: 0,
+                        pointRadius: 0,
+                        borderColor: "#5e72e4",  // Line color
+                        backgroundColor: gradientStroke1,  // Gradient fill
+                        borderWidth: 3,
+                        fill: true,
+                        data: chartData.map(item => item.totalSalesAmount), // Mapping the sales data
+                        maxBarThickness: 6,
+                    }],
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false,
+                        },
+                    },
+                    interaction: {
+                        intersect: false,
+                        mode: 'index',
+                    },
+                    scales: {
+                        y: {
+                            grid: {
+                                drawBorder: false,
+                                display: true,
+                                drawOnChartArea: true,
+                                drawTicks: false,
+                                borderDash: [5, 5],
+                            },
+                            ticks: {
+                                display: true,
+                                padding: 10,
+                                color: '#fbfbfb',
+                                font: {
+                                    size: 11,
+                                    family: "Open Sans",
+                                    style: 'normal',
+                                    lineHeight: 2,
+                                },
+                            },
+                        },
+                        x: {
+                            grid: {
+                                drawBorder: false,
+                                display: false,
+                                drawOnChartArea: false,
+                                drawTicks: false,
+                                borderDash: [5, 5],
+                            },
+                            ticks: {
+                                display: true,
+                                color: '#ccc',
+                                padding: 20,
+                                font: {
+                                    size: 11,
+                                    family: "Open Sans",
+                                    style: 'normal',
+                                    lineHeight: 2,
+                                },
+                            },
+                        },
+                    },
+                },
+            });
+        }
+    </script>
+
+</body>
+</html>
