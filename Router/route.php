@@ -148,7 +148,6 @@ $route->group('supplier', function ($route) {
 
     // export supplier detail
     $route->get('/suppliers/export/{format}', [SupplierController::class, 'exportSuppliers']);
-
 });
 
 
