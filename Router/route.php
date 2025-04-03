@@ -30,11 +30,9 @@ require_once "Models/invenoryModel/meterailModel.php";
 require_once "Models/invenoryModel/categoryModel.php";
 require_once "Models/dashboard/dashboardModel.php";
 
-// sreach required 
-require_once "Controllers/adminController/dashboardController/seachController/routesSearchController.php";
 
 
-// require_once "Models/dashboard/dataSalesOverviewModel.php";
+// require_once "Models/dashboard/searchModel/searchData.php";
 
 
 
@@ -134,7 +132,6 @@ $route->group('profile', function ($route) {
  * Maps the '/error' URI to the 'error' method of the ErrorController
  */
 $route->get('/error', [ErrorController::class, 'error']);
-$route->get('/search', [SearchController::class, 'handleSearchRequest']);
 
 // $route->printRoutes();
 
