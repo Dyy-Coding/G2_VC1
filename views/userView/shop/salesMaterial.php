@@ -8,6 +8,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Material Icons for Footer -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <style>
         .carousel-item img {
             height: 500px;
@@ -30,29 +32,30 @@
         }
 
         .container {
-        display: flex;
-        max-width: 1200px;
-        margin: 20px auto;
-        padding-left: 270px; /* Push content to the right to make space for fixed sidebar */
-        gap: 20px;
-        align-items: flex-start;
-    }
+            display: flex;
+            max-width: 1200px;
+            margin: 20px auto;
+            padding-left: 270px; /* Push content to the right to make space for fixed sidebar */
+            gap: 20px;
+            align-items: flex-start;
+        }
 
-         /* Sidebar */
+        /* Sidebar */
         .sidebar {
             position: fixed;
-            top: 15%;
+            top: 13%;
             left: 0;
-            height: 100vh;
             width: 250px;
             margin-left: 20px;
             background-color: #fff;
             padding: 20px;
-            overflow-y: auto;
             border-radius: 10px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            background: linear-gradient(135deg, #ffffff, #f0f4f8); 
+            /* max-height: calc(100vh - 20% - 200px);  */
+            overflow-y: auto; 
+            bottom: 200px; 
         }
-
 
         .sidebar h3 {
             margin-bottom: 20px;
@@ -94,46 +97,6 @@
             gap: 20px;
         }
 
-        .product-card {
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            padding: 15px;
-            text-align: center;
-            position: relative;
-        }
-
-        .product-card img {
-            max-width: 100%;
-            height: auto;
-            margin-bottom: 10px;
-        }
-
-        .product-card h4 {
-            font-size: 14px;
-            color: #e74c3c;
-            margin-bottom: 5px;
-        }
-
-        .product-card p {
-            font-size: 16px;
-            color: #333;
-            margin-bottom: 5px;
-        }
-
-        .product-card .price {
-            font-size: 18px;
-            font-weight: bold;
-            color: #333;
-        }
-
-        .product-card .old-price {
-            font-size: 14px;
-            color: #999;
-            text-decoration: line-through;
-            margin-left: 10px;
-        }
-
         .discount {
             position: absolute;
             top: 10px;
@@ -172,38 +135,63 @@
 <body class="bg-gray-50 font-sans antialiased">
     <!-- Header -->
     <header class="bg-white shadow sticky top-0 z-50">
-        <nav class="navbar navbar-expand-lg container py-4">
-            <div class="container-fluid">
-                <a class="navbar-brand text-2xl font-bold text-gray-800" href="#">Store</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+        <nav class="bg-white-800">
+        <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+            <div class="relative flex h-16 items-center justify-between">
+            <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
+                <!-- Mobile menu button-->
+                <button type="button" class="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:ring-2 focus:ring-white focus:outline-hidden focus:ring-inset" aria-controls="mobile-menu" aria-expanded="false">
+                <span class="absolute -inset-0.5"></span>
+                <span class="sr-only">Open main menu</span>
+                <svg class="block size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                </svg>
+                <svg class="hidden size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                </svg>
                 </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ms-auto space-x-6">
-                        <li class="nav-item">
-                            <a class="nav-link text-gray-600 hover:text-indigo-600 transition-colors font-medium" href="#">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-gray-600 hover:text-indigo-600 transition-colors font-medium" href="#">Shop</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-gray-600 hover:text-indigo-600 transition-colors font-medium" href="#">Categories</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-gray-600 hover:text-indigo-600 transition-colors font-medium" href="#">Contact</a>
-                        </li>
-                    </ul>
+            </div>
+            <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
+                <div class="flex shrink-0 items-center">
+                <img class="h-8 w-auto" src="https://as1.ftcdn.net/v2/jpg/03/49/15/22/1000_F_349152257_LWXemAKac8x18qvLyVHPnRXfsGIAF9oR.jpg" alt="Your Company">
+                </div>
+                <div class="hidden sm:ml-6 sm:block">
+                <div class="flex space-x-4">
+                    <a href="#" class=" px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-300 hover:text-white">Home</a>
+                    <a href="#" class=" px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-300 hover:text-white">About</a>
+                    <a href="#" class=" px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-300 hover:text-white">Contact</a>
+                </div>
                 </div>
             </div>
-            <li class="nav-item">
-          <a class="nav-link" href="/logout">
-            <div
-              class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="ni ni-collection text-dark text-sm opacity-10"></i>
+            <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+                <button type="button" class="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 focus:outline-hidden">
+                <span class="absolute -inset-1.5"></span>
+                <span class="sr-only">View notifications</span>
+                <svg class="size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 0 0 5.454-1.31A8.967 8.967 0 0 1 18 9.75V9A6 6 0 0 0 6 9v.75a8.967 8.967 0 0 1-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 0 1-5.714 0m5.714 0a3 3 0 1 1-5.714 0" />
+                </svg>
+                </button>
+                <div class="relative ml-3">
+                <div>
+                    <button type="button" class="relative flex rounded-full bg-gray-800 text-sm focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 focus:outline-hidden" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
+                    <span class="absolute -inset-1.5"></span>
+                    <span class="sr-only">Open user menu</span>
+                    <img class="size-8 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
+                </button>
+                </div>
+                </div>
+                <span class="ml-3">User name</span>
+                <a href="/login" class="rounded-md bg-gray-700 px-3 py-2 text-sm font-medium text-white ml-5" role="menuitem" tabindex="-1" id="user-menu-item-2">Sign out</a>
             </div>
-            <span class="nav-link-text ms-1">Logout</span>
-          </a>
-        </li>
+            </div>
+        </div>
+        <div class="sm:hidden" id="mobile-menu">
+            <div class="space-y-1 px-2 pt-2 pb-3">
+            <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Home</a>
+            <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">About</a>
+            <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Contact</a>
+            </div>
+        </div>
         </nav>
     </header>
 
@@ -212,7 +200,7 @@
         <div class="sidebar">
             <h3>Categories</h3>
             <ul>
-                <li><img src="https://media.istockphoto.com/id/1448349078/photo/cement-bags-o-sacks-isolated-on-white.jpg?s=612x612&w=0&k=20&c=F5_VosP_qf9xYgyVth-Vs3OsSjaL0gZBMae39zZ3Zmg=" alt="Clothes"> <a href="#">Cement</a></li>
+                <li><img src="https://media.istockphoto.com/id/1448349078/photo/cement-bags-o-sacks-isolated-on-white.jpg?s=612x612&w=0&k=20&c=F5_VosP_qf9xYgyVth-Vs3OsSjaL0gZBMae39zZ3Zmg=" alt="Clothes">Cement</a></li>
                 <li><img src="https://media.sortly.com/wp-content/uploads/2023/08/24210510/iStock-1484751645-1024x683.jpg" alt="Footwear"> <a href="#">Steel</a></li>
                 <li><img src="https://wooddesigner.org/wp-content/uploads/2021/05/planed-timber.jpg" alt="Jewelry"> <a href="#">Roofing</a></li>
                 <li><img src="https://5.imimg.com/data5/SELLER/Default/2021/12/HW/KG/SQ/143354869/syp-wood-timber-plank.jpg" alt="Perfume"> <a href="#">Wood</a></li>
@@ -226,7 +214,6 @@
 
         <!-- Main Content -->
         <div class="main-content">  
-
             <!-- Product Cards -->
             <div class="col">
                 <div class="bg-gray-50 rounded-lg shadow-md p-4 hover:shadow-lg transition-all">
@@ -386,19 +373,45 @@
                 <!-- Best sellers can be styled similarly to product cards -->
             </div>
         </div>
-        
     </div>
 
-
     <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-6">
-        <div class="container text-center">
-            <p class="text-gray-300">© 2025 Store. All rights reserved.</p>
+    <footer class="text-white px-8 py-6 bg-blue-950 w-full">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+            <div class="mb-8 md:mb-0">
+                <h3 class="text-lg font-bold mb-4">About Us</h3>
+                <p class="mb-2 w-80">At Lim Tri depot, we are dedicated to providing high-quality construction materials to builders, contractors, and DIY enthusiasts. With years of experience in the industry, we pride ourselves on our commitment to excellence and customer satisfaction.</p>
+            </div>
+            <div class="mb-8 md:mb-0">
+                <h3 class="text-lg font-bold mb-4">Products</h3>
+                <ul>
+                    <li><a href="#" class="hover:text-yellow-400">Concrete & Cement</a></li>
+                    <li><a href="#" class="hover:text-yellow-400">Aggregates</a></li>
+                    <li><a href="#" class="hover:text-yellow-400">Steel & Rebar</a></li>
+                    <li><a href="#" class="hover:text-yellow-400">Insulation Materials</a></li>
+                    <li><a href="#" class="hover:text-yellow-400">Roofing Supplies</a></li>
+                    <li><a href="#" class="hover:text-yellow-400">Tools & Equipment</a></li>
+                </ul>
+            </div>
+            <div class="mb-8 md:mb-0">
+                <h3 class="text-lg font-bold mb-4">Services</h3>
+                <ul>
+                    <li><a href="#" class="hover:text-yellow-400">Delivery Services</a></li>
+                    <li><a href="#" class="hover:text-yellow-400">Custom Orders</a></li>
+                    <li><a href="#" class="hover:text-yellow-400">Consultation & Support</a></li>
+                </ul>
+            </div>
+            <div class="mb-8 md:mb-0">
+                <h3 class="text-lg font-bold mb-4">Location</h3>
+                <p class="mb-2"><a href="https://maps.app.goo.gl/YjR875jimR99F8J36"><i class="material-icons md-18">location_on</i> Street 103, Khan SekSok, Phnom Penh, Cambodia</a></p>
+                <p class="mb-2"><a href="tel:+1514890000" class="hover:text-yellow-400">1-514-890-0000</a></p>
+                <p><a href="mailto:calinscompagnies@calins.com" class="hover:text-yellow-400">limtri@gmail.com</a></p>
+            </div>
         </div>
     </footer>
 
+    
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
-
