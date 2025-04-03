@@ -977,3 +977,11 @@ COMMIT;
 ALTER TABLE Customers ADD COLUMN created DATE;
 
 UPDATE Customers SET created = '2025-03-28';
+
+--
+-- update customers table 
+--
+ALTER TABLE customers 
+ADD COLUMN Profile VARCHAR(255) AFTER CustomerID,
+ADD COLUMN Status VARCHAR(50) AFTER Address,
+ADD COLUMN Quantity INT AFTER MaterialID;

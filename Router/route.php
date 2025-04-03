@@ -163,7 +163,9 @@ $route->group('supplier', function ($route) {
 
 });
 
-
+$route->group('customers', function ($route) {
+    $route->get('/customers', [CustomerInfoController::class, 'getCustomersController']);
+});
 
 
 $route->get('/error', [ErrorController::class, 'error']);
