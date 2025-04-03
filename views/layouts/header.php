@@ -99,11 +99,11 @@
           </a>
           <ul class="dropdown-menu" id="inventoryDropdown" >
             <li><a class="dropdown-item" href="/category">Category</a></li>
-            <li><a class="dropdown-item" href="/inventory">Material</a></li>
+            <li><a class="dropdown-item" href="/materail">Material</a></li>
           </ul>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/inventory">
+          <a class="nav-link" href="/materail">
             <div
               class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
               <i class="ni ni-calendar-grid-58 text-dark text-sm opacity-10"></i>

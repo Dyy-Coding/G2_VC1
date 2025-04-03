@@ -204,5 +204,18 @@ class BaseController
             require_once __DIR__ . '/../Views/layouts/footer.php';
         }
     }
+
+    public function setFlashMessage($type, $message) {
+        $_SESSION['flash'][$type] = $message;
+    }
+
+    public function getFlashMessage($type) {
+        if (isset($_SESSION['flash'][$type])) {
+            $message = $_SESSION['flash'][$type];
+            unset($_SESSION['flash'][$type]); // Remove after retrieving
+            return $message;
+        }
+        return null;
+    }
 }
 ?>

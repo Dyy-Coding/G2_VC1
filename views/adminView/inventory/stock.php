@@ -67,8 +67,8 @@
         </div>
         <div>
             <button class="btn btn-primary me-2" id="btn-add">+ New Material</button>
-            <button class="btn btn-secondary">Import</button>
-            <button class="btn btn-secondary">Export</button>
+            <a href="/inventory/import" class="btn btn-secondary me-2">Import</a>
+            <a href="/inventory/export" class="btn btn-secondary">Export</a>
         </div>
     </div>
 
@@ -107,7 +107,7 @@
             <tr>
                 <!-- Checkbox -->
                 <td class="row-checkbox">
-                    <input type="checkbox">
+                <input type="checkbox" name="categoryIDs[]" value="<?= $material['MaterialID'] ?>">
                 </td>
 
                 <!-- Product Column (Image + Name) -->
