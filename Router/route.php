@@ -10,7 +10,6 @@ require_once "Controllers/adminController/authenicationController/forgotPassword
 require_once "Controllers/adminController/authenicationController/registerController.php";
 require_once "Controllers/adminController/InventoryController.php";
 require_once "Controllers/adminController/InventoryController/categoriesController.php";
-// require_once "Controllers/adminController/sales/salesController.php";
 require_once "Controllers/AdminController/DashboardController.php";
 require_once "Controllers/adminController/BashInfoController.php";
 require_once 'Controllers/errorController.php';
@@ -19,9 +18,16 @@ require_once 'Controllers/errorController.php';
 require_once 'Controllers/adminController/supplierController/SupplierControoler.php';
 require_once 'Controllers/adminController/supplierController/DetailSupplierController.php';
 
+// Sale order
+require_once 'Controllers/adminController/saleController/salesOrderController.php';
+
+// customers
+require_once 'Controllers/adminController/customerController.php/customerListController.php';
+
 
 // require_one Controllers/adminController/dashboardController/stockListController.php;
 require_once 'Controllers/adminController/dashboardController/stockListController.php';
+// require_once 'Models/dashboard/purchaseOrderModel.php';
 
 
 // Database link files
@@ -33,6 +39,12 @@ require_once "Models/usersModel.php";
 require_once "Models/invenoryModel/meterailModel.php";
 require_once "Models/invenoryModel/categoryModel.php";
 require_once "Models/dashboard/dashboardModel.php";
+
+// sreach required 
+require_once "Controllers/adminController/dashboardController/seachController/routesSearchController.php";
+
+
+// require_once "Models/dashboard/dataSalesOverviewModel.php";
 
 
 
@@ -89,6 +101,13 @@ $route->group('inventory', function ($route) {
 
     $route->get('/order', [InventoryController::class, 'order']);
 
+});
+
+// Sale order route group
+$route->group('sale', function ($route) {
+    $route->get('/sale/order', [SaleOrderController::class, 'saleInfo']);
+    $route->get('/admin/saleorder/add', [SaleOrderController::class, 'addSaleOrder']);
+    $route->post('/admin/saleorder/add', [SaleOrderController::class, 'addSaleOrder']);
 });
 
 // Router Categories 
@@ -151,7 +170,27 @@ $route->group('supplier', function ($route) {
 });
 
 
+$route->group('customers', function ($route) {
+    // show customer or read
+    $route->get('/customers', [CustomerInfoController::class, 'getCustomersController']);
+    $route->get('/customer/detail', [CustomerInfoController::class, 'getCustomerDetailController']);
+
+
+    // edit
+    $route->get('/edit/customer', [CustomerInfoController::class, 'getCustomerController']);
+    $route->post('/update/customer', [CustomerInfoController::class, 'updateCustomerController']);
+
+    // delete 
+    $route->get('/delete/customer', [CustomerInfoController::class, 'destroyCustomerController']);
+});
+
+
+/**
+ * Defines a GET route for handling error pages
+ * Maps the '/error' URI to the 'error' method of the ErrorController
+ */
 $route->get('/error', [ErrorController::class, 'error']);
+$route->get('/search', [SearchController::class, 'handleSearchRequest']);
 
 // $route->printRoutes();
 

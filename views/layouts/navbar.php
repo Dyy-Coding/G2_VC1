@@ -11,24 +11,52 @@
         </nav>
         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4 d-flex flex-row align-items-center justify-content-center" id="navbar">
           <div class="ms-md-auto pe-md-3 d-flex align-items-center">
-            <form id="searchForm" action="/category" method="GET">
-              <div class="input">
-                <span class="text-body"><i class="fas fa-search"></i></span>
-                <input type="search" name="q" class="form-control border-0" placeholder="Type here..." required>
-              </div>
+          <form id="searchForm" action="/search" method="GET">
+                <div class="relative">
+                    <input type="search" name="q" id="searchInput" class="form-control border-2 border-gray-300 rounded-lg p-3 w-full" placeholder="Type here..." required>
+                    <div id="suggestions" class="absolute w-full mt-2 bg-white border border-gray-300 rounded-lg shadow-lg max-h-60 overflow-y-auto z-10"></div>
+                </div>
             </form>
+            <script>
+document.getElementById('searchInput').addEventListener('input', function() {
+    let query = this.value;
+
+    // Only send a request if the query is more than 1 character
+    if (query.length > 1) {
+        // Create an AJAX request
+        let xhr = new XMLHttpRequest();
+        xhr.open('GET', '/search-suggestions?q=' + query, true);
+        xhr.onload = function() {
+            if (xhr.status === 200) {
+                let suggestions = JSON.parse(xhr.responseText);
+                let suggestionsBox = document.getElementById('suggestions');
+                suggestionsBox.innerHTML = '';  // Clear previous suggestions
+                
+                // If there are results, display them
+                if (suggestions.length > 0) {
+                    suggestions.forEach(function(suggestion) {
+                        let div = document.createElement('div');
+                        div.classList.add('px-4', 'py-2', 'cursor-pointer', 'hover:bg-gray-100', 'transition');
+                        div.textContent = suggestion;
+                        div.onclick = function() {
+                            document.getElementById('searchInput').value = suggestion;
+                            suggestionsBox.innerHTML = ''; // Clear suggestions
+                        };
+                        suggestionsBox.appendChild(div);
+                    });
+                } else {
+                    suggestionsBox.innerHTML = '<div class="px-4 py-2 text-gray-500">No results found</div>';
+                }
+            }
+        };
+        xhr.send();
+    } else {
+        document.getElementById('suggestions').innerHTML = '';
+    }
+});
+</script>
+
           </div>
-          <!-- <li class="nav-item dropdown d-flex align-items-center">
-            <a href="#" class="nav-link text-white font-weight-bold px-2 d-flex align-items-center gap-2 dropdown-toggle"
-              role="button" id="languageDropdownToggle" data-bs-toggle="dropdown" aria-expanded="false">
-              <i class="ni ni-world-2 text-white text-sm"></i>
-              <span id="selectedLanguage">English</span>
-            </a>
-            <ul class="dropdown-menu" id="languageDropdown">
-              <li><a class="dropdown-item language-option" data-language="English" href="#">English</a></li>
-              <li><a class="dropdown-item language-option" data-language="Khmer" href="#">Khmer</a></li>
-            </ul>
-          </li> -->
           <li class="nav-item dropdown d-flex flex-row align-items-center">
             <!-- <label for="myDropdown" class="text-white font-weight-bold px-2 d-flex align-items-center gap-2">Choose an option:</label> -->
               <i class="ni ni-world-2 text-white text-sm"></i>

@@ -14,7 +14,7 @@
                 <!-- Supplier Profile Section -->
                 <div class="col-md-4 bg-primary text-white text-center p-4 d-flex flex-column align-items-center">
                     <img src="<?php
-                    $imagePath = !empty($supplier['profile_supplier']) ? '/' . ltrim($supplier['profile_supplier'], '/') : 'https://via.placeholder.com/120';
+                    $imagePath = !empty($supplier['image']) ? '/' . ltrim($supplier['image'], '/') : 'https://via.placeholder.com/120';
                     if ($imagePath !== 'https://via.placeholder.com/120' && !file_exists($_SERVER['DOCUMENT_ROOT'] . $imagePath)) {
                         $imagePath = 'https://via.placeholder.com/120';
                     }
