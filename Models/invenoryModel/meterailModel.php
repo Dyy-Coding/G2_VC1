@@ -1,11 +1,41 @@
 <?php
 
+
 class Material {
     private $conn;
 
     public function __construct() {
         $this->conn = Database::getConnection();
     }
+
+    public function getMaterialsByIds(array $ids) {
+        try {
+            if (empty($ids)) {
+                return []; // No IDs provided
+            }
+    
+            $placeholders = implode(',', array_fill(0, count($ids), '?'));
+            $query = "SELECT m.*, c.CategoryName, s.Name AS SupplierName 
+                      FROM Materials m
+                      LEFT JOIN Categories c ON m.CategoryID = c.CategoryID
+                      LEFT JOIN Suppliers s ON m.SupplierID = s.SupplierID
+                      WHERE m.MaterialID IN ($placeholders)";
+    
+            $stmt = $this->conn->prepare($query);
+            $stmt->execute($ids);
+            $materials = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    
+            if (!$materials) {
+                error_log("No materials found for IDs: " . implode(',', $ids));
+            }
+    
+            return $materials;
+        } catch (PDOException $e) {
+            error_log("Error fetching materials by IDs: " . $e->getMessage());
+            return [];
+        }
+    }
+    
 
     public function getAllMaterials() {
         try {
@@ -26,7 +56,28 @@ class Material {
         }
     }
 
-    public function uploadImage($file) {
+    public function deleteSelectedMaterials(array $materials) {
+        try {
+            if (empty($materials)) {
+                error_log("No materials selected for deletion.");
+                return false; // No materials selected
+            }
+
+            $placeholders = implode(',', array_fill(0, count($materials), '?'));
+            $stmt = $this->conn->prepare("DELETE FROM Materials WHERE MaterialID IN ($placeholders)");
+
+            // Execute the query with material IDs as parameters
+            $stmt->execute($materials);
+
+            error_log("Successfully deleted materials with IDs: " . implode(', ', $materials));
+            return true;
+        } catch (PDOException $e) {
+            error_log("Error deleting selected materials: " . $e->getMessage());
+            return false;
+        }
+    }
+
+    public function uploadImage(array $file) {
         if (!isset($file['name']) || $file['error'] !== UPLOAD_ERR_OK) {
             return ['error' => 'Invalid file upload.'];
         }
@@ -56,7 +107,7 @@ class Material {
         return ['success' => $filePath];
     }
 
-    public function editMaterial($id, $data) {
+    public function editMaterial(int $id, array $data) {
         $query = "UPDATE Materials SET Name = :name, CategoryID = :categoryID, Quantity = :quantity, UnitPrice = :unitPrice, SupplierID = :supplierID, MinStockLevel = :minStockLevel, ReorderLevel = :reorderLevel, UnitOfMeasure = :unitOfMeasure, Size = :size, ImagePath = :imagePath, Description = :description, UpdatedAt = NOW(), Brand = :brand, Location = :location, SupplierContact = :supplierContact, Status = :status, WarrantyPeriod = :warrantyPeriod WHERE MaterialID = :id";
 
         try {
@@ -80,14 +131,21 @@ class Material {
                 ':status' => $data['status'] ?? null,
                 ':warrantyPeriod' => $data['warrantyPeriod'] ?? null
             ]);
-            return $stmt->rowCount() > 0;
+
+            $updatedRows = $stmt->rowCount();
+            if ($updatedRows > 0) {
+                error_log("Material with ID $id updated successfully.");
+                return true;
+            }
+            error_log("No material with ID $id was updated.");
+            return false;
         } catch (PDOException $e) {
             error_log("Exception in editMaterial: " . $e->getMessage());
             return false;
         }
     }
 
-    public function addMaterial($data) {
+    public function addMaterial(array $data) {
         $requiredFields = ['name', 'categoryID', 'supplierID', 'quantity', 'unitPrice'];
 
         foreach ($requiredFields as $field) {
@@ -120,13 +178,14 @@ class Material {
                 ':status' => $data['status'] ?? null,
                 ':warrantyPeriod' => $data['warrantyPeriod'] ?? null
             ]);
-            return $this->conn->lastInsertId();
+            $lastInsertId = $this->conn->lastInsertId();
+            error_log("Material added with ID $lastInsertId.");
+            return $lastInsertId;
         } catch (PDOException $e) {
             error_log("Exception in addMaterial: " . $e->getMessage() . " | Data: " . json_encode($data));
             return false;
         }
     }
-
 
     public function getSuppliers() {
         try {
@@ -139,20 +198,26 @@ class Material {
         }
     }
 
-    public function deleteMaterial($id) {
+    public function deleteMaterial(int $id) {
         try {
             $query = "DELETE FROM Materials WHERE MaterialID = :id";
             $stmt = $this->conn->prepare($query);
             $stmt->execute([':id' => $id]);
-            return $stmt->rowCount() > 0;
+
+            if ($stmt->rowCount() > 0) {
+                error_log("Material with ID $id deleted successfully.");
+                return true;
+            }
+
+            error_log("No material found with ID $id to delete.");
+            return false;
         } catch (PDOException $e) {
             error_log("Exception in deleteMaterial: " . $e->getMessage());
             return false;
         }
     }
 
-
-    public function getMaterialById($id) {
+    public function getMaterialById(int $id) {
         try {
             $query = "SELECT m.*, c.CategoryName, s.Name AS SupplierName 
                       FROM Materials m
@@ -167,6 +232,4 @@ class Material {
             return false;
         }
     }
-
-    
 }

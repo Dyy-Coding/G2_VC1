@@ -23,6 +23,8 @@
 <script src="/views/assets/js/argon-dashboard.min.js?v=2.1.0"></script>
 <script src="/views/assets/js/plugins/chartjs.min.js"></script>
 <script src="views/assets/JavaScript/Search/search.js"></script>
+<!-- <script src="views/assets/js/inventory/material.js"></script> -->
+<script src="views/assets/js/inventory/categories.js"></script>
 
 
 <script>

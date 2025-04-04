@@ -127,7 +127,7 @@
                 </div>
 
                 <div class="d-flex justify-content-between">
-                    <a href="/inventory" class="btn btn-secondary">Back to Inventory</a>
+                    <a href="/material" class="btn btn-secondary">Back to Inventory</a>
                     <button type="submit" class="btn btn-primary">Update Record</button>
                 </div>
             </form>

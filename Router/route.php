@@ -1,6 +1,5 @@
 <?php
 
-
 // Include core files
 require_once "Router.php";
 require_once __DIR__ . '/../Database/Database.php';
@@ -48,26 +47,23 @@ $route = new Router();
  * Authentication Routes
  */
 $route->group('auth', function ($route) {
-    $route->get('/login', [LoginController::class, 'login']);
-    $route->post('/login', [LoginController::class, 'login']);
+    $route->match(['GET', 'POST'], '/login', [LoginController::class, 'login']);
     $route->get('/logout', [LoginController::class, 'logout']);
 
     // Forgot Password
-    $route->get('/forgot', [AuthController::class, 'forgot']);
-    $route->post('/forgot-password', [AuthController::class, 'handleForgotPassword']);
+    $route->match(['GET', 'POST'], '/forgot-password', [ForgotPasswordController::class, 'handleForgotPassword']);
 
     // Password Reset
-    $route->get('/reset-password', [AuthController::class, 'handleResetPassword']);
-    $route->post('/reset-password', [AuthController::class, 'handleForgotPassword']);
+    $route->match(['GET', 'POST'], '/reset-password', [ForgotPasswordController::class, 'handleResetPassword']);
 
     // Registration
-    $route->get('/register', [RegisterController::class, 'register']);
-    $route->post('/register', [RegisterController::class, 'register']);
+    $route->match(['GET', 'POST'], '/register', [RegisterController::class, 'register']);
 
     // Password Reset Status
-    $route->get('/password-reset-success', [AuthController::class, 'passwordResetSuccess']);
-    $route->get('/password-reset-error', [AuthController::class, 'passwordResetError']);
+    $route->get('/password-reset-success', [ForgotPasswordController::class, 'passwordResetSuccess']);
+    $route->get('/password-reset-error', [ForgotPasswordController::class, 'passwordResetError']);
 });
+
 
 /**
  * Dashboard Routes
@@ -88,33 +84,36 @@ $route->group('welcome', function ($route) {
  * Inventory Routes
  */
 $route->group('inventory', function ($route) {
-    $route->get('/materail', [MaterialsController::class, 'inventory']);
+    $route->get('/material', [MaterialsController::class, 'inventory']);
 
     // Material Management
-    $route->get('/materials/add', [MaterialsController::class, 'addMaterial']);
-    $route->post('/materials/add', [MaterialsController::class, 'addMaterial']);
+    $route->match(['get', 'post'], '/materials/add', [MaterialsController::class, 'addMaterial']);
     $route->get('/materials/edit/{id}', [MaterialsController::class, 'materialEditForSome']);
+    $route->post('/materials/deleteSelectedMaterials', [MaterialsController::class, 'DeleteSelectedMaterials']);
     $route->post('/materials/update', [MaterialsController::class, 'updateMaterial']);
     $route->get('/materials/delete/{id}', [MaterialsController::class, 'deleteMaterial']);
     $route->get('/materials/view/{id}', [MaterialsController::class, 'viewMaterial']);
 
     // Inventory Import/Export
-    $route->get('/import', [MaterialsController::class, 'importInventory']);
-    $route->post('/import', [MaterialsController::class, 'importInventory']);
+    $route->match(['get', 'post'], '/import', [MaterialsController::class, 'importInventory']);
     $route->get('/export', [MaterialsController::class, 'exportInventory']);
 
-    // Category Management
-    $route->get('/category', [CategoriesController ::class, 'category']);
-    $route->post('/category/add', [CategoriesController ::class, 'addCategory']);
-    $route->get('/category/delete/{id}', [CategoriesController ::class, 'deleteCategory']);
-    $route->post('/category/deleteSelected', [CategoriesController ::class, 'deleteSelectedCategories']);
-    $route->get('/category/edit/{id}', [CategoriesController ::class, 'editCategory']);
-    $route->post('/category/update/{id}', [CategoriesController ::class, 'updateCategory']);
-
     // Orders
-    $route->get('/order', [CategoriesController ::class, 'order']);
+    $route->get('/order', [MaterialsController::class, 'order']);
 });
 
+/**
+ * Category Routes
+ */
+$route->group('category', function ($route) {
+    $route->get('/category', [CategoriesController::class, 'category']);
+    $route->post('category/add', [CategoriesController::class, 'addCategory']);
+    $route->get('/category/delete/{id}', [CategoriesController::class, 'deleteCategory']);
+    $route->post('/category/deleteSelected', [CategoriesController::class, 'deleteSelectedCategories']);
+    $route->get('/category/edit/{id}', [CategoriesController::class, 'editCategory']);
+    $route->post('/category/update/{id}', [CategoriesController::class, 'updateCategory']);
+    $route->get('/category/detail/{id}', [CategoriesController::class, 'categoryDetail']);
+});
 
 /**
  * Profile Routes
@@ -125,15 +124,14 @@ $route->group('profile', function ($route) {
 
     // User List & Details
     $route->get('/userList', [AccountListController::class, 'viewUsersAccListProfile']);
-    $route->get('/userDetail', [AccountListController::class, 'viewUserDetail']);
+    $route->get('/userDetail/{id}', [AccountListController::class, 'viewUserDetail']);
 
     // User Management
     $route->get('/createuser', [AccountListController::class, 'createNewUserAccProfile']);
     $route->post('/userstore', [AccountListController::class, 'storeUserAccProfile']);
-    $route->get('/edituser', [AccountListController::class, 'editUserAccProfile']);
-    $route->post('/storeupdate', [AccountListController::class, 'updateUserAccProfile']);
-    $route->post('/deleteuser', [AccountListController::class, 'destroyUserAccProfile']);
-    $route->get('/deleteuser/{id}', [AccountListController::class, 'destroySingleUserAccProfile']);
+    $route->get('/edituser/{id}', [AccountListController::class, 'editUserAccProfile']);
+    $route->post('/storeupdate/{id}', [AccountListController::class, 'updateUserAccProfile']);
+    $route->match(['post', 'delete'], '/deleteuser/{id}', [AccountListController::class, 'destroySingleUserAccProfile']);
 });
 
 /**
