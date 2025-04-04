@@ -72,6 +72,7 @@ $route->group('dashboard', function($route) {
 });
 $route->group('welcome', function($route) {
     $route->get('/welcome', [WelcomeController::class, 'welcome']);
+    $route->get('/contact', [WelcomeController::class, 'contact']);
 });
 
 $route->group('inventory', function ($route) {
@@ -92,13 +93,6 @@ $route->group('inventory', function ($route) {
     $route->get('/inventory/export', [InventoryController::class, 'exportInventory']);
 
 
-    $route->get('/materials/view/{id}', [InventoryController::class, 'viewMaterial']);
-    $route->get('/category', [InventoryController::class, 'category']);
-    $route->post('/category/add', [InventoryController::class, 'addCategory']);
-    $route->get('/category/delete/(.*)', [InventoryController::class, 'deleteCategory']);
-    $route->post('/category/deleteSelected', [InventoryController::class, 'deleteSelectedCategories']);
-    $route->get('/category/category_edit/(.*)', [InventoryController::class, 'editCategory']);
-    $route->post('/category/update/(.*)', [InventoryController::class, 'updateCategory']);
 
     $route->get('/order', [InventoryController::class, 'order']);
 
