@@ -15,6 +15,9 @@ require_once "Controllers/AdminController/DashboardController.php";
 require_once "Controllers/adminController/BashInfoController.php";
 require_once 'Controllers/errorController.php';
 
+// Setting
+require_once 'Controllers/adminController/settingController/settingManagement.php';
+
 // require_one Controllers/adminController/dashboardController/stockListController.php;
 require_once 'Controllers/adminController/dashboardController/stockListController.php';
 // require_once 'Models/dashboard/purchaseOrderModel.php';
@@ -44,7 +47,7 @@ require_once "Controllers/userController/welcomeController/welcomeController.php
 $route = new Router();
 
 // Group routes by controller for better organization
-$route->group('auth', function($route) {
+$route->group('auth', function ($route) {
     // Login Routes
     $route->get('/login', [LoginController::class, 'login']);  // Display Login Form (GET)
     $route->post('/login', [LoginController::class, 'login']); // Handle Login (POST)
@@ -71,11 +74,11 @@ $route->group('auth', function($route) {
 
 
 
-$route->group('dashboard', function($route) {
+$route->group('dashboard', function ($route) {
     $route->get('/', [DashboardController::class, 'index']);
     $route->get('/user', [DashboardController::class, 'userDashboard']);
 });
-$route->group('welcome', function($route) {
+$route->group('welcome', function ($route) {
     $route->get('/welcome', [WelcomeController::class, 'welcome']);
 });
 
@@ -88,10 +91,9 @@ $route->group('inventory', function ($route) {
     $route->get('/materials/delete/{id}', [InventoryController::class, 'deleteMaterial']);
 
     $route->get('/order', [InventoryController::class, 'order']);
-
 });
 
-     // Router Categories 
+// Router Categories 
 $route->group('category', function ($route) {
     $route->get('/category', [CategoriesController::class, 'category']);
     $route->post('/category/add', [CategoriesController::class, 'addCategory']);
@@ -100,7 +102,6 @@ $route->group('category', function ($route) {
     $route->get('/category/category_edit/(.*)', [CategoriesController::class, 'editCategory']);
     $route->post('/category/update/(.*)', [CategoriesController::class, 'updateCategory']);
     $route->get('/category/detail/{id}', [CategoriesController::class, 'categoryDetail']);
-
 });
 
 
@@ -126,6 +127,10 @@ $route->group('profile', function ($route) {
     $route->get('/deleteuser/{id}', [AccountListController::class, 'destroySingleUserAccProfile']);
 });
 
+$route->group('setting', function ($route) {
+    $route->get('/setting', [SettingController::class, 'settingInfo']);
+});
+
 
 /**
  * Defines a GET route for handling error pages
@@ -138,4 +143,4 @@ $route->get('/error', [ErrorController::class, 'error']);
 
 // Route Handling: match the requested URI with the defined routes
 $route->route();
-// $route->printRoutes();
+// $route->printRoutes();   
