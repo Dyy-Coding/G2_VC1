@@ -1,5 +1,4 @@
-
-    <style>
+<style>
    
    #addMeterial {
         display: none;
@@ -68,38 +67,38 @@
         </div>
         <div>
             <button class="btn btn-primary me-2" id="btn-add">+ New Material</button>
-            <button class="btn btn-secondary">Import</button>
-            <button class="btn btn-secondary">Export</button>
+            <a href="/inventory/import" class="btn btn-secondary me-2">Import</a>
+            <a href="/inventory/export" class="btn btn-secondary">Export</a>
         </div>
     </div>
 
     <div class="input-group-meterails mt-2 mb-0">
         <div class="inline-controls-meterails">
             <div class="form-check ">
-                <input class="form-check-input" type="checkbox" id="showOutOfStock">
+                <input class="form-check-input" type="checkbox" id="show-out-of-stock-checkbox">
                 <label class="form-check-label" for="showOutOfStock">Show out of stock</label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="showOutOfStock">
-                <label class="form-check-label" for="showOutOfStock">Select all</label>
+                <input class="form-check-input " type="checkbox" id="selectAll">
+                <label class="form-check-label" for="selectAll">Select all</label>
             </div>
         </div>
         <div class="form-outline ">
-            <input type="search" id="form1" class="form-control" style="width:100%" placeholder="Search"/>
+            <input type="search" id="search" class="form-control" style="width:100%" placeholder="Search materials" />
         </div>
+
     </div>
-    <button class="btn btn-danger m-3" style="width: 5%; font-size: small; padding: 5px;">Delete</button>
     <table class="table text-center align-middle" style="table-layout: fixed; width: 100%;">
     <thead>
-        <tr>
+        <tr >
             <th >Select</th>
-            <th style="width: 15%;">Product</th>
-            <th style="width: 20%;">Category</th>
+            <th style="width: 18%;">Product</th>
+            <th style="width: 25%;">Category</th>
             <th>Quantity</th>
             <th>Status</th>
             <th>Type or Size</th>
             <th>Price</th>
-            <th style="width: 5%;">Action</th>
+            <th>Action</th>
         </tr>
     </thead>
     <tbody>
@@ -107,8 +106,8 @@
         <?php foreach ($materials as $material): ?>
             <tr>
                 <!-- Checkbox -->
-                <td>
-                    <input type="checkbox">
+                <td class="row-checkbox">
+                <input type="checkbox" name="categoryIDs[]" value="<?= $material['MaterialID'] ?>">
                 </td>
 
                 <!-- Product Column (Image + Name) -->
@@ -134,7 +133,7 @@
                 </td>
 
                 <td><?= htmlspecialchars($material['Size']) ?></td>
-                <td><?= htmlspecialchars($material['UnitPrice']) ?></td>
+                <td><?= htmlspecialchars($material['UnitPrice']) ?> $</td>
 
                 <!-- Action Dropdown -->
                 <td class="dropdown">
@@ -181,7 +180,7 @@
 <!-- Add Material Form -->
 <div class="form-container card addMeterial" id="addMeterial">
     <h2 class="text-center mb-4">Add New Material</h2>
-    <form method="POST" action="Add/materials" enctype="multipart/form-data">
+    <form method="POST" action="/materials/add" enctype="multipart/form-data">
         <div class="form-add-meterial">
             <div class="form-left">
                 <!-- Material Name -->
@@ -196,7 +195,9 @@
                     <select class="form-select" id="categoryID" name="categoryID" required>
                         <option value="" selected>Select Category</option>
                         <?php foreach ($categories as $category): ?>
-                            <option value="<?= $category['CategoryID']; ?>"><?= htmlspecialchars($category['CategoryName']); ?></option>
+                            <option value="<?= htmlspecialchars($category['CategoryID']) ?>">
+                                <?= htmlspecialchars($category['CategoryName']) ?>
+                            </option>
                         <?php endforeach; ?>
                     </select>
                 </div>
@@ -228,8 +229,8 @@
 
                 <!-- Minimum Stock Level -->
                 <div class="mb-3">
-                    <label for="minStockLevel" class="form-label">Minimum Stock Level</label>
-                    <input type="number" class="form-control" id="minStockLevel" name="minStockLevel" required min="0" placeholder="Enter min stock level">
+                    <label for="size" class="form-label">Type or Size</label>
+                    <input type="text" class="form-control" id="size" name="size" required min="0" placeholder="Enter size or type">
                 </div>
 
                 <!-- Reorder Level -->
@@ -294,15 +295,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Validate Form
     document.getElementById("btn-add-material").addEventListener("click", function (event) {
-        let name = document.getElementById("name").value;
-        if (!name) {
-            alert("Please fill in all fields!");
-            event.preventDefault();
-        }
-    });
+    const name = document.getElementById("name").value;
+    const categoryID = document.getElementById("categoryID").value;
+    const supplierID = document.getElementById("supplierID").value;
+    const quantity = document.getElementById("quantity").value;
+    const unitPrice = document.getElementById("unitPrice").value;
+    const size = document.getElementById("size").value;
+
+    if (!name || !categoryID || !supplierID || !quantity || !unitPrice) {
+        alert("Please fill in all required fields: Name, Category, Supplier, Quantity, and Unit Price!");
+        event.preventDefault();
+    }
+});
 });
 </script>
-
-
-
-
