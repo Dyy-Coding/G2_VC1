@@ -2,30 +2,23 @@
  
  class InventoryController extends BaseController {
      private $material;
-     private $category;
  
      public function __construct() {
          $this->material = new Material();
-         $this->category = new Category();
      }
  
      public function inventory() {
-         $categories = $this->material->getCategories();
          $suppliers = $this->material->getSuppliers();
          $materials = $this->material->getAllMaterials();
  
          $this->renderView("adminView/inventory/stock", [
-             'categories' => $categories,
              'suppliers' => $suppliers,
              'materials'  => $materials,
              'flash_message' => $_SESSION['flash_message'] ?? null
          ]);
          unset($_SESSION['flash_message']);
      }
- 
-     public function category() {
-         $this->renderView('adminView/inventory/category');
-     }
+
  
      public function order() {
          $this->renderView('adminView/inventory/order');
