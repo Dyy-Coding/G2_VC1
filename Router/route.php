@@ -84,11 +84,29 @@ $route->group('welcome', function ($route) {
 
 $route->group('inventory', function ($route) {
     $route->get('/inventory', [InventoryController::class, 'inventory']);
+    // Crud
     $route->get('/materials/add', [InventoryController::class, 'addMaterial']);
     $route->post('/materials/add', [InventoryController::class, 'addMaterial']);
     $route->get('/editmaterial/{id}', [InventoryController::class, 'materialEditForSome']);
     $route->post('/materials/update', [InventoryController::class, 'updateMaterial']);
     $route->get('/materials/delete/{id}', [InventoryController::class, 'deleteMaterial']);
+    // View detail
+    $route->get('/materials/view/{id}', [InventoryController::class, 'viewMaterial']);
+    // Import 
+    $route->get('/inventory/import', [InventoryController::class, 'importInventory']);
+    $route->post('/inventory/import', [InventoryController::class, 'importInventory']);
+
+    // Export file
+    $route->get('/inventory/export', [InventoryController::class, 'exportInventory']);
+
+
+    // $route->get('/materials/view/{id}', [InventoryController::class, 'viewMaterial']);
+    // $route->get('/category', [InventoryController::class, 'category']);
+    // $route->post('/category/add', [InventoryController::class, 'addCategory']);
+    // $route->get('/category/delete/(.*)', [InventoryController::class, 'deleteCategory']);
+    // $route->post('/category/deleteSelected', [InventoryController::class, 'deleteSelectedCategories']);
+    // $route->get('/category/category_edit/(.*)', [InventoryController::class, 'editCategory']);
+    // $route->post('/category/update/(.*)', [InventoryController::class, 'updateCategory']);
 
     $route->get('/order', [InventoryController::class, 'order']);
 });
