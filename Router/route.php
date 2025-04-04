@@ -170,8 +170,19 @@ $route->group('supplier', function ($route) {
 
 });
 
+
 $route->group('customers', function ($route) {
+    // show customer or read
     $route->get('/customers', [CustomerInfoController::class, 'getCustomersController']);
+    $route->get('/customer/detail', [CustomerInfoController::class, 'getCustomerDetailController']);
+
+
+    // edit
+    $route->get('/edit/customer', [CustomerInfoController::class, 'getCustomerController']);
+    $route->post('/update/customer', [CustomerInfoController::class, 'updateCustomerController']);
+
+    // delete 
+    $route->get('/delete/customer', [CustomerInfoController::class, 'destroyCustomerController']);
 });
 
 

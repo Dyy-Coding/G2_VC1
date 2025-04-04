@@ -67,8 +67,8 @@
                     <?php foreach ($suppliers as $supplier): ?>
                         <tr>
                             <td style="padding: 5px; text-align: center;">
-                                <?php if (!empty($supplier['profile_supplier'])): ?>
-                                    <img src="/<?= htmlspecialchars($supplier['profile_supplier']) ?>" alt="Profile"
+                                <?php if (!empty($supplier['image'])): ?>
+                                    <img src="/<?= htmlspecialchars($supplier['image']) ?>" alt="Profile"
                                         style="width: 30px; height: 30px; object-fit: cover; margin-left: -5px;">
                                 <?php else: ?>
                                     <i class="fa fa-user-circle" style="font-size: 30px; color: #6c757d;"></i>

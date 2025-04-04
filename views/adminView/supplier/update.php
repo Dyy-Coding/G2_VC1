@@ -4,7 +4,7 @@
             <h3 class="mb-4 mt-4">Update Supplier Info</h3>
             <form action="/supplier/update/<?= $supplier['SupplierID'] ?>" method="POST" enctype="multipart/form-data">
                 <!-- Hidden field to store the existing profile image path -->
-                <input type="hidden" name="existing_profile_supplier" value="<?= htmlspecialchars($supplier['profile_supplier'] ?? '') ?>">
+                <input type="hidden" name="existing_image" value="<?= htmlspecialchars($supplier['image'] ?? '') ?>">
 
                 <div class="row g-2 mb-3">
                     <div class="col-md-6">
@@ -51,8 +51,8 @@
                     <div class="col-md-6">
                         <label class="form-label">Current Profile Image</label>
                         <div>
-                            <?php if (!empty($supplier['profile_supplier'])): ?>
-                                <img src="/<?= htmlspecialchars($supplier['profile_supplier']) ?>" alt="Profile" style="width: 100px; height: 100px; object-fit: cover;">
+                            <?php if (!empty($supplier['image'])): ?>
+                                <img src="/<?= htmlspecialchars($supplier['image']) ?>" alt="Profile" style="width: 100px; height: 100px; object-fit: cover;">
                             <?php else: ?>
                                 <span>No Image</span>
                             <?php endif; ?>
@@ -64,7 +64,7 @@
                 <div class="row g-2 mb-3">
                     <div class="col-md-6">
                         <label for="profile-supplier" class="form-label">Upload New Profile Image (Optional)</label>
-                        <input type="file" id="profile-supplier" name="profile_supplier" class="form-control" accept="image/*">
+                        <input type="file" id="profile-supplier" name="image" class="form-control" accept="image/*">
                     </div>
                 </div>
 

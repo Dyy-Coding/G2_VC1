@@ -86,9 +86,9 @@ class SupplierManagementModel
             }
 
             $query = "INSERT INTO suppliers 
-                      (CategoryID, Name, ContactPerson, Phone, Email, Address, profile_supplier, CreatedAt, UpdatedAt) 
+                      (CategoryID, Name, ContactPerson, Phone, Email, Address, image, CreatedAt, UpdatedAt) 
                       VALUES 
-                      (:CategoryID, :Name, :ContactPerson, :Phone, :Email, :Address, :profile_supplier, NOW(), NOW())";
+                      (:CategoryID, :Name, :ContactPerson, :Phone, :Email, :Address, :image, NOW(), NOW())";
             $stmt = $this->dsn->prepare($query);
             $result = $stmt->execute([
                 ':CategoryID' => $data['CategoryID'],
@@ -97,7 +97,7 @@ class SupplierManagementModel
                 ':Phone' => $data['Phone'],
                 ':Email' => $data['Email'],
                 ':Address' => $data['Address'] ?: null,
-                ':profile_supplier' => $data['profile_supplier'] ?: null
+                ':image' => $data['image'] ?: null
             ]);
             return $result;
         } catch (PDOException $e) {
@@ -121,7 +121,7 @@ class SupplierManagementModel
                         Phone = :phone,
                         Address = :address,
                         CategoryID = :category_id,
-                        profile_supplier = :profile_supplier,
+                        image = :image,
                         UpdatedAt = NOW()
                       WHERE SupplierID = :supplier_id";
             $stmt = $this->dsn->prepare($query);
@@ -132,7 +132,7 @@ class SupplierManagementModel
                 ':phone' => $data['phone'],
                 ':address' => $data['address'] ?: null,
                 ':category_id' => $data['category_id'],
-                ':profile_supplier' => $data['profile_supplier'] ?: null,
+                ':image' => $data['image'] ?: null,
                 ':supplier_id' => $data['supplier_id']
             ]);
             return $result;
