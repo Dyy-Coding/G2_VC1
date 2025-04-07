@@ -9,7 +9,7 @@ if ($conn->connect_error) {
     exit;
 }
 
-// SQL Query to get order data
+// SQL Query to get order data for the last 12 months
 $sql = "
     SELECT 
         DATE_FORMAT(s.OrderDate, '%Y-%m') AS Month, 
@@ -19,6 +19,9 @@ $sql = "
         salesorders s 
     JOIN 
         salesorderdetails so ON s.SalesOrderID = so.SalesOrderID 
+    WHERE 
+        s.OrderDate >= DATE_FORMAT(DATE_SUB(CURDATE(), INTERVAL 12 MONTH), '%Y-%m-01') 
+        AND s.OrderDate <= LAST_DAY(CURDATE())
     GROUP BY 
         DATE_FORMAT(s.OrderDate, '%Y-%m') 
     ORDER BY 
