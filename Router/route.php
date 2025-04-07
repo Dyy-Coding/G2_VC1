@@ -137,6 +137,7 @@ $route->group('dashboard', function ($route) {
 $route->group('welcome', function ($route) {
     $route->get('/welcome', [WelcomeController::class, 'welcome']);
     $route->get('/contact', [WelcomeController::class, 'contact']);
+    $route->get('/about', [WelcomeController::class, 'about']);
 });
 
 /**
