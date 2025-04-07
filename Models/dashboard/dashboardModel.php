@@ -57,6 +57,7 @@ class TodayMoneyModel {
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
+
     public function getAllworkers() {
         $stmt = $this->conn->prepare("SELECT u.*, r.role_name FROM Users u 
           JOIN roles r ON u.role_id = r.role_id 

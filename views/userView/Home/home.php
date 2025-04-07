@@ -129,7 +129,7 @@
             <?php  ?>
                 <span class="ml-3">User name</span>
             <?php  ?>
-            <a href="/login" class="rounded-md bg-gray-700 px-3 py-2 text-sm font-medium text-white ml-5" role="menuitem" tabindex="-1" id="user-menu-item-2">Sign out</a>
+            <a href="/logout" class="rounded-md bg-gray-700 px-3 py-2 text-sm font-medium text-white ml-5" role="menuitem" tabindex="-1" id="user-menu-item-2">logout</a>
             </div>
             </div>
         </div>
@@ -149,25 +149,19 @@
 
     <!-- Main Content -->
     <main>
-        <!-- Banner Carousel -->
+                <!-- Banner Carousel -->
         <div id="bannerCarousel" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="https://t3.ftcdn.net/jpg/05/61/55/22/360_F_561552282_mGKd3af96Iw4TAjVj1NT8E9G6SNgxrPc.jpg" class="d-block w-100" alt="Summer Collection">
-                    <div class="carousel-caption d-flex flex-col items-center justify-center h-full text-white">
-                        <h2 class="text-4xl md:text-5xl font-bold mb-2">Building Materials</h2>
-                        <p class="text-lg md:text-xl mb-4">Starting at $20.00</p>
-                        <a href="#" class="btn bg-indigo-600 text-white hover:bg-indigo-700 transition-colors px-6 py-2 rounded-full">Shop Now</a>
+                <?php foreach ($topSellingMaterials as $index => $material): ?>
+                    <div class="carousel-item <?php echo $index === 0 ? 'active' : ''; ?>">
+                        <img src="<?php echo $material['ImagePath']; ?>" class="d-block w-100" alt="<?php echo htmlspecialchars($material['Name']); ?>">
+                        <div class="carousel-caption d-flex flex-col items-center justify-center h-full text-white">
+                            <h2 class="text-4xl md:text-5xl font-bold mb-2"><?php echo htmlspecialchars($material['Name']); ?></h2>
+                            <p class="text-lg md:text-xl mb-4">Starting at $<?php echo number_format($material['UnitPrice'], 2); ?></p>
+                            <a href="#" class="btn bg-indigo-600 text-white hover:bg-indigo-700 transition-colors px-6 py-2 rounded-full">Shop Now</a>
+                        </div>
                     </div>
-                </div>
-                <div class="carousel-item">
-                    <img src="https://bsmedia.business-standard.com/_media/bs/img/article/2024-12/08/full/1733676029-4514.jpg?im=FeatureCrop,size=(826,465)" class="d-block w-100" alt="New Arrivals">
-                    <div class="carousel-caption d-flex flex-col items-center justify-center h-full text-white">
-                        <h2 class="text-4xl md:text-5xl font-bold mb-2">New Arrivals</h2>
-                        <p class="text-lg md:text-xl mb-4">Starting at $15.00</p>
-                        <a href="#" class="btn bg-indigo-600 text-white hover:bg-indigo-700 transition-colors px-6 py-2 rounded-full">Shop Now</a>
-                    </div>
-                </div>
+                <?php endforeach; ?>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#bannerCarousel" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>

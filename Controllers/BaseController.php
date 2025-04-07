@@ -5,7 +5,7 @@ if (session_status() == PHP_SESSION_NONE) {
 
 // Assuming you have a user authentication system in place
 if (isset($userLoggedIn) && $userLoggedIn) {
-    if ($_SESSION["user_id"] != 1) {
+    if ($_SESSION["user_id"]) {
         $_SESSION['user_id'] = $user['id']; // Store user ID or other identifying information
         $_SESSION['status'] = 'Online';     // User is logged in, set status to Online
     }
@@ -13,9 +13,36 @@ if (isset($userLoggedIn) && $userLoggedIn) {
     // User is not logged in, set status to Offline
     $_SESSION['status'] = 'Offline';
 }
-
 class BaseController
 {
+
+
+      /**
+     * Render a customer-specific view without layout.
+     *
+     * @param string $view The customer view name to render.
+     * @param array $data Data to be passed to the view.
+     */
+    protected function renderCustomerView(string $view, array $data = [])
+    {
+        extract($data);
+        ob_start();
+
+        $viewFile = __DIR__ . '/../Views/' . $view . '.php';
+        if (!file_exists($viewFile)) {
+            $this->handleError(404, 'Customer view not found');
+            return;
+        }
+
+        require $viewFile;
+        $content = ob_get_clean();
+
+        echo $content;
+    }
+
+
+
+
     /**
      * Render a view with optional layout.
      *
@@ -74,26 +101,7 @@ class BaseController
      * @param array $data Data to be passed to the view.
      * @param string $layout The layout name (default is 'customer_layout').
      */
-    protected function renderCustomerView(string $view, array $data = [], string $layout = 'customer_layout')
-    {
-        extract($data);
-        ob_start();
 
-        $viewFile = __DIR__ . '/../Views/customer/' . $view . '.php';
-        if (!file_exists($viewFile)) {
-            $this->handleError(404, 'Customer view not found');
-            return;
-        }
-
-        require $viewFile;
-        $content = ob_get_clean();
-
-        if ($layout) {
-            $this->loadLayout($layout, $content, true);
-        } else {
-            echo $content;
-        }
-    }
 
     /**
      * Redirect to a given URL and terminate script.

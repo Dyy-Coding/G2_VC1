@@ -217,6 +217,22 @@ class Material {
         }
     }
 
+    public function getTopSellingMaterials() {
+        try {
+            // Query to get the top 5 selling materials
+            $query = "SELECT * FROM top_selling_materials LIMIT 5";
+            $stmt = $this->conn->prepare($query);
+            $stmt->execute();
+
+            // Fetch all results as an associative array
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            // Handle the error if the query fails
+            echo "Error: " . $e->getMessage();
+            return []; // Return an empty array in case of error
+        }
+    }
+
     public function getMaterialById(int $id) {
         try {
             $query = "SELECT m.*, c.CategoryName, s.Name AS SupplierName 
