@@ -68,25 +68,25 @@ $route->group('auth', function ($route) {
 
 
 
-$route->group('dashboard', function ($route) {
-    $route->get('/', [DashboardController::class, 'index']);
-    $route->get('/user', [DashboardController::class, 'userDashboard']);
-});
-$route->group('welcome', function ($route) {
-    $route->get('/welcome', [WelcomeController::class, 'welcome']);
-});
+// $route->group('dashboard', function ($route) {
+//     $route->get('/', [DashboardController::class, 'index']);
+//     $route->get('/user', [DashboardController::class, 'userDashboard']);
+// });
+// $route->group('welcome', function ($route) {
+//     $route->get('/welcome', [WelcomeController::class, 'welcome']);
+// });
 
-$route->group('inventory', function ($route) {
-    $route->get('/inventory', [InventoryController::class, 'inventory']);
-    $route->get('/materials/add', [InventoryController::class, 'addMaterial']);
-    $route->post('/materials/add', [InventoryController::class, 'addMaterial']);
-    $route->get('/editmaterial/{id}', [InventoryController::class, 'materialEditForSome']);
-    $route->post('/materials/update', [InventoryController::class, 'updateMaterial']);
-    $route->get('/materials/delete/{id}', [InventoryController::class, 'deleteMaterial']);
+// $route->group('inventory', function ($route) {
+//     $route->get('/inventory', [InventoryController::class, 'inventory']);
+//     $route->get('/materials/add', [InventoryController::class, 'addMaterial']);
+//     $route->post('/materials/add', [InventoryController::class, 'addMaterial']);
+//     $route->get('/editmaterial/{id}', [InventoryController::class, 'materialEditForSome']);
+//     $route->post('/materials/update', [InventoryController::class, 'updateMaterial']);
+//     $route->get('/materials/delete/{id}', [InventoryController::class, 'deleteMaterial']);
 
-    $route->get('/order', [InventoryController::class, 'order']);
+//     $route->get('/order', [InventoryController::class, 'order']);
 
-});
+// });
 
 // Sale order route group
 $route->group('sale', function ($route) {
@@ -96,39 +96,39 @@ $route->group('sale', function ($route) {
 });
 
 // Router Categories 
-$route->group('category', function ($route) {
-    $route->get('/category', [CategoriesController::class, 'category']);
-    $route->post('/category/add', [CategoriesController::class, 'addCategory']);
-    $route->get('/category/delete/(.*)', [CategoriesController::class, 'deleteCategory']);
-    $route->post('/category/deleteSelected', [CategoriesController::class, 'deleteSelectedCategories']);
-    $route->get('/category/category_edit/(.*)', [CategoriesController::class, 'editCategory']);
-    $route->post('/category/update/(.*)', [CategoriesController::class, 'updateCategory']);
-    $route->get('/category/detail/{id}', [CategoriesController::class, 'categoryDetail']);
+// $route->group('category', function ($route) {
+//     $route->get('/category', [CategoriesController::class, 'category']);
+//     $route->post('/category/add', [CategoriesController::class, 'addCategory']);
+//     $route->get('/category/delete/(.*)', [CategoriesController::class, 'deleteCategory']);
+//     $route->post('/category/deleteSelected', [CategoriesController::class, 'deleteSelectedCategories']);
+//     $route->get('/category/category_edit/(.*)', [CategoriesController::class, 'editCategory']);
+//     $route->post('/category/update/(.*)', [CategoriesController::class, 'updateCategory']);
+//     $route->get('/category/detail/{id}', [CategoriesController::class, 'categoryDetail']);
 
-});
+// });
 
 
-$route->group('profile', function ($route) {
-    // Profile admin
-    $route->get('/profile/account', [ProfileAccountController::class, 'profileadmin']);
+// $route->group('profile', function ($route) {
+//     // Profile admin
+//     $route->get('/profile/account', [ProfileAccountController::class, 'profileadmin']);
 
-    // $route->get('/addusersform', [AccountController::class, 'viewAddusersForm']);
-    $route->get('/userList', [AccountListController::class, 'viewUsersAccListProfile']);
-    $route->get('/userdetail', [AccountListController::class, 'viewUserDetail']);
+//     // $route->get('/addusersform', [AccountController::class, 'viewAddusersForm']);
+//     $route->get('/userList', [AccountListController::class, 'viewUsersAccListProfile']);
+//     $route->get('/userdetail', [AccountListController::class, 'viewUserDetail']);
 
-    // add user 
-    $route->get('/createuser', [AccountListController::class, 'createNewUserAccProfile']);
-    $route->post('/userstore', [AccountListController::class, 'storeUserAccProfile']);
+//     // add user 
+//     $route->get('/createuser', [AccountListController::class, 'createNewUserAccProfile']);
+//     $route->post('/userstore', [AccountListController::class, 'storeUserAccProfile']);
 
-    // update user
-    $route->get('/edituser', [AccountListController::class, 'editUserAccProfile']);
-    $route->post('/storeupdate', [AccountListController::class, 'updateUserAccProfile']);
+//     // update user
+//     $route->get('/edituser', [AccountListController::class, 'editUserAccProfile']);
+//     $route->post('/storeupdate', [AccountListController::class, 'updateUserAccProfile']);
 
-    // delete user
-    $route->post('/deleteuser', [AccountListController::class, 'destroyUserAccProfile']);
-    // Add this new route for single user deletion
-    $route->get('/deleteuser/{id}', [AccountListController::class, 'destroySingleUserAccProfile']);
-});
+//     // delete user
+//     $route->post('/deleteuser', [AccountListController::class, 'destroyUserAccProfile']);
+//     // Add this new route for single user deletion
+//     $route->get('/deleteuser/{id}', [AccountListController::class, 'destroySingleUserAccProfile']);
+// });
 
 
 $route->group('supplier', function ($route) {
