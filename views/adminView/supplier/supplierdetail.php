@@ -11,7 +11,7 @@
 
             <div class="row g-0">
                 <div class="col-md-4 bg-primary text-white text-center p-4 d-flex flex-column align-items-center">
-                    <img src="<?php
+                    <?php
                     $imagePath = !empty($supplier['image']) ? '/' . ltrim($supplier['image'], '/') : 'https://via.placeholder.com/120';
                     if ($imagePath !== 'https://via.placeholder.com/120' && !file_exists($_SERVER['DOCUMENT_ROOT'] . $imagePath)) {
                         $imagePath = 'https://via.placeholder.com/120';

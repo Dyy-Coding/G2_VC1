@@ -87,8 +87,8 @@ class SupplierManagementModel
                 ':ContactPerson' => $data['ContactPerson'],
                 ':Phone' => $data['Phone'],
                 ':Email' => $data['Email'],
-                ':Address' => $data['Address'] ?: null,
-                ':image' => $data['image'] ?: null
+                ':Address' => $data['Address'] ?? null,
+                ':image' => $data['image'] ?? null
             ]);
         } catch (PDOException $e) {
             throw new Exception("Error adding supplier: " . $e->getMessage());
@@ -101,6 +101,7 @@ class SupplierManagementModel
             if ($this->emailExists($data['email'], $data['supplier_id'])) {
                 throw new Exception("Email already exists");
             }
+
 
             $query = "UPDATE suppliers SET 
                         Name = :name,
@@ -120,7 +121,7 @@ class SupplierManagementModel
                 ':phone' => $data['phone'],
                 ':address' => $data['address'] ?? null,
                 ':category_id' => $data['category_id'],
-                ':image' => $data['image'] ?: null,
+                ':image' => $data['image'] ?? null,
                 ':supplier_id' => $data['supplier_id']
             ]);
         } catch (PDOException $e) {

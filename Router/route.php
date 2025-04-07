@@ -24,6 +24,11 @@ require_once "Controllers/adminController/dashboardController/stockListControlle
 require_once "Controllers/adminController/accountController/adminProfileController.php";
 require_once "Controllers/adminController/accountController/listUserController.php";
 
+// Supplier Controller
+require_once 'Controllers/adminController/supplierController/SupplierControoler.php';
+require_once 'Controllers/adminController/supplierController/DetailSupplierController.php';
+
+
 // Other Controllers
 require_once "Controllers/adminController/BashInfoController.php";
 require_once "Controllers/errorController.php";

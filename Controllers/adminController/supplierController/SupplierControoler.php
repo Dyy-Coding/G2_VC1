@@ -106,6 +106,7 @@ class SupplierController extends BaseController
 
             $html .= '</tbody></table>';
 
+
             $dompdf->loadHtml($html);
             $dompdf->setPaper('A4', 'landscape');
             $dompdf->render();
@@ -217,6 +218,7 @@ class SupplierController extends BaseController
                 'category_id' => (int) $_POST['category_id'],
                 'image' => $imagePath
             ];
+
 
             // Validate email format
             if (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {

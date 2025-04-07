@@ -46,7 +46,7 @@
                 <div class="row g-2 mb-3">
                     <div class="col-md-6">
                         <label for="profile-supplier" class="form-label">Profile Image (Optional)</label>
-                        <input type="file" id="profile-supplier" name="image" class="form-control" accept="image/*">
+                        <input type="file" id="profile-supplier" name="profile_supplier" class="form-control" accept="image/*">
                     </div>
                 </div>
 
