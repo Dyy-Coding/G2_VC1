@@ -35,6 +35,10 @@ require_once "Models/dashboard/dashboardModel.php";
 
 require_once "Controllers/userController/welcomeController/welcomeController.php";
 
+
+// User View Controller
+require_once "Controllers/userController/ShopController/salesController.php";
+
 // Initialize Router
 $route = new Router();
 
@@ -73,6 +77,7 @@ $route->group('dashboard', function($route) {
 $route->group('welcome', function($route) {
     $route->get('/welcome', [WelcomeController::class, 'welcome']);
     $route->get('/contact', [WelcomeController::class, 'contact']);
+    $route->get('/about', [WelcomeController::class, 'about']);
 });
 
 $route->group('inventory', function ($route) {
@@ -140,6 +145,11 @@ $route->group('profile', function ($route) {
     $route->get('/deleteuser/{id}', [AccountListController::class, 'destroySingleUserAccProfile']);
 });
 
+
+// UserView
+$route->group('shop', function($route) {
+    $route->get('/sales', [SalesController::class, 'sales']);
+});
 
 /**
  * Defines a GET route for handling error pages
