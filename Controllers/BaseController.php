@@ -3,6 +3,17 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
+// Assuming you have a user authentication system in place
+if (isset($userLoggedIn) && $userLoggedIn) {
+    if ($_SESSION["user_id"] != 1) {
+        $_SESSION['user_id'] = $user['id']; // Store user ID or other identifying information
+        $_SESSION['status'] = 'Online';     // User is logged in, set status to Online
+    }
+} else {
+    // User is not logged in, set status to Offline
+    $_SESSION['status'] = 'Offline';
+}
+
 class BaseController
 {
     /**
@@ -192,6 +203,19 @@ class BaseController
         if (!$isAuthPage) {
             require_once __DIR__ . '/../Views/layouts/footer.php';
         }
+    }
+
+    public function setFlashMessage($type, $message) {
+        $_SESSION['flash'][$type] = $message;
+    }
+
+    public function getFlashMessage($type) {
+        if (isset($_SESSION['flash'][$type])) {
+            $message = $_SESSION['flash'][$type];
+            unset($_SESSION['flash'][$type]); // Remove after retrieving
+            return $message;
+        }
+        return null;
     }
 }
 ?>

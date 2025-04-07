@@ -6,7 +6,7 @@ use PHPMailer\PHPMailer\Exception;
 // Ensure Composer autoload is included
 require 'vendor/autoload.php';
 
-class AuthController extends BaseController
+class ForgotPasswordController extends BaseController
 {
     private $userModel;
 
