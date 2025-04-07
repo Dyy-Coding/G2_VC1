@@ -128,7 +128,7 @@
             <?php  ?>
                 <span class="ml-3">User name</span>
             <?php  ?>
-            <a href="/login" class="rounded-md bg-gray-700 px-3 py-2 text-sm font-medium text-white ml-5" role="menuitem" tabindex="-1" id="user-menu-item-2">Sign out</a>
+            <a href="/logout" class="rounded-md bg-gray-700 px-3 py-2 text-sm font-medium text-white ml-5" role="menuitem" tabindex="-1" id="user-menu-item-2">Logout</a>
             </div>
             </div>
         </div>
