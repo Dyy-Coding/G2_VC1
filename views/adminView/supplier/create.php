@@ -43,7 +43,6 @@
                     </div>
                 </div>
 
-                <!-- Add File Input for Profile Image -->
                 <div class="row g-2 mb-3">
                     <div class="col-md-6">
                         <label for="profile-supplier" class="form-label">Profile Image (Optional)</label>

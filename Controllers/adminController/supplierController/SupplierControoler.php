@@ -1,7 +1,7 @@
 <?php
 require_once "Controllers/BaseController.php";
 require_once "Models/supplierModel/SupplierModel.php";
-require_once 'vendor/autoload.php'; // Include Composer autoload
+require_once 'vendor/autoload.php';
 
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
@@ -133,8 +133,8 @@ class SupplierController extends BaseController
             // Validate required fields
             $this->validateRequiredFields($_POST, ['category_id', 'supplier_name', 'contact_person', 'phone', 'email']);
 
-            // Handle file upload for profile_supplier
-            $profileSupplier = $this->handleFileUpload();
+            // Handle file upload for image
+            $imagePath = $this->handleFileUpload();
 
             // Prepare data for insertion
             $data = [
@@ -144,7 +144,7 @@ class SupplierController extends BaseController
                 'Phone' => trim($_POST['phone']),
                 'Email' => trim($_POST['email']),
                 'Address' => trim($_POST['address'] ?? ''),
-                'profile_supplier' => $profileSupplier
+                'image' => $imagePath
             ];
 
             // Validate email format
@@ -203,8 +203,8 @@ class SupplierController extends BaseController
             // Validate required fields
             $this->validateRequiredFields($_POST, ['category_id', 'supplier_name', 'contact_person', 'phone', 'email']);
 
-            // Handle file upload for profile_supplier
-            $profileSupplier = $this->handleFileUpload($_POST['existing_profile_supplier'] ?? null);
+            // Handle file upload for image
+            $imagePath = $this->handleFileUpload($_POST['existing_image'] ?? null);
 
             // Prepare data for update
             $data = [
@@ -215,7 +215,7 @@ class SupplierController extends BaseController
                 'phone' => trim($_POST['phone']),
                 'address' => trim($_POST['address'] ?? ''),
                 'category_id' => (int) $_POST['category_id'],
-                'profile_supplier' => $profileSupplier
+                'image' => $imagePath
             ];
 
             // Validate email format
@@ -243,23 +243,23 @@ class SupplierController extends BaseController
     public function destroySupplier($supplierId)
     {
         try {
-            // Get supplier data to retrieve the profile image path
+            // Get supplier data to retrieve the image path
             $supplier = $this->model->getSupplierById($supplierId);
             if (!$supplier) {
                 throw new Exception("Supplier not found");
             }
-
-            // Delete the profile image file if it exists
-            if (!empty($supplier['profile_supplier']) && file_exists($supplier['profile_supplier'])) {
-                unlink($supplier['profile_supplier']);
+    
+            // Delete the image file if it exists
+            if (!empty($supplier['image']) && file_exists($supplier['image'])) {
+                unlink($supplier['image']);
             }
-
+    
             // Delete from database
             $result = $this->model->deleteSupplier($supplierId);
             if (!$result) {
                 throw new Exception("Failed to delete supplier");
             }
-
+    
             $_SESSION['success'] = "Supplier deleted successfully!";
             header('Location: /suppliers');
             exit();

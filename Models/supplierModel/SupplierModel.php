@@ -10,7 +10,6 @@ class SupplierManagementModel
         $this->dsn = Database::getConnection();
     }
 
-    // Fetch all suppliers with their associated categories
     public function getAllSuppliersWithCategories()
     {
         try {
@@ -26,7 +25,6 @@ class SupplierManagementModel
         }
     }
 
-    // Fetch all categories for dropdowns
     public function getAllCategories()
     {
         try {
@@ -39,24 +37,19 @@ class SupplierManagementModel
         }
     }
 
-    // Fetch a single supplier by ID
     public function getSupplierById($supplierId)
     {
         try {
             $query = "SELECT * FROM suppliers WHERE SupplierID = :id LIMIT 1";
             $stmt = $this->dsn->prepare($query);
-            $stmt->execute([':id' => (int)$supplierId]);
+            $stmt->execute([':id' => (int) $supplierId]);
             $supplier = $stmt->fetch(PDO::FETCH_ASSOC);
-            if (!$supplier) {
-                return null;
-            }
-            return $supplier;
+            return $supplier ? $supplier : null;
         } catch (PDOException $e) {
             throw new Exception("Error fetching supplier: " . $e->getMessage());
         }
     }
 
-    // Check if an email already exists (for uniqueness validation)
     public function emailExists($email, $excludeSupplierId = null)
     {
         try {
@@ -67,7 +60,7 @@ class SupplierManagementModel
             $stmt = $this->dsn->prepare($query);
             $params = [':email' => $email];
             if ($excludeSupplierId) {
-                $params[':id'] = (int)$excludeSupplierId;
+                $params[':id'] = (int) $excludeSupplierId;
             }
             $stmt->execute($params);
             return $stmt->fetchColumn() > 0;
@@ -76,40 +69,35 @@ class SupplierManagementModel
         }
     }
 
-    // Insert a new supplier
     public function supplierStore($data)
     {
         try {
-            // Check for email uniqueness
             if ($this->emailExists($data['Email'])) {
                 throw new Exception("Email already exists");
             }
 
             $query = "INSERT INTO suppliers 
-                      (CategoryID, Name, ContactPerson, Phone, Email, Address, profile_supplier, CreatedAt, UpdatedAt) 
+                      (CategoryID, Name, ContactPerson, Phone, Email, Address, image, CreatedAt, UpdatedAt) 
                       VALUES 
-                      (:CategoryID, :Name, :ContactPerson, :Phone, :Email, :Address, :profile_supplier, NOW(), NOW())";
+                      (:CategoryID, :Name, :ContactPerson, :Phone, :Email, :Address, :image, NOW(), NOW())";
             $stmt = $this->dsn->prepare($query);
-            $result = $stmt->execute([
-                ':CategoryID' => $data['CategoryID'],
+            return $stmt->execute([
+                ':CategoryID' => $data['CategoryID'] ?? null,
                 ':Name' => $data['Name'],
                 ':ContactPerson' => $data['ContactPerson'],
                 ':Phone' => $data['Phone'],
                 ':Email' => $data['Email'],
-                ':Address' => $data['Address'] ?: null,
-                ':profile_supplier' => $data['profile_supplier'] ?: null
+                ':Address' => $data['Address'] ?? null,
+                ':image' => $data['image'] ?? null
             ]);
-            return $result;
         } catch (PDOException $e) {
             throw new Exception("Error adding supplier: " . $e->getMessage());
         }
     }
 
-    // Update an existing supplier
     public function updateSupplier($data)
     {
         try {
-            // Check for email uniqueness (excluding the current supplier)
             if ($this->emailExists($data['email'], $data['supplier_id'])) {
                 throw new Exception("Email already exists");
             }
@@ -121,33 +109,31 @@ class SupplierManagementModel
                         Phone = :phone,
                         Address = :address,
                         CategoryID = :category_id,
-                        profile_supplier = :profile_supplier,
+                        image = :image,
                         UpdatedAt = NOW()
                       WHERE SupplierID = :supplier_id";
             $stmt = $this->dsn->prepare($query);
-            $result = $stmt->execute([
+            return $stmt->execute([
                 ':name' => $data['name'],
                 ':contact_person' => $data['contact_person'],
                 ':email' => $data['email'],
                 ':phone' => $data['phone'],
-                ':address' => $data['address'] ?: null,
+                ':address' => $data['address'] ?? null,
                 ':category_id' => $data['category_id'],
-                ':profile_supplier' => $data['profile_supplier'] ?: null,
+                ':image' => $data['image'] ?? null,
                 ':supplier_id' => $data['supplier_id']
             ]);
-            return $result;
         } catch (PDOException $e) {
             throw new Exception("Error updating supplier: " . $e->getMessage());
         }
     }
 
-    // Delete a supplier
     public function deleteSupplier($supplierId)
     {
         try {
             $query = "DELETE FROM suppliers WHERE SupplierID = :id";
             $stmt = $this->dsn->prepare($query);
-            return $stmt->execute([':id' => (int)$supplierId]);
+            return $stmt->execute([':id' => (int) $supplierId]);
         } catch (PDOException $e) {
             throw new Exception("Error deleting supplier: " . $e->getMessage());
         }

@@ -4,23 +4,21 @@
             <div class="alert alert-danger"><?= htmlspecialchars($error) ?></div>
         <?php else: ?>
             <div class="position-absolute top-0 end-2 m-3 d-flex gap-2 align-items-center">
-                <!-- Back Button -->
                 <a href="/suppliers" class="btn btn-outline-primary px-3 py-2" title="Back to Supplier List">
                     <i class="fas fa-arrow-left"></i>
                 </a>
             </div>
 
             <div class="row g-0">
-                <!-- Supplier Profile Section -->
                 <div class="col-md-4 bg-primary text-white text-center p-4 d-flex flex-column align-items-center">
-                    <img src="<?php
-                    $imagePath = !empty($supplier['profile_supplier']) ? '/' . ltrim($supplier['profile_supplier'], '/') : 'https://via.placeholder.com/120';
+                    <?php
+                    $imagePath = !empty($supplier['image']) ? '/' . ltrim($supplier['image'], '/') : 'https://via.placeholder.com/120';
                     if ($imagePath !== 'https://via.placeholder.com/120' && !file_exists($_SERVER['DOCUMENT_ROOT'] . $imagePath)) {
                         $imagePath = 'https://via.placeholder.com/120';
                     }
-                    echo htmlspecialchars($imagePath);
-                    ?>" alt="Profile Picture" class="rounded-circle border mb-3"
-                        style="width: 120px; height: 120px; object-fit: cover;">
+                    ?>
+                    <img src="<?= htmlspecialchars($imagePath) ?>" alt="Profile Picture" 
+                         class="rounded-circle border mb-3" style="width: 120px; height: 120px; object-fit: cover;">
 
                     <h2 class="h5 fw-bold">
                         <?= htmlspecialchars($supplier['Name'] ?? 'Unknown Supplier') ?>
@@ -45,7 +43,6 @@
                         </p>
                     </div>
 
-                    <!-- Social Media Links -->
                     <div class="d-flex gap-2">
                         <a href="https://linkedin.com" class="btn btn-light btn-sm">
                             <i class="fab fa-linkedin-in"></i>
@@ -59,7 +56,6 @@
                     </div>
                 </div>
 
-                <!-- Supplier Details Section -->
                 <div class="col-md-8 p-4">
                     <h4 class="fw-bold mb-3 text-primary">Profile Details</h4>
 
