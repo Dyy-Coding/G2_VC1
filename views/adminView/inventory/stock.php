@@ -1,5 +1,6 @@
 <!-- Styles (no changes needed here except class correction if any) -->
 <style>
+    /* Improved styling for readability */
     #addMeterial {
         display: none;
         position: fixed;
@@ -55,6 +56,15 @@
     .form-outline {
         width: 100%;
     }
+
+    /* Material-specific classes */
+    .material-discount {
+        background-color: #f9f9f9; /* Light background for discounted items */
+    }
+
+    .material-discount .text-danger {
+        font-weight: bold;
+    }
 </style>
 
 <!-- Main Container -->
@@ -70,6 +80,8 @@
             <a href="/export" class="btn btn-secondary me-2">Export</a>
         </div>
     </div>
+
+    
 
     <!-- Form for bulk deletion -->
     <form action="/materials/deleteSelectedMaterials" method="POST">
@@ -108,7 +120,7 @@
             <tbody>
                 <?php if (!empty($materials)): ?>
                     <?php foreach ($materials as $material): ?>
-                        <tr>
+                        <tr class="<?= !empty($material['DiscountPrice']) ? 'material-discount' : '' ?>">
                             <td>
                                 <input type="checkbox" class="select-material" name="materialIDs[]" value="<?= htmlspecialchars($material['MaterialID']) ?>">
                             </td>
@@ -128,7 +140,14 @@
                                 <?php endif; ?>
                             </td>
                             <td><?= htmlspecialchars($material['Size']) ?></td>
-                            <td><?= htmlspecialchars($material['UnitPrice']) ?> $</td>
+                            <td>
+                                <?php if (!empty($material['DiscountPrice'])): ?>
+                                    <span class="text-danger"><?= htmlspecialchars($material['DiscountPrice']) ?> $</span> 
+                                    <span class="text-muted"><?= htmlspecialchars($material['UnitPrice']) ?> $</span>
+                                <?php else: ?>
+                                    <?= htmlspecialchars($material['UnitPrice']) ?> $
+                                <?php endif; ?>
+                            </td>
                             <td class="dropdown">
                                 <a href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     <i class="material-icons" style="font-size:34px;">more_vert</i>
@@ -168,32 +187,42 @@
 
 <!-- Add Material Form -->
 <div class="form-container card" id="addMeterial">
+    <!-- Form content remains unchanged -->
     <h2 class="text-center mb-4">Add New Material</h2>
     <form method="POST" action="/materials/add" enctype="multipart/form-data">
         <div class="form-add-meterial">
             <div class="form-left">
+                <!-- Material Name -->
                 <div class="mb-3">
                     <label for="name" class="form-label">Material Name</label>
                     <input type="text" class="form-control" id="name" name="name" required placeholder="Enter material name">
                 </div>
+
+                <!-- Category Dropdown -->
                 <div class="mb-3">
                     <label for="categoryID" class="form-label">Category</label>
                     <select class="form-select" id="categoryID" name="categoryID" required>
-                        <option value="">Select Category</option>
+                        <option value="" selected>Select Category</option>
                         <?php foreach ($categories as $category): ?>
-                            <option value="<?= htmlspecialchars($category['CategoryID']) ?>"><?= htmlspecialchars($category['CategoryName']) ?></option>
+                            <option value="<?= htmlspecialchars($category['CategoryID']) ?>">
+                                <?= htmlspecialchars($category['CategoryName']) ?>
+                            </option>
                         <?php endforeach; ?>
                     </select>
                 </div>
+
+                <!-- Supplier Dropdown -->
                 <div class="mb-3">
                     <label for="supplierID" class="form-label">Supplier</label>
                     <select class="form-select" id="supplierID" name="supplierID" required>
-                        <option value="">Select Supplier</option>
+                        <option value="" selected>Select Supplier</option>
                         <?php foreach ($suppliers as $supplier): ?>
-                            <option value="<?= htmlspecialchars($supplier['SupplierID']) ?>"><?= htmlspecialchars($supplier['Name']) ?></option>
+                            <option value="<?= $supplier['SupplierID']; ?>"><?= htmlspecialchars($supplier['Name']); ?></option>
                         <?php endforeach; ?>
                     </select>
                 </div>
+
+                <!-- Quantity -->
                 <div class="mb-3">
                     <label for="quantity" class="form-label">Quantity</label>
                     <input type="number" class="form-control" id="quantity" name="quantity" required min="0" placeholder="Enter quantity">
@@ -201,32 +230,43 @@
             </div>
 
             <div class="form-right">
+                <!-- Unit Price -->
                 <div class="mb-3">
                     <label for="unitPrice" class="form-label">Unit Price</label>
                     <input type="number" class="form-control" id="unitPrice" name="unitPrice" step="0.01" required min="0" placeholder="Enter unit price">
                 </div>
+
+                <!-- Minimum Stock Level -->
                 <div class="mb-3">
                     <label for="size" class="form-label">Type or Size</label>
-                    <input type="text" class="form-control" id="size" name="size" required placeholder="Enter size or type">
+                    <input type="text" class="form-control" id="size" name="size" required min="0" placeholder="Enter size or type">
                 </div>
+
+                <!-- Reorder Level -->
                 <div class="mb-3">
                     <label for="reorderLevel" class="form-label">Reorder Level</label>
                     <input type="number" class="form-control" id="reorderLevel" name="reorderLevel" required min="0" placeholder="Enter reorder level">
                 </div>
+
+                <!-- Image Upload -->
                 <div class="mb-3">
                     <label for="image" class="form-label">Upload Image</label>
-                    <input type="file" class="form-control" id="image" name="image" accept="image/*">
+                    <input type="file" class="form-control" id="image" name="image" accept="image/*" onchange="previewImage(event)">
                     <p class="text-muted">Accepted formats: jpg, png, gif</p>
                 </div>
+
+                <!-- Image Preview -->
                 <div class="mb-3 text-center">
                     <img id="preview" class="img-thumbnail" src="#" alt="Image Preview">
                 </div>
             </div>
         </div>
-
+        
         <button type="submit" class="btn btn-primary w-100" id="btn-add-material">Add Material</button>
         <button type="button" class="btn btn-secondary w-100 mt-2" id="btn-cancel">Cancel</button>
     </form>
 </div>
 
 <script src="views/assets/js/inventory/material.js"></script>
+
+

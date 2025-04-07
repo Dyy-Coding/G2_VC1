@@ -51,7 +51,7 @@ class TodayMoneyModel {
     
 
     public function getOrderOverview() {
-        $query = "SELECT COUNT(*) AS total_orders, SUM(TotalAmount) AS total_revenue FROM salesorders";
+        $query = "SELECT COUNT(*) AS total_orders, SUM(Total) AS total_revenue FROM salesorderdetails";
         $stmt = $this->conn->prepare($query);
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC);
@@ -157,7 +157,7 @@ class TodayMoneyModel {
     }
 
     public function getTotalPurchaseorders() {
-        return $this->conn->query("SELECT COUNT(*) AS totalPurchaseorders FROM purchaseorders")->fetchColumn();
+        return $this->conn->query("SELECT COUNT(*) AS totalPurchaseorders FROM purchaseorderdetails")->fetchColumn();
     }
 
 

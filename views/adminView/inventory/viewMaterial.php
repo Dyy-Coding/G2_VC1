@@ -11,7 +11,7 @@
         <!-- Material Details -->
         <div class="text-center mb-4">
             <?php if (!empty($material['ImagePath'])): ?>
-                <img src="/<?= htmlspecialchars($material['ImagePath']) ?>" alt="Material Image" class="img-fluid rounded" style="width: 30%; height:30vh;">
+                <img src="/<?= htmlspecialchars($material['ImagePath']) ?>" alt="Material Image" class="img-fluid rounded" style="width: 30%; height:30vh;" id="materialImage">
             <?php else: ?>
                 <p>No image available.</p>
             <?php endif; ?>
@@ -25,6 +25,9 @@
                 <option value="Category">Category</option>
                 <option value="Quantity">Quantity</option>
                 <option value="UnitPrice">Unit Price</option>
+                <option value="DiscountPercentage">Discount Percentage</option>
+                <option value="DiscountAmount">Discount Amount</option>
+                <option value="DiscountedPrice">Discounted Price</option>
                 <option value="Supplier">Supplier</option>
                 <option value="Size">Type or Size</option>
                 <option value="Description">Description</option>
@@ -48,6 +51,9 @@
                     'Category' => 'CategoryName',
                     'Quantity' => 'Quantity',
                     'Unit Price' => 'UnitPrice',
+                    'Discount Percentage' => 'DiscountPercentage',
+                    'Discount Amount' => 'DiscountAmount',
+                    'Discounted Price' => 'DiscountedPrice',
                     'Supplier' => 'SupplierName',
                     'Type or Size' => 'Size',
                     'Description' => 'Description',
@@ -62,7 +68,19 @@
                     'Created At' => 'CreatedAt',
                     'Updated At' => 'UpdatedAt'
                 ];
-                
+
+                // Adding logic to calculate Discounted Price
+                $unitPrice = $material['UnitPrice'] ?? 0;
+                $discountPercentage = $material['DiscountPercentage'] ?? 0;
+                $discountAmount = $material['DiscountAmount'] ?? 0;
+
+                $discountedPrice = $discountPercentage ? 
+                    $unitPrice * (1 - $discountPercentage / 100) : 
+                    $unitPrice - $discountAmount;
+
+                // Show the original and discounted prices
+                $material['DiscountedPrice'] = $discountedPrice;
+
                 foreach ($fields as $label => $key): ?>
                     <tr class="detail-row" data-field="<?= $key; ?>">
                         <th><?= $label; ?></th>
@@ -70,6 +88,10 @@
                             <?php if ($key === 'Status'): ?>
                                 <span class="badge <?= $material['Status'] == 'Active' ? 'bg-success' : 'bg-danger'; ?>">
                                     <?= htmlspecialchars($material['Status'] ?? 'N/A'); ?>
+                                </span>
+                            <?php elseif ($key === 'DiscountedPrice'): ?>
+                                <span class="text-success font-weight-bold">
+                                    $<?= number_format($material['DiscountedPrice'], 2); ?>
                                 </span>
                             <?php else: ?>
                                 <?= htmlspecialchars($material[$key] ?? 'N/A'); ?>
@@ -84,7 +106,7 @@
         <a href="/material" class="btn btn-outline-primary btn-lg rounded-pill">
                 <i class="fas fa-arrow-left"></i> Go Back
             </a>
-            <a href="/editmaterial/<?= $material['MaterialID']; ?>" class="btn btn-primary">Edit</a>
+            <a href="/materials/edit/<?= $material['MaterialID']; ?>" class="btn btn-primary">Edit</a>
             <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
         </div>
     </div>
@@ -120,7 +142,32 @@
                 row.style.display = selected.includes(row.dataset.field) ? "table-row" : "none";
             });
         });
-    });
 
-    
+        // Full-Screen Toggle for Image
+        const image = document.getElementById("materialImage");
+
+        image.addEventListener("click", function() {
+            if (image.classList.contains("full-screen")) {
+                image.classList.remove("full-screen");
+                image.style.width = "30%"; // Reset size to the original
+                image.style.height = "30vh"; // Reset height to the original
+            } else {
+                image.classList.add("full-screen");
+                image.style.width = "100vw"; // Full width of the screen
+                image.style.height = "100vh"; // Full height of the screen
+                image.style.objectFit = "contain"; // Maintain aspect ratio
+            }
+        });
+    });
 </script>
+
+<style>
+    /* Full screen class for image toggle */
+    .full-screen {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 9999;
+        object-fit: contain;
+    }
+</style>

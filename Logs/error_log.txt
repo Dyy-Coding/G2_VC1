@@ -1,8 +1,0 @@
-[2025-04-07 11:40:44] Error 404: Customer view not found
-[2025-04-07 11:40:50] Error 404: Customer view not found
-[2025-04-07 11:40:52] Error 404: Customer view not found
-[2025-04-07 11:40:53] Error 404: Customer view not found
-[2025-04-07 11:40:53] Error 404: Customer view not found
-[2025-04-07 11:40:53] Error 404: Customer view not found
-[2025-04-07 11:40:54] Error 404: Customer view not found
-[2025-04-07 11:40:54] Error 404: Customer view not found
