@@ -13,7 +13,7 @@ class SaleOrderController extends BaseController {
         try {
             $salesOrders = $this->model->getAllSalesOrders();
             
-            $this->renderView('adminView/sales/saleorder/orderlist', [
+            $this->renderView('adminView/sales/sale/orderlist', [
                 'salesOrders' => $salesOrders,
                 'success' => $_GET['success'] ?? null
             ]);
