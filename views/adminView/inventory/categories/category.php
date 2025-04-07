@@ -121,50 +121,7 @@
         </form>
     </div>
 
-        <div class="container-fluid py-4 d-flex justify-content-between" style="flex-direction: row;">
-            <div class="container mt-3 card" style="width: 100%; padding: 20px;">
-                <div class="mb-1">
-                    <h1>Top sales</h1>
-                </div>
-                <table class="table text-center">
-                    <thead>
-                        <tr>
-                            <th>Category</th>
-                            <th>Quantity</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="d-flex align-items-center justify-content-center">
-                                <div class="name">
-                                    <p class="mt-0 mb-0 ml-10">Cements</p>
-                                    <span>200 order</span>
-                                </div>
-                            </td>
-                            <td>1680</td>
-                        </tr>
-                        <tr>
-                            <td class="d-flex align-items-center justify-content-center">
-                                <div class="name">
-                                    <p class="mt-0 mb-0 ml-10">Color</p>
-                                    <span>200 order</span>
-                                </div>
-                            </td>
-                            <td>1680</td>
-                        </tr>
-                        <tr>
-                            <td class="d-flex align-items-center justify-content-center">
-                                <div class="name">
-                                    <p class="mt-0 mb-0 ml-10">Pin</p>
-                                    <span>200 order</span>
-                                </div>
-                            </td>
-                            <td>1680</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
+       
         <div class="container-fluid py-4 d-flex justify-content-between" style="flex-direction: row;">
             <div class="container card mt-0" style="width: 35%; padding: 20px;">
                 <div class="container mt-0">
@@ -173,28 +130,40 @@
                         <canvas id="chart-pie" class="chart-canvas" height="100vh"></canvas>
                     </div>
                     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-                    <script>
-                        var ctx = document.getElementById("chart-pie").getContext("2d");
-                        var myChart = new Chart(ctx, {
-                            type: "pie",
-                            data: {
-                                labels: ["Cements", "Pin", "Steel", "Color"],
-                                datasets: [{
-                                    data: [50, 30, 20, 25],
-                                    backgroundColor: ["#FF6384", "#36A2EB", "#FFCE56", "#4CAF50"],
-                                    hoverOffset: 5
-                                }]
-                            },
-                            options: {
-                                responsive: true,
-                                plugins: {
-                                    legend: {
-                                        position: "bottom"
-                                    }
-                                }
-                            }
-                        });
-                    </script>
+<script>
+    fetch("Models/invenoryModel/modelTopccategory.php") // 🔁 Replace with actual PHP filename, e.g., "top_categories.php"
+        .then(response => response.json())
+        .then(data => {
+            const labels = data.map(item => item.CategoryName);
+            const values = data.map(item => item.materialCount);
+
+            const ctx = document.getElementById("chart-pie").getContext("2d");
+            new Chart(ctx, {
+                type: "pie",
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        data: values,
+                        backgroundColor: [
+                            "#FF6384", "#36A2EB", "#FFCE56", "#4CAF50", "#9966FF"
+                        ],
+                        hoverOffset: 5
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: "bottom"
+                        }
+                    }
+                }
+            });
+        })
+        .catch(error => {
+            console.error("Error loading chart data:", error);
+        });
+</script>
                 </div>
             </div>
             <div class="container card mt-0" style="width: 60%; padding: 20px;">
@@ -204,30 +173,48 @@
                         <canvas id="chart-line" class="chart-canvas" height="150vh"></canvas>
                     </div>
                     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-                    <script>
-                        var ctx = document.getElementById("chart-line").getContext("2d");
-                        var myChart = new Chart(ctx, {
-                            type: "line",
-                            data: {
-                                labels: ["January", "February", "March", "April"],
-                                datasets: [{
-                                    label: "Sales",
-                                    data: [65, 59, 80, 81],
-                                    backgroundColor: "rgba(75, 192, 192, 0.2)",
-                                    borderColor: "rgba(75, 192, 192, 1)",
-                                    borderWidth: 1
-                                }]
-                            },
-                            options: {
-                                responsive: true,
-                                plugins: {
-                                    legend: {
-                                        position: "bottom"
-                                    }
-                                }
-                            }
-                        });
-                    </script>
+<script>
+    // Fetch data from the PHP API
+    fetch('path_to_your_php_script.php')
+        .then(response => response.json())
+        .then(data => {
+            // Prepare the data for the chart
+            const months = [];
+            const categorySales = [];
+            
+            // Process the data to get months and sales for each category
+            data.forEach(item => {
+                months.push(item.Month); // Add months (e.g., '2025-01')
+                categorySales.push(item.TotalSold); // Add total sales for each category
+            });
+
+            // Initialize the chart with the fetched data
+            var ctx = document.getElementById("chart-line").getContext("2d");
+            var myChart = new Chart(ctx, {
+                type: "line",
+                data: {
+                    labels: months, // Use months as labels
+                    datasets: [{
+                        label: "Total Sales",
+                        data: categorySales, // Use sales data
+                        backgroundColor: "rgba(75, 192, 192, 0.2)",
+                        borderColor: "rgba(75, 192, 192, 1)",
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: "bottom"
+                        }
+                    }
+                }
+            });
+        })
+        .catch(error => console.error('Error fetching data:', error));
+</script>
+
                 </div>
             </div>
         </div>

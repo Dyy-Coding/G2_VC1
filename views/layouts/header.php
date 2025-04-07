@@ -34,7 +34,7 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
 <!-- customer js -->
- <script src="views/assets/JavaScript/customers/customer.js" defer></script>
+<script src="views/assets/JavaScript/customers/customer.js" defer></script>
 
 
 <!--End for link or script for account feature  -->
@@ -45,15 +45,14 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <style>
   .aside_high {
-    height: 100vh; /* Full viewport height */
-    min-height: 100vh; /* Ensures full height */
-/* Enables scrolling if needed */
-}
+    height: 100vh;
+    /* Full viewport height */
+    min-height: 100vh;
+    /* Ensures full height */
+    /* Enables scrolling if needed */
+  }
 
-/* Custom class for smaller text */
-
-
-
+  /* Custom class for smaller text */
 </style>
 
 
@@ -63,7 +62,7 @@
 </head>
 
 <body class="g-sidenav-show   bg-gray-100">
-  <div class="min-height-300  position-fixed w-100 " style="background-color:rgb(104, 212, 255);"></div>
+  <div class="min-height-300  position-fixed w-100 " style="background-color:rgb(0, 140, 196);"></div>
   <aside
     class="sidenav bg-white navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 "
     id="sidenav-main">
@@ -116,6 +115,32 @@
                   }
                 });
               </script>
+              <li class="nav-item">
+                <a class="nav-link" href="/inventory">
+                  <div
+                    class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                    <i class="ni ni-calendar-grid-58 text-dark text-sm opacity-10"></i>
+                  </div>
+                  <span class="nav-link-text ms-1">Inventory</span>
+                </a>
+                <ul class="dropdown-menu" id="inventoryDropdown">
+                  <li><a class="dropdown-item" href="/category">Category</a></li>
+                  <li><a class="dropdown-item" href="/material">Material</a></li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/material">
+                  <div
+                    class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                    <i class="ni ni-calendar-grid-58 text-dark text-sm opacity-10"></i>
+                  </div>
+                  <span class="nav-link-text ms-1">Sales</span>
+                </a>
+                <ul class="dropdown-menu" id="inventoryDropdown">
+                  <li><a class="dropdown-item" href="/order">Order</a></li>
+                  <li><a class="dropdown-item" href="/inven">OrderDetail</a></li>
+                </ul>
+              </li>
 
               <li class="nav-item">
                 <a class="nav-link d-flex align-items-center" href="#" id="salesLink">

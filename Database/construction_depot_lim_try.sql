@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 02, 2025 at 01:38 PM
+-- Generation Time: Apr 04, 2025 at 02:16 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -87,7 +87,17 @@ INSERT INTO `audit_logs` (`id`, `user_id`, `action`, `ip_address`, `user_agent`,
 (44, NULL, 'Failed login (wrong password) for email: ronaldosmos94@gmail.com', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', '2025-04-02 10:53:38'),
 (45, 10, 'Customer registered successfully.', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', '2025-04-02 10:55:25'),
 (46, 10, 'User logged out', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', '2025-04-02 10:55:31'),
-(47, 2, 'User logged in', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', '2025-04-02 10:55:45');
+(47, 2, 'User logged in', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', '2025-04-02 10:55:45'),
+(48, 11, 'Customer registered successfully.', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', '2025-04-03 00:27:47'),
+(49, 11, 'User logged out', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', '2025-04-03 00:28:00'),
+(50, 2, 'User logged in', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', '2025-04-03 00:28:03'),
+(51, 2, 'User logged out', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', '2025-04-03 01:28:12'),
+(52, 2, 'User logged in', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', '2025-04-03 01:28:13'),
+(53, 2, 'User logged out', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', '2025-04-03 01:32:50'),
+(54, 2, 'User logged in', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', '2025-04-03 01:32:52'),
+(55, 2, 'User logged out', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', '2025-04-03 03:03:55'),
+(56, 2, 'Password reset token generated.', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', '2025-04-03 03:04:35'),
+(57, 2, 'User logged in', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36', '2025-04-03 03:04:56');
 
 -- --------------------------------------------------------
 
@@ -108,7 +118,7 @@ CREATE TABLE `categories` (
 --
 
 INSERT INTO `categories` (`CategoryID`, `CategoryName`, `Description`, `CreatedAt`, `UpdatedAt`) VALUES
-(1, 'Cement & Concrete', 'Cement, concrete mix, ready-mix concrete, etc.', '2025-03-18 00:12:10', '2025-03-18 00:12:10'),
+(1, 'Cement & Concrete', '                        Cement, concrete mix, ready-mix concrete, etc.                    ', '2025-03-18 00:12:10', '2025-04-03 06:01:56'),
 (3, 'Steel & Metal Products', 'Steel rods, beams, pipes, metal sheets, etc.', '2025-03-18 00:12:10', '2025-03-18 00:12:10'),
 (4, 'Wood & Timber', 'Plywood, MDF boards, hardwood, softwood, etc.', '2025-03-18 00:12:10', '2025-03-18 00:12:10'),
 (5, 'Roofing Materials', 'Roof tiles, metal roofing sheets, shingles, etc.', '2025-03-18 00:12:10', '2025-03-18 00:12:10'),
@@ -129,9 +139,7 @@ INSERT INTO `categories` (`CategoryID`, `CategoryName`, `Description`, `CreatedA
 (20, 'Landscaping & Outdoor', 'Garden paving, fencing, outdoor lighting, irrigation systems, etc.', '2025-03-18 00:12:10', '2025-03-18 00:12:10'),
 (21, 'Structural Reinforcements', 'Rebars, post-tensioning systems, fiber reinforcements, formwork, etc.', '2025-03-18 00:12:10', '2025-03-18 00:12:10'),
 (22, 'Glass & Glazing', 'Tempered glass, laminated glass, acrylic sheets, skylights, etc.', '2025-03-18 00:12:10', '2025-03-18 00:12:10'),
-(23, 'Smart Building Technologies', 'Home automation, smart locks, IoT sensors, building management systems, etc.', '2025-03-18 00:12:10', '2025-03-18 00:12:10'),
-(24, 'Sand', 'good for building', '2025-03-28 02:49:19', '2025-03-28 02:49:19'),
-(25, 'Sand sea', 'good for building', '2025-03-31 00:42:06', '2025-03-31 00:42:06');
+(23, 'Smart Building Technologies', 'Home automation, smart locks, IoT sensors, building management systems, etc.', '2025-03-18 00:12:10', '2025-03-18 00:12:10');
 
 -- --------------------------------------------------------
 
@@ -300,17 +308,40 @@ CREATE TABLE `materials` (
 --
 
 INSERT INTO `materials` (`MaterialID`, `Name`, `CategoryID`, `Quantity`, `UnitPrice`, `SupplierID`, `MinStockLevel`, `ReorderLevel`, `UnitOfMeasure`, `Size`, `ImagePath`, `Description`, `CreatedAt`, `UpdatedAt`, `Brand`, `Location`, `SupplierContact`, `Status`, `WarrantyPeriod`) VALUES
-(1, 'Fan', 1, 70, 5.99, 2, 2, 7, 'kg', 'm', NULL, 'jhjhttr', '2025-03-18 17:48:45', '2025-03-18 17:48:45', 'K cement', 'Phnom penh', '07654352424', '', 2),
-(2, 'Fan', 1, 70, 5.99, 2, 2, 7, 'kg', 'm', NULL, 'jhjhttr', '2025-03-18 17:49:22', '2025-03-18 17:49:22', 'K cement', 'Phnom penh', '07654352424', '', 2),
-(5, 'Fan', 1, 90, 5.89, 1, 3, 6, 'kg', 'm3', NULL, 'hdhdgsg', '2025-03-18 18:12:54', '2025-03-18 18:12:54', 'K cement', 'Phnom penh', '07654352424', '', 2),
-(6, 'lymeng', 1, 90, 5.88, 3, 2, 6, 'kg', 'kg', NULL, 'man', '2025-03-18 18:26:43', '2025-03-18 18:26:43', 'K cementmong', 'Phnom penh', '07654352486', '', 1),
-(7, 'chandy_neat', 1, 67, 5.99, 1, 2, 6, 'Bav', 'kg', NULL, 'nnnnnnbb', '2025-03-18 19:02:07', '2025-03-18 19:02:07', 'K cementmong', 'Phnom penh', '07654352486', '', 2),
-(8, 'chandy_neat', 1, 0, 5.99, 1, 0, 0, '', 'kg', NULL, 'nnnnnnbb', '2025-03-18 19:06:38', '2025-03-31 18:35:14', 'K cementmong', '', '', 'Active', 0),
-(9, 'lymeng', 19, 0, 7.99, 2, 0, 0, '', 'kg', NULL, 'hdhfdhdh', '2025-03-18 19:42:44', '2025-04-01 18:30:23', 'K cementmong', '', '', 'Active', 0),
-(20, 'Gravel', 4, 3, 1.50, 6, 0, 0, '', 'Medium', 'images/gravel.jpg', 'Gravel for foundation works.', '2025-03-26 16:18:55', '2025-03-31 18:36:52', 'BrandE', '', '', 'Active', 0),
-(21, 'Paint', 5, 0, 15.00, 7, 0, 0, '', '5L', 'images/paint.jpg', 'Waterproof paint for external surfaces.', '2025-03-26 16:18:55', '2025-03-31 17:12:12', 'BrandF', '', '', 'Discontinued', 0),
-(22, 'Tiles', 6, 2, 2.50, 8, 0, 0, '', '30x30cm', 'images/tiles.jpg', 'Ceramic tiles for flooring and wall tiling.', '2025-03-26 16:18:55', '2025-03-31 17:12:29', 'BrandG', '', '', 'Active', 0),
-(23, 'Book Smart', 19, 3, 90.00, 6, 0, 0, '', 'books', 'uploads/images/67ea58a816de0_8d0c72f49aaa0a6a35d34c7b98035baa.jpg', '', '2025-03-31 15:33:47', '2025-03-31 18:36:02', 'JMK', '', '', 'Active', 0);
+(28, 'Ramco Cement', 1, 90, 5.00, 1, 0, 5, '', 'Bav', 'uploads/images/67efc9cfcc1c3_9b2221a70099156c00ba9cd75afde65b.jpg', '', '2025-04-04 19:00:15', '2025-04-04 19:00:15', '', '', '', '', 0),
+(29, 'Zinc plated Chipboard screws', 3, 70, 10.00, 1, 0, 6, '', 'Box', 'uploads/images/67efca9f3ea9a_d5ca745d86b6bc1610703de6768e96b4.jpg', '', '2025-04-04 19:03:43', '2025-04-04 19:03:43', '', '', '', '', 0),
+(30, 'Sand', 1, 3, 50.00, 1, 0, 6, '', 'Car', 'uploads/images/67efcaf6b134a_7a64fff940f3f0debcaf25c5fdddc87e.jpg', '', '2025-04-04 19:05:10', '2025-04-04 19:05:10', '', '', '', '', 0),
+(31, 'Fan', 7, 60, 30.00, 7, 0, 5, '', 'Fan', 'uploads/images/67efcb9baa757_f498619669ecb103b9d4f355cb7b8401.jpg', '', '2025-04-04 19:07:55', '2025-04-04 19:07:55', '', '', '', '', 0),
+(32, '🤣🤣🤣', 1, 60, 60.00, 15, 0, 5, '', 'Tacx', 'uploads/images/67efcc941bd3f_0ea316dbe0fd5dab21e160b3f48fa6b5.jpg', '', '2025-04-04 19:12:04', '2025-04-04 19:12:04', '', '', '', '', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pages`
+--
+
+CREATE TABLE `pages` (
+  `id` int(11) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `url` varchar(255) NOT NULL,
+  `description` text DEFAULT NULL,
+  `category` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `pages`
+--
+
+INSERT INTO `pages` (`id`, `title`, `url`, `description`, `category`) VALUES
+(1, 'Dashboard', '/', 'Overview of the system', 'General'),
+(2, 'Inventory Management', '/materail', 'Manage stock and warehouse items', 'Inventory'),
+(3, 'Categories', '/category', 'Manage product categories', 'Inventory'),
+(4, 'Materials', '/materials', 'Manage raw materials and supplies', 'Inventory'),
+(5, 'Customers', '/customer', 'Customer management system', 'Sales'),
+(6, 'Employees', '/employees', 'Employee records and roles', 'HR'),
+(7, 'Sales Reports', '/sales', 'View and analyze sales reports', 'Sales'),
+(8, 'Purchase Orders', '/purchasesOrder', 'Track and manage supplier purchases', 'Purchasing'),
+(9, 'Work Logs', '/work_logs', 'Employee work logs and task tracking', 'HR');
 
 -- --------------------------------------------------------
 
@@ -326,6 +357,13 @@ CREATE TABLE `password_resets` (
   `expiration` datetime NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `password_resets`
+--
+
+INSERT INTO `password_resets` (`id`, `user_id`, `email`, `token`, `expiration`, `created_at`) VALUES
+(1, 2, NULL, 'b08b5fa8b149bf092805590205d287c5ec2c15ac295ced6fb23029b634c88179', '2025-04-03 06:04:33', '2025-04-03 03:04:33');
 
 -- --------------------------------------------------------
 
@@ -361,116 +399,6 @@ CREATE TABLE `purchaseorderdetails` (
   `Tax` decimal(10,2) DEFAULT 0.00,
   `DeliveryDate` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `purchaseorderdetails`
---
-
-INSERT INTO `purchaseorderdetails` (`PurchaseOrderID`, `MaterialID`, `Quantity`, `UnitPrice`, `OrderDate`, `SupplierID`, `Status`, `Discount`, `Tax`, `DeliveryDate`) VALUES
-(7, 2, 20, 1.80, '2024-04-01', 1, 'Pending', 0.00, 0.10, '2024-04-10'),
-(8, 1, 22, 2.50, '2024-04-15', 2, 'Completed', 0.05, 0.12, '2024-04-20'),
-(9, 5, 30, 3.75, '2024-05-01', 1, 'Shipped', 0.10, 0.15, '2024-05-10'),
-(10, 6, 15, 4.00, '2024-05-15', 2, 'Pending', 0.00, 0.08, '2024-05-20'),
-(11, 7, 25, 5.50, '2024-06-01', 1, 'Completed', 0.05, 0.12, '2024-06-10'),
-(12, 8, 10, 8.00, '2024-06-15', 2, 'Pending', 0.00, 0.10, '2024-06-20'),
-(15, 2, 20, 1.80, '2024-04-01', 1, 'Pending', 0.00, 0.10, '2024-04-10'),
-(16, 1, 22, 2.50, '2024-04-15', 2, 'Completed', 0.05, 0.12, '2024-04-20'),
-(17, 5, 30, 3.75, '2024-05-01', 1, 'Shipped', 0.10, 0.15, '2024-05-10'),
-(18, 6, 15, 4.00, '2024-05-15', 2, 'Pending', 0.00, 0.08, '2024-05-20'),
-(19, 7, 25, 5.50, '2024-06-01', 1, 'Completed', 0.05, 0.12, '2024-06-10'),
-(20, 8, 10, 8.00, '2024-06-15', 2, 'Pending', 0.00, 0.10, '2024-06-20'),
-(21, 7, 35, 7.20, '2024-07-01', 1, 'Shipped', 0.10, 0.18, '2024-07-10'),
-(22, 8, 20, 3.00, '2024-07-15', 2, 'Completed', 0.07, 0.12, '2024-07-20'),
-(25, 2, 20, 1.80, '2024-04-01', 1, 'Pending', 0.00, 0.10, '2024-04-10'),
-(26, 1, 22, 2.50, '2024-04-15', 2, 'Completed', 0.05, 0.12, '2024-04-20'),
-(27, 5, 30, 3.75, '2024-05-01', 1, 'Shipped', 0.10, 0.15, '2024-05-10'),
-(28, 6, 15, 4.00, '2024-05-15', 2, 'Pending', 0.00, 0.08, '2024-05-20'),
-(29, 7, 25, 5.50, '2024-06-01', 1, 'Completed', 0.05, 0.12, '2024-06-10'),
-(30, 8, 10, 8.00, '2024-06-15', 2, 'Pending', 0.00, 0.10, '2024-06-20'),
-(31, 7, 35, 7.20, '2024-07-01', 1, 'Shipped', 0.10, 0.18, '2024-07-10'),
-(32, 8, 20, 3.00, '2024-07-15', 2, 'Completed', 0.07, 0.12, '2024-07-20'),
-(35, 2, 20, 1.80, '2024-04-01', 1, 'Pending', 0.00, 0.10, '2024-04-10'),
-(36, 1, 22, 2.50, '2024-04-15', 2, 'Completed', 0.05, 0.12, '2024-04-20'),
-(37, 5, 30, 3.75, '2024-05-01', 1, 'Shipped', 0.10, 0.15, '2024-05-10'),
-(38, 6, 15, 4.00, '2024-05-15', 2, 'Pending', 0.00, 0.08, '2024-05-20'),
-(39, 7, 25, 5.50, '2024-06-01', 1, 'Completed', 0.05, 0.12, '2024-06-10'),
-(40, 8, 10, 8.00, '2024-06-15', 2, 'Pending', 0.00, 0.10, '2024-06-20'),
-(41, 7, 35, 7.20, '2024-07-01', 1, 'Shipped', 0.10, 0.18, '2024-07-10'),
-(42, 8, 20, 3.00, '2024-07-15', 2, 'Completed', 0.07, 0.12, '2024-07-20'),
-(43, 1, 40, 5.50, '2024-08-01', 1, 'Pending', 0.00, 0.10, '2024-08-10'),
-(44, 2, 50, 2.00, '2024-08-15', 2, 'Completed', 0.05, 0.15, '2024-08-20'),
-(47, 2, 20, 1.80, '2024-04-01', 1, 'Pending', 0.00, 0.10, '2024-04-10'),
-(48, 1, 22, 2.50, '2024-04-15', 2, 'Completed', 0.05, 0.12, '2024-04-20'),
-(49, 5, 30, 3.75, '2024-05-01', 1, 'Shipped', 0.10, 0.15, '2024-05-10'),
-(50, 6, 15, 4.00, '2024-05-15', 2, 'Pending', 0.00, 0.08, '2024-05-20'),
-(51, 7, 25, 5.50, '2024-06-01', 1, 'Completed', 0.05, 0.12, '2024-06-10'),
-(52, 8, 10, 8.00, '2024-06-15', 2, 'Pending', 0.00, 0.10, '2024-06-20'),
-(53, 7, 35, 7.20, '2024-07-01', 1, 'Shipped', 0.10, 0.18, '2024-07-10'),
-(54, 8, 20, 3.00, '2024-07-15', 2, 'Completed', 0.07, 0.12, '2024-07-20'),
-(55, 1, 40, 5.50, '2024-08-01', 1, 'Pending', 0.00, 0.10, '2024-08-10'),
-(56, 2, 50, 2.00, '2024-08-15', 2, 'Completed', 0.05, 0.15, '2024-08-20'),
-(57, 1, 15, 9.00, '2024-09-01', 1, 'Shipped', 0.10, 0.12, '2024-09-10'),
-(58, 2, 30, 4.50, '2024-09-15', 2, 'Pending', 0.05, 0.10, '2024-09-20'),
-(61, 2, 20, 1.80, '2024-04-01', 1, 'Pending', 0.00, 0.10, '2024-04-10'),
-(62, 1, 22, 2.50, '2024-04-15', 2, 'Completed', 0.05, 0.12, '2024-04-20'),
-(63, 5, 30, 3.75, '2024-05-01', 1, 'Shipped', 0.10, 0.15, '2024-05-10'),
-(64, 6, 15, 4.00, '2024-05-15', 2, 'Pending', 0.00, 0.08, '2024-05-20'),
-(65, 7, 25, 5.50, '2024-06-01', 1, 'Completed', 0.05, 0.12, '2024-06-10'),
-(66, 8, 10, 8.00, '2024-06-15', 2, 'Pending', 0.00, 0.10, '2024-06-20'),
-(67, 7, 35, 7.20, '2024-07-01', 1, 'Shipped', 0.10, 0.18, '2024-07-10'),
-(68, 8, 20, 3.00, '2024-07-15', 2, 'Completed', 0.07, 0.12, '2024-07-20'),
-(69, 1, 40, 5.50, '2024-08-01', 1, 'Pending', 0.00, 0.10, '2024-08-10'),
-(70, 2, 50, 2.00, '2024-08-15', 2, 'Completed', 0.05, 0.15, '2024-08-20'),
-(71, 1, 15, 9.00, '2024-09-01', 1, 'Shipped', 0.10, 0.12, '2024-09-10'),
-(72, 2, 30, 4.50, '2024-09-15', 2, 'Pending', 0.05, 0.10, '2024-09-20'),
-(73, 20, 25, 3.80, '2024-10-01', 1, 'Completed', 0.05, 0.12, '2024-10-10'),
-(74, 21, 40, 6.20, '2024-10-15', 2, 'Pending', 0.10, 0.15, '2024-10-20'),
-(77, 2, 20, 1.80, '2024-04-01', 1, 'Pending', 0.00, 0.10, '2024-04-10'),
-(78, 1, 22, 2.50, '2024-04-15', 2, 'Completed', 0.05, 0.12, '2024-04-20'),
-(79, 5, 30, 3.75, '2024-05-01', 1, 'Shipped', 0.10, 0.15, '2024-05-10'),
-(80, 6, 15, 4.00, '2024-05-15', 2, 'Pending', 0.00, 0.08, '2024-05-20'),
-(81, 7, 25, 5.50, '2024-06-01', 1, 'Completed', 0.05, 0.12, '2024-06-10'),
-(82, 8, 10, 8.00, '2024-06-15', 2, 'Pending', 0.00, 0.10, '2024-06-20'),
-(83, 7, 35, 7.20, '2024-07-01', 1, 'Shipped', 0.10, 0.18, '2024-07-10'),
-(84, 8, 20, 3.00, '2024-07-15', 2, 'Completed', 0.07, 0.12, '2024-07-20'),
-(85, 1, 40, 5.50, '2024-08-01', 1, 'Pending', 0.00, 0.10, '2024-08-10'),
-(86, 2, 50, 2.00, '2024-08-15', 2, 'Completed', 0.05, 0.15, '2024-08-20'),
-(87, 1, 15, 9.00, '2024-09-01', 1, 'Shipped', 0.10, 0.12, '2024-09-10'),
-(88, 2, 30, 4.50, '2024-09-15', 2, 'Pending', 0.05, 0.10, '2024-09-20'),
-(89, 20, 25, 3.80, '2024-10-01', 1, 'Completed', 0.05, 0.12, '2024-10-10'),
-(90, 21, 40, 6.20, '2024-10-15', 2, 'Pending', 0.10, 0.15, '2024-10-20'),
-(91, 1, 30, 4.60, '2024-11-01', 1, 'Shipped', 0.00, 0.10, '2024-11-10'),
-(92, 1, 20, 5.00, '2024-11-15', 2, 'Completed', 0.05, 0.12, '2024-11-20'),
-(93, 1, 25, 6.80, '2024-12-01', 1, 'Pending', 0.00, 0.15, '2024-12-10'),
-(94, 20, 30, 7.00, '2024-12-15', 2, 'Completed', 0.07, 0.12, '2024-12-20'),
-(95, 21, 20, 8.20, '2025-01-01', 1, 'Shipped', 0.10, 0.18, '2025-01-10'),
-(96, 22, 35, 3.00, '2025-01-15', 2, 'Pending', 0.05, 0.12, '2025-01-20'),
-(99, 2, 20, 1.80, '2024-04-01', 1, 'Pending', 0.00, 0.10, '2024-04-10'),
-(100, 1, 22, 2.50, '2024-04-15', 2, 'Completed', 0.05, 0.12, '2024-04-20'),
-(101, 5, 30, 3.75, '2024-05-01', 1, 'Shipped', 0.10, 0.15, '2024-05-10'),
-(102, 6, 15, 4.00, '2024-05-15', 2, 'Pending', 0.00, 0.08, '2024-05-20'),
-(103, 7, 25, 5.50, '2024-06-01', 1, 'Completed', 0.05, 0.12, '2024-06-10'),
-(104, 8, 10, 8.00, '2024-06-15', 2, 'Pending', 0.00, 0.10, '2024-06-20'),
-(105, 7, 35, 7.20, '2024-07-01', 1, 'Shipped', 0.10, 0.18, '2024-07-10'),
-(106, 8, 20, 3.00, '2024-07-15', 2, 'Completed', 0.07, 0.12, '2024-07-20'),
-(107, 1, 40, 5.50, '2024-08-01', 1, 'Pending', 0.00, 0.10, '2024-08-10'),
-(108, 2, 50, 2.00, '2024-08-15', 2, 'Completed', 0.05, 0.15, '2024-08-20'),
-(109, 1, 15, 9.00, '2024-09-01', 1, 'Shipped', 0.10, 0.12, '2024-09-10'),
-(110, 2, 30, 4.50, '2024-09-15', 2, 'Pending', 0.05, 0.10, '2024-09-20'),
-(111, 20, 25, 3.80, '2024-10-01', 1, 'Completed', 0.05, 0.12, '2024-10-10'),
-(112, 21, 40, 6.20, '2024-10-15', 2, 'Pending', 0.10, 0.15, '2024-10-20'),
-(113, 1, 30, 4.60, '2024-11-01', 1, 'Shipped', 0.00, 0.10, '2024-11-10'),
-(114, 1, 20, 5.00, '2024-11-15', 2, 'Completed', 0.05, 0.12, '2024-11-20'),
-(115, 1, 25, 6.80, '2024-12-01', 1, 'Pending', 0.00, 0.15, '2024-12-10'),
-(116, 20, 30, 7.00, '2024-12-15', 2, 'Completed', 0.07, 0.12, '2024-12-20'),
-(117, 21, 20, 8.20, '2025-01-01', 1, 'Shipped', 0.10, 0.18, '2025-01-10'),
-(118, 22, 35, 3.00, '2025-01-15', 2, 'Pending', 0.05, 0.12, '2025-01-20'),
-(119, 2, 40, 4.00, '2025-02-01', 1, 'Completed', 0.00, 0.10, '2025-02-10'),
-(120, 1, 45, 5.50, '2025-02-15', 2, 'Pending', 0.07, 0.12, '2025-02-20'),
-(121, 2, 30, 2.90, '2025-03-01', 1, 'Shipped', 0.10, 0.08, '2025-03-10'),
-(122, 2, 50, 3.50, '2025-03-15', 2, 'Completed', 0.05, 0.15, '2025-03-20'),
-(123, 1, 20, 1.90, '2025-04-01', 1, 'Pending', 0.00, 0.12, '2025-04-10'),
-(124, 2, 25, 6.30, '2025-04-15', 2, 'Completed', 0.05, 0.10, '2025-04-20');
 
 -- --------------------------------------------------------
 
@@ -544,67 +472,6 @@ CREATE TABLE `salesorderdetails` (
   `CreatedAt` timestamp NOT NULL DEFAULT current_timestamp(),
   `UpdatedAt` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `salesorderdetails`
---
-
-INSERT INTO `salesorderdetails` (`SalesOrderDetailID`, `SalesOrderID`, `MaterialID`, `Quantity`, `UnitPrice`, `SalesOrderDetail_Date`, `CreatedAt`, `UpdatedAt`) VALUES
-(40, 43, 20, 10, 15.50, '2025-03-29', '2025-03-29 07:18:03', '2025-03-29 07:18:03'),
-(41, 44, 21, 5, 20.00, '2025-03-29', '2025-03-29 07:18:03', '2025-03-29 07:18:03'),
-(42, 45, 22, 8, 12.75, '2025-03-29', '2025-03-29 07:18:03', '2025-03-29 07:18:03'),
-(147, 44, 1, 5, 20.00, '2024-04-05', '2025-04-02 01:00:22', '2025-04-02 01:00:22'),
-(148, 45, 2, 3, 25.00, '2024-04-10', '2025-04-02 01:00:22', '2025-04-02 01:00:22'),
-(149, 46, 5, 8, 15.00, '2024-04-15', '2025-04-02 01:00:22', '2025-04-02 01:00:22'),
-(150, 47, 6, 9, 10.00, '2024-04-20', '2025-04-02 01:00:22', '2025-04-02 01:00:22'),
-(151, 48, 7, 2, 50.00, '2024-05-05', '2025-04-02 01:00:22', '2025-04-02 01:00:22'),
-(152, 49, 8, 6, 30.00, '2024-05-10', '2025-04-02 01:00:22', '2025-04-02 01:00:22'),
-(153, 50, 20, 4, 40.00, '2024-05-15', '2025-04-02 01:00:22', '2025-04-02 01:00:22'),
-(154, 51, 21, 9, 22.00, '2024-05-20', '2025-04-02 01:00:22', '2025-04-02 01:00:22'),
-(155, 52, 22, 7, 18.00, '2024-06-05', '2025-04-02 01:00:22', '2025-04-02 01:00:22'),
-(156, 53, 9, 3, 55.00, '2024-06-10', '2025-04-02 01:00:22', '2025-04-02 01:00:22'),
-(157, 54, 23, 4, 21.00, '2024-06-15', '2025-04-02 01:00:22', '2025-04-02 01:00:22'),
-(158, 55, 1, 6, 19.00, '2024-06-20', '2025-04-02 01:00:22', '2025-04-02 01:00:22'),
-(159, 56, 2, 5, 20.00, '2024-07-05', '2025-04-02 01:00:22', '2025-04-02 01:00:22'),
-(160, 57, 5, 3, 25.00, '2024-07-10', '2025-04-02 01:00:22', '2025-04-02 01:00:22'),
-(161, 58, 6, 8, 15.00, '2024-07-15', '2025-04-02 01:00:22', '2025-04-02 01:00:22'),
-(162, 59, 7, 10, 10.00, '2024-07-20', '2025-04-02 01:00:22', '2025-04-02 01:00:22'),
-(163, 60, 8, 2, 50.00, '2024-08-05', '2025-04-02 01:00:22', '2025-04-02 01:00:22'),
-(164, 61, 20, 6, 30.00, '2024-08-10', '2025-04-02 01:00:22', '2025-04-02 01:00:22'),
-(165, 62, 21, 4, 40.00, '2024-08-15', '2025-04-02 01:00:22', '2025-04-02 01:00:22'),
-(166, 63, 22, 9, 22.00, '2024-08-20', '2025-04-02 01:00:22', '2025-04-02 01:00:22'),
-(167, 64, 9, 7, 18.00, '2024-09-05', '2025-04-02 01:00:22', '2025-04-02 01:00:22'),
-(168, 65, 23, 3, 55.00, '2024-09-10', '2025-04-02 01:00:22', '2025-04-02 01:00:22'),
-(169, 66, 1, 4, 21.00, '2024-09-15', '2025-04-02 01:00:22', '2025-04-02 01:00:22'),
-(170, 67, 2, 6, 19.00, '2024-09-20', '2025-04-02 01:00:22', '2025-04-02 01:00:22'),
-(171, 68, 5, 5, 20.00, '2024-10-05', '2025-04-02 01:00:22', '2025-04-02 01:00:22'),
-(172, 69, 6, 3, 25.00, '2024-10-10', '2025-04-02 01:00:22', '2025-04-02 01:00:22'),
-(173, 70, 7, 8, 15.00, '2024-10-15', '2025-04-02 01:00:22', '2025-04-02 01:00:22'),
-(174, 71, 8, 10, 10.00, '2024-10-20', '2025-04-02 01:00:22', '2025-04-02 01:00:22'),
-(175, 72, 20, 2, 50.00, '2024-11-05', '2025-04-02 01:00:22', '2025-04-02 01:00:22'),
-(176, 73, 21, 6, 30.00, '2024-11-10', '2025-04-02 01:00:22', '2025-04-02 01:00:22'),
-(177, 74, 22, 4, 40.00, '2024-11-15', '2025-04-02 01:00:22', '2025-04-02 01:00:22'),
-(178, 75, 9, 9, 22.00, '2024-11-20', '2025-04-02 01:00:22', '2025-04-02 01:00:22'),
-(179, 76, 23, 7, 18.00, '2024-12-05', '2025-04-02 01:00:22', '2025-04-02 01:00:22'),
-(180, 77, 1, 3, 55.00, '2024-12-10', '2025-04-02 01:00:22', '2025-04-02 01:00:22'),
-(181, 78, 2, 4, 21.00, '2024-12-15', '2025-04-02 01:00:22', '2025-04-02 01:00:22'),
-(182, 79, 5, 6, 19.00, '2024-12-20', '2025-04-02 01:00:22', '2025-04-02 01:00:22'),
-(183, 80, 6, 5, 20.00, '2025-01-05', '2025-04-02 01:00:22', '2025-04-02 01:00:22'),
-(184, 81, 7, 3, 25.00, '2025-01-10', '2025-04-02 01:00:22', '2025-04-02 01:00:22'),
-(185, 82, 8, 8, 15.00, '2025-01-15', '2025-04-02 01:00:22', '2025-04-02 01:00:22'),
-(186, 83, 20, 10, 10.00, '2025-01-20', '2025-04-02 01:00:22', '2025-04-02 01:00:22'),
-(187, 84, 21, 2, 50.00, '2025-02-05', '2025-04-02 01:00:22', '2025-04-02 01:00:22'),
-(188, 85, 22, 6, 30.00, '2025-02-10', '2025-04-02 01:00:22', '2025-04-02 01:00:22'),
-(189, 86, 9, 4, 40.00, '2025-02-15', '2025-04-02 01:00:22', '2025-04-02 01:00:22'),
-(190, 87, 23, 9, 22.00, '2025-02-20', '2025-04-02 01:00:22', '2025-04-02 01:00:22'),
-(191, 88, 1, 7, 18.00, '2025-03-05', '2025-04-02 01:00:22', '2025-04-02 01:00:22'),
-(192, 89, 2, 3, 55.00, '2025-03-10', '2025-04-02 01:00:22', '2025-04-02 01:00:22'),
-(193, 90, 5, 4, 21.00, '2025-03-15', '2025-04-02 01:00:22', '2025-04-02 01:00:22'),
-(194, 91, 6, 6, 19.00, '2025-03-20', '2025-04-02 01:00:22', '2025-04-02 01:00:22'),
-(195, 92, 7, 5, 20.00, '2025-04-05', '2025-04-02 01:00:22', '2025-04-02 01:00:22'),
-(196, 93, 8, 3, 25.00, '2025-04-10', '2025-04-02 01:00:22', '2025-04-02 01:00:22'),
-(197, 94, 20, 8, 15.00, '2025-04-15', '2025-04-02 01:00:22', '2025-04-02 01:00:22'),
-(198, 95, 21, 9, 10.00, '2025-04-20', '2025-04-02 01:00:22', '2025-04-02 01:00:22');
 
 -- --------------------------------------------------------
 
@@ -762,6 +629,7 @@ CREATE TABLE `suppliers` (
   `Name` varchar(150) NOT NULL,
   `ContactPerson` varchar(100) DEFAULT NULL,
   `Phone` varchar(20) DEFAULT NULL,
+  `image` varchar(255) DEFAULT NULL,
   `Email` varchar(150) DEFAULT NULL,
   `Address` text DEFAULT NULL,
   `CreatedAt` timestamp NOT NULL DEFAULT current_timestamp(),
@@ -780,26 +648,26 @@ ADD COLUMN CategoryID INT(11) AFTER SupplierID;
 -- Dumping data for table `suppliers`
 --
 
-INSERT INTO `suppliers` (`SupplierID`, `Name`, `ContactPerson`, `Phone`, `Email`, `Address`, `CreatedAt`, `UpdatedAt`) VALUES
-(1, 'BuildMaster Supplies Co.', 'John Carter', '09123456789', 'john@buildmaster.com', '123 Industrial Zone, Metro City', '2025-03-18 00:13:58', '2025-03-18 00:13:58'),
-(2, 'Concrete Plus Ltd.', 'Maria Gonzales', '09234567890', 'maria@concreteplus.com', '456 Cement Road, Capital Town', '2025-03-18 00:13:58', '2025-03-18 00:13:58'),
-(3, 'SteelStrong Corp.', 'Alex Tan', '09345678901', 'alex@steelstrong.com', '789 Steel Avenue, Iron District', '2025-03-18 00:13:58', '2025-03-18 00:13:58'),
-(4, 'TimberTrade Inc.', 'Lucy Reyes', '09456789012', 'lucy@timbertrade.com', '101 Wood Street, Forest Park', '2025-03-18 00:13:58', '2025-03-18 00:13:58'),
-(5, 'RoofTop Materials', 'Daniel Cruz', '09567890123', 'daniel@rooftopmaterials.com', '55 Roofline Drive, Skyline City', '2025-03-18 00:13:58', '2025-03-18 00:13:58'),
-(6, 'PlumbPro Solutions', 'Nina Herrera', '09678901234', 'nina@plumbpro.com', '23 Pipe Lane, Flow Town', '2025-03-18 00:13:58', '2025-03-18 00:13:58'),
-(7, 'ElectroTech Supplies', 'Mark Lim', '09789012345', 'mark@electrotech.com', '77 Electric Blvd, Volt City', '2025-03-18 00:13:58', '2025-03-18 00:13:58'),
-(8, 'PaintWorks Inc.', 'Anna dela Cruz', '09890123456', 'anna@paintworks.com', '32 Color Street, Hueville', '2025-03-18 00:13:58', '2025-03-18 00:13:58'),
-(9, 'SafeTools PH', 'Chris Uy', '09901234567', 'chris@safetoolsph.com', '88 Safety Way, Securetown', '2025-03-18 00:13:58', '2025-03-18 00:13:58'),
-(10, 'HeavyDuty Machinery', 'Rachel Santos', '09012345678', 'rachel@heavyduty.com', '99 Machine Zone, Power City', '2025-03-18 00:13:58', '2025-03-18 00:13:58'),
-(11, 'ABC Construction Supply', 'Alice Johnson', '0991234567', 'alice@abc.com', '123 Main St, Phnom Penh', '2025-03-26 07:53:57', '2025-03-26 07:53:57'),
-(12, 'XYZ Hardware', 'Bob Smith', '0887654321', 'bob@xyz.com', '456 Industrial Rd, Siem Reap', '2025-03-26 07:53:57', '2025-03-26 07:53:57'),
-(13, 'BuildPro Materials', 'Charlie Lee', '0976543210', 'charlie@buildpro.com', '789 Depot Ave, Sihanoukville', '2025-03-26 07:53:57', '2025-03-26 07:53:57'),
-(14, 'ABC Construction Supply', 'Alice Johnson', '0991234567', 'alice@abc.com', '123 Main St, Phnom Penh', '2025-03-26 07:54:23', '2025-03-26 07:54:23'),
-(15, 'XYZ Hardware', 'Bob Smith', '0887654321', 'bob@xyz.com', '456 Industrial Rd, Siem Reap', '2025-03-26 07:54:23', '2025-03-26 07:54:23'),
-(16, 'BuildPro Materials', 'Charlie Lee', '0976543210', 'charlie@buildpro.com', '789 Depot Ave, Sihanoukville', '2025-03-26 07:54:23', '2025-03-26 07:54:23'),
-(17, 'ABC Construction Supply', 'Alice Johnson', '0991234567', 'alice@abc.com', '123 Main St, Phnom Penh', '2025-03-26 07:54:32', '2025-03-26 07:54:32'),
-(18, 'XYZ Hardware', 'Bob Smith', '0887654321', 'bob@xyz.com', '456 Industrial Rd, Siem Reap', '2025-03-26 07:54:32', '2025-03-26 07:54:32'),
-(19, 'BuildPro Materials', 'Charlie Lee', '0976543210', 'charlie@buildpro.com', '789 Depot Ave, Sihanoukville', '2025-03-26 07:54:32', '2025-03-26 07:54:32');
+INSERT INTO `suppliers` (`SupplierID`, `Name`, `ContactPerson`, `Phone`, `image`, `Email`, `Address`, `CreatedAt`, `UpdatedAt`) VALUES
+(1, 'BuildMaster Supplies Co.', 'John Carter', '09123456789', NULL, 'john@buildmaster.com', '123 Industrial Zone, Metro City', '2025-03-18 00:13:58', '2025-03-18 00:13:58'),
+(2, 'Concrete Plus Ltd.', 'Maria Gonzales', '09234567890', NULL, 'maria@concreteplus.com', '456 Cement Road, Capital Town', '2025-03-18 00:13:58', '2025-03-18 00:13:58'),
+(3, 'SteelStrong Corp.', 'Alex Tan', '09345678901', NULL, 'alex@steelstrong.com', '789 Steel Avenue, Iron District', '2025-03-18 00:13:58', '2025-03-18 00:13:58'),
+(4, 'TimberTrade Inc.', 'Lucy Reyes', '09456789012', NULL, 'lucy@timbertrade.com', '101 Wood Street, Forest Park', '2025-03-18 00:13:58', '2025-03-18 00:13:58'),
+(5, 'RoofTop Materials', 'Daniel Cruz', '09567890123', NULL, 'daniel@rooftopmaterials.com', '55 Roofline Drive, Skyline City', '2025-03-18 00:13:58', '2025-03-18 00:13:58'),
+(6, 'PlumbPro Solutions', 'Nina Herrera', '09678901234', NULL, 'nina@plumbpro.com', '23 Pipe Lane, Flow Town', '2025-03-18 00:13:58', '2025-03-18 00:13:58'),
+(7, 'ElectroTech Supplies', 'Mark Lim', '09789012345', NULL, 'mark@electrotech.com', '77 Electric Blvd, Volt City', '2025-03-18 00:13:58', '2025-03-18 00:13:58'),
+(8, 'PaintWorks Inc.', 'Anna dela Cruz', '09890123456', NULL, 'anna@paintworks.com', '32 Color Street, Hueville', '2025-03-18 00:13:58', '2025-03-18 00:13:58'),
+(9, 'SafeTools PH', 'Chris Uy', '09901234567', NULL, 'chris@safetoolsph.com', '88 Safety Way, Securetown', '2025-03-18 00:13:58', '2025-03-18 00:13:58'),
+(10, 'HeavyDuty Machinery', 'Rachel Santos', '09012345678', NULL, 'rachel@heavyduty.com', '99 Machine Zone, Power City', '2025-03-18 00:13:58', '2025-03-18 00:13:58'),
+(11, 'ABC Construction Supply', 'Alice Johnson', '0991234567', NULL, 'alice@abc.com', '123 Main St, Phnom Penh', '2025-03-26 07:53:57', '2025-03-26 07:53:57'),
+(12, 'XYZ Hardware', 'Bob Smith', '0887654321', NULL, 'bob@xyz.com', '456 Industrial Rd, Siem Reap', '2025-03-26 07:53:57', '2025-03-26 07:53:57'),
+(13, 'BuildPro Materials', 'Charlie Lee', '0976543210', NULL, 'charlie@buildpro.com', '789 Depot Ave, Sihanoukville', '2025-03-26 07:53:57', '2025-03-26 07:53:57'),
+(14, 'ABC Construction Supply', 'Alice Johnson', '0991234567', NULL, 'alice@abc.com', '123 Main St, Phnom Penh', '2025-03-26 07:54:23', '2025-03-26 07:54:23'),
+(15, 'XYZ Hardware', 'Bob Smith', '0887654321', NULL, 'bob@xyz.com', '456 Industrial Rd, Siem Reap', '2025-03-26 07:54:23', '2025-03-26 07:54:23'),
+(16, 'BuildPro Materials', 'Charlie Lee', '0976543210', NULL, 'charlie@buildpro.com', '789 Depot Ave, Sihanoukville', '2025-03-26 07:54:23', '2025-03-26 07:54:23'),
+(17, 'ABC Construction Supply', 'Alice Johnson', '0991234567', NULL, 'alice@abc.com', '123 Main St, Phnom Penh', '2025-03-26 07:54:32', '2025-03-26 07:54:32'),
+(18, 'XYZ Hardware', 'Bob Smith', '0887654321', NULL, 'bob@xyz.com', '456 Industrial Rd, Siem Reap', '2025-03-26 07:54:32', '2025-03-26 07:54:32'),
+(19, 'BuildPro Materials', 'Charlie Lee', '0976543210', NULL, 'charlie@buildpro.com', '789 Depot Ave, Sihanoukville', '2025-03-26 07:54:32', '2025-03-26 07:54:32');
 
 -- --------------------------------------------------------
 
@@ -849,7 +717,8 @@ INSERT INTO `users` (`user_id`, `select_user`, `profile_image`, `first_name`, `l
 (5, 'default_value', NULL, 'Chandy', 'Neat', 'chandyneat89@gmail.com', '', 2, '$2y$10$aZe.pYH4ioXD97p9.5TxkuoMC.iEUzBKEUKTVQyx1codqnK3jI1rC', '', '', '2025-04-02 08:13:17', '2025-04-02 10:08:01'),
 (7, 'default_value', 'uploads/1743590713_332d9c658b26340cd0f5808371458659.jpg', 'Ronaldo', 'Smos', 'ronaldosmos94@gmail.com', '093967654', 6, '$2y$10$500ShBTa8VRimQprJXZrC.93AaGddNRf.9cEDxNXjx4xAlj4O.wkK', 'Cambodia Phnom Penh', 'Chomka Duong', '2025-04-02 10:45:13', '2025-04-02 10:51:39'),
 (8, 'default_value', 'uploads/1743590925_06ae800957fd7efabe894de3d1c0611b.jpg', 'Dyy', 'Development', 'chandyneat0094@gmail.com', '093967689', 4, '$2y$10$8ZN5cT/Gc.eoJo0uW2ATAe3q6dV.AHK9FHL3YODqmlCMKybx/uom2', 'Cambodia Phnom Penh', 'Chomka Duong', '2025-04-02 10:48:45', '2025-04-02 10:48:45'),
-(10, 'default_value', NULL, 'Darin', 'Development', 'darin94@gmail.com', '', 2, '$2y$10$W/y5b415UMXbNMbvlYB2fej/PCrMAhPhusWo.hZIwow2PtXGSLx/u', '', '', '2025-04-02 10:55:25', '2025-04-02 10:55:25');
+(10, 'default_value', NULL, 'Darin', 'Development', 'darin94@gmail.com', '', 2, '$2y$10$W/y5b415UMXbNMbvlYB2fej/PCrMAhPhusWo.hZIwow2PtXGSLx/u', '', '', '2025-04-02 10:55:25', '2025-04-02 10:55:25'),
+(11, 'default_value', NULL, 'Chantha', 'Dy', 'chantha9999@gmail.com', '', 2, '$2y$10$uhWzwOZtwBOcw.ba/jtLN.F6bsLCavxcm7cLw5oRmQBINK1EwfXRO', '', '', '2025-04-03 00:27:47', '2025-04-03 00:27:47');
 
 -- --------------------------------------------------------
 
@@ -916,6 +785,12 @@ ALTER TABLE `materials`
   ADD PRIMARY KEY (`MaterialID`),
   ADD KEY `CategoryID` (`CategoryID`),
   ADD KEY `SupplierID` (`SupplierID`);
+
+--
+-- Indexes for table `pages`
+--
+ALTER TABLE `pages`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `password_resets`
@@ -1014,13 +889,13 @@ REFERENCES roles(role_id);
 -- AUTO_INCREMENT for table `audit_logs`
 --
 ALTER TABLE `audit_logs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
 
 --
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `CategoryID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `CategoryID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `employees`
@@ -1050,13 +925,19 @@ ALTER TABLE `invoices`
 -- AUTO_INCREMENT for table `materials`
 --
 ALTER TABLE `materials`
-  MODIFY `MaterialID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `MaterialID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+
+--
+-- AUTO_INCREMENT for table `pages`
+--
+ALTER TABLE `pages`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `password_resets`
 --
 ALTER TABLE `password_resets`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `payments`
@@ -1080,7 +961,7 @@ ALTER TABLE `purchaseorders`
 -- AUTO_INCREMENT for table `roles`
 --
 ALTER TABLE `roles`
-  MODIFY `role_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `role_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `salesorderdetails`
@@ -1110,7 +991,7 @@ ALTER TABLE `today_money`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- Constraints for dumped tables
