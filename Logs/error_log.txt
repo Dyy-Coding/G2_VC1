@@ -1,6 +1,0 @@
-[2025-04-03 09:25:26] Error 404: View not found
-[2025-04-03 09:35:05] Error 404: View not found
-[2025-04-03 10:13:31] Error 404: View not found
-[2025-04-03 10:21:36] Error 404: View not found
-[2025-04-03 10:23:22] Error 404: View not found
-[2025-04-04 14:06:37] Error 404: View not found

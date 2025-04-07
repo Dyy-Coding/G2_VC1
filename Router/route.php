@@ -40,6 +40,10 @@ require_once 'Controllers/validateionHelper.php';
 // Customer Controller
 require_once "Controllers/userController/welcomeController/welcomeController.php";
 
+
+// User View Controller
+require_once "Controllers/userController/ShopController/salesController.php";
+
 // Initialize Router
 $route = new Router();
 
@@ -64,6 +68,11 @@ $route->group('auth', function ($route) {
     $route->get('/password-reset-error', [ForgotPasswordController::class, 'passwordResetError']);
 });
 
+
+// UserView
+$route->group('shop', function($route) {
+    $route->get('/sales', [SalesController::class, 'sales']);
+});
 
 /**
  * Dashboard Routes
