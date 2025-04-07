@@ -159,6 +159,7 @@
                 <div class="flex space-x-4">
                     <a href="#" class=" px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-300 hover:text-white">Home</a>
                     <a href="#" class=" px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-300 hover:text-white">About</a>
+                    <a href="/sales" class="px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-300 hover:text-white">Shop</a>
                     <a href="#" class=" px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-300 hover:text-white">Contact</a>
                 </div>
                 </div>
