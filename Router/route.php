@@ -93,6 +93,16 @@ $route->group('inventory', function ($route) {
     $route->get('/inventory/export', [InventoryController::class, 'exportInventory']);
 
 
+<<<<<<< HEAD
+=======
+    // $route->get('/materials/view/{id}', [InventoryController::class, 'viewMaterial']);
+    // $route->get('/category', [InventoryController::class, 'category']);
+    // $route->post('/category/add', [InventoryController::class, 'addCategory']);
+    // $route->get('/category/delete/(.*)', [InventoryController::class, 'deleteCategory']);
+    // $route->post('/category/deleteSelected', [InventoryController::class, 'deleteSelectedCategories']);
+    // $route->get('/category/category_edit/(.*)', [InventoryController::class, 'editCategory']);
+    // $route->post('/category/update/(.*)', [InventoryController::class, 'updateCategory']);
+>>>>>>> 73709d9ba03b4679a64296167371bc4ec51d76c0
 
     $route->get('/order', [InventoryController::class, 'order']);
 
