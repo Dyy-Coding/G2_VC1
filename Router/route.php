@@ -40,6 +40,10 @@ require_once 'Controllers/validateionHelper.php';
 // Customer Controller
 require_once "Controllers/userController/welcomeController/welcomeController.php";
 
+
+// User View Controller
+require_once "Controllers/userController/ShopController/salesController.php";
+
 // Initialize Router
 $route = new Router();
 
@@ -108,9 +112,13 @@ $route->group('sale', function ($route) {
 // });
 
 
-// $route->group('profile', function ($route) {
-//     // Profile admin
-//     $route->get('/profile/account', [ProfileAccountController::class, 'profileadmin']);
+    // $route->get('/materials/view/{id}', [InventoryController::class, 'viewMaterial']);
+    // $route->get('/category', [InventoryController::class, 'category']);
+    // $route->post('/category/add', [InventoryController::class, 'addCategory']);
+    // $route->get('/category/delete/(.*)', [InventoryController::class, 'deleteCategory']);
+    // $route->post('/category/deleteSelected', [InventoryController::class, 'deleteSelectedCategories']);
+    // $route->get('/category/category_edit/(.*)', [InventoryController::class, 'editCategory']);
+    // $route->post('/category/update/(.*)', [InventoryController::class, 'updateCategory']);
 
 //     // $route->get('/addusersform', [AccountController::class, 'viewAddusersForm']);
 //     $route->get('/userList', [AccountListController::class, 'viewUsersAccListProfile']);
@@ -169,6 +177,11 @@ $route->group('customers', function ($route) {
     $route->get('/delete/customer', [CustomerInfoController::class, 'destroyCustomerController']);
 });
 
+
+// UserView
+$route->group('shop', function($route) {
+    $route->get('/sales', [SalesController::class, 'sales']);
+});
 
 /**
  * Dashboard Routes
