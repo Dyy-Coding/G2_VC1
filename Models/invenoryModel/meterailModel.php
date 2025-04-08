@@ -187,6 +187,24 @@ class Material {
         }
     }
 
+    public function getPopularCategories() {
+        $stmt = $this->conn->prepare("
+            SELECT 
+                c.CategoryID,
+                c.CategoryName,
+                COUNT(pod.MaterialID) AS totalSales
+            FROM purchaseorderdetails pod
+            INNER JOIN materials m ON pod.MaterialID = m.MaterialID
+            INNER JOIN categories c ON m.CategoryID = c.CategoryID
+            GROUP BY c.CategoryID
+            ORDER BY totalSales DESC
+        ");
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+    
+    
+
     public function getSuppliers() {
         try {
             $stmt = $this->conn->prepare("SELECT SupplierID, Name FROM Suppliers");

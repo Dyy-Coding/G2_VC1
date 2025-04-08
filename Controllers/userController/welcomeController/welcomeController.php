@@ -14,11 +14,12 @@ class WelcomeController extends BaseController {
         // Fetch data from models
         $categories = $this->category->getAllCategories();
         $topSellingMaterials = $this->salesMaterialModel->getTopSellingMaterials();
+        $popularCategories = $this->salesMaterialModel->getPopularCategories();
 
         // Pass the data to the view by including the view file
         $data = [
-            'categories' => $categories,
-            'topSellingMaterials' => $topSellingMaterials
+            'topSellingMaterials' => $topSellingMaterials,
+            'categories' => $popularCategories
         ];
         
         // Render the customer view with the data
