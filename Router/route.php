@@ -22,6 +22,10 @@ require_once 'Controllers/adminController/settingController/settingManagement.ph
 require_once 'Controllers/adminController/dashboardController/stockListController.php';
 // require_once 'Models/dashboard/purchaseOrderModel.php';
 
+// employee controller
+require_once 'Controllers/adminController/employeeController/employeeController.php';
+
+
 
 // Database link files
 require_once __DIR__ . '/../Database/Database.php';
@@ -147,6 +151,11 @@ $route->group('profile', function ($route) {
 
 $route->group('setting', function ($route) {
     $route->get('/setting', [SettingController::class, 'settingInfo']);
+});
+
+// Employee
+$route->group('employee', function ($route) {
+    $route->get('/employees', [EmployeeController::class, 'getEmployeeController']);
 });
 
 

@@ -29,6 +29,9 @@
 <link rel="stylesheet" href="views/assets/css/adminprofile/adminprofile.css">
 
 
+
+
+
 <!-- three-dot menu for user list -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -155,7 +158,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="../pages/rtl.html">
+          <a class="nav-link" href="/employees">
             <div
               class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
               <i class="ni ni-briefcase-24 text-dark text-sm opacity-10"></i>
