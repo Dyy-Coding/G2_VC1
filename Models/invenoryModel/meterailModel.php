@@ -232,6 +232,7 @@ class Material {
             return false;
         }
     }
+
     public function importProductsFromExcel($filePath) {
         try {
             $spreadsheet = IOFactory::load($filePath);
@@ -344,30 +345,5 @@ class Material {
             return null;
         }
     }
-    
-
-    private function barcodeExists($barcode) {
-        if (empty($barcode)) return false;
-        
-        // Modified to work with your Database::query() method
-        $result = $this->db->query(
-            "SELECT COUNT(*) FROM products WHERE barcode = ?", 
-            [$barcode]
-        )->fetchColumn();
-        
-        return $result > 0;
-    }
-
-    private function addProduct($product) {
-        // Modified to work with your Database::query() method
-        $this->db->query(
-            "INSERT INTO products 
-            (name, price, purchase_price, supplier_id, barcode, image, quantity, end_date, created_at, updated_at) 
-            VALUES 
-            (:name, :price, :purchase_price, :supplier_id, :barcode, :image, :quantity, :end_date, NOW(), NOW())",
-            $product
-        );
-    }
-
 
 }

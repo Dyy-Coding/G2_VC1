@@ -1,7 +1,7 @@
 <?php
 require_once "Models/accountModel/adminUserListModel.php";
 require_once "Controllers/BaseController.php";
-require_once 'vendor/autoload.php';
+// require_once 'vendor/autoload.php';
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 

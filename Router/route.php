@@ -159,7 +159,7 @@ $route->group('inventory', function ($route) {
     $route->get('/materials/view/{id}', [MaterialsController::class, 'viewMaterial']);
 
     // Inventory Import/Export
-    $route->match(['get', 'post'], '/import', [MaterialsController::class, 'importInventory']);
+    $route->match(['get', 'post'], '/import', [MaterialsController::class, 'import']);
     $route->get('/export', [MaterialsController::class, 'exportInventory']);
 
     // Orders

@@ -6,44 +6,7 @@ namespace Composer\Autoload;
 
 class ComposerStaticInit2185d2f99bcd56787481d9357a5972d3
 {
-    public static $prefixLengthsPsr4 = array (
-<<<<<<< HEAD
-        'P' => 
-        array (
-            'PHPMailer\\PHPMailer\\' => 20,
-        ),
-    );
 
-    public static $prefixDirsPsr4 = array (
-=======
-        'T' => 
-        array (
-            'Twilio\\' => 7,
-        ),
-        'S' => 
-        array (
-            'Svg\\' => 4,
-            'Sabberworm\\CSS\\' => 15,
-        ),
-        'P' => 
-        array (
-            'PhpOffice\\PhpWord\\' => 18,
-            'PhpOffice\\Math\\' => 15,
-            'PHPMailer\\PHPMailer\\' => 20,
-        ),
-        'M' => 
-        array (
-            'Masterminds\\' => 12,
-        ),
-        'F' => 
-        array (
-            'FontLib\\' => 8,
-        ),
-        'D' => 
-        array (
-            'Dompdf\\' => 7,
-        ),
-    );
 
     public static $prefixDirsPsr4 = array (
         'Twilio\\' => 
@@ -66,13 +29,10 @@ class ComposerStaticInit2185d2f99bcd56787481d9357a5972d3
         array (
             0 => __DIR__ . '/..' . '/phpoffice/math/src/Math',
         ),
->>>>>>> d55a5d868b9711d263bf05e2aa79d441e75f40e4
         'PHPMailer\\PHPMailer\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpmailer/phpmailer/src',
         ),
-<<<<<<< HEAD
-=======
         'Masterminds\\' => 
         array (
             0 => __DIR__ . '/..' . '/masterminds/html5/src',
@@ -85,13 +45,10 @@ class ComposerStaticInit2185d2f99bcd56787481d9357a5972d3
         array (
             0 => __DIR__ . '/..' . '/dompdf/dompdf/src',
         ),
->>>>>>> d55a5d868b9711d263bf05e2aa79d441e75f40e4
     );
 
     public static $classMap = array (
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
-<<<<<<< HEAD
-=======
         'Datamatrix' => __DIR__ . '/..' . '/tecnickcom/tcpdf/include/barcodes/datamatrix.php',
         'Dompdf\\Cpdf' => __DIR__ . '/..' . '/dompdf/dompdf/lib/Cpdf.php',
         'FPDF_TPL' => __DIR__ . '/..' . '/setasign/fpdi/fpdf_tpl.php',
@@ -131,7 +88,6 @@ class ComposerStaticInit2185d2f99bcd56787481d9357a5972d3
         'pdf_context' => __DIR__ . '/..' . '/setasign/fpdi/pdf_context.php',
         'tocontents' => __DIR__ . '/..' . '/mpdf/mpdf/classes/tocontents.php',
         'wmf' => __DIR__ . '/..' . '/mpdf/mpdf/classes/wmf.php',
->>>>>>> d55a5d868b9711d263bf05e2aa79d441e75f40e4
     );
 
     public static function getInitializer(ClassLoader $loader)
