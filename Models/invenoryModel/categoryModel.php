@@ -7,6 +7,36 @@ class Category {
         $this->conn = Database::getConnection();
     }
 
+    public function getBestSellingCategories() {
+        try {
+            $sql = "
+                SELECT 
+                    c.CategoryName AS CategoryName,
+                    SUM(m.Quantity) AS TotalStockInCategory,
+                    SUM(sod.Quantity) AS TotalQuantitySold,
+                    SUM(sod.Total) AS TotalSalesAmount
+                FROM 
+                    salesorderdetails sod
+                JOIN 
+                    materials m ON sod.MaterialID = m.MaterialID
+                JOIN 
+                    categories c ON m.CategoryID = c.CategoryID
+                GROUP BY 
+                    c.CategoryName
+                ORDER BY 
+                    TotalSalesAmount DESC
+            ";
+    
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            error_log("Error fetching best selling categories: " . $e->getMessage());
+            return [];
+        }
+    }
+    
+
     // Fetch all categories with Description and UpdatedAt
     public function getAllCategories() {
         try {

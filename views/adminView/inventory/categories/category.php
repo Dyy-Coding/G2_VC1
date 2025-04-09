@@ -65,7 +65,7 @@
 
                                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuLink">
                                             <li>
-                                                <a href="/category/category_edit/<?= htmlspecialchars($category['CategoryID']) ?>" class="dropdown-item text-primary d-flex align-items-center">
+                                                <a href="/category/edit/<?= htmlspecialchars($category['CategoryID']) ?>" class="dropdown-item text-primary d-flex align-items-center">
                                                     <i class="material-icons me-2" style="font-size:18px;">edit</i> Edit
                                                 </a>
                                             </li>
@@ -168,56 +168,67 @@
             </div>
             <div class="container card mt-0" style="width: 60%; padding: 20px;">
                 <div class="mb-1">
-                    <h4>Best selling</h4>
+                    <h4>Category Overview</h4>
                     <div class="chart">
                         <canvas id="chart-line" class="chart-canvas" height="150vh"></canvas>
                     </div>
                     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script>
-    // Fetch data from the PHP API
-    fetch('path_to_your_php_script.php')
-        .then(response => response.json())
-        .then(data => {
-            // Prepare the data for the chart
-            const months = [];
-            const categorySales = [];
-            
-            // Process the data to get months and sales for each category
-            data.forEach(item => {
-                months.push(item.Month); // Add months (e.g., '2025-01')
-                categorySales.push(item.TotalSold); // Add total sales for each category
+                    <script>     
+    // Fetch data from the PHP API     
+    fetch('Models/invenoryModel/topSalesCategory.php')         
+        .then(response => response.json())         
+        .then(data => {             
+            // Prepare the data for the chart             
+            const months = [];             
+            const categories = {}; // Object to store sales data for each category             
+
+            // Process the data to get months and sales for each category             
+            data.forEach(item => {                 
+                if (!months.includes(item.Month)) {
+                    months.push(item.Month); // Add months (e.g., '2025-01')                 
+                }                 
+                if (!categories[item.CategoryName]) {
+                    categories[item.CategoryName] = { label: item.CategoryName, data: [], borderColor: getRandomColor() }; // Initialize category data with random color
+                }                 
+                categories[item.CategoryName].data.push(item.TotalSold); // Add total sales for each category             
             });
 
-            // Initialize the chart with the fetched data
-            var ctx = document.getElementById("chart-line").getContext("2d");
-            var myChart = new Chart(ctx, {
-                type: "line",
-                data: {
-                    labels: months, // Use months as labels
-                    datasets: [{
-                        label: "Total Sales",
-                        data: categorySales, // Use sales data
-                        backgroundColor: "rgba(75, 192, 192, 0.2)",
-                        borderColor: "rgba(75, 192, 192, 1)",
-                        borderWidth: 1
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    plugins: {
-                        legend: {
-                            position: "bottom"
-                        }
-                    }
-                }
-            });
-        })
-        .catch(error => console.error('Error fetching data:', error));
+            // Prepare the datasets based on categories
+            const datasets = Object.values(categories).map(category => ({
+                label: category.label,
+                data: category.data,
+                backgroundColor: category.borderColor + '0.2', // light version for background
+                borderColor: category.borderColor, 
+                borderWidth: 1
+            }));
+
+            // Initialize the chart with the fetched data             
+            var ctx = document.getElementById("chart-line").getContext("2d");             
+            var myChart = new Chart(ctx, {                 
+                type: "line",                 
+                data: {                     
+                    labels: months, // Use months as labels                     
+                    datasets: datasets // Multiple datasets for each category                 
+                },                 
+                options: {                     
+                    responsive: true,                     
+                    plugins: {                         
+                        legend: {                             
+                            position: "bottom"                         
+                        }                     
+                    }                 
+                }             
+            });         
+        })         
+        .catch(error => console.error('Error fetching data:', error)); 
+
+    // Function to generate a random color for each category
+    function getRandomColor() {
+        const letters = '0123456789ABCDEF';
+        let color = '#';
+        for (let i = 0; i < 6; i++) {
+            color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
+    }
 </script>
-
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- End Diagram -->
