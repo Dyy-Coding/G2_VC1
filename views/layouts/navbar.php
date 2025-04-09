@@ -207,5 +207,3 @@
         suggestionsBox.style.display = "block";
     });
 </script>
-
-

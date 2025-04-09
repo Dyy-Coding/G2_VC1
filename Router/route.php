@@ -24,6 +24,13 @@ require_once "Controllers/adminController/dashboardController/stockListControlle
 require_once "Controllers/adminController/accountController/adminProfileController.php";
 require_once "Controllers/adminController/accountController/listUserController.php";
 
+// Suppliers Controller
+require_once 'Controllers/adminController/supplierController/SupplierControoler.php';
+require_once 'Controllers/adminController/supplierController/DetailSupplierController.php';
+
+// Customers Controller
+require_once 'Controllers/adminController/customerController.php/customerListController.php';
+
 // Other Controllers
 require_once "Controllers/adminController/BashInfoController.php";
 require_once "Controllers/errorController.php";
@@ -47,12 +54,12 @@ require_once "Controllers/userController/ShopController/salesController.php";
 // Initialize Router
 $route = new Router();
 
-/**
- * Authentication Routes
- */
+// Group routes by controller for better organization
 $route->group('auth', function ($route) {
-    $route->match(['GET', 'POST'], '/login', [LoginController::class, 'login']);
-    $route->get('/logout', [LoginController::class, 'logout']);
+    // Login Routes
+    $route->get('/login', [LoginController::class, 'login']);  // Display Login Form (GET)
+    $route->post('/login', [LoginController::class, 'login']); // Handle Login (POST)
+    $route->get('/logout', [LoginController::class, 'logout']); // Handle Logout
 
     // Forgot Password
     $route->match(['GET', 'POST'], '/forgot-password', [ForgotPasswordController::class, 'handleForgotPassword']);
@@ -66,6 +73,52 @@ $route->group('auth', function ($route) {
     // Password Reset Status
     $route->get('/password-reset-success', [ForgotPasswordController::class, 'passwordResetSuccess']);
     $route->get('/password-reset-error', [ForgotPasswordController::class, 'passwordResetError']);
+});
+
+
+// Sale order route group
+$route->group('sale', function ($route) {
+    $route->get('/sale/order', [SaleOrderController::class, 'saleInfo']);
+    $route->get('/admin/saleorder/add', [SaleOrderController::class, 'addSaleOrder']);
+    $route->post('/admin/saleorder/add', [SaleOrderController::class, 'addSaleOrder']);
+});
+
+$route->group('supplier', function ($route) {
+    // read 
+    $route->get('/suppliers', [supplierController::class, 'suppliersInfo']);
+
+    // create
+    $route->get('/add/supplier', [supplierController::class, 'addSupplierInfo']);
+    $route->post('/store/supplier', [supplierController::class, 'storeSupplierInfo']);
+
+    // edit
+    $route->get('/supplier/edit/{id}', [supplierController::class, 'getSupplier']);
+    $route->post('/supplier/update/{id}', [SupplierController::class, 'updateSupplier']);
+
+    // delete
+    $route->post('/supplier/delete/{id}', [supplierController::class, 'destroySupplier']);
+
+    // supplier detail
+    $route->get('/supplier/detail', [SupplierDetailController::class, 'suppliersInfoDetails']);
+
+
+    // export supplier detail
+    $route->get('/suppliers/export/{format}', [SupplierController::class, 'exportSuppliers']);
+});
+
+
+$route->group('customers', function ($route) {
+    // show customer or read
+    $route->get('/customers', [CustomerInfoController::class, 'getCustomersController']);
+    $route->get('/customer/detail', [CustomerInfoController::class, 'getCustomerDetailController']);
+
+
+    // edit
+    $route->get('/edit/customer', [CustomerInfoController::class, 'getCustomerController']);
+    $route->post('/update/customer', [CustomerInfoController::class, 'updateCustomerController']);
+
+    // delete 
+    $route->get('/delete/customer', [CustomerInfoController::class, 'destroyCustomerController']);
 });
 
 
@@ -87,6 +140,8 @@ $route->group('dashboard', function ($route) {
  */
 $route->group('welcome', function ($route) {
     $route->get('/welcome', [WelcomeController::class, 'welcome']);
+    $route->get('/contact', [WelcomeController::class, 'contact']);
+    $route->get('/about', [WelcomeController::class, 'about']);
 });
 
 /**
