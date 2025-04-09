@@ -9,102 +9,100 @@ class DashboardController extends BaseController {
         $this->todayMoneyModel = new TodayMoneyModel();
         $this->stockModel = new StockModel();
     }
- 
 
-// Assuming a connection to the database is already established
+    // Format currency or numerical values with decimal precision
+    private function formatCurrency($amount) {
+        return number_format($amount ?? 0, 2);
+    }
 
+    // Format percentage change with two decimal places
+    private function formatPercentageChange($current, $previous) {
+        return $previous > 0 
+            ? number_format((($current - $previous) / $previous) * 100, 2)
+            : 0;
+    }
 
-    
     public function index() {
         try {
-            // --- Customers Data ---
-            $todayCustomers = $this->todayMoneyModel->getTodayCustomers(); 
-            $customerPercentageChange = $this->todayMoneyModel->getCustomerPercentageChange();
-            
+            // --- Customers Data (updated) ---
+            $todayCustomersData = $this->todayMoneyModel->getTodayCustomers();
+            $totalCustomersToday = $todayCustomersData['total_customers_today'] ?? 0;
+            $totalCustomersYesterday = $todayCustomersData['total_customers_yesterday'] ?? 0;
+            $customerPercentageChange = $todayCustomersData['percent_change'] ?? 'N/A';
+    
             // --- Suppliers & Purchases ---
             $totalSuppliers = $this->todayMoneyModel->getTotalSuppliers();
-            $totalPurchaseOrders = $this->todayMoneyModel->getTotalPurchaseOrders();
-
-            // --- Today's Money Data ---
+    
+            // --- Today's Money Data (from View) ---
             $todayMoneyData = $this->todayMoneyModel->getTodayMoneyData();
-
+            $todayMoney = $this->formatCurrency($todayMoneyData['today_money']);
+            $totalIncome = $this->formatCurrency($todayMoneyData['total_income']);
+            $totalExpenses = $this->formatCurrency($todayMoneyData['total_expenses']);
+            $percentChange = isset($todayMoneyData['percent_change']) 
+                ? number_format($todayMoneyData['percent_change'], 2) 
+                : 'N/A';
+    
+            // --- Stock & Purchase Data ---
             $stockListData = $this->stockModel->getStockList();
             $purchaseListData = $this->stockModel->getTopPurchasedMaterials();
-         
-
-            // --- Total Sales & Orders ---
+    
+            // --- Get Purchase Orders for This Month ---
+            $getThisMonthPurchase = $this->todayMoneyModel->getLastMonthPurchaseOrder();
+            // var_dump($getThisMonthPurchase); // You can remove this line after debugging.
+            // Access the fields from the result
+            $getThisMonthPurchaseOrder = $getThisMonthPurchase['total_orders'] ?? 0; // total_orders
+            $totalPurchaseAmount = $this->formatCurrency($getThisMonthPurchase['total_purchase_amount'] ?? 0); // total_purchase_amount
+            $completedOrders = $getThisMonthPurchase['completed_orders'] ?? 0; // completed_orders
+            $pendingOrders = $getThisMonthPurchase['pending_orders'] ?? 0; // pending_orders
+            $completedOrdersPercent = $getThisMonthPurchase['completed_orders_percent'] ?? 0; // completed_orders_percent
+    
+            // --- Total Sales & Orders (from View) ---
             $salesAndOrders = $this->todayMoneyModel->getTotalSalesAndOrders();
-
-            $totalSalesAmount = number_format($salesAndOrders['total_sales'], 2);
+            $totalSalesAmount = $this->formatCurrency($salesAndOrders['total_sales']);
             $totalSalesOrders = $salesAndOrders['total_sales_orders'] ?? 0;
-            $yesterdaySalesAmount = number_format($salesAndOrders['yesterday_sales'], 2);
-
-            // Calculate Percentage Change in Sales from Yesterday
-            $salesPercentageChange = ($salesAndOrders['yesterday_sales'] > 0) 
-                ? (($salesAndOrders['total_sales'] - $salesAndOrders['yesterday_sales']) / $salesAndOrders['yesterday_sales']) * 100 
-                : 0;
-
-            // --- Sales Overview for Last 12 Months ---
-            $salesOverview = $this->todayMoneyModel->getSalesForLast12Months();
-
-
-            // users data 
+            $yesterdaySalesAmount = $this->formatCurrency($salesAndOrders['yesterday_sales']);
+            $salesPercentageChange = $this->formatPercentageChange($salesAndOrders['total_sales'], $salesAndOrders['yesterday_sales']);
+    
+            // --- Users ---
             $customers = $this->todayMoneyModel->getAllCustomers();
-            // var_dump( $customers);
-            $workers = $this->todayMoneyModel->getAllworkers();
-            $SuppliersData = $this->todayMoneyModel->getSuppliersData();
-            // var_dump( $workers);
-               
-            $labels = [];
-            $salesData = [];
-
-            foreach ($salesOverview as $data) {
-                $monthName = date("M", strtotime("1 " . $data['month'] . " " . $data['year'])); // Convert to "Apr", "May" etc.
-                if (!in_array($monthName, $labels)) { // Avoid duplicate months
-                    $labels[] = $monthName;
-                    $salesData[] = (int) floatval(str_replace(',', '', $data['totalSalesAmount'])); // Convert sales to INT
-                }
-            }
-
-            // Encode for JavaScript
-            // Convert PHP arrays to JSON
-            $labelsJson = ($labels);
-            $salesDataJson = ($salesData);
-
-
-            // --- Order Overview ---
-            $orderOverview = $this->todayMoneyModel->getOrderOverview();
-
-            // Prepare data for the view
+            $workers = $this->todayMoneyModel->getAllWorkers();
+            $suppliersData = $this->todayMoneyModel->getSuppliersData();
+    
+            // --- Prepare data for the view ---
             $viewData = [
-                'today_money'              => $todayMoneyData['today_money'],
-                'total_income'             => $todayMoneyData['total_income'],
-                'total_expenses'           => $todayMoneyData['total_expenses'],
-                'total_customers_today'    => $todayCustomers,
+                'today_money'              => $todayMoney,
+                'total_income'             => $totalIncome,
+                'total_expenses'           => $totalExpenses,
+                'percent_change'           => $percentChange,
+                'total_customers_today'    => $totalCustomersToday,
+                'total_customers_yesterday' => $totalCustomersYesterday,
                 'customer_percentage_change' => $customerPercentageChange,
                 'totalSuppliers'           => $totalSuppliers,
-                'totalPurchaseOrders'      => $totalPurchaseOrders,
                 'totalSalesAmount'         => $totalSalesAmount,
                 'totalSalesOrders'         => $totalSalesOrders,
                 'yesterdaySalesAmount'     => $yesterdaySalesAmount,
-                'salesPercentageChange'    => number_format($salesPercentageChange, 2),
+                'salesPercentageChange'    => $salesPercentageChange,
                 'stockListData'            => $stockListData,
-                'labels'                   => $labels,
-                'salesData'                => $salesData,
-                'orderOverview'            => $orderOverview, // Added order overview
-                'customers'                =>  $customers,
-                'workers'                  =>  $workers,
-                'purchaseListData'         =>  $purchaseListData,
-                'SuppliersData'         =>  $SuppliersData
+                'customers'                => $customers,
+                'workers'                  => $workers,
+                'purchaseListData'         => $purchaseListData,
+                'suppliersData'            => $suppliersData,
+                // Passing the purchase order summary data to the view
+                'getThisMonthPurchaseOrder' =>  $getThisMonthPurchaseOrder,
+                'totalPurchaseAmount'      => $totalPurchaseAmount,
+                'completedOrders'          => $completedOrders,
+                'pendingOrders'            => $pendingOrders,
+                'completedOrdersPercent'   => $completedOrdersPercent
             ];
-
-            // Render the dashboard view with all data
+    
+            // Render the dashboard view
             $this->renderView('adminView/dashboard/dashboard', $viewData);
-
+    
         } catch (Exception $e) {
-            // Log error message and show error page
-            error_log("Error in DashboardController: " . $e->getMessage());
-            $this->renderView('errorPage', ['message' => $e->getMessage()]);
+            // Error logging with more context
+            error_log("Error in DashboardController - " . $e->getMessage());
+            $this->renderView('errorPage', ['message' => "An error occurred while loading the dashboard. Please try again later."]);
         }
     }
+    
 }

@@ -25,121 +25,141 @@
   }
 </style>
 <div class="container-fluid py-4">
-  <div class="row">
-    <!-- Today Money -->
+<div class="row">
+    <!-- Today's Money -->
     <div class="col-xl-3 col-lg-4 col-sm-6 mb-4">
-      <div class="card shadow-sm">
-        <div class="card-body p-3">
-          <div class="row align-items-center">
-            <div class="col-8">
-              <div class="numbers">
-                <p class="text-sm mb-0 text-uppercase font-weight-bold">Today's Money</p>
-                <h5 class="font-weight-bolder">
-                  $<?php echo number_format((float)$today_money, 2); ?>
-                </h5>
-                <p class="mb-0">
-                  <?php 
-                    $percentage_change = ($total_expenses != 0) ? (($today_money - $total_expenses) / $total_expenses) * 100 : 0;
-                    $changeClass = $percentage_change >= 0 ? 'text-success' : 'text-danger';
-                  ?>
-                  <span class="<?= $changeClass ?> text-sm font-weight-bolder">
-                    <?= ($percentage_change >= 0 ? '+' : '') . number_format($percentage_change, 2) ?>%
-                  </span>
-                  since yesterday
-                </p>
-              </div>
+        <div class="card shadow-sm">
+            <div class="card-body p-3">
+                <div class="row align-items-center">
+                    <div class="col-8">
+                        <div class="numbers">
+                            <p class="text-sm mb-0 text-uppercase font-weight-bold">Today's Money</p>
+                            <h5 class="font-weight-bolder">
+                                $<?php echo $today_money; ?>
+                            </h5>
+                            <p class="mb-0">
+                                <?php 
+                                    // Calculate percentage change
+                                    $percentage_change = ($total_expenses != 0) ? (($today_money - $total_expenses) / $total_expenses) * 100 : 0;
+                                    // Determine change class (positive or negative)
+                                    $changeClass = $percentage_change >= 0 ? 'text-success' : 'text-danger';
+                                ?>
+                                <span class="<?= $changeClass ?> text-sm font-weight-bolder">
+                                    <?= ($percentage_change >= 0 ? '+' : '') . number_format($percentage_change, 2) ?>%
+                                </span>
+                                since yesterday
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-4 text-end">
+                        <div class="icon icon-shape bg-gradient-primary shadow-primary text-center rounded-circle">
+                            <i class="ni ni-money-coins text-lg opacity-10" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="col-4 text-end">
-              <div class="icon icon-shape bg-gradient-primary shadow-primary text-center rounded-circle">
-                <i class="ni ni-money-coins text-lg opacity-10" aria-hidden="true"></i>
-              </div>
-            </div>
-          </div>
         </div>
-      </div>
     </div>
 
     <!-- Today's Customers -->
     <div class="col-xl-3 col-lg-4 col-sm-6 mb-4">
-      <div class="card shadow-sm">
-        <div class="card-body p-3">
-          <div class="row align-items-center">
-            <div class="col-8">
-              <div class="numbers">
-                <p class="text-sm mb-0 text-uppercase font-weight-bold"> Today's Customers</p>
-                <h5 class="font-weight-bolder">
-                  <?php echo number_format("+".(float)$total_customers_today); ?>
-                </h5>
-                <p class="mb-0">
-                  <?php $customerClass = $customer_percentage_change >= 0 ? 'text-success' : 'text-danger'; ?>
-                  <span class="<?= $customerClass ?> text-sm font-weight-bolder">
-                    <?= ($customer_percentage_change >= 0 ? '+' : '') . number_format($customer_percentage_change, 2) ?>%
-                  </span>
-                  since yesterday
-                </p>
-              </div>
+        <div class="card shadow-sm">
+            <div class="card-body p-3">
+                <div class="row align-items-center">
+                    <div class="col-8">
+                        <div class="numbers">
+                            <p class="text-sm mb-0 text-uppercase font-weight-bold">Today's Customers</p>
+                            <h5 class="font-weight-bolder">
+                                <?php echo number_format($total_customers_today); ?>
+                            </h5>
+                            <p class="mb-0">
+                                <?php 
+                                    // Handle customer percentage change and determine its class
+                                    $customerClass = $customer_percentage_change >= 0 ? 'text-success' : 'text-danger'; 
+                                ?>
+                                <span class="<?= $customerClass ?> text-sm font-weight-bolder">
+                                    <?= ($customer_percentage_change >= 0 ? '+' : '') . number_format($customer_percentage_change, 2) ?>%
+                                </span>
+                                since yesterday
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-4 text-end">
+                        <div class="icon icon-shape bg-gradient-danger shadow-danger text-center rounded-circle">
+                            <i class="ni ni-world text-lg opacity-10" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="col-4 text-end">
-              <div class="icon icon-shape bg-gradient-danger shadow-danger text-center rounded-circle">
-                <i class="ni ni-world text-lg opacity-10" aria-hidden="true"></i>
-              </div>
-            </div>
-          </div>
         </div>
-      </div>
     </div>
 
     <!-- Suppliers and Purchase Orders -->
     <div class="col-xl-3 col-lg-4 col-sm-6 mb-4">
-      <div class="card shadow-sm">
-        <div class="card-body p-3">
-          <div class="row align-items-center">
-            <div class="col-8">
-              <div class="numbers">
-                <p class="text-sm mb-0 text-uppercase font-weight-bold">Suppliers</p>
-                <h5 class="font-weight-bolder"><?php echo number_format((float)$totalSuppliers); ?></h5>
-                <p class="mb-0">
-                  Our purchase orders <strong>:</strong>
-                  <span class="text-success text-sm font-weight-bolder"> <?=  number_format((float)$totalPurchaseOrders) ?></span> Purchase orders
-                </p>
-              </div>
+        <div class="card shadow-sm">
+            <div class="card-body p-3">
+                <div class="row align-items-center">
+                    <div class="col-8">
+                        <div class="numbers">
+                            <p class="text-sm mb-0 text-uppercase font-weight-bold">Suppliers</p>
+                            <h5 class="font-weight-bolder"><?php echo number_format($totalSuppliers); ?></h5>
+                            <p class="mb-0">
+                                Our purchase orders <strong>:</strong>
+                                <span class="text-success text-sm font-weight-bolder">
+                                    <?= number_format( $getThisMonthPurchaseOrder) ?>
+                                </span> this month
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-4 text-end">
+                        <div class="icon icon-shape bg-gradient-success shadow-success text-center rounded-circle">
+                            <i class="ni ni-paper-diploma text-lg opacity-10" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="col-4 text-end">
-              <div class="icon icon-shape bg-gradient-success shadow-success text-center rounded-circle">
-                <i class="ni ni-paper-diploma text-lg opacity-10" aria-hidden="true"></i>
-              </div>
-            </div>
-          </div>
         </div>
-      </div>
     </div>
 
     <!-- Sales -->
     <div class="col-xl-3 col-lg-4 col-sm-6 mb-4">
-      <div class="card shadow-sm">
-        <div class="card-body p-3">
-          <div class="row align-items-center">
-            <div class="col-8">
-              <div class="numbers">
-                <p class="text-sm mb-0 text-uppercase font-weight-bold">Sales</p>
-                <h5 class="font-weight-bolder">
-                  $<?php echo number_format((float)$totalSalesAmount, 2); ?>
-                </h5>
-                <p class="mb-0">
-                  <span class="text-success text-sm font-weight-bolder"><?php echo number_format((float)$totalSalesOrders); ?></span> sales orders since yesterday
-                </p>
-              </div>
+        <div class="card shadow-sm">
+            <div class="card-body p-3">
+                <div class="row align-items-center">
+                    <div class="col-8">
+                        <div class="numbers">
+                            <p class="text-sm mb-0 text-uppercase font-weight-bold">Sales</p>
+                            <h5 class="font-weight-bolder">
+                                $<?php echo $totalSalesAmount; ?>
+                            </h5>
+                            <p class="mb-0">
+                                <span class="text-success text-sm font-weight-bolder">
+                                    <?php echo number_format($totalSalesOrders); ?>
+                                </span> sales orders this month
+                            </p>
+                            <p class="mb-0">
+                                <?php 
+                                    // Handle percentage change for sales
+                                    $salesClass = $salesPercentageChange >= 0 ? 'text-success' : 'text-danger';
+                                ?>
+                                <span class="<?= $salesClass ?> text-sm font-weight-bolder">
+                                    <?= ($salesPercentageChange >= 0 ? '+' : '') . number_format($salesPercentageChange, 2) ?>%
+                                </span>
+                                since last month
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-4 text-end">
+                        <div class="icon icon-shape bg-gradient-warning shadow-warning text-center rounded-circle">
+                            <i class="ni ni-cart text-lg opacity-10" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="col-4 text-end">
-              <div class="icon icon-shape bg-gradient-warning shadow-warning text-center rounded-circle">
-                <i class="ni ni-cart text-lg opacity-10" aria-hidden="true"></i>
-              </div>
-            </div>
-          </div>
         </div>
-      </div>
     </div>
-  </div>
+</div>
+
 
   <!-- Sales Overview -->
 
