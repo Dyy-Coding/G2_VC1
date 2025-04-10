@@ -28,13 +28,26 @@ class TodayMoneyModel {
         return $this->executeQuery($query);
     }
 
-    // Retrieve today's money data (income, expenses, net money, percentage change)
+    // ✅ Updated: Retrieve today's money data with safe formatting
     public function getTodayMoneyData() {
         $query = "SELECT total_income, total_expenses, today_money, percent_change 
                   FROM daily_money_summary 
                   WHERE record_date = CURDATE() 
                   LIMIT 1";
-        return $this->fetchSingleRow($query);
+
+        $data = $this->fetchSingleRow($query, [
+            'total_income' => 0,
+            'total_expenses' => 0,
+            'today_money' => 0,
+            'percent_change' => 0
+        ]);
+
+        // Format percent_change safely
+        $data['percent_change'] = is_numeric($data['percent_change']) 
+                                ? number_format((float)$data['percent_change'], 2) . '%' 
+                                : '0.00%';
+
+        return $data;
     }
 
     // Retrieve total sales and orders for today
@@ -42,29 +55,77 @@ class TodayMoneyModel {
         $query = "SELECT record_date, total_sales, total_sales_orders, yesterday_sales, percent_change 
                   FROM daily_sales_summary 
                   WHERE record_date = CURDATE()";
-        return $this->fetchSingleRow($query, [
+
+        $data = $this->fetchSingleRow($query, [
             'total_sales' => 0,
             'total_sales_orders' => 0,
             'yesterday_sales' => 0,
             'percent_change' => 0
         ]);
+
+        $data['percent_change'] = is_numeric($data['percent_change']) 
+                                ? number_format((float)$data['percent_change'], 2) . '%' 
+                                : '0.00%';
+
+        return $data;
     }
 
-    // Retrieve today's customers data with percentage change
+    public function getLastMonthSalesSummary()
+{
+    // Query to fetch the most recent sales summary data
+    $query = "
+        SELECT 
+            year,
+            month,
+            totalOrders,
+            totalAmount,
+            percentFromLastMonth
+        FROM MonthlySalesSummary
+        ORDER BY year DESC, month DESC
+        LIMIT 1
+    ";
+
+    $stmt = $this->conn->prepare($query);
+    $stmt->execute();
+    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if ($row) {
+        $year = $row['year'];
+        $month = $row['month'];
+        $totalOrders = (int)$row['totalOrders'];
+        $totalAmount = (float)$row['totalAmount'];
+        $percentFromLastMonth = $row['percentFromLastMonth'] !== null ? number_format($row['percentFromLastMonth'], 2) . '%' : 'N/A';  // Format percentage change
+
+        // Return the last record
+        return [
+            'year' => $year,
+            'month' => $month,
+            'totalOrders' => $totalOrders,
+            'totalAmount' => number_format($totalAmount, 2), // Format amount to 2 decimal places
+            'percentFromLastMonth' => $percentFromLastMonth
+        ];
+    } else {
+        // Return an empty result if no records exist
+        return null;
+    }
+}
+
+
+    // ✅ Updated: Retrieve today's customers data with percentage change
     public function getTodayCustomers() {
         $query = "SELECT total_customers_today, total_customers_yesterday, percent_change 
                   FROM all_day_customers 
                   WHERE customer_date = CURDATE()";
+
         $data = $this->fetchSingleRow($query, [
             'total_customers_today' => 0,
             'total_customers_yesterday' => 0,
-            'percent_change' => 'N/A'
+            'percent_change' => 0
         ]);
 
-        // Format percentage change
-        $data['percent_change'] = $data['percent_change'] !== null 
-                                  ? number_format($data['percent_change'], 2) 
-                                  : 'N/A';
+        $data['percent_change'] = is_numeric($data['percent_change']) 
+                                ? number_format((float)$data['percent_change'], 2) . '%' 
+                                : '0.00%';
 
         return $data;
     }
@@ -75,25 +136,22 @@ class TodayMoneyModel {
         return $this->fetchSingleValue($query);
     }
 
-    // Retrieve purchase order summary for the current month
+    // Retrieve purchase order summary for the last month
     public function getLastMonthPurchaseOrder() {
-        $query = "SELECT *
-FROM monthly_purchase_order_summary
-WHERE month = DATE_FORMAT(DATE_SUB(CURRENT_DATE(), INTERVAL 1 MONTH), '%Y-%m')
-";
-        
+        $query = "SELECT * 
+                  FROM monthly_purchase_order_summary 
+                  WHERE month = DATE_FORMAT(DATE_SUB(CURRENT_DATE(), INTERVAL 1 MONTH), '%Y-%m')";
         return $this->fetchSingleRow($query);
     }
-    
 
-    // Utility function to execute queries that return multiple rows
+    // Utility: Execute queries that return multiple rows
     private function executeQuery($query) {
         $stmt = $this->conn->prepare($query);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    // Utility function to fetch a single row and handle default values if no data is returned
+    // Utility: Fetch a single row, fallback to defaults if no result
     private function fetchSingleRow($query, $default = null) {
         $stmt = $this->conn->prepare($query);
         $stmt->execute();
@@ -101,12 +159,12 @@ WHERE month = DATE_FORMAT(DATE_SUB(CURRENT_DATE(), INTERVAL 1 MONTH), '%Y-%m')
         return $data ?: $default;
     }
 
-    // Utility function to fetch a single value (e.g., COUNT) from a query
+    // Utility: Fetch a single scalar value (e.g., COUNT)
     private function fetchSingleValue($query) {
         return $this->conn->query($query)->fetchColumn();
     }
 
-    // Destructor to close the database connection
+    // Close connection
     public function __destruct() {
         $this->conn = null;
     }

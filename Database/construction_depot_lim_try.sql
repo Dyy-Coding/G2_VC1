@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 09, 2025 at 06:22 AM
+-- Generation Time: Apr 10, 2025 at 04:05 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -503,6 +503,20 @@ INSERT INTO `materials` (`MaterialID`, `Name`, `CategoryID`, `Quantity`, `UnitPr
 (34, 'សំណាញ់ជ័រ', 4, 30, 20.00, 7, 0, 6, '', 'ដុំ', 'uploads/images/67f325f6dc9cc_19fd75f50123f61f15a4f1a9bf7a225f.jpg', '', '2025-04-07 08:10:14', '2025-04-07 08:10:14', '', '', '', '', 0),
 (36, 'solar cable', 7, 3, 15.00, 7, 0, 0, '', 'ដុំ', 'uploads/images/67f36d3d18a18_cf1461b4f8a886b526bf6781567c6c29.jpg', '', '2025-04-07 13:14:21', '2025-04-08 20:54:41', '', '', '', 'Active', 0),
 (37, 'ទុយោរុំខ្សែរភ្លើង', 18, 80, 12.00, 13, 0, 6, '', 'ដុំ', 'uploads/images/67f375b098783_0e940b6e5aaa818e172e50d52cf4fefc.jpg', '', '2025-04-07 13:50:24', '2025-04-07 13:50:24', '', '', '', '', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Stand-in structure for view `monthlysalessummary`
+-- (See below for the actual view)
+--
+CREATE TABLE `monthlysalessummary` (
+`year` int(4)
+,`month` int(2)
+,`totalOrders` bigint(21)
+,`totalAmount` decimal(32,2)
+,`percentFromLastMonth` decimal(39,2)
+);
 
 -- --------------------------------------------------------
 
@@ -1228,6 +1242,15 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 DROP TABLE IF EXISTS `daily_sales_summary`;
 
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `daily_sales_summary`  AS SELECT curdate() AS `record_date`, sum(case when cast(`salesorders`.`CreatedAt` as date) = curdate() then `salesorders`.`TotalAmount` else 0 end) AS `total_sales`, count(case when cast(`salesorders`.`CreatedAt` as date) = curdate() then 1 else NULL end) AS `total_sales_orders`, sum(case when cast(`salesorders`.`CreatedAt` as date) = curdate() - interval 1 day then `salesorders`.`TotalAmount` else 0 end) AS `yesterday_sales`, CASE WHEN sum(case when cast(`salesorders`.`CreatedAt` as date) = curdate() - interval 1 day then `salesorders`.`TotalAmount` else 0 end) = 0 THEN NULL ELSE round((sum(case when cast(`salesorders`.`CreatedAt` as date) = curdate() then `salesorders`.`TotalAmount` else 0 end) - sum(case when cast(`salesorders`.`CreatedAt` as date) = curdate() - interval 1 day then `salesorders`.`TotalAmount` else 0 end)) / sum(case when cast(`salesorders`.`CreatedAt` as date) = curdate() - interval 1 day then `salesorders`.`TotalAmount` else 0 end) * 100,2) END AS `percent_change` FROM `salesorders` ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `monthlysalessummary`
+--
+DROP TABLE IF EXISTS `monthlysalessummary`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `monthlysalessummary`  AS SELECT year(`salesorderdetails`.`SalesOrderDetail_Date`) AS `year`, month(`salesorderdetails`.`SalesOrderDetail_Date`) AS `month`, count(distinct `salesorderdetails`.`SalesOrderID`) AS `totalOrders`, sum(`salesorderdetails`.`Total`) AS `totalAmount`, round((sum(`salesorderdetails`.`Total`) - lag(sum(`salesorderdetails`.`Total`),1) over ( order by year(`salesorderdetails`.`SalesOrderDetail_Date`),month(`salesorderdetails`.`SalesOrderDetail_Date`))) / nullif(lag(sum(`salesorderdetails`.`Total`),1) over ( order by year(`salesorderdetails`.`SalesOrderDetail_Date`),month(`salesorderdetails`.`SalesOrderDetail_Date`)),0) * 100,2) AS `percentFromLastMonth` FROM `salesorderdetails` GROUP BY year(`salesorderdetails`.`SalesOrderDetail_Date`), month(`salesorderdetails`.`SalesOrderDetail_Date`) ORDER BY year(`salesorderdetails`.`SalesOrderDetail_Date`) ASC, month(`salesorderdetails`.`SalesOrderDetail_Date`) ASC ;
 
 -- --------------------------------------------------------
 
