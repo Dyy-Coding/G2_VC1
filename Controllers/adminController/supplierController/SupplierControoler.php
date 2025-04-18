@@ -1,7 +1,5 @@
 <?php
-require_once "Controllers/BaseController.php";
-require_once "Models/supplierModel/SupplierModel.php";
-require_once 'vendor/autoload.php';
+
 
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;

@@ -1,29 +1,34 @@
 <?php
-require_once "Database/Database.php";
+
 
 class SupplierManagementModel
 {
-    private $dsn;
+    private $conn;
 
-    public function __construct()
-    {
-        $this->dsn = Database::getConnection();
+    public function __construct() {
+        // Initialize the database connection
+        $this->conn = Database::getConnection();
     }
-
+    
     public function getAllSuppliersWithCategories()
-    {
-        try {
-            $query = "SELECT s.*, c.CategoryName 
-                      FROM suppliers s
-                      LEFT JOIN categories c ON s.CategoryID = c.CategoryID
-                      ORDER BY s.SupplierID";
-            $stmt = $this->dsn->prepare($query);
-            $stmt->execute();
-            return $stmt->fetchAll(PDO::FETCH_ASSOC);
-        } catch (PDOException $e) {
-            throw new Exception("Error fetching suppliers: " . $e->getMessage());
-        }
-    }
+{
+    // SQL query to get suppliers and their category names
+    $query = "SELECT s.*, c.CategoryName 
+              FROM suppliers s
+              LEFT JOIN categories c ON s.SupplierCategoryID = c.CategoryID
+              ORDER BY s.SupplierID";
+
+    // Prepare the query using the correct connection
+    $stmt = $this->conn->prepare($query);
+
+    // Execute the statement
+    $stmt->execute();
+
+    // Fetch and return all results as an associative array
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
+    
 
     public function getAllCategories()
     {

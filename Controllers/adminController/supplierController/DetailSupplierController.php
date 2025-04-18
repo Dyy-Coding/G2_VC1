@@ -1,6 +1,5 @@
 <?php
-require_once "Controllers/BaseController.php";
-require_once "Models/supplierModel/detailSupplierModel.php";
+
 
 class SupplierDetailController extends BaseController
 {
