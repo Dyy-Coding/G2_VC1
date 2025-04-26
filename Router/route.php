@@ -15,6 +15,8 @@ require_once "Controllers/adminController/authenicationController/registerContro
 // Inventory Controllers
 require_once "Controllers/adminController/InventoryController/materialsController.php";
 require_once "Controllers/adminController/InventoryController/categoriesController.php";
+// require_once "Controllers/adminController/InventoryController/exportByPython.php";
+// require_once "Controllers/adminController/InventoryController/exportImportController.php";
 
 // Dashboard Controllers
 require_once "Controllers/adminController/DashboardController.php";
@@ -34,6 +36,8 @@ require_once 'Controllers/adminController/customerController.php/customerListCon
 // Other Controllers
 require_once "Controllers/adminController/BashInfoController.php";
 require_once "Controllers/errorController.php";
+
+
 
 // Models
 require_once "Models/usersModel.php";
@@ -63,11 +67,11 @@ $route->group('auth', function ($route) {
     $route->post('/login', [LoginController::class, 'login']); // Handle Login (POST)
     $route->get('/logout', [LoginController::class, 'logout']); // Handle Logout
 
-    // Forgot Password
-    $route->match(['GET', 'POST'], '/forgot-password', [ForgotPasswordController::class, 'handleForgotPassword']);
+    // // Forgot Password
+    // $route->match(['GET', 'POST'], '/forgot-password', [ForgotPasswordController::class, 'handleForgotPassword']);
 
-    // Password Reset
-    $route->match(['GET', 'POST'], '/reset-password', [ForgotPasswordController::class, 'handleResetPassword']);
+    // // Password Reset
+    // $route->match(['GET', 'POST'], '/reset-password', [ForgotPasswordController::class, 'handleResetPassword']);
 
     // Registration
     $route->match(['GET', 'POST'], '/register', [RegisterController::class, 'register']);
@@ -146,33 +150,22 @@ $route->group('welcome', function ($route) {
  * Inventory Routes
  */
 $route->group('inventory', function ($route) {
-    $route->get('/inventory', [InventoryController::class, 'inventory']);
-    // Crud
-    $route->get('/materials/add', [InventoryController::class, 'addMaterial']);
-    $route->post('/materials/add', [InventoryController::class, 'addMaterial']);
-    $route->get('/editmaterial/{id}', [InventoryController::class, 'materialEditForSome']);
-    $route->post('/materials/update', [InventoryController::class, 'updateMaterial']);
-    $route->get('/materials/delete/{id}', [InventoryController::class, 'deleteMaterial']);
-    // View detail
-    $route->get('/materials/view/{id}', [InventoryController::class, 'viewMaterial']);
-    // Import 
-    $route->get('/inventory/import', [InventoryController::class, 'importInventory']);
-    $route->post('/inventory/import', [InventoryController::class, 'importInventory']);
+    $route->get('/material', [MaterialsController::class, 'inventory']);
 
-    // Export file
-    $route->get('/inventory/export', [InventoryController::class, 'exportInventory']);
+    // Material Management
+    $route->match(['get', 'post'], '/materials/add', [MaterialsController::class, 'addMaterial']);
+    $route->get('/materials/edit/{id}', [MaterialsController::class, 'materialEditForSome']);
+    // $route->post('/materials/export', [ExportImportController::class, 'exportMaterials']);
+    $route->post('/materials/update', [MaterialsController::class, 'updateMaterial']);
+    $route->get('/materials/delete/{id}', [MaterialsController::class, 'deleteMaterial']);
+    $route->get('/materials/view/{id}', [MaterialsController::class, 'viewMaterial']);
 
+    // Inventory Import/Export
+    $route->match(['get', 'post'], '/import', [MaterialsController::class, 'importInventory']);
+    $route->get('/export', [MaterialsController::class, 'exportInventory']);
 
-    // $route->get('/materials/view/{id}', [InventoryController::class, 'viewMaterial']);
-    // $route->get('/category', [InventoryController::class, 'category']);
-    // $route->post('/category/add', [InventoryController::class, 'addCategory']);
-    // $route->get('/category/delete/(.*)', [InventoryController::class, 'deleteCategory']);
-    // $route->post('/category/deleteSelected', [InventoryController::class, 'deleteSelectedCategories']);
-    // $route->get('/category/category_edit/(.*)', [InventoryController::class, 'editCategory']);
-    // $route->post('/category/update/(.*)', [InventoryController::class, 'updateCategory']);
-
-    $route->get('/order', [InventoryController::class, 'order']);
-
+    // Orders
+    $route->get('/order', [MaterialsController::class, 'order']);
 });
 
 /**
@@ -196,15 +189,15 @@ $route->group('profile', function ($route) {
     $route->get('/account', [ProfileAccountController::class, 'profileadmin']);
 
     // User List & Details
-    $route->get('/userList', [AccountListController::class, 'viewUsersAccListProfile']);
-    $route->get('/userDetail/{id}', [AccountListController::class, 'viewUserDetail']);
+    // $route->get('/userList', [AccountListController::class, 'viewUsersAccListProfile']);
+    // $route->get('/userDetail/{id}', [AccountListController::class, 'viewUserDetail']);
 
-    // User Management
-    $route->get('/createuser', [AccountListController::class, 'createNewUserAccProfile']);
-    $route->post('/userstore', [AccountListController::class, 'storeUserAccProfile']);
-    $route->get('/edituser/{id}', [AccountListController::class, 'editUserAccProfile']);
-    $route->post('/storeupdate/{id}', [AccountListController::class, 'updateUserAccProfile']);
-    $route->match(['post', 'delete'], '/deleteuser/{id}', [AccountListController::class, 'destroySingleUserAccProfile']);
+    // // User Management
+    // $route->get('/createuser', [AccountListController::class, 'createNewUserAccProfile']);
+    // $route->post('/userstore', [AccountListController::class, 'storeUserAccProfile']);
+    // $route->get('/edituser/{id}', [AccountListController::class, 'editUserAccProfile']);
+    // $route->post('/storeupdate/{id}', [AccountListController::class, 'updateUserAccProfile']);
+    // $route->match(['post', 'delete'], '/deleteuser/{id}', [AccountListController::class, 'destroySingleUserAccProfile']);
 });
 
 /**
