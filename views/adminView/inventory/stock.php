@@ -94,30 +94,39 @@
                     </form>
                 </div>
 
-                <form method="POST" action="/materials/export">
-                    <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="exportDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                            Export
-                        </button>
-                        <ul class="dropdown-menu" aria-labelledby="exportDropdown">
-                            <li>
-                                <button class="dropdown-item" type="submit" name="format" value="excel">
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="exportDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                        Export
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="exportDropdown">
+                        <!-- Export to Excel -->
+                        <li>
+                            <form method="POST" action="/materials/export/excel">
+                                <button class="dropdown-item" type="submit">
                                     Export to Excel
                                 </button>
-                            </li>
-                            <li>
-                                <button class="dropdown-item" type="submit" name="format" value="word">
+                            </form>
+                        </li>
+                        <!-- Export to Word -->
+                        <li>
+                            <form method="POST" action="/materials/export/word">
+                                <button class="dropdown-item" type="submit">
                                     Export to Word
                                 </button>
-                            </li>
-                            <li>
-                                <button class="dropdown-item" type="submit" name="format" value="pdf">
+                            </form>
+                        </li>
+                        <!-- Export to PDF -->
+                        <li>
+                            <form method="POST" action="/materials/export/pdf">
+                                <button class="dropdown-item" type="submit">
                                     Export to PDF
                                 </button>
-                            </li>
-                        </ul>
-                    </div>
-                </form>
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+
+
 
             </div>
 

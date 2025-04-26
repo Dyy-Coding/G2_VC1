@@ -10,11 +10,33 @@ class MaterialModel {
 
     // Fetch all materials
     public function getAllMaterials() {
-        $query = "SELECT * FROM materials";
+        // SQL query to fetch materials along with supplier name and category name
+        $query = "
+            SELECT 
+                m.*, 
+                s.Name, 
+                c.categoryName 
+            FROM 
+                materials m
+            LEFT JOIN 
+                suppliers s ON m.supplierID = s.supplierID
+            LEFT JOIN 
+                categories c ON m.categoryID = c.categoryID
+        ";
+        
         $stmt = $this->conn->prepare($query);
         $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        
+        $materials = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        
+        // Reset MaterialID count to start from 1
+        foreach ($materials as $index => &$material) {
+            $material['MaterialID'] = $index + 1; // Set MaterialID to be 1-based index
+        }
+        
+        return $materials;
     }
+    
 
     // Insert material from import
     public function importMaterial($material) {

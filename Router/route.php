@@ -15,7 +15,8 @@ require_once "Controllers/adminController/authenicationController/registerContro
 // Inventory Controllers
 require_once "Controllers/adminController/InventoryController/materialsController.php";
 require_once "Controllers/adminController/InventoryController/categoriesController.php";
-require_once "Controllers/adminController/InventoryController/exportByPython.php";
+require_once "Controllers/adminController/InventoryController/importExportController.php";
+// require_once "Controllers/adminController/InventoryController/exportByPython.php";
 // require_once "Controllers/adminController/InventoryController/exportImportController.php";
 
 // Dashboard Controllers
@@ -45,6 +46,7 @@ require_once "Models/invenoryModel/meterailModel.php";
 require_once "Models/invenoryModel/categoryModel.php";
 require_once "Models/dashboard/dashboardModel.php";
 require_once "Models/supplierModel/SupplierModel.php";
+require_once "Models/invenoryModel/import&export/material.php";
 
 
 // Helper files
@@ -155,7 +157,9 @@ $route->group('inventory', function ($route) {
     // Material Management
     $route->match(['get', 'post'], '/materials/add', [MaterialsController::class, 'addMaterial']);
     $route->get('/materials/edit/{id}', [MaterialsController::class, 'materialEditForSome']);
-    $route->post('/materials/export', [ExportImportController::class, 'exportMaterials']);
+    $route->post('/materials/export/excel', [MaterialExportController::class, 'exportExcel']);
+    $route->post('/materials/export/word', [MaterialExportController::class, 'exportWord']);
+    $route->post('/materials/export/pdf', [MaterialExportController::class, 'exportPDF']);
     $route->post('/materials/update', [MaterialsController::class, 'updateMaterial']);
     $route->get('/materials/delete/{id}', [MaterialsController::class, 'deleteMaterial']);
     $route->get('/materials/view/{id}', [MaterialsController::class, 'viewMaterial']);
