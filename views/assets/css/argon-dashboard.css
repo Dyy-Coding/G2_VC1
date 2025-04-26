@@ -29213,6 +29213,21 @@ td .name span {
   color: var(--bs-green);
 }
 
+.image-container {
+  position: relative;
+  display: inline-block;
+}
+.base-image {
+  width: 15%; /* Adjust as needed */
+  height: auto;
+}
+feature/account
+.sticker {
+  position: absolute;
+  width:20%; /* Adjust sticker size */
+  height: auto;
+  cursor: pointer;
+}
 
 
 #addMeterial {
@@ -29240,6 +29255,51 @@ td .name span {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 10px;
+}
+
+.form-container {
+  display: none; /* Hide the form initially */
+  position: absolute; /* Position the form absolutely */
+  top: 25%; /* Center vertically */
+  left: 50%; /* Center horizontally */
+  transform: translate(-50%, -50%); /* Centering */
+  width: 600px; /* Set a specific width for the form */
+  z-index: 10; /* Bring to front */
+  padding: 20px; /* Padding for the form */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Shadow for depth */
+  /* background-color: #f0f0f0; */
+}
+
+.icon-container {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.icon-menu {
+  display: none;
+  position: absolute;
+  left: 100%;
+  top: 0;
+  background: white;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.icon-container:hover .icon-menu {
+  display: block;
+}
+
+.icon-menu i {
+  display: block;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.icon-menu i:hover {
+  color: red;
 }
 
 #inventoryDropdown, #accountDropdown {
@@ -29290,4 +29350,12 @@ td .name span {
   display: flex;
   position: relative;
   left: 30px;
+}
+
+.btn-detail{
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  gap: 15px;
+  margin-top: 3%;
 }

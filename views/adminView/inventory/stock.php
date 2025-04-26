@@ -1,7 +1,7 @@
-
-    <style>
-   
-   #addMeterial {
+<!-- Styles (no changes needed here except class correction if any) -->
+<style>
+    /* Improved styling for readability */
+    #addMeterial {
         display: none;
         position: fixed;
         top: 50%;
@@ -16,7 +16,6 @@
         max-width: 700px;
     }
 
-    /* Overlay Background */
     #overlay {
         display: none;
         position: fixed;
@@ -28,7 +27,6 @@
         z-index: 999;
     }
 
-    /* Image Preview */
     #preview {
         width: 100%;
         max-width: 150px;
@@ -39,15 +37,13 @@
         margin-top: 10px;
     }
 
-    /* Responsive Form Layout */
     .form-add-meterial {
         display: flex;
         flex-wrap: wrap;
         gap: 10px;
     }
 
-    .form-left,
-    .form-right {
+    .form-left, .form-right {
         width: 100%;
     }
 
@@ -56,10 +52,22 @@
             width: 48%;
         }
     }
-    </style>
-</head>
-<body>
 
+    .form-outline {
+        width: 100%;
+    }
+
+    /* Material-specific classes */
+    .material-discount {
+        background-color: #f9f9f9; /* Light background for discounted items */
+    }
+
+    .material-discount .text-danger {
+        font-weight: bold;
+    }
+</style>
+
+<!-- Main Container -->
 <div class="container mt-3 card" style="width: 95%; padding: 20px;">
     <div class="d-flex justify-content-between mb-1">
         <div>
@@ -67,121 +75,180 @@
             <p>Sand, Pebble, Cement,.....</p>
         </div>
         <div>
-            <button class="btn btn-primary me-2" id="btn-add">+ New Material</button>
-            <button class="btn btn-secondary">Import</button>
-            <button class="btn btn-secondary">Export</button>
+             <!-- Import & Export Section -->
+             <div class="d-flex flex-column flex-md-row justify-content-between align-items-start mb-4 gap-3">
+             <button class="btn btn-primary me-2" id="btn-add">+ New Material</button>
+                <!-- Import -->
+                <div>
+                    <button class="btn btn-success mb-2" type="button" onclick="toggleImportForm()">Import Materials</button>
+                    <form id="importForm" action="/materials/import" method="POST" enctype="multipart/form-data" style="display: none;" class="mt-2">
+                        <div class="row g-2 align-items-center">
+                            <div class="col-md-8">
+                                <input type="file" class="form-control" name="importFile" accept=".xlsx, .xls, .csv" required>
+                                <small class="text-muted">Accepted formats: .xlsx, .xls, .csv</small>
+                            </div>
+                            <div class="col-md-4">
+                                <button type="submit" class="btn btn-success w-100">Upload</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="exportDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                        Export
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="exportDropdown">
+                        <!-- Export to Excel -->
+                        <li>
+                            <form method="POST" action="/materials/export/excel">
+                                <button class="dropdown-item" type="submit">
+                                    Export to Excel
+                                </button>
+                            </form>
+                        </li>
+                        <!-- Export to Word -->
+                        <li>
+                            <form method="POST" action="/materials/export/word">
+                                <button class="dropdown-item" type="submit">
+                                    Export to Word
+                                </button>
+                            </form>
+                        </li>
+                        <!-- Export to PDF -->
+                        <li>
+                            <form method="POST" action="/materials/export/pdf">
+                                <button class="dropdown-item" type="submit">
+                                    Export to PDF
+                                </button>
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+
+
+
+            </div>
+
+            <script>
+                function toggleImportForm() {
+                    const form = document.getElementById('importForm');
+                    form.style.display = form.style.display === 'none' ? 'block' : 'none';
+                }
+            </script>
+
         </div>
     </div>
 
-    <div class="input-group-meterails mt-2 mb-0">
-        <div class="inline-controls-meterails">
-            <div class="form-check ">
-                <input class="form-check-input" type="checkbox" id="showOutOfStock">
-                <label class="form-check-label" for="showOutOfStock">Show out of stock</label>
+    
+
+    <!-- Form for bulk deletion -->
+    <form action="/materials/deleteSelectedMaterials" method="POST">
+        <div class="input-group-meterails mt-2 mb-0">
+            <div class="inline-controls-meterails">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="show-out-of-stock-checkbox" name="show_out_of_stock"
+                        <?= isset($_GET['show_out_of_stock']) && $_GET['show_out_of_stock'] == 'true' ? 'checked' : '' ?>>
+                    <label class="form-check-label" for="show-out-of-stock-checkbox">Show out of stock</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="selectAll">
+                    <label class="form-check-label" for="selectAll">Select all</label>
+                    <button type="submit" class="btn btn-danger me-2" id="btn-delete-selected" style="width: 150px; height: 40px;" disabled>Delete Selected</button>
+                </div>
             </div>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="showOutOfStock">
-                <label class="form-check-label" for="showOutOfStock">Select all</label>
+            <div class="form-outline">
+                <input type="search" id="search" class="form-control" style="width:100%" placeholder="Search materials" />
             </div>
         </div>
-        <div class="form-outline ">
-            <input type="search" id="form1" class="form-control" style="width:100%" placeholder="Search"/>
-        </div>
-    </div>
-    <button class="btn btn-danger m-3" style="width: 5%; font-size: small; padding: 5px;">Delete</button>
-    <table class="table text-center align-middle" style="table-layout: fixed; width: 100%;">
-    <thead>
-        <tr>
-            <th >Select</th>
-            <th style="width: 15%;">Product</th>
-            <th style="width: 20%;">Category</th>
-            <th>Quantity</th>
-            <th>Status</th>
-            <th>Type or Size</th>
-            <th>Price</th>
-            <th style="width: 5%;">Action</th>
-        </tr>
-    </thead>
-    <tbody>
-        <?php if (!empty($materials)): ?>
-            <?php foreach ($materials as $material): ?>
+
+        <!-- Table of materials -->
+        <table class="table text-center align-middle" style="table-layout: fixed; width: 100%;">
+            <thead>
                 <tr>
-                    <!-- Checkbox -->
-                    <td>
-                        <input type="checkbox">
-                    </td>
-
-                    <!-- Product Column (Image + Name) -->
-                    <td class="td-product ">
-                        <img src="<?= htmlspecialchars($material['ImagePath']) ?>" 
-                             alt="Material Image" width="40" height="40" 
-                             style="object-fit: cover; border-radius: 5px; margin-right: 10px;">
-                        <span><?= htmlspecialchars($material['Name']) ?></span>
-                    </td>
-
-                    <td><?= htmlspecialchars($material['CategoryName']) ?></td>
-                    <td><?= htmlspecialchars($material['Quantity']) ?></td>
-
-                    <!-- Stock Status -->
-                    <td>
-                        <?php if ($material['Quantity'] == 0): ?>
-                            <span class="badge bg-danger">OUT OF STOCK</span>
-                        <?php elseif ($material['Quantity'] < 15): ?>
-                            <span class="badge bg-warning text-dark">LOW STOCK</span>
-                        <?php else: ?>
-                            <span class="badge bg-success">HIGH STOCK</span>
-                        <?php endif; ?>
-                    </td>
-
-                    <td><?= htmlspecialchars($material['Size']) ?></td>
-                    <td><?= htmlspecialchars($material['UnitPrice']) ?></td>
-
-                    <!-- Action Dropdown -->
-                    <td class="dropdown">
-                        <a href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="material-icons" style="font-size:34px;">more_vert</i>
-                        </a>
-
-                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuLink">
-                            <li>
-                                <a href="edit_material.php?id=<?= $material['MaterialID'] ?>" class="dropdown-item text-primary d-flex align-items-center">
-                                    <i class="material-icons me-2" style="font-size:18px;">edit</i> Edit
-                                </a>
-                            </li>
-                            <li>
-                                <a href="delete_material.php?id=<?= $material['MaterialID'] ?>" class="dropdown-item text-danger d-flex align-items-center"
-                                   onclick="return confirm('Are you sure?');">
-                                    <i class="material-icons me-2" style="font-size:18px;">delete</i> Delete
-                                </a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item d-flex align-items-center" href="details_material.php?id=<?= $material['MaterialID'] ?>">
-                                    <i class="material-icons me-2" style="font-size:18px;">visibility</i> View
-                                </a>
-                            </li>
-                        </ul>
-                    </td>
+                    <th>Select</th>
+                    <th style="width: 18%;">Product</th>
+                    <th style="width: 25%;">Category</th>
+                    <th>Quantity</th>
+                    <th>Status</th>
+                    <th>Type or Size</th>
+                    <th>Price</th>
+                    <th>Action</th>
                 </tr>
-            <?php endforeach; ?>
-        <?php else: ?>
-            <tr>
-                <td colspan="8">No materials found.</td>
-            </tr>
-        <?php endif; ?>
-    </tbody>
-</table>
-
-
+            </thead>
+            <tbody>
+                <?php if (!empty($materials)): ?>
+                    <?php foreach ($materials as $material): ?>
+                        <tr class="<?= !empty($material['DiscountPrice']) ? 'material-discount' : '' ?>">
+                            <td>
+                                <input type="checkbox" class="select-material" name="materialIDs[]" value="<?= htmlspecialchars($material['MaterialID']) ?>">
+                            </td>
+                            <td class="td-product d-flex align-items-center">
+                                <img src="<?= htmlspecialchars($material['ImagePath']) ?>" alt="Material Image" width="40" height="40" class="me-2" style="object-fit: cover; border-radius: 5px;">
+                                <span><?= htmlspecialchars($material['Name']) ?></span>
+                            </td>
+                            <td><?= htmlspecialchars($material['CategoryName']) ?></td>
+                            <td><?= htmlspecialchars($material['Quantity']) ?></td>
+                            <td>
+                                <?php if ($material['Quantity'] == 0): ?>
+                                    <span class="badge bg-danger">OUT OF STOCK</span>
+                                <?php elseif ($material['Quantity'] < 15): ?>
+                                    <span class="badge bg-warning text-dark">LOW STOCK</span>
+                                <?php else: ?>
+                                    <span class="badge bg-success">HIGH STOCK</span>
+                                <?php endif; ?>
+                            </td>
+                            <td><?= htmlspecialchars($material['Size']) ?></td>
+                            <td>
+                                <?php if (!empty($material['DiscountPrice'])): ?>
+                                    <span class="text-danger"><?= htmlspecialchars($material['DiscountPrice']) ?> $</span> 
+                                    <span class="text-muted"><?= htmlspecialchars($material['UnitPrice']) ?> $</span>
+                                <?php else: ?>
+                                    <?= htmlspecialchars($material['UnitPrice']) ?> $
+                                <?php endif; ?>
+                            </td>
+                            <td class="dropdown">
+                                <a href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="material-icons" style="font-size:34px;">more_vert</i>
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-end">
+                                    <li>
+                                        <a href="/materials/edit/<?= htmlspecialchars($material['MaterialID']) ?>" class="dropdown-item text-primary d-flex align-items-center">
+                                            <i class="material-icons me-2" style="font-size:18px;">edit</i> Edit
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/materials/delete/<?= htmlspecialchars($material['MaterialID']) ?>" class="dropdown-item text-danger d-flex align-items-center" onclick="return confirm('Are you sure?');">
+                                            <i class="material-icons me-2" style="font-size:18px;">delete</i> Delete
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/materials/view/<?= htmlspecialchars($material['MaterialID']) ?>" class="dropdown-item d-flex align-items-center">
+                                            <i class="material-icons me-2" style="font-size:18px;">visibility</i> View
+                                        </a>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <tr>
+                        <td colspan="8">No materials found.</td>
+                    </tr>
+                <?php endif; ?>
+            </tbody>
+        </table>
+    </form>
 </div>
 
-
-<!-- Overlay Background -->
+<!-- Overlay -->
 <div id="overlay"></div>
 
 <!-- Add Material Form -->
-<div class="form-container card addMeterial" id="addMeterial">
+<div class="form-container card" id="addMeterial">
+    <!-- Form content remains unchanged -->
     <h2 class="text-center mb-4">Add New Material</h2>
-    <form method="POST" action="Add/materials" enctype="multipart/form-data">
+    <form method="POST" action="/materials/add" enctype="multipart/form-data">
         <div class="form-add-meterial">
             <div class="form-left">
                 <!-- Material Name -->
@@ -196,7 +263,9 @@
                     <select class="form-select" id="categoryID" name="categoryID" required>
                         <option value="" selected>Select Category</option>
                         <?php foreach ($categories as $category): ?>
-                            <option value="<?= $category['CategoryID']; ?>"><?= htmlspecialchars($category['CategoryName']); ?></option>
+                            <option value="<?= htmlspecialchars($category['CategoryID']) ?>">
+                                <?= htmlspecialchars($category['CategoryName']) ?>
+                            </option>
                         <?php endforeach; ?>
                     </select>
                 </div>
@@ -228,8 +297,8 @@
 
                 <!-- Minimum Stock Level -->
                 <div class="mb-3">
-                    <label for="minStockLevel" class="form-label">Minimum Stock Level</label>
-                    <input type="number" class="form-control" id="minStockLevel" name="minStockLevel" required min="0" placeholder="Enter min stock level">
+                    <label for="size" class="form-label">Type or Size</label>
+                    <input type="text" class="form-control" id="size" name="size" required min="0" placeholder="Enter size or type">
                 </div>
 
                 <!-- Reorder Level -->
@@ -257,52 +326,6 @@
     </form>
 </div>
 
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-    const addMaterialForm = document.getElementById("addMeterial");
-    const overlay = document.getElementById("overlay");
-
-    // Show Add Material Form in Center
-    document.getElementById("btn-add").addEventListener("click", function () {
-        addMaterialForm.style.display = "block";
-        overlay.style.display = "block"; // Show overlay
-    });
-
-    // Hide Form and Overlay
-    document.getElementById("btn-cancel").addEventListener("click", function () {
-        addMaterialForm.style.display = "none";
-        overlay.style.display = "none"; // Hide overlay
-    });
-
-    // Image Preview
-    document.getElementById("image").addEventListener("change", function(event) {
-        const preview = document.getElementById("preview");
-        const file = event.target.files[0];
-
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = function (e) {
-                preview.src = e.target.result;
-                preview.style.display = "block";
-            };
-            reader.readAsDataURL(file);
-        } else {
-            preview.src = "#";
-            preview.style.display = "none";
-        }
-    });
-
-    // Validate Form
-    document.getElementById("btn-add-material").addEventListener("click", function (event) {
-        let name = document.getElementById("name").value;
-        if (!name) {
-            alert("Please fill in all fields!");
-            event.preventDefault();
-        }
-    });
-});
-</script>
-
-
+<script src="views/assets/js/inventory/material.js"></script>
 
 

@@ -1,6 +1,4 @@
-
 <?php
-
 
 class Router
 {
@@ -18,71 +16,81 @@ class Router
     // Define GET routes
     public function get($uri, $action)
     {
-        // Prevent adding empty URIs or duplicate routes
-        if (empty($uri)) {
-            throw new Exception("URI cannot be empty.");
-        }
         $this->addRoute('GET', $uri, $action);
     }
 
     // Define POST routes
     public function post($uri, $action)
     {
-        // Prevent adding empty URIs or duplicate routes
-        if (empty($uri)) {
-            throw new Exception("URI cannot be empty.");
-        }
         $this->addRoute('POST', $uri, $action);
     }
-     
 
-    private function addRoute($method, $uri, $action)
-{
-    // Clean the URI (remove leading/trailing slashes)
-    $uri = trim($uri, '/');
-
-    // Check for duplicate routes
-    foreach ($this->routes as $route) {
-        if ($route['uri'] === $uri && $route['method'] === $method) {
-            throw new Exception("Route for '{$method} {$uri}' already exists.");
-        }
+    // Define PUT routes
+    public function put($uri, $action)
+    {
+        $this->addRoute('PUT', $uri, $action);
     }
 
-    // Debugging: Log routes being added
-   
+    // Define DELETE routes
+    public function delete($uri, $action)
+    {
+        $this->addRoute('DELETE', $uri, $action);
+    }
 
-    // Add the new route
-    $this->routes[] = [
-        'uri' => $uri,
-        'method' => $method,
-        'action' => $action
-    ];
-}
+    // Add a new route
+    private function addRoute($method, $uri, $action)
+    {
+        $uri = trim($uri, '/');
 
-    // Method to handle route addition (for GET and POST)
+        // Prevent empty route registration (set as root '/')
+        if ($uri === '') {
+            $uri = '/';
+        }
+
+        foreach ($this->routes as $route) {
+            if ($route['uri'] === $uri && $route['method'] === $method) {
+                throw new Exception("Route for '{$method} {$uri}' already exists.");
+            }
+        }
+
+        $this->routes[] = [
+            'uri' => $uri,
+            'method' => $method,
+            'action' => $action
+        ];
+    }
+
     // Route matching and dispatching
     public function route()
     {
-        $currentUri = trim($this->uri, '/'); // Clean the current URI
+        $currentUri = trim($this->uri, '/');
+        $requestMethod = $this->method;
+
+        // Support for PUT and DELETE via POST override
+        if ($requestMethod === 'POST') {
+            if (!empty($_POST['_method'])) {
+                $overrideMethod = strtoupper($_POST['_method']);
+                if (in_array($overrideMethod, ['PUT', 'DELETE'])) {
+                    $requestMethod = $overrideMethod;
+                }
+            }
+        }
 
         foreach ($this->routes as $route) {
-            $routeUri = trim($route['uri'], '/'); // Clean the route URI
+            $routeUri = trim($route['uri'], '/');
 
             // Match dynamic URL segments like {id}
             $pattern = preg_replace('/\{([a-zA-Z0-9_]+)\}/', '(?P<$1>[a-zA-Z0-9_]+)', $routeUri);
 
-            // Check if the current URI matches the route pattern and method
-            if ($this->method === $route['method'] && preg_match("#^{$pattern}$#", $currentUri, $matches)) {
-                array_shift($matches); // Remove the full match (we don't need it)
+            if ($requestMethod === $route['method'] && preg_match("#^{$pattern}$#", $currentUri, $matches)) {
+                array_shift($matches); // Remove full match
 
-                // Extract controller and method
                 $controllerClass = $route['action'][0];
                 $method = $route['action'][1];
 
-                // Instantiate controller and call the method
                 if (class_exists($controllerClass) && method_exists($controllerClass, $method)) {
                     $controller = new $controllerClass();
-                    call_user_func_array([$controller, $method], $matches);
+                    call_user_func_array([$controller, $method], array_values($matches));
                     return;
                 } else {
                     $this->handleError(500, "Error: Controller or method not found: {$controllerClass}::{$method}");
@@ -91,11 +99,10 @@ class Router
             }
         }
 
-        // No matching route found
         $this->handleError(404, "Page '{$this->uri}' does not exist.");
     }
 
-    // Method to handle error responses
+    // Error handling
     private function handleError($statusCode, $message)
     {
         http_response_code($statusCode);
@@ -113,14 +120,36 @@ class Router
         }
     }
 
+    // Match multiple HTTP methods
+    public function match(array $methods, $uri, $action)
+{
+    foreach ($methods as $method) {
+        if (!in_array(strtoupper($method), ['GET', 'POST', 'PUT', 'DELETE'])) {
+            throw new Exception("Invalid HTTP method: $method");
+        }
+        $this->addRoute(strtoupper($method), $uri, $action); // Ensure method is uppercase
+    }
+}
+
+
     // Define a group of routes
     public function group($prefix, $callback)
     {
-        $originalPrefix = $this->uri;
-        $this->uri = rtrim($this->uri . '/' . trim($prefix, '/'), '/');
+        $originalUri = $this->uri;
+        $prefix = trim($prefix, '/');
+        
+        // Apply prefix only if it's not empty
+        if ($prefix !== '') {
+            $this->uri = rtrim($this->uri . '/' . $prefix, '/');
+        }
 
         call_user_func($callback, $this);
 
-        $this->uri = $originalPrefix;
+        $this->uri = $originalUri; // Restore original URI after group execution
+    }
+
+    public function loadView($view)
+    {
+        require_once "views/$view.php";
     }
 }
