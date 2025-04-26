@@ -19,6 +19,12 @@
 
 <!--Start link or script for account feature -->
 
+
+
+
+
+
+
 <!-- JS for userlist.php -->
 <script src="views/assets/JavaScript/adminuseraccount/userlist.js" defer></script>
 <link rel="stylesheet" href="views/assets/css/adminaccountuser/adminUserList.css">
@@ -48,6 +54,9 @@
 }
 
 /* Custom class for smaller text */
+
+
+
 
 
 
@@ -155,7 +164,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="../pages/rtl.html">
+          <a class="nav-link" href="/employees">
             <div
               class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
               <i class="ni ni-briefcase-24 text-dark text-sm opacity-10"></i>
