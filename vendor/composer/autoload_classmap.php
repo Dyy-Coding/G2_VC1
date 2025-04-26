@@ -20,4 +20,22 @@ return array(
     'TCPDF_FONT_DATA' => $vendorDir . '/tecnickcom/tcpdf/include/tcpdf_font_data.php',
     'TCPDF_IMAGES' => $vendorDir . '/tecnickcom/tcpdf/include/tcpdf_images.php',
     'TCPDF_STATIC' => $vendorDir . '/tecnickcom/tcpdf/include/tcpdf_static.php',
+<<<<<<< HEAD
+=======
+    'TTFontFile' => $vendorDir . '/mpdf/mpdf/classes/ttfontsuni.php',
+    'TTFontFile_Analysis' => $vendorDir . '/mpdf/mpdf/classes/ttfontsuni_analysis.php',
+    'UCDN' => $vendorDir . '/mpdf/mpdf/classes/ucdn.php',
+    'bmp' => $vendorDir . '/mpdf/mpdf/classes/bmp.php',
+    'cssmgr' => $vendorDir . '/mpdf/mpdf/classes/cssmgr.php',
+    'directw' => $vendorDir . '/mpdf/mpdf/classes/directw.php',
+    'fpdi_pdf_parser' => $vendorDir . '/setasign/fpdi/fpdi_pdf_parser.php',
+    'grad' => $vendorDir . '/mpdf/mpdf/classes/grad.php',
+    'mPDF' => $vendorDir . '/mpdf/mpdf/mpdf.php',
+    'meter' => $vendorDir . '/mpdf/mpdf/classes/meter.php',
+    'mpdfform' => $vendorDir . '/mpdf/mpdf/classes/mpdfform.php',
+    'otl' => $vendorDir . '/mpdf/mpdf/classes/otl.php',
+    'pdf_context' => $vendorDir . '/setasign/fpdi/pdf_context.php',
+    'tocontents' => $vendorDir . '/mpdf/mpdf/classes/tocontents.php',
+    'wmf' => $vendorDir . '/mpdf/mpdf/classes/wmf.php',
+>>>>>>> Development
 );

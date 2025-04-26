@@ -1,9 +1,15 @@
 {
     "packages": [
         {
+<<<<<<< HEAD
             "name": "composer/pcre",
             "version": "3.3.2",
             "version_normalized": "3.3.2.0",
+=======
+            "name": "dompdf/dompdf",
+            "version": "v3.1.0",
+            "version_normalized": "3.1.0.0",
+>>>>>>> Development
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/pcre.git",

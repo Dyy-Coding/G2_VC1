@@ -3,7 +3,15 @@
         'name' => '__root__',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
+<<<<<<< HEAD
         'reference' => 'd536c438daacfca269b09db8108030be8c7bff84',
+=======
+<<<<<<< HEAD
+        'reference' => '3ce652079aacda5057e122ece1ca794b5da04be0',
+=======
+        'reference' => '4740c2d2e8b6b2a995cafbb2265e148e70e459ef',
+>>>>>>> 73709d9ba03b4679a64296167371bc4ec51d76c0
+>>>>>>> Development
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -13,16 +21,31 @@
         '__root__' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
+<<<<<<< HEAD
             'reference' => 'd536c438daacfca269b09db8108030be8c7bff84',
+=======
+<<<<<<< HEAD
+            'reference' => '3ce652079aacda5057e122ece1ca794b5da04be0',
+=======
+            'reference' => '4740c2d2e8b6b2a995cafbb2265e148e70e459ef',
+>>>>>>> 73709d9ba03b4679a64296167371bc4ec51d76c0
+>>>>>>> Development
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
             'dev_requirement' => false,
         ),
+<<<<<<< HEAD
         'composer/pcre' => array(
             'pretty_version' => '3.3.2',
             'version' => '3.3.2.0',
             'reference' => 'b2bed4734f0cc156ee1fe9c0da2550420d99a21e',
+=======
+        'dompdf/dompdf' => array(
+            'pretty_version' => 'v3.1.0',
+            'version' => '3.1.0.0',
+            'reference' => 'a51bd7a063a65499446919286fb18b518177155a',
+>>>>>>> Development
             'type' => 'library',
             'install_path' => __DIR__ . '/./pcre',
             'aliases' => array(),

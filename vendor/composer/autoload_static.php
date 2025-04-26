@@ -7,10 +7,13 @@ namespace Composer\Autoload;
 class ComposerStaticInitece44757000baccb839ab4d553f174d8
 {
     public static $prefixLengthsPsr4 = array (
+<<<<<<< HEAD
         'Z' => 
         array (
             'ZipStream\\' => 10,
         ),
+=======
+>>>>>>> Development
         'T' => 
         array (
             'Twilio\\' => 7,
@@ -79,7 +82,11 @@ class ComposerStaticInitece44757000baccb839ab4d553f174d8
         array (
             0 => __DIR__ . '/..' . '/phpmailer/phpmailer/src',
         ),
+<<<<<<< HEAD
         'MyCLabs\\Enum\\' => 
+=======
+        'Masterminds\\' => 
+>>>>>>> Development
         array (
             0 => __DIR__ . '/..' . '/myclabs/php-enum/src',
         ),
@@ -116,6 +123,24 @@ class ComposerStaticInitece44757000baccb839ab4d553f174d8
         'TCPDF_FONT_DATA' => __DIR__ . '/..' . '/tecnickcom/tcpdf/include/tcpdf_font_data.php',
         'TCPDF_IMAGES' => __DIR__ . '/..' . '/tecnickcom/tcpdf/include/tcpdf_images.php',
         'TCPDF_STATIC' => __DIR__ . '/..' . '/tecnickcom/tcpdf/include/tcpdf_static.php',
+<<<<<<< HEAD
+=======
+        'TTFontFile' => __DIR__ . '/..' . '/mpdf/mpdf/classes/ttfontsuni.php',
+        'TTFontFile_Analysis' => __DIR__ . '/..' . '/mpdf/mpdf/classes/ttfontsuni_analysis.php',
+        'UCDN' => __DIR__ . '/..' . '/mpdf/mpdf/classes/ucdn.php',
+        'bmp' => __DIR__ . '/..' . '/mpdf/mpdf/classes/bmp.php',
+        'cssmgr' => __DIR__ . '/..' . '/mpdf/mpdf/classes/cssmgr.php',
+        'directw' => __DIR__ . '/..' . '/mpdf/mpdf/classes/directw.php',
+        'fpdi_pdf_parser' => __DIR__ . '/..' . '/setasign/fpdi/fpdi_pdf_parser.php',
+        'grad' => __DIR__ . '/..' . '/mpdf/mpdf/classes/grad.php',
+        'mPDF' => __DIR__ . '/..' . '/mpdf/mpdf/mpdf.php',
+        'meter' => __DIR__ . '/..' . '/mpdf/mpdf/classes/meter.php',
+        'mpdfform' => __DIR__ . '/..' . '/mpdf/mpdf/classes/mpdfform.php',
+        'otl' => __DIR__ . '/..' . '/mpdf/mpdf/classes/otl.php',
+        'pdf_context' => __DIR__ . '/..' . '/setasign/fpdi/pdf_context.php',
+        'tocontents' => __DIR__ . '/..' . '/mpdf/mpdf/classes/tocontents.php',
+        'wmf' => __DIR__ . '/..' . '/mpdf/mpdf/classes/wmf.php',
+>>>>>>> Development
     );
 
     public static function getInitializer(ClassLoader $loader)

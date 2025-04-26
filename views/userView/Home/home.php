@@ -1,5 +1,4 @@
 
-
     <!-- Main Content -->
     <main>
                 <!-- Banner Carousel -->
