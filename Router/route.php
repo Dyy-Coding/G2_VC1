@@ -15,6 +15,8 @@ require_once "Controllers/adminController/authenicationController/registerContro
 // Inventory Controllers
 require_once "Controllers/adminController/InventoryController/materialsController.php";
 require_once "Controllers/adminController/InventoryController/categoriesController.php";
+require_once "Controllers/adminController/InventoryController/exportByPython.php";
+// require_once "Controllers/adminController/InventoryController/exportImportController.php";
 
 // Dashboard Controllers
 require_once "Controllers/adminController/DashboardController.php";
@@ -28,17 +30,24 @@ require_once "Controllers/adminController/accountController/listUserController.p
 require_once "Controllers/adminController/BashInfoController.php";
 require_once "Controllers/errorController.php";
 
+
+
 // Models
 require_once "Models/usersModel.php";
 require_once "Models/invenoryModel/meterailModel.php";
 require_once "Models/invenoryModel/categoryModel.php";
 require_once "Models/dashboard/dashboardModel.php";
+require_once "Models/invenoryModel/import&export/material.php";
 
 // Helper files
 require_once 'Controllers/validateionHelper.php';
 
 // Customer Controller
 require_once "Controllers/userController/welcomeController/welcomeController.php";
+
+
+// User View Controller
+require_once "Controllers/userController/ShopController/salesController.php";
 
 // Initialize Router
 $route = new Router();
@@ -65,6 +74,11 @@ $route->group('auth', function ($route) {
 });
 
 
+// UserView
+$route->group('shop', function($route) {
+    $route->get('/sales', [SalesController::class, 'sales']);
+});
+
 /**
  * Dashboard Routes
  */
@@ -89,7 +103,7 @@ $route->group('inventory', function ($route) {
     // Material Management
     $route->match(['get', 'post'], '/materials/add', [MaterialsController::class, 'addMaterial']);
     $route->get('/materials/edit/{id}', [MaterialsController::class, 'materialEditForSome']);
-    $route->post('/materials/deleteSelectedMaterials', [MaterialsController::class, 'DeleteSelectedMaterials']);
+    $route->post('/materials/export', [ExportImportController::class, 'exportMaterials']);
     $route->post('/materials/update', [MaterialsController::class, 'updateMaterial']);
     $route->get('/materials/delete/{id}', [MaterialsController::class, 'deleteMaterial']);
     $route->get('/materials/view/{id}', [MaterialsController::class, 'viewMaterial']);

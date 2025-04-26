@@ -45,6 +45,9 @@ class SalesModel {
         }
     }
 
+
+    
+
     // Function to create a new sale
     public static function createSale($materialId, $customerId, $quantity, $totalPrice, $status) {
         try {

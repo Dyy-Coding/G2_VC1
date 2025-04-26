@@ -15,6 +15,54 @@ if (isset($userLoggedIn) && $userLoggedIn) {
 }
 class BaseController
 {
+
+
+/**
+ * Render a customer-specific view with customer layout (header, navbar, footer).
+ *
+ * @param string $view The customer view name to render.
+ * @param array $data Data to be passed to the view.
+ */
+protected function renderCustomerView(string $view, array $data = [])
+{
+    extract($data);
+    
+    $viewFile = __DIR__ . '/../views/' . $view . '.php';
+    $headerFile = __DIR__ . '/../views/customerLayouts/header.php';
+    $navbarFile = __DIR__ . '/../views/customerLayouts/navbar.php';
+    $footerFile = __DIR__ . '/../views/customerLayouts/footer.php';
+
+    if (!file_exists($viewFile)) {
+        $this->handleError(404, 'Customer view not found');
+        return;
+    }
+
+    ob_start();
+
+    // Include layout parts
+    if (file_exists($headerFile)) {
+        require $headerFile;
+    }
+
+    if (file_exists($navbarFile)) {
+        require $navbarFile;
+    }
+
+    // Main content
+    require $viewFile;
+
+    if (file_exists($footerFile)) {
+        require $footerFile;
+    }
+
+    $content = ob_get_clean();
+    echo $content;
+}
+
+
+
+
+
     /**
      * Render a view with optional layout.
      *
@@ -73,26 +121,7 @@ class BaseController
      * @param array $data Data to be passed to the view.
      * @param string $layout The layout name (default is 'customer_layout').
      */
-    protected function renderCustomerView(string $view, array $data = [], string $layout = 'customer_layout')
-    {
-        extract($data);
-        ob_start();
 
-        $viewFile = __DIR__ . '/../Views/customer/' . $view . '.php';
-        if (!file_exists($viewFile)) {
-            $this->handleError(404, 'Customer view not found');
-            return;
-        }
-
-        require $viewFile;
-        $content = ob_get_clean();
-
-        if ($layout) {
-            $this->loadLayout($layout, $content, true);
-        } else {
-            echo $content;
-        }
-    }
 
     /**
      * Redirect to a given URL and terminate script.

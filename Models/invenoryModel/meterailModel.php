@@ -187,6 +187,24 @@ class Material {
         }
     }
 
+    public function getPopularCategories() {
+        $stmt = $this->conn->prepare("
+            SELECT 
+                c.CategoryID,
+                c.CategoryName,
+                COUNT(pod.MaterialID) AS totalSales
+            FROM purchaseorderdetails pod
+            INNER JOIN materials m ON pod.MaterialID = m.MaterialID
+            INNER JOIN categories c ON m.CategoryID = c.CategoryID
+            GROUP BY c.CategoryID
+            ORDER BY totalSales DESC
+        ");
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+    
+    
+
     public function getSuppliers() {
         try {
             $stmt = $this->conn->prepare("SELECT SupplierID, Name FROM Suppliers");
@@ -214,6 +232,22 @@ class Material {
         } catch (PDOException $e) {
             error_log("Exception in deleteMaterial: " . $e->getMessage());
             return false;
+        }
+    }
+
+    public function getTopSellingMaterials() {
+        try {
+            // Query to get the top 5 selling materials
+            $query = "SELECT * FROM top_selling_materials LIMIT 5";
+            $stmt = $this->conn->prepare($query);
+            $stmt->execute();
+
+            // Fetch all results as an associative array
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            // Handle the error if the query fails
+            echo "Error: " . $e->getMessage();
+            return []; // Return an empty array in case of error
         }
     }
 

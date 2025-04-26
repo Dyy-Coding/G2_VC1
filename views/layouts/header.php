@@ -32,6 +32,33 @@
 <!-- three-dot menu for user list -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<style>
+  .dropdown-menus {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+    display: none;
+    background-color: white;
+    padding: 0.5rem 0;
+    border-radius: 0.375rem;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    min-width: 160px;
+  }
+
+  .dropdown-itemsales {
+    display: block;
+    padding: 0.5rem 1rem;
+    color: #212529;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .dropdown-itemsales:hover {
+    background-color: #f8f9fa;
+    color: #000;
+  }
+</style>
 
 
 <!--End for link or script for account feature  -->
@@ -102,19 +129,43 @@
             <li><a class="dropdown-item" href="/material">Material</a></li>
           </ul>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/material">
-            <div
-              class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="ni ni-calendar-grid-58 text-dark text-sm opacity-10"></i>
-            </div>
-            <span class="nav-link-text ms-1">Sales</span>
-          </a>
-          <ul class="dropdown-menu" id="inventoryDropdown" >
-          <li><a class="dropdown-item" href="/order">Order</a></li>
-            <li><a class="dropdown-item" href="/inven">OrderDetail</a></li>
-          </ul>
-        </li>
+        <li class="nav-item position-relative" id="salesDropdown">
+            <a class="nav-link" href="javascript:void(0);">
+              <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                <i class="ni ni-credit-card text-dark text-sm opacity-10"></i>
+              </div>
+              <span class="nav-link-text ms-1">Sales</span>
+            </a>
+            <ul class="dropdown-menus" id="inventoryDropdownsales">
+              <li><a class="dropdown-itemsales" href="/order">Order</a></li>
+              <li><a class="dropdown-itemsales" href="/inven">OrderDetail</a></li>
+            </ul>
+          </li>
+
+          <script>
+                document.addEventListener('DOMContentLoaded', function () {
+                  const salesDropdown = document.getElementById('salesDropdown');
+                  const dropdownMenu = document.getElementById('inventoryDropdownsales');
+
+                  // Hide dropdown initially
+                  dropdownMenu.style.display = 'none';
+
+                  salesDropdown.addEventListener('click', function (e) {
+                    e.stopPropagation(); // Prevent event bubbling
+                    const isVisible = dropdownMenu.style.display === 'block';
+                    dropdownMenu.style.display = isVisible ? 'none' : 'block';
+                  });
+
+                  // Hide dropdown if clicked outside
+                  document.addEventListener('click', function (e) {
+                    if (!salesDropdown.contains(e.target)) {
+                      dropdownMenu.style.display = 'none';
+                    }
+                  });
+                });
+              </script>
+
+
 
         <script>
           document.querySelector('.nav-link[href="/inventory"]').addEventListener('click', function (event) {
@@ -127,15 +178,7 @@
             }
           });
         </script>
-        <li class="nav-item">
-          <a class="nav-link" href="../pages/billing.html">
-            <div
-              class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="ni ni-credit-card text-dark text-sm opacity-10"></i>
-            </div>
-            <span class="nav-link-text ms-1">Sales</span>
-          </a>
-        </li>
+  
         <li class="nav-item">
           <a class="nav-link" href="../pages/virtual-reality.html">
             <div
