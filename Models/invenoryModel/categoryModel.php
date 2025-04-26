@@ -7,6 +7,36 @@ class Category {
         $this->conn = Database::getConnection();
     }
 
+    public function getBestSellingCategories() {
+        try {
+            $sql = "
+                SELECT 
+                    c.CategoryName AS CategoryName,
+                    SUM(m.Quantity) AS TotalStockInCategory,
+                    SUM(sod.Quantity) AS TotalQuantitySold,
+                    SUM(sod.Total) AS TotalSalesAmount
+                FROM 
+                    salesorderdetails sod
+                JOIN 
+                    materials m ON sod.MaterialID = m.MaterialID
+                JOIN 
+                    categories c ON m.CategoryID = c.CategoryID
+                GROUP BY 
+                    c.CategoryName
+                ORDER BY 
+                    TotalSalesAmount DESC
+            ";
+    
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            error_log("Error fetching best selling categories: " . $e->getMessage());
+            return [];
+        }
+    }
+    
+
     // Fetch all categories with Description and UpdatedAt
     public function getAllCategories() {
         try {
@@ -117,17 +147,33 @@ class Category {
         }
     }
 
-public function getMaterialCountByCategory() {
-    $sql = "SELECT c.CategoryID, c.CategoryName, COUNT(m.MaterialID) AS MaterialCount
-            FROM categories c
-            LEFT JOIN materials m ON c.CategoryID = m.CategoryID
-            GROUP BY c.CategoryID, c.CategoryName";
+    public function getMaterialCountByCategory() {
+        try {
+            $sql = "SELECT c.CategoryID, c.CategoryName, COUNT(m.MaterialID) AS MaterialCount
+                    FROM categories c
+                    LEFT JOIN materials m ON c.CategoryID = m.CategoryID
+                    GROUP BY c.CategoryID, c.CategoryName";
     
-    return $this->db->fetchAll($sql);
-}
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            error_log("Error fetching material count by category: " . $e->getMessage());
+            return [];
+        }
+    }
+
+    public function getCategoryDetails($categoryID) {
+        try {
+            $stmt = $this->conn->prepare("SELECT * FROM Categories WHERE CategoryID = :categoryID");
+            $stmt->bindParam(':categoryID', $categoryID, PDO::PARAM_INT);
+            $stmt->execute();
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            error_log("Error fetching category details: " . $e->getMessage());
+            return null;
+        }
+    }
 
     
-    
 }
-
-?>

@@ -1,5 +1,5 @@
 <!-- Delete Selected Categories Form -->
-    <div class="bg-container">
+<div class="bg-container">
         <div class="content-container">
             <div class="container-fluid py-4 d-flex justify-content-between bg-container">
                 <div class="container mt-3 card" style="width: 100%; padding: 20px;">                   
@@ -97,6 +97,7 @@
         </div>
     </div>
 
+
     <!-- Add Category Form (Completely Outside Delete Form) -->
     <div class="form-container card mb-5 addCategory" id="addCategory" style="display: none;">
         <h2 class="text-3xl font-semibold text-gray-800 text-center mb-3">Add New Category</h2>
@@ -121,50 +122,7 @@
         </form>
     </div>
 
-        <div class="container-fluid py-4 d-flex justify-content-between" style="flex-direction: row;">
-            <div class="container mt-3 card" style="width: 100%; padding: 20px;">
-                <div class="mb-1">
-                    <h1>Top sales</h1>
-                </div>
-                <table class="table text-center">
-                    <thead>
-                        <tr>
-                            <th>Category</th>
-                            <th>Quantity</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="d-flex align-items-center justify-content-center">
-                                <div class="name">
-                                    <p class="mt-0 mb-0 ml-10">Cements</p>
-                                    <span>200 order</span>
-                                </div>
-                            </td>
-                            <td>1680</td>
-                        </tr>
-                        <tr>
-                            <td class="d-flex align-items-center justify-content-center">
-                                <div class="name">
-                                    <p class="mt-0 mb-0 ml-10">Color</p>
-                                    <span>200 order</span>
-                                </div>
-                            </td>
-                            <td>1680</td>
-                        </tr>
-                        <tr>
-                            <td class="d-flex align-items-center justify-content-center">
-                                <div class="name">
-                                    <p class="mt-0 mb-0 ml-10">Pin</p>
-                                    <span>200 order</span>
-                                </div>
-                            </td>
-                            <td>1680</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
+       
         <div class="container-fluid py-4 d-flex justify-content-between" style="flex-direction: row;">
             <div class="container card mt-0" style="width: 35%; padding: 20px;">
                 <div class="container mt-0">
@@ -199,38 +157,67 @@
             </div>
             <div class="container card mt-0" style="width: 60%; padding: 20px;">
                 <div class="mb-1">
-                    <h4>Best selling</h4>
+                    <h4>Category Overview</h4>
                     <div class="chart">
                         <canvas id="chart-line" class="chart-canvas" height="150vh"></canvas>
                     </div>
                     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-                    <script>
-                        var ctx = document.getElementById("chart-line").getContext("2d");
-                        var myChart = new Chart(ctx, {
-                            type: "line",
-                            data: {
-                                labels: ["January", "February", "March", "April"],
-                                datasets: [{
-                                    label: "Sales",
-                                    data: [65, 59, 80, 81],
-                                    backgroundColor: "rgba(75, 192, 192, 0.2)",
-                                    borderColor: "rgba(75, 192, 192, 1)",
-                                    borderWidth: 1
-                                }]
-                            },
-                            options: {
-                                responsive: true,
-                                plugins: {
-                                    legend: {
-                                        position: "bottom"
-                                    }
-                                }
-                            }
-                        });
-                    </script>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- End Diagram -->
+                    <script>     
+    // Fetch data from the PHP API     
+    fetch('Models/invenoryModel/topSalesCategory.php')         
+        .then(response => response.json())         
+        .then(data => {             
+            // Prepare the data for the chart             
+            const months = [];             
+            const categories = {}; // Object to store sales data for each category             
+
+            // Process the data to get months and sales for each category             
+            data.forEach(item => {                 
+                if (!months.includes(item.Month)) {
+                    months.push(item.Month); // Add months (e.g., '2025-01')                 
+                }                 
+                if (!categories[item.CategoryName]) {
+                    categories[item.CategoryName] = { label: item.CategoryName, data: [], borderColor: getRandomColor() }; // Initialize category data with random color
+                }                 
+                categories[item.CategoryName].data.push(item.TotalSold); // Add total sales for each category             
+            });
+
+            // Prepare the datasets based on categories
+            const datasets = Object.values(categories).map(category => ({
+                label: category.label,
+                data: category.data,
+                backgroundColor: category.borderColor + '0.2', // light version for background
+                borderColor: category.borderColor, 
+                borderWidth: 1
+            }));
+
+            // Initialize the chart with the fetched data             
+            var ctx = document.getElementById("chart-line").getContext("2d");             
+            var myChart = new Chart(ctx, {                 
+                type: "line",                 
+                data: {                     
+                    labels: months, // Use months as labels                     
+                    datasets: datasets // Multiple datasets for each category                 
+                },                 
+                options: {                     
+                    responsive: true,                     
+                    plugins: {                         
+                        legend: {                             
+                            position: "bottom"                         
+                        }                     
+                    }                 
+                }             
+            });         
+        })         
+        .catch(error => console.error('Error fetching data:', error)); 
+
+    // Function to generate a random color for each category
+    function getRandomColor() {
+        const letters = '0123456789ABCDEF';
+        let color = '#';
+        for (let i = 0; i < 6; i++) {
+            color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
+    }
+</script>

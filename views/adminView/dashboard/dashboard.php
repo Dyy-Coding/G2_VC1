@@ -12,6 +12,11 @@
     padding: 8px;
     text-align: center;
   }
+  .card-img-top {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+  }
 
   /* Make sure text contrasts well with background */
   .text-dark {
@@ -25,39 +30,39 @@
   }
 </style>
 <div class="container-fluid py-4">
-  <div class="row">
-    <!-- Today Money -->
-    <div class="col-xl-3 col-lg-4 col-sm-6 mb-4">
-      <div class="card shadow-sm">
+<div class="row">
+<!-- Today's Money -->
+<div class="col-xl-3 col-lg-4 col-sm-6 mb-4">
+    <div class="card shadow-sm">
         <div class="card-body p-3">
-          <div class="row align-items-center">
-            <div class="col-8">
-              <div class="numbers">
-                <p class="text-sm mb-0 text-uppercase font-weight-bold">Today's Money</p>
-                <h5 class="font-weight-bolder">
-                  $<?php echo number_format((float)$today_money, 2); ?>
-                </h5>
-                <p class="mb-0">
-                  <?php 
-                    $percentage_change = ($total_expenses != 0) ? (($today_money - $total_expenses) / $total_expenses) * 100 : 0;
-                    $changeClass = $percentage_change >= 0 ? 'text-success' : 'text-danger';
-                  ?>
-                  <span class="<?= $changeClass ?> text-sm font-weight-bolder">
-                    <?= ($percentage_change >= 0 ? '+' : '') . number_format($percentage_change, 2) ?>%
-                  </span>
-                  since yesterday
-                </p>
-              </div>
+            <div class="row align-items-center">
+                <div class="col-8">
+                    <div class="numbers">
+                        <p class="text-sm mb-0 text-uppercase font-weight-bold">Today's Money</p>
+                        <h5 class="font-weight-bolder">
+                            $<?php echo $today_money; ?>
+                        </h5>
+                        <p class="mb-0">
+                            <?php 
+                                $percentage_change = ($total_expenses != 0) ? (($today_money_raw - $total_expenses) / $total_expenses) * 100 : 0;
+                                $changeClass = $percentage_change >= 0 ? 'text-success' : 'text-danger';
+                            ?>
+                            <span class="<?= $changeClass ?> text-sm font-weight-bolder">
+                                <?= ($percentage_change >= 0 ? '+' : '') . number_format($percentage_change, 2) ?>%
+                            </span>
+                            since yesterday
+                        </p>
+                    </div>
+                </div>
+                <div class="col-4 text-end">
+                    <div class="icon icon-shape bg-gradient-primary shadow-primary text-center rounded-circle">
+                        <i class="ni ni-money-coins text-lg opacity-10" aria-hidden="true"></i>
+                    </div>
+                </div>
             </div>
-            <div class="col-4 text-end">
-              <div class="icon icon-shape bg-gradient-primary shadow-primary text-center rounded-circle">
-                <i class="ni ni-money-coins text-lg opacity-10" aria-hidden="true"></i>
-              </div>
-            </div>
-          </div>
         </div>
-      </div>
     </div>
+<<<<<<< HEAD
     <!-- Today Customers -->
     <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
       <div class="card">
@@ -79,16 +84,41 @@
                   since yesterday
                 </p>
               </div>
+=======
+</div>
+
+<!-- Today's Customers -->
+<div class="col-xl-3 col-lg-4 col-sm-6 mb-4">
+    <div class="card shadow-sm">
+        <div class="card-body p-3">
+            <div class="row align-items-center">
+                <div class="col-8">
+                    <div class="numbers">
+                        <p class="text-sm mb-0 text-uppercase font-weight-bold">Today's Customers</p>
+                        <h5 class="font-weight-bolder">
+                            <?php echo number_format($total_customers_today); ?>
+                        </h5>
+                        <p class="mb-0">
+                            <?php 
+                                $customerClass = $customer_percentage_change >= 0 ? 'text-success' : 'text-danger'; 
+                            ?>
+                            <span class="<?= $customerClass ?> text-sm font-weight-bolder">
+                                <?= ($customer_percentage_change >= 0 ? '+' : '') . $customer_percentage_change ?>
+                            </span>
+                            since yesterday
+                        </p>
+                    </div>
+                </div>
+                <div class="col-4 text-end">
+                    <div class="icon icon-shape bg-gradient-danger shadow-danger text-center rounded-circle">
+                        <i class="ni ni-world text-lg opacity-10" aria-hidden="true"></i>
+                    </div>
+                </div>
+>>>>>>> 8e5876e9d77f42d7799115338ff016561dfdf94d
             </div>
-            <div class="col-4 text-end">
-              <div class="icon icon-shape bg-gradient-danger shadow-danger text-center rounded-circle">
-                <i class="ni ni-world text-lg opacity-10" aria-hidden="true"></i>
-              </div>
-            </div>
-          </div>
         </div>
-      </div>
     </div>
+<<<<<<< HEAD
     <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
       <div class="card">
         <div class="card-body p-3">
@@ -104,16 +134,36 @@
                   since last quarter
                 </p>
               </div>
+=======
+</div>
+
+<!-- Suppliers and Purchase Orders -->
+<div class="col-xl-3 col-lg-4 col-sm-6 mb-4">
+    <div class="card shadow-sm">
+        <div class="card-body p-3">
+            <div class="row align-items-center">
+                <div class="col-8">
+                    <div class="numbers">
+                        <p class="text-sm mb-0 text-uppercase font-weight-bold">Suppliers</p>
+                        <h5 class="font-weight-bolder"><?php echo number_format($totalSuppliers); ?></h5>
+                        <p class="mb-0">
+                            Our purchase orders <strong>:</strong>
+                            <span class="text-success text-sm font-weight-bolder">
+                                <?= number_format($getThisMonthPurchaseOrder) ?>
+                            </span> this month
+                        </p>
+                    </div>
+                </div>
+                <div class="col-4 text-end">
+                    <div class="icon icon-shape bg-gradient-success shadow-success text-center rounded-circle">
+                        <i class="ni ni-paper-diploma text-lg opacity-10" aria-hidden="true"></i>
+                    </div>
+                </div>
+>>>>>>> 8e5876e9d77f42d7799115338ff016561dfdf94d
             </div>
-            <div class="col-4 text-end">
-              <div class="icon icon-shape bg-gradient-success shadow-success text-center rounded-circle">
-                <i class="ni ni-paper-diploma text-lg opacity-10" aria-hidden="true"></i>
-              </div>
-            </div>
-          </div>
         </div>
-      </div>
     </div>
+<<<<<<< HEAD
     <div class="col-xl-3 col-sm-6">
     <div class="card">
       <div class="card-body p-3">
@@ -134,10 +184,57 @@
               <i class="ni ni-cart text-lg opacity-10" aria-hidden="true"></i>
             </div>
           </div>
+=======
+</div>
+<!-- Sales Overview Card -->
+<div class="col-xl-3 col-lg-4 col-sm-6 mb-4">
+    <div class="card shadow-sm border-0">
+        <div class="card-body p-3">
+            <div class="row align-items-center">
+                <!-- Textual Data -->
+                <div class="col-8">
+                    <div class="numbers">
+                        <p class="text-sm mb-1 text-uppercase text-muted font-weight-bold">Sales</p>
+                        
+                        <!-- Total Sales Amount -->
+                        <h5 class="font-weight-bolder mb-1">
+                            $<?=$lastMonthTotalAmount; ?>
+                        </h5>
+
+                        <!-- Sales Orders This Month -->
+                        <p class="mb-1 text-sm">
+                            <span class="text-success font-weight-bolder">
+                                <?=  $lastMonthTotalOrders;?>
+                            </span>
+                            sales orders this month
+                        </p>
+
+                        <!-- Percentage Change -->
+                        <?php
+                            $salesClass = $lastMonthPercentFromLastMonth >= 0 ? 'text-success' : 'text-danger';
+                            $sign = $lastMonthPercentFromLastMonth >= 0 ? '+' : '';
+                        ?>
+                        <p class="mb-0 text-sm">
+                            <span class="<?= $salesClass ?> font-weight-bolder">
+                                <?= $sign . $lastMonthPercentFromLastMonth; ?>
+                            </span>
+                            since last month
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Icon -->
+                <div class="col-4 text-end">
+                    <div class="icon icon-shape bg-gradient-warning shadow-warning text-center rounded-circle">
+                        <i class="ni ni-cart text-lg opacity-10" aria-hidden="true"></i>
+                    </div>
+                </div>
+            </div>
+>>>>>>> 8e5876e9d77f42d7799115338ff016561dfdf94d
         </div>
-      </div>
     </div>
 </div>
+<<<<<<< HEAD
   </div>
 </div>
 
@@ -166,6 +263,34 @@
   <div class="col-lg-5">
     <div class="col-lg-12">
       <div class="card">
+=======
+
+
+
+  <!-- Sales Overview -->
+
+  <div class="row mt-2">
+    <div class="col-lg-7 mb-lg-0 mb-4">
+      <div class="card z-index-2 h-100 shadow-sm">
+        <div class="card-header pb-0 pt-3 bg-transparent">
+          <h6 class="text-capitalize">Sales Overview</h6>
+        </div>
+        <div class="card-body p-3">
+          <div class="chart">
+          <canvas id="chart-line-1" class="chart-canvas" height="300"></canvas>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    
+
+    <!-- Stock Lists -->
+    <div class="col-lg-5">
+      <div class="card shadow-sm">
+>>>>>>> 8e5876e9d77f42d7799115338ff016561dfdf94d
         <div class="card-header pb-0 p-1">
           <h4 class="m-4">Stock</h4>
         </div>
@@ -371,11 +496,11 @@
         </thead>
         <tbody>
           <!-- Loop through suppliers -->
-          <?php if (!empty($SuppliersData)): ?>
-            <?php foreach ($SuppliersData as $supplier): ?>
+          <?php if (!empty($suppliersData)): ?>
+            <?php foreach ($suppliersData as $supplier): ?>
               <tr class="hover:bg-gray-100 transition-all duration-300">
                 <td class="text-center">
-                  <img src="<?php echo htmlspecialchars($supplier['Image']); ?>" alt="User avatar" class="rounded-circle" style="width: 35px; height: 35px;" data-toggle="tooltip" title="Profile Picture">
+                  <img src="<?php echo htmlspecialchars($supplier['image']); ?>" alt="User avatar" class="rounded-circle" style="width: 35px; height: 35px;" data-toggle="tooltip" title="Profile Picture">
                 </td>
                 <td class="text-center">
                   <div class="d-flex align-items-center">

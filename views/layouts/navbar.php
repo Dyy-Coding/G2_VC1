@@ -112,35 +112,98 @@
                 <li class="breadcrumb-item text-sm">
                     <a class="opacity-5 text-white" href="javascript:;">Pages</a>
                 </li>
-                <li class="breadcrumb-item text-sm text-white active" aria-current="page">Dashboard</li>
+                <li class="breadcrumb-item text-sm text-white active" aria-current="page" data-translate="dashboard">Dashboard</li>
             </ol>
-            <h6 class="font-weight-bolder text-white mb-0">Dashboard</h6>
+            <h6 class="font-weight-bolder text-white mb-0" data-translate="dashboardTitle">Dashboard</h6>
         </nav>
         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4 d-flex flex-row align-items-center justify-content-center" id="navbar">
             <div class="ms-md-auto pe-md-5 d-flex align-items-center">
-                <!-- Search Form with Bootstrap Grid -->
                 <form id="searchForm" autocomplete="off" class="relative w-full sm:w-1/2 lg:w-1/2 mx-auto">
                     <div class="relative">
-                        <!-- Search Input using Tailwind and Bootstrap -->
                         <input type="search" name="q" id="searchInput" class="form-control border-2 border-gray-300 rounded-lg p-3 w-full shadow-md focus:ring-2 focus:ring-blue-500" placeholder="Type here..." required>
-
-                        <!-- Suggestions box (this will display the matching search results) -->
                         <div id="suggestions" class="absolute w-full mt-2 bg-white border border-gray-300 rounded-lg shadow-lg max-h-60 overflow-y-auto z-10"></div>
                     </div>
                 </form>
             </div>
-
-            <!-- Language Dropdown -->
-            <li class="nav-item dropdown d-flex flex-row align-items-center">
+            <div class="d-flex align-items-center gap-2">
                 <i class="ni ni-world-2 text-white text-sm"></i>
-                <select id="myDropdown" class="text-white font-weight-bold px-2 d-flex align-items-center gap-2 bg-transparent border-0">
-                    <option value="english">English</option>
-                    <option value="khmer">Khmer</option>
+                <select id="myDropdown" class="text-white bg-transparent border-0 fw-bold">
+                    <option value="en">English</option>
+                    <option value="km">Khmer</option>
                 </select>
-            </li>
+            </div>
         </div>
     </div>
 </nav>
 
 
 
+<script>
+    // Load translations
+    fetch('API_lenguage/translations.json')
+        .then(response => response.json())
+        .then(data => {
+            const translations = data;
+            const languageDropdown = document.getElementById('myDropdown');
+            const elementsToTranslate = document.querySelectorAll('[data-translate]'); // Elements with "data-translate" attribute
+
+            // Function to change content dynamically based on selected language
+            function changeLanguage(languageCode) {
+                const selectedTranslations = translations[languageCode];
+                if (selectedTranslations) {
+                    elementsToTranslate.forEach(element => {
+                        const translationKey = element.getAttribute('data-translate');
+                        if (selectedTranslations[translationKey]) {
+                            element.textContent = selectedTranslations[translationKey];
+                        }
+                    });
+                }
+            }
+
+            // Handle dropdown change (Language change)
+            languageDropdown.addEventListener('change', () => {
+                changeLanguage(languageDropdown.value);
+            });
+
+            // Default to English
+            changeLanguage('en');
+        })
+        .catch(error => console.error('Error loading translations:', error));
+
+    // Sample search suggestions (this can be dynamically fetched as well)
+    const sampleSuggestions = ["Sand", "Cement", "Pebble", "Steel", "Wood", "Brick"];
+    const suggestionsBox = document.getElementById("suggestions");
+    const searchInput = document.getElementById("searchInput");
+
+    // Search functionality
+    searchInput.addEventListener("input", () => {
+        const query = searchInput.value.toLowerCase();
+        suggestionsBox.innerHTML = "";
+
+        if (query.length === 0) {
+            suggestionsBox.style.display = "none";
+            return;
+        }
+
+        const matches = sampleSuggestions.filter(item =>
+            item.toLowerCase().includes(query)
+        );
+
+        if (matches.length > 0) {
+            matches.forEach(item => {
+                const anchor = document.createElement("a");
+                anchor.textContent = item;
+                anchor.href = "#";
+                anchor.onclick = () => {
+                    searchInput.value = item;
+                    suggestionsBox.style.display = "none";
+                };
+                suggestionsBox.appendChild(anchor);
+            });
+        } else {
+            suggestionsBox.innerHTML = "<p>No results found</p>";
+        }
+
+        suggestionsBox.style.display = "block";
+    });
+</script>
