@@ -22,24 +22,63 @@
     }
 
 </style>
-<div  class="container mt-3 card" style="width: 95%; padding: 20px;">
+<div class="container mt-3 card" style="width: 95%; padding: 20px;">
     <nav>
-        <div class="scrollable-container">
+        <div class="scrollable-container mb-3">
             <div class="relative">
                 <div class="scroll-container">
                     <?php if (isset($categories) && is_array($categories)): ?>
+                        <button class="btn btn-outline-primary rounded-pill" onclick="filterMaterials('all')">All</button>
                         <?php foreach ($categories as $category): ?>
-                            <button class="btn btn-outline-secondary rounded-pill"><?= htmlspecialchars($category['CategoryName']) ?></button>
+                            <button class="btn btn-outline-secondary rounded-pill" onclick="filterMaterials('<?= htmlspecialchars($category['CategoryName']) ?>')">
+                                <?= htmlspecialchars($category['CategoryName']) ?>
+                            </button>
                         <?php endforeach; ?>
-                        <?php else: ?>
-                            <p>No categories available.</p>
-                        <?php endif; ?>
+                    <?php else: ?>
+                        <p>No categories available.</p>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>
     </nav>
-    <div class="card-container">
-        
-    </div>
 
+    <div class="card-container d-flex  align-center justify-content-center flex-wrap gap-6">
+        <?php if (isset($materials) && is_array($materials)): ?>
+            <?php foreach ($materials as $material): ?>
+                <div class="card material-card shadow-sm" style="width: 18rem; border-radius: 15px; overflow: hidden;" data-category="<?= htmlspecialchars($material['CategoryName']) ?>">
+                <div style="height: 25vh; overflow: hidden;">
+                    <img 
+                        src="<?= htmlspecialchars($material['ImagePath']) ?>" 
+                        class="card-img" 
+                        alt="<?= htmlspecialchars($material['Name']) ?>" 
+                        style="height: 100%; object-fit: cover;"
+                    >
+                </div>
+                <div class="card-body text-center">
+                    <h5 class="card-title" style="font-weight: 600; color: #34495e;"><?= htmlspecialchars($material['Name']) ?></h5>
+                    <p class="card-text" style="color: #7f8c8d;">Price: $<?= number_format($material['UnitPrice'], 2) ?></p>
+                    <p class="card-text" style="color: #7f8c8d;">Quantity: <?= htmlspecialchars($material['Quantity']) ?></p>
+                </div>
+            </div>
+
+            <?php endforeach; ?>
+        <?php else: ?>
+            <p>No materials available.</p>
+        <?php endif; ?>
+    </div>
 </div>
+
+<!-- JavaScript to filter materials -->
+<script>
+function filterMaterials(category) {
+    const cards = document.querySelectorAll('.material-card');
+
+    cards.forEach(card => {
+        if (category === 'all' || card.getAttribute('data-category') === category) {
+            card.style.display = 'block';
+        } else {
+            card.style.display = 'none';
+        }
+    });
+}
+</script>
