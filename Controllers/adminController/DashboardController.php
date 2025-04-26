@@ -4,13 +4,16 @@ class DashboardController extends BaseController {
 
     private $todayMoneyModel;
     private $stockModel;
-    private $salesOverview;
 
     public function __construct() {
         $this->todayMoneyModel = new TodayMoneyModel();
         $this->stockModel = new StockModel();
-        $this->salesOverview = $this->todayMoneyModel->getSalesForLast12Months(); // Make sure this is correct
     }
+ 
+
+// Assuming a connection to the database is already established
+
+
     
     public function index() {
         try {
@@ -25,30 +28,9 @@ class DashboardController extends BaseController {
             // --- Today's Money Data ---
             $todayMoneyData = $this->todayMoneyModel->getTodayMoneyData();
 
-            // --- Sales Summary ---
-            $salesSummary = $this->todayMoneyModel->getSalesSummary();
-            $totalSales = number_format($salesSummary['total_sales'], 2);
-            $percentageChangesales = number_format($salesSummary['percentage_change'], 2);
-
-            // --- Yearly Sales Data ---
-            $currentYear = date('Y');
-            $previousYear = $currentYear - 1;
-
-            $currentYearSales = $this->todayMoneyModel->getSalesDataForYear($currentYear)['total_sales'] ?? 0;
-            $previousYearSales = $this->todayMoneyModel->getSalesDataForYear($previousYear)['total_sales'] ?? 0;
-
-            // Calculate Yearly Sales Percentage Change
-            $percentageChangeSales = ($previousYearSales > 0) 
-                ? (($currentYearSales - $previousYearSales) / $previousYearSales) * 100 
-                : 0;
-
-            // Format values for display
-            $currentYearSalesFormatted = number_format($currentYearSales, 2);
-            $previousYearSalesFormatted = number_format($previousYearSales, 2);
-            $percentageChangeFormatted = number_format($percentageChangeSales, 2);
-
-            // --- Stock Data ---
             $stockListData = $this->stockModel->getStockList();
+            $purchaseListData = $this->stockModel->getTopPurchasedMaterials();
+         
 
             // --- Total Sales & Orders ---
             $salesAndOrders = $this->todayMoneyModel->getTotalSalesAndOrders();
@@ -63,13 +45,35 @@ class DashboardController extends BaseController {
                 : 0;
 
             // --- Sales Overview for Last 12 Months ---
+            $salesOverview = $this->todayMoneyModel->getSalesForLast12Months();
+
+
+            // users data 
+            $customers = $this->todayMoneyModel->getAllCustomers();
+            // var_dump( $customers);
+            $workers = $this->todayMoneyModel->getAllworkers();
+            $SuppliersData = $this->todayMoneyModel->getSuppliersData();
+            // var_dump( $workers);
+               
             $labels = [];
             $salesData = [];
 
-            foreach ($this->salesOverview as $data) { // Fixed variable name
-                $labels[] = $data['month']; // Month as "Jan", "Feb", etc.
-                $salesData[] = $data['totalSalesAmount']; // Total sales
+            foreach ($salesOverview as $data) {
+                $monthName = date("M", strtotime("1 " . $data['month'] . " " . $data['year'])); // Convert to "Apr", "May" etc.
+                if (!in_array($monthName, $labels)) { // Avoid duplicate months
+                    $labels[] = $monthName;
+                    $salesData[] = (int) floatval(str_replace(',', '', $data['totalSalesAmount'])); // Convert sales to INT
+                }
             }
+
+            // Encode for JavaScript
+            // Convert PHP arrays to JSON
+            $labelsJson = ($labels);
+            $salesDataJson = ($salesData);
+
+
+            // --- Order Overview ---
+            $orderOverview = $this->todayMoneyModel->getOrderOverview();
 
             // Prepare data for the view
             $viewData = [
@@ -84,12 +88,14 @@ class DashboardController extends BaseController {
                 'totalSalesOrders'         => $totalSalesOrders,
                 'yesterdaySalesAmount'     => $yesterdaySalesAmount,
                 'salesPercentageChange'    => number_format($salesPercentageChange, 2),
-                'percentageChangesales'    => $percentageChangeFormatted,
                 'stockListData'            => $stockListData,
-                'labels'                   => $labels, // Fixed variable name
-                'salesData'                => $salesData, // Added sales data for chart
-                'labelsJson'               => json_encode($labels), // Pre-encoded for JS
-                'salesDataJson'            => json_encode($salesData) // Pre-encoded for JS
+                'labels'                   => $labels,
+                'salesData'                => $salesData,
+                'orderOverview'            => $orderOverview, // Added order overview
+                'customers'                =>  $customers,
+                'workers'                  =>  $workers,
+                'purchaseListData'         =>  $purchaseListData,
+                'SuppliersData'         =>  $SuppliersData
             ];
 
             // Render the dashboard view with all data
@@ -98,7 +104,7 @@ class DashboardController extends BaseController {
         } catch (Exception $e) {
             // Log error message and show error page
             error_log("Error in DashboardController: " . $e->getMessage());
-            $this->renderView('errorPage', ['message' => "Failed to load dashboard data."]);
+            $this->renderView('errorPage', ['message' => $e->getMessage()]);
         }
     }
 }

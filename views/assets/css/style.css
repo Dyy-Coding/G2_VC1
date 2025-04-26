@@ -1,0 +1,50 @@
+.carousel-item img {
+    height: 500px;
+    object-fit: cover;
+}
+@media (max-width: 768px) {
+    .carousel-item img {
+        height: 300px;
+    }
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    text-align: center;
+    color: white; /* Change text color as needed */
+}
+
+.image {
+    width: 70%; /* Make the image responsive */
+    /* height: auto; */
+}
+
+.caption {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.5); /* Optional: Add a background for better readability */
+    padding: 10px; /* Optional: Add some padding */
+    opacity: 0; /* Start with the caption hidden */
+    animation: fadeIn 1s forwards; /* Apply the fade-in animation */
+}
+
+.title {
+    font-size: 2em; /* Adjust font size as needed */
+}
+
+/* Keyframes for fade-in animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0; /* Start fully transparent */
+        transform: translate(-50%, -60%); /* Slightly move up */
+    }
+    to {
+        opacity: 1; /* End fully opaque */
+        transform: translate(-50%, -50%); /* Centered position */
+    }
+}

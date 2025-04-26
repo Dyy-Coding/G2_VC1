@@ -66,7 +66,7 @@
 </head>
 <body class="bg-gray-50 font-sans antialiased">
     <!-- Header -->
-    <header class="bg-white shadow sticky top-0 z-50">
+    <header class="bg-white sticky top-0 z-50">
     <nav class="bg-white-800">
         <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
             <div class="relative flex h-16 items-center justify-between">
@@ -100,10 +100,10 @@
                 <div class="hidden sm:ml-6 sm:block">
                 <div class="flex space-x-4">
                     <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-                    <a href="#" class=" px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-300 hover:text-white">Home</a>
-                    <a href="#" class=" px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-300 hover:text-white">About</a>
+                    <a href="/welcome" class=" px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-300 hover:text-white">Home</a>
+                    <a href="/about" class=" px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-300 hover:text-white">About</a>
                     <a href="/sales" class="px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-300 hover:text-white">Shop</a>
-                    <a href="#" class=" px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-300 hover:text-white">Contact</a>
+                    <a href="/contact" class=" px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-300 hover:text-white">Contact</a>
                 </div>
                 </div>
             </div>
@@ -231,7 +231,7 @@
         <section class="py-12 bg-white">
             <div class="container">
                 <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-8">New Arrivals</h2>
-                <div class="row row-cols-1 row-cols-md-4 g-4">
+                <div class="scroll-container row row-cols-1 row-cols-md-4 g-4">
                     <div class="col">
                         <div class="bg-gray-50 rounded-lg shadow-md p-4 hover:shadow-lg transition-all">
                             <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhM5fYda5b0pNuQuX_RKXGxu4wD1KssFN4Nd25W4ibhCtgNoY8ZNsi7B9KuqDZpJ88g9P-efIJDGdsXrDuACQpM8rHBwmX4Hzyebsh6FXfwRzUeyYmIOOnwGHCXENalJoNjpvxd2WKyVso/s1600/steel-construction-1733848_960_720+%25281%2529.webp" class="w-full h-48 object-cover rounded-t-lg" alt="T-shirt">
@@ -274,6 +274,38 @@
                                     <div>
                                         <span class="text-indigo-600 font-bold">$25.00</span>
                                         <del class="text-gray-400 text-sm ml-2">$55.00</del>
+                                    </div>
+                                    <a href="#" class="bg-indigo-600 text-white py-1 px-3 rounded-full hover:bg-indigo-700 transition-colors">View</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="bg-gray-50 rounded-lg shadow-md p-4 hover:shadow-lg transition-all">
+                            <img src="https://www.3ds.com/assets/invest/styles/banner/public/2023-02/glass-verre-1.jpg.webp?itok=7KYfddzR" class="w-full h-48 object-cover rounded-t-lg" alt="Jacket">
+                            <div class="p-4">
+                                <h5 class="text-lg font-semibold text-gray-800">Glass No.2</h5>
+                                <p class="text-gray-500 text-sm">New Arrival!</p>
+                                <div class="flex justify-between items-center mt-3">
+                                    <div>
+                                        <span class="text-indigo-600 font-bold">$45.00</span>
+                                        <del class="text-gray-400 text-sm ml-2">$65.00</del>
+                                    </div>
+                                    <a href="#" class="bg-indigo-600 text-white py-1 px-3 rounded-full hover:bg-indigo-700 transition-colors">View</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="bg-gray-50 rounded-lg shadow-md p-4 hover:shadow-lg transition-all">
+                            <img src="https://www.3ds.com/assets/invest/styles/banner/public/2023-02/glass-verre-1.jpg.webp?itok=7KYfddzR" class="w-full h-48 object-cover rounded-t-lg" alt="Jacket">
+                            <div class="p-4">
+                                <h5 class="text-lg font-semibold text-gray-800">Glass No.2</h5>
+                                <p class="text-gray-500 text-sm">New Arrival!</p>
+                                <div class="flex justify-between items-center mt-3">
+                                    <div>
+                                        <span class="text-indigo-600 font-bold">$45.00</span>
+                                        <del class="text-gray-400 text-sm ml-2">$65.00</del>
                                     </div>
                                     <a href="#" class="bg-indigo-600 text-white py-1 px-3 rounded-full hover:bg-indigo-700 transition-colors">View</a>
                                 </div>

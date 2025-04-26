@@ -117,17 +117,33 @@ class Category {
         }
     }
 
-public function getMaterialCountByCategory() {
-    $sql = "SELECT c.CategoryID, c.CategoryName, COUNT(m.MaterialID) AS MaterialCount
-            FROM categories c
-            LEFT JOIN materials m ON c.CategoryID = m.CategoryID
-            GROUP BY c.CategoryID, c.CategoryName";
+    public function getMaterialCountByCategory() {
+        try {
+            $sql = "SELECT c.CategoryID, c.CategoryName, COUNT(m.MaterialID) AS MaterialCount
+                    FROM categories c
+                    LEFT JOIN materials m ON c.CategoryID = m.CategoryID
+                    GROUP BY c.CategoryID, c.CategoryName";
     
-    return $this->db->fetchAll($sql);
-}
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            error_log("Error fetching material count by category: " . $e->getMessage());
+            return [];
+        }
+    }
+
+    public function getCategoryDetails($categoryID) {
+        try {
+            $stmt = $this->conn->prepare("SELECT * FROM Categories WHERE CategoryID = :categoryID");
+            $stmt->bindParam(':categoryID', $categoryID, PDO::PARAM_INT);
+            $stmt->execute();
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            error_log("Error fetching category details: " . $e->getMessage());
+            return null;
+        }
+    }
 
     
-    
 }
-
-?>

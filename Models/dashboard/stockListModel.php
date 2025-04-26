@@ -49,5 +49,46 @@ class StockModel {
         // Return the stock data
         return $stockListData;
     }
+
+    public function getTopPurchasedMaterials() {
+        // Query to fetch Material ID, Category Name, Purchase Order Quantity, Total Amount, Type, and Size
+        $query = "
+            SELECT 
+                m.MaterialID, 
+                m.Name AS MaterialName, 
+                c.CategoryName, 
+                m.Size AS MaterialSize,      -- Assuming 'Size' is a column in the 'materials' table
+                SUM(po.Quantity) AS PurchaseOrderQuantity,
+                SUM(po.Quantity * po.TotalAmount) AS TotalAmount
+            FROM materials m
+            JOIN categories c ON m.CategoryID = c.CategoryID
+            JOIN purchaseorderdetails po ON m.MaterialID = po.MaterialID
+            GROUP BY m.MaterialID, m.Name, c.CategoryName, m.Size
+            ORDER BY PurchaseOrderQuantity DESC
+        ";
+        
+        // Prepare and execute the query
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute();
+    
+        $purchaseListData = [];
+    
+        // Fetch results
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            // Add the material data to the array
+            $purchaseListData[] = [
+                'MaterialID' => $row['MaterialID'],
+                'MaterialName' => $row['MaterialName'],
+                'CategoryName' => $row['CategoryName'],
+                'MaterialSize' => $row['MaterialSize'],   // Add Material Size to data
+                'PurchaseOrderQuantity' => $row['PurchaseOrderQuantity'],
+                'TotalAmount' => $row['TotalAmount'],
+            ];
+        }
+    
+        // Return the materials with the highest purchase order quantities and their total amounts
+        return $purchaseListData;
+    }
+    
 }
 ?>

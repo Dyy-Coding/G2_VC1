@@ -1,4 +1,10 @@
-<!-- Delete Selected Categories Form -->
+
+
+
+
+
+
+Delete Selected Categories Form
     <div class="bg-container">
         <div class="content-container">
             <div class="container-fluid py-4 d-flex justify-content-between bg-container">
@@ -13,85 +19,74 @@
                             <button class="btn btn-secondary">Export</button>
                         </div>
                     </div>
-                    <form action="/category/deleteSelected" method="POST">
-                        <div class="container d-flex align-items-center justify-content-between mb-3">
-                            <div>
-                                <!-- Rows per page selection -->
-                                <label for="rowsPerPage" class="me-2">Rows per page:</label>
-                                <select id="rowsPerPage" class="form-select mb-3">
-                                    <option value="10" selected>10</option>
-                                    <option value="25">20</option>
-                                    <option value="50">50</option>
-                                    <option value="all">All</option>
-                                </select>
-                            </div>
-                            <div class="me-3 d-flex align-items-center">
-                                <input type="checkbox" name="selectAll" id="selectAll"
-                                    style="width: 30px; position: relative; bottom: 4px;">
-                                <label class="form-check-label" for="selectAll">Select All</label>
-                            </div>
-                            <div class="ms-2" style="width: 500px">
-                                <input type="search" id="search" class="form-control" placeholder="Search Categories" />
-                            </div>
-                            <!-- DELETE BUTTON inside the DELETE FORM -->
-                            <div>
-                                <button type="submit" class="btn btn-danger" disabled onclick="return confirmDelete()">Delete All</button>
+                    <form id="deleteForm" action="/category/deleteSelected" method="POST" onsubmit="return confirm('Are you sure you want to delete the selected categories?')">
+                        <div class="input-group mt-0 mb-0">
+                            <div class="inline-controls">
+                                <div class="container d-flex align-items-center justify-content-between mb-3">
+                                    <!-- Rows per page selection -->
+                                    <label for="rowsPerPage" class="me-2">Rows per page:</label>
+                                    <select id="rowsPerPage" class="form-select mb-3" style="width: 8%;">
+                                        <option value="10" selected>10</option>
+                                        <option value="25">20</option>
+                                        <option value="50">50</option>
+                                        <option value="all">All</option>
+                                    </select>
+
+                                    <!-- Select All checkbox -->
+                                    <div class="me-3 d-flex align-items-center">
+                                        <input type="checkbox" name="selectAll" id="selectAll" style="width: 30px; position: relative; bottom: 4px;">
+                                        <label class="form-check-label" for="selectAll">Select All</label>
+                                    </div>
+
+                                    <!-- DELETE BUTTON inside the DELETE FORM -->
+                                     <div>
+                                        <button type="submit" class="btn btn-danger">Delete Selected</button>
+                                     </div>
+                                    <!-- Search input -->   
+                                    <div class="ms-3 mb-3" style="width: 300px;">
+                                        <input type="search" id="search" class="form-control" placeholder="Search Categories" />
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                  
-                        <table class="table text-center">
-                            <thead>
-                                <tr>
-                                    <th></th>
-                                    <th>Categories</th>
-                                    <th>Description</th>
-                                    <th>Last updated</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            <?php if (!empty($categories)): ?>
-                                <?php foreach ($categories as $category): ?>
-                                <tr>
-                                    <td><input type="checkbox" name="categoryIDs[]" value="<?= $category['CategoryID'] ?>"></td>
-                                    <td><?= htmlspecialchars($category['CategoryName']) ?></td>
-                                    <td><?= htmlspecialchars($category['Description']?? 'No available') ?></td>
-                                    <td><?= htmlspecialchars($category['UpdatedAt']?? 'No available') ?></td>
-                                        <!-- Action Dropdown -->
-                                    <td class="dropdown">
-                                        <a href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                                            <i class="material-icons" style="font-size:30px;">more_vert</i>
-                                        </a>
+                    </form>
 
-                                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuLink">
-                                            <li>
-                                                <a href="/category/category_edit/<?= htmlspecialchars($category['CategoryID']) ?>" class="dropdown-item text-primary d-flex align-items-center">
-                                                    <i class="material-icons me-2" style="font-size:18px;">edit</i> Edit
-                                                </a>
-                                            </li>
-                                            <li>
-                                            <a href="/category/delete/<?= htmlspecialchars($category['CategoryID']) ?>" class="dropdown-item text-danger d-flex align-items-center"
-                                                onclick="return confirm('Are you sure?');">
-                                                    <i class="material-icons me-2" style="font-size:18px;">delete</i> Delete
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a class="dropdown-item d-flex align-items-center" href="/category/detail/<?= $category['CategoryID']; ?>">
-                                                    <i class="material-icons me-2" style="font-size:18px;">visibility</i> View
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </td>
-                                </tr>
-                                <?php endforeach; ?>
-                            <?php else: ?>
-                                <tr>
-                                    <td colspan="7">No Categories Found</td>
-                                </tr>
-                            <?php endif; ?>
-                            </tbody>
-                        </table>
-                        </form>
+                    <table class="table text-center">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Categories</th>
+                                <th>Description</th>
+                                <th>Last updated</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <?php if (!empty($categories)): ?>
+                            <?php foreach ($categories as $category): ?>
+                            <tr>
+                                <td><input type="checkbox" name="categoryIDs[]" value="<?= $category['CategoryID'] ?>"></td>
+                                <td><?= htmlspecialchars($category['CategoryName']) ?></td>
+                                <td><?= htmlspecialchars($category['Description']?? 'No available') ?></td>
+                                <td><?= htmlspecialchars($category['UpdatedAt']?? 'No available') ?></td>
+                                <td>
+                                    <div class="icon-container">
+                                        <i class="fa-solid fa-ellipsis-vertical fs-5"></i>
+                                        <div class="icon-menu">
+                                            <a href="/category/delete/<?= htmlspecialchars($category['CategoryID']) ?>"><i class="fa-solid fa-trash fs-6"></i></a>
+                                            <a href="/category/category_edit/<?= htmlspecialchars($category['CategoryID']) ?>"><i class="fa-solid fa-pen fs-6"></i></a>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <?php endforeach; ?>
+                        <?php else: ?>
+                            <tr>
+                                <td colspan="7">No Categories Found</td>
+                            </tr>
+                        <?php endif; ?>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
@@ -233,4 +228,5 @@
         </div>
     </div>
 </div>
+
 <!-- End Diagram -->

@@ -141,7 +141,7 @@ class CategoriesController extends BaseController {
     // }
 
     public function categoryDetails($categoryID) {
-        $category = $this->model->getCategoryDetails($categoryID);
+        $category = $this->category->getCategoryDetails($categoryID);
         if (!$category) {
             die("Category not found!");
         }
