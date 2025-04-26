@@ -40,7 +40,6 @@
                     <th class="w-small">Profile</th>
                     <th class="w-medium">Contact Person</th>
                     <th class="w-small">Supplier Name</th>
-                    <th class="w-large">Category</th>
                     <th class="w-large">Phone Number</th>
                     <th class="w-large">Email</th>
                     <th class="w-large">Action</th>
@@ -59,7 +58,6 @@
                         </td>
                         <td><?= htmlspecialchars($supplier['ContactPerson']) ?></td>
                         <td><?= htmlspecialchars($supplier['Name']) ?></td>
-                        <td><?= htmlspecialchars($supplier['CategoryName'] ?? 'N/A') ?></td>
                         <td><?= htmlspecialchars($supplier['Phone']) ?></td>
                         <td><?= htmlspecialchars($supplier['Email']) ?></td>
                         <td class="dropdown">
