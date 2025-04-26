@@ -34,6 +34,9 @@ require_once 'Controllers/adminController/supplierController/DetailSupplierContr
 // Customers Controller
 require_once 'Controllers/adminController/customerController.php/customerListController.php';
 
+// Shop Controller
+require_once "Controllers/adminController/shopController/ShopController.php";
+
 // Other Controllers
 require_once "Controllers/adminController/BashInfoController.php";
 require_once "Controllers/errorController.php";
@@ -47,6 +50,9 @@ require_once "Models/invenoryModel/categoryModel.php";
 require_once "Models/dashboard/dashboardModel.php";
 require_once "Models/supplierModel/SupplierModel.php";
 require_once "Models/invenoryModel/import&export/material.php";
+
+// Shop model 
+require_once "Models/shopModel/ShopModel.php";
 
 
 // Helper files
@@ -204,6 +210,11 @@ $route->group('profile', function ($route) {
     // $route->match(['post', 'delete'], '/deleteuser/{id}', [AccountListController::class, 'destroySingleUserAccProfile']);
 });
 
+
+// shop route group
+$route->group('shop', function ($route) {
+    $route->get('/shop', [ShopController::class, 'shop']);
+});
 /**
  * Error Handling Route
  */
