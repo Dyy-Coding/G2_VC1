@@ -9,9 +9,14 @@ class CategoriesController extends BaseController {
 
     public function category() {
         $categories = $this->category->getAllCategories();
+        $categoriesBestSelling = $this->category->getBestSellingCategories();
+        // var_dump($categoriesBestSelling);
+
+
         
         $this->renderView('adminView/inventory/categories/category', [
-            'categories' => $categories
+            'categories' => $categories,
+            'categoriesBestSelling' => $categoriesBestSelling
         ]);
     }   
 
