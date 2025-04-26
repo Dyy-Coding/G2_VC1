@@ -12,6 +12,11 @@
     padding: 8px;
     text-align: center;
   }
+  .card-img-top {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+  }
 
   /* Make sure text contrasts well with background */
   .text-dark {
