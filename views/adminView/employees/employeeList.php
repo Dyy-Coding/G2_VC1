@@ -152,7 +152,7 @@
         button i {
             margin-right: 8px;
         }
-        
+       
         .dashboard {
             display: none;
             opacity: 0;
