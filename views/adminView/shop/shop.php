@@ -23,6 +23,9 @@
 
 </style>
 <div class="container mt-3 card" style="width: 95%; padding: 20px;">
+    <h1>Shop</h1>
+    <p>Welcome to the shop! Here you can find a variety of materials available for purchase.</p>
+    
     <nav>
         <div class="scrollable-container mb-3">
             <div class="relative">
@@ -81,4 +84,21 @@ function filterMaterials(category) {
         }
     });
 }
+
+document.getElementById('search').addEventListener('input', function() {
+    const searchValue = this.value.toLowerCase().trim();
+    const cards = document.querySelectorAll('.material-card');
+
+    cards.forEach(card => {
+        const nameElement = card.querySelector('.material-name');
+        if (nameElement) {
+            const materialName = nameElement.textContent.toLowerCase();
+            if (materialName.includes(searchValue)) {
+                card.style.display = "";
+            } else {
+                card.style.display = "none";
+            }
+        }
+    });
+});
 </script>
