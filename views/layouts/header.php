@@ -33,6 +33,33 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"></link>
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<style>
+  .dropdown-menus {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+    display: none;
+    background-color: white;
+    padding: 0.5rem 0;
+    border-radius: 0.375rem;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    min-width: 160px;
+  }
+
+  .dropdown-itemsales {
+    display: block;
+    padding: 0.5rem 1rem;
+    color: #212529;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .dropdown-itemsales:hover {
+    background-color: #f8f9fa;
+    color: #000;
+  }
+</style>
 
 <!-- customer js -->
 <script src="views/assets/JavaScript/customers/customer.js" defer></script>
@@ -86,7 +113,7 @@
                 <a class="nav-link " href="/">
                   <div
                     class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                    <i class="ni ni-tv-2 text-dark text-sm opacity-10"></i>
+                    <i class="material-icons text-dark text-lg">home</i>
                   </div>
                   <span class="nav-link-text ms-1">Dashboard</span>
                 </a>
@@ -96,13 +123,13 @@
                 <a class="nav-link" href="/inventory">
                   <div
                     class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                    <i class="ni ni-calendar-grid-58 text-dark text-sm opacity-10"></i>
+                    <i class="material-icons text-dark text-lg">inventory</i>
                   </div>
                   <span class="nav-link-text ms-1">Inventory</span>
                 </a>
                 <ul class="dropdown-menu" id="inventoryDropdown">
                   <li><a class="dropdown-item" href="/category">Category</a></li>
-                  <li><a class="dropdown-item" href="/inventory">Material</a></li>
+                  <li><a class="dropdown-item" href="/material">Material</a></li>
                 </ul>
               </li>
               <script>
@@ -121,7 +148,7 @@
                 <a class="nav-link d-flex align-items-center" href="#" id="salesLink">
                   <span
                     class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                    <i class="ni ni-credit-card text-dark text-sm opacity-10"></i>
+                    <i class="material-icons text-dark text-lg">sell</i>
                   </span>
                   <span class="nav-link-text ms-1">Sales</span>
                 </a>
@@ -130,6 +157,16 @@
                   <li><a class="dropdown-item" href="/sale/order">Sale</a></li>
                   <li><a class="dropdown-item" href="/purchase/order">Purchase</a></li>
                 </ul>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link " href="/shop" id="salesLink">
+                  <span
+                    class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                    <i class="material-icons text-dark text-lg">storefront</i>
+                  </span>
+                  <span class="nav-link-text ms-1">Shop</span>
+                </a>
               </li>
 
               <script>
@@ -147,7 +184,7 @@
                 <a class="nav-link" href="/customers">
                   <div
                     class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                    <i class="ni ni-app text-dark text-sm opacity-10"></i>
+                    <i class="material-icons text-dark text-lg">groups</i>
                   </div>
                   <span class="nav-link-text ms-1">Customer</span>
                 </a>
@@ -156,7 +193,7 @@
                 <a class="nav-link" href="/suppliers">
                   <div
                     class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                    <i class="ni ni-world-2 text-dark text-sm opacity-10"></i>
+                    <i class="material-icons text-dark text-lg">local_shipping</i>
                   </div>
                   <span class="nav-link-text ms-1">Supplier</span>
                 </a>
@@ -165,7 +202,7 @@
                 <a class="nav-link" href="../pages/rtl.html">
                   <div
                     class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                    <i class="ni ni-briefcase-24 text-dark text-sm opacity-10"></i>
+                    <i class="material-icons text-dark text-lg">group</i>
                   </div>
                   <span class="nav-link-text ms-1">Employee</span>
                 </a>
@@ -177,7 +214,7 @@
                   <!-- <a class="nav-link" href="/profile"> -->
                   <div
                     class="icon icon-shape icon-sm border-radius-md me-2 d-flex align-items-center justify-content-center">
-                    <i class="ni ni-single-02 text-dark text-sm opacity-10"></i>
+                    <i class="material-icons text-dark text-lg">manage_accounts</i>
                   </div>
                   <span class="nav-link-text ms-1">Account</span>
                 </a>
@@ -204,7 +241,7 @@
                 <a class="nav-link" href="../pages/sign-in.html">
                   <div
                     class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                    <i class="ni ni-single-copy-04 text-dark text-sm opacity-10"></i>
+                    <i class="material-icons text-dark text-lg">report</i>
                   </div>
                   <span class="nav-link-text ms-1">Report</span>
                 </a>
@@ -213,7 +250,7 @@
                 <a class="nav-link" href="/register">
                   <div
                     class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                    <i class="ni ni-briefcase-24 text-dark text-sm opacity-10"></i>
+                    <i class="material-icons text-dark text-lg">support_agent</i>
                   </div>
                   <span class="nav-link-text ms-1">Help and Support</span>
                 </a>
@@ -222,7 +259,7 @@
                 <a class="nav-link" href="/register">
                   <div
                     class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                    <i class="ni ni-settings text-dark text-sm opacity-10 "></i>
+                    <i class="material-icons text-dark text-lg">settings</i>
                   </div>
                   <span class="nav-link-text ms-1">Settings</span>
                 </a>
@@ -231,7 +268,7 @@
                 <a class="nav-link" href="/logout">
                   <div
                     class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                    <i class="ni ni-collection text-dark text-sm opacity-10"></i>
+                    <i class="material-icons text-dark text-lg">logout</i>
                   </div>
                   <span class="nav-link-text ms-1">Logout</span>
                 </a>

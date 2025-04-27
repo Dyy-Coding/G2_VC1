@@ -1,15 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>E-commerce Store</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Material Icons for Footer -->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
     <style>
         .carousel-item img {
             height: 500px;
@@ -131,70 +120,8 @@
             margin-bottom: 20px;
         }
     </style>
-</head>
-<body class="bg-gray-50 font-sans antialiased">
-    <!-- Header -->
-    <header class="bg-white shadow sticky top-0 z-50">
-        <nav class="bg-white-800">
-        <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
-            <div class="relative flex h-16 items-center justify-between">
-            <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
-                <!-- Mobile menu button-->
-                <button type="button" class="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:ring-2 focus:ring-white focus:outline-hidden focus:ring-inset" aria-controls="mobile-menu" aria-expanded="false">
-                <span class="absolute -inset-0.5"></span>
-                <span class="sr-only">Open main menu</span>
-                <svg class="block size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-                </svg>
-                <svg class="hidden size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
-                </svg>
-                </button>
-            </div>
-            <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
-                <div class="flex shrink-0 items-center">
-                <img class="h-8 w-auto" src="https://as1.ftcdn.net/v2/jpg/03/49/15/22/1000_F_349152257_LWXemAKac8x18qvLyVHPnRXfsGIAF9oR.jpg" alt="Your Company">
-                </div>
-                <div class="hidden sm:ml-6 sm:block">
-                <div class="flex space-x-4">
-                    <a href="#" class=" px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-300 hover:text-white">Home</a>
-                    <a href="#" class=" px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-300 hover:text-white">About</a>
-                    <a href="/sales" class="px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-300 hover:text-white">Shop</a>
-                    <a href="#" class=" px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-300 hover:text-white">Contact</a>
-                </div>
-                </div>
-            </div>
-            <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                <button type="button" class="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 focus:outline-hidden">
-                <span class="absolute -inset-1.5"></span>
-                <span class="sr-only">View notifications</span>
-                <svg class="size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 0 0 5.454-1.31A8.967 8.967 0 0 1 18 9.75V9A6 6 0 0 0 6 9v.75a8.967 8.967 0 0 1-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 0 1-5.714 0m5.714 0a3 3 0 1 1-5.714 0" />
-                </svg>
-                </button>
-                <div class="relative ml-3">
-                <div>
-                    <button type="button" class="relative flex rounded-full bg-gray-800 text-sm focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 focus:outline-hidden" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
-                    <span class="absolute -inset-1.5"></span>
-                    <span class="sr-only">Open user menu</span>
-                    <img class="size-8 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
-                </button>
-                </div>
-                </div>
-                <span class="ml-3">User name</span>
-                <a href="/login" class="rounded-md bg-gray-700 px-3 py-2 text-sm font-medium text-white ml-5" role="menuitem" tabindex="-1" id="user-menu-item-2">Sign out</a>
-            </div>
-            </div>
-        </div>
-        <div class="sm:hidden" id="mobile-menu">
-            <div class="space-y-1 px-2 pt-2 pb-3">
-            <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Home</a>
-            <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">About</a>
-            <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Contact</a>
-            </div>
-        </div>
-        </nav>
-    </header>
+
+ 
 
     <div class="container">
         <!-- Sidebar -->
@@ -376,43 +303,4 @@
         </div>
     </div>
 
-    <!-- Footer -->
-    <footer class="text-white px-8 py-6 bg-blue-950 w-full">
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-            <div class="mb-8 md:mb-0">
-                <h3 class="text-lg font-bold mb-4">About Us</h3>
-                <p class="mb-2 w-80">At Lim Tri depot, we are dedicated to providing high-quality construction materials to builders, contractors, and DIY enthusiasts. With years of experience in the industry, we pride ourselves on our commitment to excellence and customer satisfaction.</p>
-            </div>
-            <div class="mb-8 md:mb-0">
-                <h3 class="text-lg font-bold mb-4">Products</h3>
-                <ul>
-                    <li><a href="#" class="hover:text-yellow-400">Concrete & Cement</a></li>
-                    <li><a href="#" class="hover:text-yellow-400">Aggregates</a></li>
-                    <li><a href="#" class="hover:text-yellow-400">Steel & Rebar</a></li>
-                    <li><a href="#" class="hover:text-yellow-400">Insulation Materials</a></li>
-                    <li><a href="#" class="hover:text-yellow-400">Roofing Supplies</a></li>
-                    <li><a href="#" class="hover:text-yellow-400">Tools & Equipment</a></li>
-                </ul>
-            </div>
-            <div class="mb-8 md:mb-0">
-                <h3 class="text-lg font-bold mb-4">Services</h3>
-                <ul>
-                    <li><a href="#" class="hover:text-yellow-400">Delivery Services</a></li>
-                    <li><a href="#" class="hover:text-yellow-400">Custom Orders</a></li>
-                    <li><a href="#" class="hover:text-yellow-400">Consultation & Support</a></li>
-                </ul>
-            </div>
-            <div class="mb-8 md:mb-0">
-                <h3 class="text-lg font-bold mb-4">Location</h3>
-                <p class="mb-2"><a href="https://maps.app.goo.gl/YjR875jimR99F8J36"><i class="material-icons md-18">location_on</i> Street 103, Khan SekSok, Phnom Penh, Cambodia</a></p>
-                <p class="mb-2"><a href="tel:+1514890000" class="hover:text-yellow-400">1-514-890-0000</a></p>
-                <p><a href="mailto:calinscompagnies@calins.com" class="hover:text-yellow-400">limtri@gmail.com</a></p>
-            </div>
-        </div>
-    </footer>
-
-    
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+   

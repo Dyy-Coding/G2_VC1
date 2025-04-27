@@ -4,163 +4,167 @@ class TodayMoneyModel {
     private $conn;
 
     public function __construct() {
+        // Initialize the connection
         $this->conn = Database::getConnection();
     }
 
+    // Retrieve all suppliers data
     public function getSuppliersData() {
-        // Query to fetch all the supplier data
-        $query = "
-            SELECT 
-                SupplierID, 
-                Name, 
-                ContactPerson, 
-                Phone, 
-                image, 
-                Email, 
-                Address, 
-                CreatedAt, 
-                UpdatedAt
-            FROM suppliers
-        ";
-        
-        // Prepare and execute the query
-        $stmt = $this->conn->prepare($query);
-        $stmt->execute();
-    
-        $suppliersData = [];
-    
-        // Fetch the results
-        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-            // Add the supplier data to the array
-            $suppliersData[] = [
-                'SupplierID' => $row['SupplierID'],
-                'Name' => $row['Name'],
-                'ContactPerson' => $row['ContactPerson'],
-                'Phone' => $row['Phone'],
-                'Image' => $row['image'],
-                'Email' => $row['Email'],
-                'Address' => $row['Address'],
-                'CreatedAt' => $row['CreatedAt'],
-                'UpdatedAt' => $row['UpdatedAt'],
-            ];
-        }
-    
-        // Return the suppliers data
-        return $suppliersData;
-    }
-    
-
-    public function getOrderOverview() {
-        $query = "SELECT COUNT(*) AS total_orders, SUM(TotalAmount) AS total_revenue FROM salesorders";
-        $stmt = $this->conn->prepare($query);
-        $stmt->execute();
-        return $stmt->fetch(PDO::FETCH_ASSOC);
+        $query = "SELECT SupplierID, Name, ContactPerson, Phone, image, Email, Address, CreatedAt, UpdatedAt FROM suppliers";
+        return $this->executeQuery($query);
     }
 
-    public function getAllworkers() {
-        $stmt = $this->conn->prepare("SELECT u.*, r.role_name FROM Users u 
-          JOIN roles r ON u.role_id = r.role_id 
-          WHERE u.role_id != 2");
-        $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    // Retrieve all workers (excluding roles 1 and 2)
+    public function getAllWorkers() {
+        $query = "SELECT u.*, r.role_name FROM Users u 
+                  JOIN roles r ON u.role_id = r.role_id 
+                  WHERE u.role_id != 2 AND u.role_id != 1";
+        return $this->executeQuery($query);
     }
+
+    // Retrieve all customers
     public function getAllCustomers() {
-        $stmt = $this->conn->prepare("SELECT * FROM customers");
+        $query = "SELECT * FROM customers";
+        return $this->executeQuery($query);
+    }
+
+    // ✅ Updated: Retrieve today's money data with safe formatting
+    public function getTodayMoneyData() {
+        $query = "SELECT total_income, total_expenses, today_money, percent_change 
+                  FROM daily_money_summary 
+                  WHERE record_date = CURDATE() 
+                  LIMIT 1";
+
+        $data = $this->fetchSingleRow($query, [
+            'total_income' => 0,
+            'total_expenses' => 0,
+            'today_money' => 0,
+            'percent_change' => 0
+        ]);
+
+        // Format percent_change safely
+        $data['percent_change'] = is_numeric($data['percent_change']) 
+                                ? number_format((float)$data['percent_change'], 2) . '%' 
+                                : '0.00%';
+
+        return $data;
+    }
+
+    // Retrieve total sales and orders for today
+    public function getTotalSalesAndOrders() {
+        $query = "SELECT record_date, total_sales, total_sales_orders, yesterday_sales, percent_change 
+                  FROM daily_sales_summary 
+                  WHERE record_date = CURDATE()";
+
+        $data = $this->fetchSingleRow($query, [
+            'total_sales' => 0,
+            'total_sales_orders' => 0,
+            'yesterday_sales' => 0,
+            'percent_change' => 0
+        ]);
+
+        $data['percent_change'] = is_numeric($data['percent_change']) 
+                                ? number_format((float)$data['percent_change'], 2) . '%' 
+                                : '0.00%';
+
+        return $data;
+    }
+
+    public function getLastMonthSalesSummary()
+{
+    // Query to fetch the most recent sales summary data
+    $query = "
+        SELECT 
+            year,
+            month,
+            totalOrders,
+            totalAmount,
+            percentFromLastMonth
+        FROM MonthlySalesSummary
+        ORDER BY year DESC, month DESC
+        LIMIT 1
+    ";
+
+    $stmt = $this->conn->prepare($query);
+    $stmt->execute();
+    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if ($row) {
+        $year = $row['year'];
+        $month = $row['month'];
+        $totalOrders = (int)$row['totalOrders'];
+        $totalAmount = (float)$row['totalAmount'];
+        $percentFromLastMonth = $row['percentFromLastMonth'] !== null ? number_format($row['percentFromLastMonth'], 2) . '%' : 'N/A';  // Format percentage change
+
+        // Return the last record
+        return [
+            'year' => $year,
+            'month' => $month,
+            'totalOrders' => $totalOrders,
+            'totalAmount' => number_format($totalAmount, 2), // Format amount to 2 decimal places
+            'percentFromLastMonth' => $percentFromLastMonth
+        ];
+    } else {
+        // Return an empty result if no records exist
+        return null;
+    }
+}
+
+
+    // ✅ Updated: Retrieve today's customers data with percentage change
+    public function getTodayCustomers() {
+        $query = "SELECT total_customers_today, total_customers_yesterday, percent_change 
+                  FROM all_day_customers 
+                  WHERE customer_date = CURDATE()";
+
+        $data = $this->fetchSingleRow($query, [
+            'total_customers_today' => 0,
+            'total_customers_yesterday' => 0,
+            'percent_change' => 0
+        ]);
+
+        $data['percent_change'] = is_numeric($data['percent_change']) 
+                                ? number_format((float)$data['percent_change'], 2) . '%' 
+                                : '0.00%';
+
+        return $data;
+    }
+
+    // Retrieve total number of suppliers
+    public function getTotalSuppliers() {
+        $query = "SELECT COUNT(*) AS total FROM suppliers";
+        return $this->fetchSingleValue($query);
+    }
+
+    // Retrieve purchase order summary for the last month
+    public function getLastMonthPurchaseOrder() {
+        $query = "SELECT * 
+                  FROM monthly_purchase_order_summary 
+                  WHERE month = DATE_FORMAT(DATE_SUB(CURRENT_DATE(), INTERVAL 1 MONTH), '%Y-%m')";
+        return $this->fetchSingleRow($query);
+    }
+
+    // Utility: Execute queries that return multiple rows
+    private function executeQuery($query) {
+        $stmt = $this->conn->prepare($query);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function getSalesForLast12Months() {
-        $query = "
-            SELECT 
-                YEAR(OrderDate) AS year,
-                MONTH(OrderDate) AS month,
-                SUM(totalAmount) AS totalSalesAmount
-            FROM salesorders
-            WHERE OrderDate >= CURDATE() - INTERVAL 12 MONTH
-            GROUP BY year, month
-            ORDER BY year DESC, month DESC";
-
+    // Utility: Fetch a single row, fallback to defaults if no result
+    private function fetchSingleRow($query, $default = null) {
         $stmt = $this->conn->prepare($query);
         $stmt->execute();
-        $salesData = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-        foreach ($salesData as &$data) {
-            $data['month'] = date("M", mktime(0, 0, 0, $data['month'], 1));
-            $data['totalSalesAmount'] = number_format($data['totalSalesAmount'], 2);
-        }
-        return $salesData ?: [];
+        $data = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $data ?: $default;
     }
 
-    public function getTodayMoneyData() {
-        $query = "
-            SELECT 
-                (COALESCE((SELECT SUM(Total) FROM salesorderdetails WHERE DATE(SalesOrderDetail_Date) = CURDATE()), 0) +
-                COALESCE((SELECT SUM(Amount) FROM payments WHERE DATE(PaymentDate) = CURDATE()), 0) +
-                COALESCE((SELECT SUM(Amount) FROM invoices WHERE DATE(invoiceDate) = CURDATE() AND payment_status = 'Paid'), 0)) AS total_income,
-                (COALESCE((SELECT SUM(Amount) FROM expenses WHERE DATE(date_expenses) = CURDATE()), 0) +
-                COALESCE((SELECT SUM(TotalAmount) FROM purchaseorders WHERE DATE(OrderDate) = CURDATE()), 0) +
-                COALESCE((SELECT SUM(TotalReceivedAmount) FROM goodsreceived WHERE DATE(ReceivedDate) = CURDATE()), 0)) AS total_expenses,
-                ((COALESCE((SELECT SUM(Total) FROM salesorderdetails WHERE DATE(SalesOrderDetail_Date) = CURDATE()), 0) +
-                COALESCE((SELECT SUM(Amount) FROM payments WHERE DATE(PaymentDate) = CURDATE()), 0) +
-                COALESCE((SELECT SUM(Amount) FROM invoices WHERE DATE(invoiceDate) = CURDATE() AND payment_status = 'Paid'), 0)) - 
-                (COALESCE((SELECT SUM(Amount) FROM expenses WHERE DATE(date_expenses) = CURDATE()), 0) +
-                COALESCE((SELECT SUM(TotalAmount) FROM purchaseorders WHERE DATE(OrderDate) = CURDATE()), 0) +
-                COALESCE((SELECT SUM(TotalReceivedAmount) FROM goodsreceived WHERE DATE(ReceivedDate) = CURDATE()), 0))) AS today_money";
-
-        $stmt = $this->conn->query($query);
-        return $stmt ? $stmt->fetch(PDO::FETCH_ASSOC) : [ 'total_income' => 0, 'total_expenses' => 0, 'today_money' => 0 ];
-    }
-
-    public function getTotalSalesAndOrders() {
-        $query = "SELECT SUM(TotalAmount) AS total_sales, COUNT(*) AS total_sales_orders FROM salesorders WHERE DATE(CreatedAt) = CURDATE();";
-        $stmt = $this->conn->prepare($query);
-        $stmt->execute();
-        $todaySales = $stmt->fetch(PDO::FETCH_ASSOC);
-
-        $queryYesterday = "SELECT SUM(TotalAmount) AS yesterday_sales FROM salesorders WHERE DATE(CreatedAt) = CURDATE() - INTERVAL 1 DAY;";
-        $stmtYesterday = $this->conn->prepare($queryYesterday);
-        $stmtYesterday->execute();
-        $yesterdaySales = $stmtYesterday->fetch(PDO::FETCH_ASSOC);
-        
-        return array_merge($todaySales, $yesterdaySales);
-    }
-
-    public function getCustomerPercentageChange() {
-        $todayCustomers = $this->getTodayCustomers();
-        $yesterdayCustomers = $this->getYesterdayCustomers();
-    
-        // Avoid division by zero error and return 0 if there were no customers yesterday.
-        if ($yesterdayCustomers == 0) {
-            return 100; // If there were no customers yesterday, any number of customers today would be 100% increase
-        }
-    
-        // Calculate the percentage change and cap it at 100%.
-        $percentageChange = abs(($todayCustomers - $yesterdayCustomers) / $yesterdayCustomers) * 100;
-        return min($percentageChange, 100); // Cap at 100% if the change exceeds it.
-    }
-    
-
-    public function getTodayCustomers() {
-        $query = "SELECT COUNT(*) AS total_customers_today FROM Users WHERE role_id = 2 AND DATE(created_at) = CURDATE()";
+    // Utility: Fetch a single scalar value (e.g., COUNT)
+    private function fetchSingleValue($query) {
         return $this->conn->query($query)->fetchColumn();
     }
 
-    public function getYesterdayCustomers() {
-        $query = "SELECT COUNT(*) AS total_customers_yesterday FROM users WHERE role_id = 2 AND DATE(created_at) = CURDATE() - INTERVAL 1 DAY";
-        return $this->conn->query($query)->fetchColumn();
-    }
-
-    public function getTotalSuppliers() {
-        return $this->conn->query("SELECT COUNT(*) AS total FROM suppliers")->fetchColumn();
-    }
-
-    public function getTotalPurchaseorders() {
-        return $this->conn->query("SELECT COUNT(*) AS totalPurchaseorders FROM purchaseorders")->fetchColumn();
-    }
-
-
-
+    // Close connection
     public function __destruct() {
         $this->conn = null;
     }

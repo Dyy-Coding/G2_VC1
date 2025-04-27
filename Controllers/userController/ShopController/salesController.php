@@ -3,6 +3,6 @@
 class SalesController extends BaseController {
 
     public function sales() {
-        $this->renderAuthView('userView/shop/salesMaterial');
+        $this->renderCustomerView('userView/shop/salesMaterial', []);
     }
 }

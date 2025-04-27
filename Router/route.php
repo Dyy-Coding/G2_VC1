@@ -15,6 +15,7 @@ require_once "Controllers/adminController/authenicationController/registerContro
 // Inventory Controllers
 require_once "Controllers/adminController/InventoryController/materialsController.php";
 require_once "Controllers/adminController/InventoryController/categoriesController.php";
+require_once "Controllers/adminController/InventoryController/importExportController.php";
 // require_once "Controllers/adminController/InventoryController/exportByPython.php";
 // require_once "Controllers/adminController/InventoryController/exportImportController.php";
 
@@ -33,6 +34,9 @@ require_once 'Controllers/adminController/supplierController/DetailSupplierContr
 // Customers Controller
 require_once 'Controllers/adminController/customerController.php/customerListController.php';
 
+// Shop Controller
+require_once "Controllers/adminController/shopController/ShopController.php";
+
 // Other Controllers
 require_once "Controllers/adminController/BashInfoController.php";
 require_once "Controllers/errorController.php";
@@ -45,6 +49,10 @@ require_once "Models/invenoryModel/meterailModel.php";
 require_once "Models/invenoryModel/categoryModel.php";
 require_once "Models/dashboard/dashboardModel.php";
 require_once "Models/supplierModel/SupplierModel.php";
+require_once "Models/invenoryModel/import&export/material.php";
+
+// Shop model 
+require_once "Models/shopModel/ShopModel.php";
 
 
 // Helper files
@@ -150,22 +158,33 @@ $route->group('welcome', function ($route) {
  * Inventory Routes
  */
 $route->group('inventory', function ($route) {
-    $route->get('/material', [MaterialsController::class, 'inventory']);
+    $route->get('/inventory', [InventoryController::class, 'inventory']);
+    // Crud
+    $route->get('/materials/add', [InventoryController::class, 'addMaterial']);
+    $route->post('/materials/add', [InventoryController::class, 'addMaterial']);
+    $route->get('/editmaterial/{id}', [InventoryController::class, 'materialEditForSome']);
+    $route->post('/materials/update', [InventoryController::class, 'updateMaterial']);
+    $route->get('/materials/delete/{id}', [InventoryController::class, 'deleteMaterial']);
+    // View detail
+    $route->get('/materials/view/{id}', [InventoryController::class, 'viewMaterial']);
+    // Import 
+    $route->get('/inventory/import', [InventoryController::class, 'importInventory']);
+    $route->post('/inventory/import', [InventoryController::class, 'importInventory']);
 
-    // Material Management
-    $route->match(['get', 'post'], '/materials/add', [MaterialsController::class, 'addMaterial']);
-    $route->get('/materials/edit/{id}', [MaterialsController::class, 'materialEditForSome']);
-    // $route->post('/materials/export', [ExportImportController::class, 'exportMaterials']);
-    $route->post('/materials/update', [MaterialsController::class, 'updateMaterial']);
-    $route->get('/materials/delete/{id}', [MaterialsController::class, 'deleteMaterial']);
-    $route->get('/materials/view/{id}', [MaterialsController::class, 'viewMaterial']);
+    // Export file
+    $route->get('/inventory/export', [InventoryController::class, 'exportInventory']);
 
-    // Inventory Import/Export
-    $route->match(['get', 'post'], '/import', [MaterialsController::class, 'importInventory']);
-    $route->get('/export', [MaterialsController::class, 'exportInventory']);
 
-    // Orders
-    $route->get('/order', [MaterialsController::class, 'order']);
+    // $route->get('/materials/view/{id}', [InventoryController::class, 'viewMaterial']);
+    // $route->get('/category', [InventoryController::class, 'category']);
+    // $route->post('/category/add', [InventoryController::class, 'addCategory']);
+    // $route->get('/category/delete/(.*)', [InventoryController::class, 'deleteCategory']);
+    // $route->post('/category/deleteSelected', [InventoryController::class, 'deleteSelectedCategories']);
+    // $route->get('/category/category_edit/(.*)', [InventoryController::class, 'editCategory']);
+    // $route->post('/category/update/(.*)', [InventoryController::class, 'updateCategory']);
+
+    $route->get('/order', [InventoryController::class, 'order']);
+
 });
 
 /**
@@ -200,6 +219,11 @@ $route->group('profile', function ($route) {
     // $route->match(['post', 'delete'], '/deleteuser/{id}', [AccountListController::class, 'destroySingleUserAccProfile']);
 });
 
+
+// shop route group
+$route->group('shop', function ($route) {
+    $route->get('/shop', [ShopController::class, 'shop']);
+});
 /**
  * Error Handling Route
  */

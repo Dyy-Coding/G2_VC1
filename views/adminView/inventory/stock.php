@@ -75,9 +75,68 @@
             <p>Sand, Pebble, Cement,.....</p>
         </div>
         <div>
-            <button class="btn btn-primary me-2" id="btn-add">+ New Material</button>
-            <a href="/import" class="btn btn-secondary me-2">Import</a>
-            <a href="/export" class="btn btn-secondary me-2">Export</a>
+             <!-- Import & Export Section -->
+             <div class="d-flex flex-column flex-md-row justify-content-between align-items-start mb-4 gap-3">
+             <button class="btn btn-primary me-2" id="btn-add">+ New Material</button>
+                <!-- Import -->
+                <div>
+                    <button class="btn btn-success mb-2" type="button" onclick="toggleImportForm()">Import Materials</button>
+                    <form id="importForm" action="/materials/import" method="POST" enctype="multipart/form-data" style="display: none;" class="mt-2">
+                        <div class="row g-2 align-items-center">
+                            <div class="col-md-8">
+                                <input type="file" class="form-control" name="importFile" accept=".xlsx, .xls, .csv" required>
+                                <small class="text-muted">Accepted formats: .xlsx, .xls, .csv</small>
+                            </div>
+                            <div class="col-md-4">
+                                <button type="submit" class="btn btn-success w-100">Upload</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="exportDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                        Export
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="exportDropdown">
+                        <!-- Export to Excel -->
+                        <li>
+                            <form method="POST" action="/materials/export/excel">
+                                <button class="dropdown-item" type="submit">
+                                    Export to Excel
+                                </button>
+                            </form>
+                        </li>
+                        <!-- Export to Word -->
+                        <li>
+                            <form method="POST" action="/materials/export/word">
+                                <button class="dropdown-item" type="submit">
+                                    Export to Word
+                                </button>
+                            </form>
+                        </li>
+                        <!-- Export to PDF -->
+                        <li>
+                            <form method="POST" action="/materials/export/pdf">
+                                <button class="dropdown-item" type="submit">
+                                    Export to PDF
+                                </button>
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+
+
+
+            </div>
+
+            <script>
+                function toggleImportForm() {
+                    const form = document.getElementById('importForm');
+                    form.style.display = form.style.display === 'none' ? 'block' : 'none';
+                }
+            </script>
+
         </div>
     </div>
 
