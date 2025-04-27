@@ -19,21 +19,5 @@ class ShopController extends BaseController {
             "materials" => $materials
         ]);
     }
-    // public function inventory() {
-    //     $categories = $this->category->getAllCategories();
-    //     $suppliers = $this->material->getSuppliers();
-    //     $materials = $this->material->getAllMaterials();
 
-    //     $this->renderView("adminView/inventory/stock", [
-    //         'categories' => $categories,
-    //         'suppliers' => $suppliers,
-    //         'materials'  => $materials,
-    //         'flash_message' => $_SESSION['flash_message'] ?? null
-    //     ]);
-    //     unset($_SESSION['flash_message']);
-    // }
-
-    // public function category() {
-    //     $this->renderView('adminView/inventory/category');
-    // }
 }

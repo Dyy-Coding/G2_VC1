@@ -25,9 +25,7 @@
 <div class="container mt-3 card" style="width: 95%; padding: 20px;">
     <h1>Shop</h1>
     <p>Welcome to the shop! Here you can find a variety of materials available for purchase.</p>
-    <div class="search">
-        <input type="search" name="search" id="search" placeholder="Search here....." class="form-control" style="width: 100%; margin-bottom: 20px;">
-    </div>
+    
     <nav>
         <div class="scrollable-container mb-3">
             <div class="relative">
