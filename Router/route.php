@@ -217,6 +217,7 @@ $route->group('profile', function ($route) {
 // shop route group
 $route->group('shop', function ($route) {
     $route->get('/shop', [ShopController::class, 'shop']);
+    $route->get('/material/detail/{id}', [ShopController::class, 'viewMaterial']);
 });
 /**
  * Error Handling Route

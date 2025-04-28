@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 10, 2025 at 04:05 PM
+-- Generation Time: Apr 28, 2025 at 03:57 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -255,7 +255,36 @@ INSERT INTO `audit_logs` (`id`, `user_id`, `action`, `ip_address`, `user_agent`,
 (119, 2, 'User logged out', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36', '2025-04-09 02:03:37'),
 (120, 22, 'User logged in', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36', '2025-04-09 02:03:41'),
 (121, 22, 'User logged out', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36', '2025-04-09 02:03:49'),
-(122, 2, 'User logged in', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36', '2025-04-09 02:03:54');
+(122, 2, 'User logged in', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36', '2025-04-09 02:03:54'),
+(123, NULL, 'Failed login (wrong password) for email: chandyneat94@gmail.com', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36', '2025-04-26 01:17:52'),
+(124, NULL, 'Failed login (wrong password) for email: chandyneat94@gmail.com', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36', '2025-04-26 01:17:59'),
+(125, NULL, 'Failed login (wrong password) for email: chandyneat94@gmail.com', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36', '2025-04-26 01:17:59'),
+(126, 2, 'User logged in', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36', '2025-04-26 01:18:10'),
+(127, 2, 'User logged out', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36', '2025-04-26 01:23:47'),
+(128, 23, 'Customer registered successfully.', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36', '2025-04-26 01:24:54'),
+(129, 23, 'User logged out', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36', '2025-04-26 01:25:13'),
+(130, 2, 'User logged in', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36', '2025-04-26 01:27:00'),
+(131, 2, 'User logged in', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36', '2025-04-28 01:17:35'),
+(132, 2, 'User logged out', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36', '2025-04-28 01:19:37'),
+(133, NULL, 'Customer registered successfully.', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36', '2025-04-28 01:20:14'),
+(134, NULL, 'User logged out', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36', '2025-04-28 02:15:32'),
+(135, 2, 'User logged in', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36', '2025-04-28 02:15:49'),
+(136, 2, 'User logged out', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36', '2025-04-28 02:16:57'),
+(137, 2, 'User logged in', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36', '2025-04-28 02:17:00'),
+(138, 2, 'User logged out', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36', '2025-04-28 02:18:56'),
+(139, 25, 'Customer registered successfully.', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36', '2025-04-28 02:19:43'),
+(140, 25, 'User logged out', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36', '2025-04-28 02:20:10'),
+(141, 2, 'User logged in', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36', '2025-04-28 02:20:12'),
+(142, 2, 'User logged out', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36', '2025-04-28 04:05:55'),
+(143, 26, 'Customer registered successfully.', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36', '2025-04-28 04:06:28'),
+(144, 26, 'User logged out', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36', '2025-04-28 04:06:48'),
+(145, 27, 'Customer registered successfully.', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36', '2025-04-28 07:47:01'),
+(146, 27, 'User logged out', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36', '2025-04-28 08:30:24'),
+(147, 28, 'Customer registered successfully.', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36', '2025-04-28 08:31:16'),
+(148, 29, 'Customer registered successfully.', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36', '2025-04-28 13:24:14'),
+(149, 31, 'Customer registered successfully.', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36', '2025-04-28 13:24:46'),
+(150, 31, 'User logged out', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36', '2025-04-28 13:42:26'),
+(151, 2, 'User logged in', '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36', '2025-04-28 13:42:45');
 
 -- --------------------------------------------------------
 
@@ -276,8 +305,8 @@ CREATE TABLE `categories` (
 --
 
 INSERT INTO `categories` (`CategoryID`, `CategoryName`, `Description`, `CreatedAt`, `UpdatedAt`) VALUES
-(1, 'Cement & Concrete', '                        Cement, concrete mix, ready-mix concrete, etc.                    ', '2025-03-18 00:12:10', '2025-04-03 06:01:56'),
-(3, 'Steel & Metal Products', 'Steel rods, beams, pipes, metal sheets, etc.', '2025-03-18 00:12:10', '2025-03-18 00:12:10'),
+(1, 'Cement & Concrete', '                                                Cement, concrete mix, ready-mix concrete, etc.                                        ', '2025-03-18 00:12:10', '2025-04-26 01:16:28'),
+(3, 'Steel ', '                        Steel rods, beams, pipes, metal sheets, etc.                    ', '2025-03-18 00:12:10', '2025-04-28 02:25:58'),
 (4, 'Wood & Timber', 'Plywood, MDF boards, hardwood, softwood, etc.', '2025-03-18 00:12:10', '2025-03-18 00:12:10'),
 (5, 'Roofing Materials', 'Roof tiles, metal roofing sheets, shingles, etc.', '2025-03-18 00:12:10', '2025-03-18 00:12:10'),
 (6, 'Plumbing Supplies', 'Pipes, fittings, valves, water tanks, etc.', '2025-03-18 00:12:10', '2025-03-18 00:12:10'),
@@ -296,8 +325,7 @@ INSERT INTO `categories` (`CategoryID`, `CategoryName`, `Description`, `CreatedA
 (19, 'Construction Chemicals', 'Concrete admixtures, curing compounds, anti-rust coatings, epoxy, etc.', '2025-03-18 00:12:10', '2025-03-18 00:12:10'),
 (20, 'Landscaping & Outdoor', 'Garden paving, fencing, outdoor lighting, irrigation systems, etc.', '2025-03-18 00:12:10', '2025-03-18 00:12:10'),
 (21, 'Structural Reinforcements', 'Rebars, post-tensioning systems, fiber reinforcements, formwork, etc.', '2025-03-18 00:12:10', '2025-03-18 00:12:10'),
-(22, 'Glass & Glazing', 'Tempered glass, laminated glass, acrylic sheets, skylights, etc.', '2025-03-18 00:12:10', '2025-03-18 00:12:10'),
-(23, 'Smart Building Technologies', 'Home automation, smart locks, IoT sensors, building management systems, etc.', '2025-03-18 00:12:10', '2025-03-18 00:12:10');
+(22, 'Glass & Glazing', 'Tempered glass, laminated glass, acrylic sheets, skylights, etc.', '2025-03-18 00:12:10', '2025-03-18 00:12:10');
 
 -- --------------------------------------------------------
 
@@ -347,6 +375,28 @@ CREATE TABLE `daily_sales_summary` (
 ,`total_sales_orders` bigint(21)
 ,`yesterday_sales` decimal(32,2)
 ,`percent_change` decimal(39,2)
+);
+
+-- --------------------------------------------------------
+
+--
+-- Stand-in structure for view `employee`
+-- (See below for the actual view)
+--
+CREATE TABLE `employee` (
+`user_id` int(11)
+,`select_user` varchar(255)
+,`profile_image` varchar(255)
+,`first_name` varchar(100)
+,`last_name` varchar(100)
+,`email` varchar(150)
+,`phone` varchar(20)
+,`role_id` int(11)
+,`password` varchar(255)
+,`address` text
+,`street_address` text
+,`created_at` timestamp
+,`updated_at` timestamp
 );
 
 -- --------------------------------------------------------
@@ -498,11 +548,9 @@ INSERT INTO `materials` (`MaterialID`, `Name`, `CategoryID`, `Quantity`, `UnitPr
 (29, 'Zinc plated Chipboard screws', 3, 70, 10.00, 1, 0, 6, '', 'Box', 'uploads/images/67efca9f3ea9a_d5ca745d86b6bc1610703de6768e96b4.jpg', '', '2025-04-04 19:03:43', '2025-04-04 19:03:43', '', '', '', '', 0),
 (30, 'Sand', 1, 3, 50.00, 1, 0, 0, '', 'Car', 'uploads/images/67efcaf6b134a_7a64fff940f3f0debcaf25c5fdddc87e.jpg', '', '2025-04-04 19:05:10', '2025-04-05 11:09:19', '', '', '', 'Active', 0),
 (31, 'Fan Hateri', 7, 0, 30.00, 7, 0, 0, '', 'Fan', 'uploads/images/67efcb9baa757_f498619669ecb103b9d4f355cb7b8401.jpg', '', '2025-04-04 19:07:55', '2025-04-09 08:09:28', '', '', '', 'Discontinued', 0),
-(32, 'ដែក40', 3, 1, 2.00, 1, 0, 0, '', 'ដើម', 'uploads/images/67f329bf51f2d_78269eb4d70fd4710ceee85908d098a6.jpg', '', '2025-04-07 08:26:23', '2025-04-09 08:08:59', '', '', '', 'Active', 0),
+(32, 'ដែក40', 3, 3, 2.00, 1, 0, 0, '', 'ដើម', 'uploads/images/67f329bf51f2d_78269eb4d70fd4710ceee85908d098a6.jpg', '', '2025-04-07 08:26:23', '2025-04-28 10:39:20', 'JMK', '', '', 'Active', 0),
 (33, 'Nial', 3, 0, 30.00, 4, 0, 0, '', 'Box', 'uploads/images/67f325a1c7344_1e714702f1724b0bc46866bb1bc3cd8b.jpg', '', '2025-04-07 08:08:49', '2025-04-07 13:16:09', '', '', '', 'Active', 0),
-(34, 'សំណាញ់ជ័រ', 4, 30, 20.00, 7, 0, 6, '', 'ដុំ', 'uploads/images/67f325f6dc9cc_19fd75f50123f61f15a4f1a9bf7a225f.jpg', '', '2025-04-07 08:10:14', '2025-04-07 08:10:14', '', '', '', '', 0),
-(36, 'solar cable', 7, 3, 15.00, 7, 0, 0, '', 'ដុំ', 'uploads/images/67f36d3d18a18_cf1461b4f8a886b526bf6781567c6c29.jpg', '', '2025-04-07 13:14:21', '2025-04-08 20:54:41', '', '', '', 'Active', 0),
-(37, 'ទុយោរុំខ្សែរភ្លើង', 18, 80, 12.00, 13, 0, 6, '', 'ដុំ', 'uploads/images/67f375b098783_0e940b6e5aaa818e172e50d52cf4fefc.jpg', '', '2025-04-07 13:50:24', '2025-04-07 13:50:24', '', '', '', '', 0);
+(34, 'សំណាញ់ជ័រ', 4, 30, 20.00, 7, 0, 6, '', 'ដុំ', 'uploads/images/67f325f6dc9cc_19fd75f50123f61f15a4f1a9bf7a225f.jpg', '', '2025-04-07 08:10:14', '2025-04-07 08:10:14', '', '', '', '', 0);
 
 -- --------------------------------------------------------
 
@@ -845,91 +893,92 @@ CREATE TABLE `salesorderdetails` (
   `Total` decimal(10,2) GENERATED ALWAYS AS (`Quantity` * `UnitPrice`) STORED,
   `SalesOrderDetail_Date` date NOT NULL,
   `CreatedAt` timestamp NOT NULL DEFAULT current_timestamp(),
-  `UpdatedAt` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `UpdatedAt` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `CustomerID` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `salesorderdetails`
 --
 
-INSERT INTO `salesorderdetails` (`SalesOrderDetailID`, `SalesOrderID`, `MaterialID`, `Quantity`, `UnitPrice`, `SalesOrderDetail_Date`, `CreatedAt`, `UpdatedAt`) VALUES
-(1, 42, 28, 10, 100.00, '2024-04-01', '2025-04-08 13:43:38', '2025-04-08 13:43:38'),
-(2, 43, 29, 20, 200.00, '2024-04-06', '2025-04-08 13:43:38', '2025-04-08 13:43:38'),
-(3, 44, 30, 30, 300.00, '2024-04-11', '2025-04-08 13:43:38', '2025-04-08 13:43:38'),
-(4, 45, 31, 40, 400.00, '2024-04-16', '2025-04-08 13:43:38', '2025-04-08 13:43:38'),
-(5, 46, 32, 50, 500.00, '2024-04-21', '2025-04-08 13:43:38', '2025-04-08 13:43:38'),
-(6, 47, 33, 10, 100.00, '2024-04-26', '2025-04-08 13:43:38', '2025-04-08 13:43:38'),
-(7, 48, 34, 20, 200.00, '2024-05-01', '2025-04-08 13:43:38', '2025-04-08 13:43:38'),
-(8, 49, 28, 30, 300.00, '2024-05-08', '2025-04-08 13:43:38', '2025-04-08 13:43:38'),
-(9, 50, 29, 40, 400.00, '2024-05-11', '2025-04-08 13:43:38', '2025-04-08 13:43:38'),
-(10, 51, 30, 50, 500.00, '2024-05-16', '2025-04-08 13:43:38', '2025-04-08 13:43:38'),
-(11, 52, 31, 10, 100.00, '2024-05-21', '2025-04-08 13:43:38', '2025-04-08 13:43:38'),
-(12, 53, 32, 20, 200.00, '2024-05-26', '2025-04-08 13:43:38', '2025-04-08 13:43:38'),
-(13, 54, 33, 30, 300.00, '2024-06-01', '2025-04-08 13:43:38', '2025-04-08 13:43:38'),
-(14, 55, 34, 40, 400.00, '2024-06-06', '2025-04-08 13:43:38', '2025-04-08 13:43:38'),
-(15, 56, 28, 50, 500.00, '2024-06-11', '2025-04-08 13:43:38', '2025-04-08 13:43:38'),
-(16, 57, 29, 10, 100.00, '2024-06-16', '2025-04-08 13:43:38', '2025-04-08 13:43:38'),
-(17, 58, 30, 20, 200.00, '2024-06-21', '2025-04-08 13:43:38', '2025-04-08 13:43:38'),
-(18, 59, 31, 30, 300.00, '2024-06-26', '2025-04-08 13:43:38', '2025-04-08 13:43:38'),
-(19, 60, 32, 40, 400.00, '2024-07-01', '2025-04-08 13:43:38', '2025-04-08 13:43:38'),
-(20, 61, 33, 50, 500.00, '2024-07-06', '2025-04-08 13:43:38', '2025-04-08 13:43:38'),
-(21, 62, 34, 10, 100.00, '2024-07-11', '2025-04-08 13:43:38', '2025-04-08 13:43:38'),
-(22, 63, 28, 20, 200.00, '2024-07-16', '2025-04-08 13:43:38', '2025-04-08 13:43:38'),
-(23, 64, 29, 30, 300.00, '2024-07-21', '2025-04-08 13:43:38', '2025-04-08 13:43:38'),
-(24, 65, 30, 40, 400.00, '2024-07-26', '2025-04-08 13:43:38', '2025-04-08 13:43:38'),
-(25, 66, 31, 50, 500.00, '2024-08-01', '2025-04-08 13:43:38', '2025-04-08 13:43:38'),
-(26, 67, 32, 10, 100.00, '2024-08-06', '2025-04-08 13:43:38', '2025-04-08 13:43:38'),
-(27, 68, 33, 20, 200.00, '2024-08-11', '2025-04-08 13:43:38', '2025-04-08 13:43:38'),
-(28, 69, 34, 30, 300.00, '2024-08-16', '2025-04-08 13:43:38', '2025-04-08 13:43:38'),
-(29, 70, 28, 40, 400.00, '2024-08-21', '2025-04-08 13:43:38', '2025-04-08 13:43:38'),
-(30, 71, 29, 50, 500.00, '2024-08-26', '2025-04-08 13:43:38', '2025-04-08 13:43:38'),
-(31, 72, 30, 10, 100.00, '2024-09-01', '2025-04-08 13:43:38', '2025-04-08 13:43:38'),
-(32, 73, 31, 20, 200.00, '2024-09-06', '2025-04-08 13:43:38', '2025-04-08 13:43:38'),
-(33, 74, 32, 30, 300.00, '2024-09-11', '2025-04-08 13:43:38', '2025-04-08 13:43:38'),
-(34, 75, 33, 40, 400.00, '2024-09-16', '2025-04-08 13:43:38', '2025-04-08 13:43:38'),
-(35, 76, 34, 50, 500.00, '2024-09-21', '2025-04-08 13:43:38', '2025-04-08 13:43:38'),
-(36, 77, 28, 10, 100.00, '2024-09-26', '2025-04-08 13:43:38', '2025-04-08 13:43:38'),
-(37, 78, 29, 20, 200.00, '2024-10-01', '2025-04-08 13:43:38', '2025-04-08 13:43:38'),
-(38, 79, 30, 30, 300.00, '2024-10-06', '2025-04-08 13:43:38', '2025-04-08 13:43:38'),
-(39, 80, 31, 40, 400.00, '2024-10-11', '2025-04-08 13:43:38', '2025-04-08 13:43:38'),
-(40, 81, 32, 50, 500.00, '2024-10-16', '2025-04-08 13:43:38', '2025-04-08 13:43:38'),
-(41, 82, 33, 10, 100.00, '2024-10-21', '2025-04-08 13:43:38', '2025-04-08 13:43:38'),
-(42, 83, 34, 20, 200.00, '2024-10-26', '2025-04-08 13:43:38', '2025-04-08 13:43:38'),
-(43, 84, 28, 30, 300.00, '2024-11-01', '2025-04-08 13:43:38', '2025-04-08 13:43:38'),
-(44, 85, 29, 40, 400.00, '2024-11-06', '2025-04-08 13:43:38', '2025-04-08 13:43:38'),
-(45, 86, 30, 50, 500.00, '2024-11-11', '2025-04-08 13:43:38', '2025-04-08 13:43:38'),
-(46, 87, 31, 10, 100.00, '2024-11-16', '2025-04-08 13:43:38', '2025-04-08 13:43:38'),
-(47, 88, 32, 20, 200.00, '2024-11-21', '2025-04-08 13:43:38', '2025-04-08 13:43:38'),
-(48, 89, 33, 30, 300.00, '2024-11-26', '2025-04-08 13:43:38', '2025-04-08 13:43:38'),
-(49, 90, 34, 40, 400.00, '2024-12-01', '2025-04-08 13:43:38', '2025-04-08 13:43:38'),
-(50, 105, 28, 10, 100.00, '2025-02-01', '2025-04-08 13:43:38', '2025-04-08 13:43:38'),
-(51, 106, 29, 20, 200.00, '2025-02-06', '2025-04-08 13:43:38', '2025-04-08 13:43:38'),
-(52, 107, 30, 30, 300.00, '2025-02-11', '2025-04-08 13:43:38', '2025-04-08 13:43:38'),
-(53, 108, 31, 40, 400.00, '2025-02-16', '2025-04-08 13:43:38', '2025-04-08 13:43:38'),
-(54, 109, 32, 50, 500.00, '2025-02-21', '2025-04-08 13:43:38', '2025-04-08 13:43:38'),
-(55, 110, 33, 10, 100.00, '2025-02-26', '2025-04-08 13:43:38', '2025-04-08 13:43:38'),
-(56, 111, 34, 20, 200.00, '2025-03-01', '2025-04-08 13:43:38', '2025-04-08 13:43:38'),
-(57, 112, 28, 30, 300.00, '2025-03-06', '2025-04-08 13:43:38', '2025-04-08 13:43:38'),
-(58, 113, 29, 40, 400.00, '2025-03-11', '2025-04-08 13:43:38', '2025-04-08 13:43:38'),
-(59, 114, 30, 50, 500.00, '2025-03-16', '2025-04-08 13:43:38', '2025-04-08 13:43:38'),
-(60, 115, 31, 10, 100.00, '2025-03-21', '2025-04-08 13:43:38', '2025-04-08 13:43:38'),
-(61, 116, 32, 20, 200.00, '2025-03-26', '2025-04-08 13:43:38', '2025-04-08 13:43:38'),
-(62, 117, 33, 30, 300.00, '2025-04-01', '2025-04-08 13:43:38', '2025-04-08 13:43:38'),
-(63, 118, 34, 40, 400.00, '2025-04-06', '2025-04-08 13:43:38', '2025-04-08 13:43:38'),
-(64, 119, 28, 50, 500.00, '2025-04-11', '2025-04-08 13:43:38', '2025-04-08 13:43:38'),
-(65, 120, 29, 10, 100.00, '2025-04-16', '2025-04-08 13:43:38', '2025-04-08 13:43:38'),
-(66, 121, 30, 20, 200.00, '2025-04-21', '2025-04-08 13:43:38', '2025-04-08 13:43:38'),
-(67, 122, 31, 30, 300.00, '2025-04-26', '2025-04-08 13:43:38', '2025-04-08 13:43:38'),
-(68, 117, 28, 10, 100.00, '2025-04-01', '2025-04-08 13:43:38', '2025-04-08 13:43:38'),
-(69, 118, 29, 20, 200.00, '2025-04-06', '2025-04-08 13:43:38', '2025-04-08 13:43:38'),
-(70, 119, 30, 30, 300.00, '2025-04-11', '2025-04-08 13:43:38', '2025-04-08 13:43:38'),
-(71, 120, 31, 40, 400.00, '2025-04-16', '2025-04-08 13:43:38', '2025-04-08 13:43:38'),
-(72, 121, 32, 50, 500.00, '2025-04-21', '2025-04-08 13:43:38', '2025-04-08 13:43:38'),
-(73, 122, 33, 10, 100.00, '2025-04-26', '2025-04-08 13:43:38', '2025-04-08 13:43:38'),
-(74, 123, 34, 20, 200.00, '2025-04-02', '2025-04-08 13:43:38', '2025-04-08 13:43:38'),
-(75, 124, 28, 30, 300.00, '2025-04-07', '2025-04-08 13:43:38', '2025-04-08 13:43:38'),
-(76, 125, 29, 40, 400.00, '2025-04-12', '2025-04-08 13:43:38', '2025-04-08 13:43:38'),
-(77, 126, 30, 50, 500.00, '2025-04-17', '2025-04-08 13:43:38', '2025-04-08 13:43:38');
+INSERT INTO `salesorderdetails` (`SalesOrderDetailID`, `SalesOrderID`, `MaterialID`, `Quantity`, `UnitPrice`, `SalesOrderDetail_Date`, `CreatedAt`, `UpdatedAt`, `CustomerID`) VALUES
+(1, 42, 28, 10, 100.00, '2024-04-01', '2025-04-28 13:43:38', '2025-04-28 02:17:58', 3),
+(2, 43, 29, 20, 200.00, '2024-04-28', '2025-04-08 13:43:38', '2025-04-28 02:18:30', 4),
+(3, 44, 30, 30, 300.00, '2024-04-11', '2025-04-08 13:43:38', '2025-04-11 02:54:15', 5),
+(4, 45, 31, 40, 400.00, '2024-04-16', '2025-04-08 13:43:38', '2025-04-11 02:54:15', 10),
+(5, 46, 32, 50, 500.00, '2024-04-21', '2025-04-08 13:43:38', '2025-04-11 02:54:15', 11),
+(6, 47, 33, 10, 100.00, '2024-04-26', '2025-04-08 13:43:38', '2025-04-11 02:54:15', 12),
+(7, 48, 34, 20, 200.00, '2024-05-01', '2025-04-08 13:43:38', '2025-04-11 02:54:15', 13),
+(8, 49, 28, 30, 300.00, '2024-05-08', '2025-04-08 13:43:38', '2025-04-11 02:54:15', 14),
+(9, 50, 29, 40, 400.00, '2024-05-11', '2025-04-08 13:43:38', '2025-04-11 02:54:15', 15),
+(10, 51, 30, 50, 500.00, '2024-05-16', '2025-04-08 13:43:38', '2025-04-11 02:54:15', 16),
+(11, 52, 31, 10, 100.00, '2024-05-21', '2025-04-08 13:43:38', '2025-04-11 02:54:15', 17),
+(12, 53, 32, 20, 200.00, '2024-05-26', '2025-04-08 13:43:38', '2025-04-11 02:54:15', 18),
+(13, 54, 33, 30, 300.00, '2024-06-01', '2025-04-08 13:43:38', '2025-04-11 02:54:15', 19),
+(14, 55, 34, 40, 400.00, '2024-06-06', '2025-04-08 13:43:38', '2025-04-11 02:54:15', 20),
+(15, 56, 28, 50, 500.00, '2024-06-11', '2025-04-08 13:43:38', '2025-04-11 02:54:15', 21),
+(16, 57, 29, 10, 100.00, '2024-06-16', '2025-04-08 13:43:38', '2025-04-11 02:54:15', 22),
+(17, 58, 30, 20, 200.00, '2024-06-21', '2025-04-08 13:43:38', '2025-04-11 02:56:08', 3),
+(18, 59, 31, 30, 300.00, '2024-06-26', '2025-04-08 13:43:38', '2025-04-11 02:56:08', 4),
+(19, 60, 32, 40, 400.00, '2024-07-01', '2025-04-08 13:43:38', '2025-04-11 02:56:08', 5),
+(20, 61, 33, 50, 500.00, '2024-07-06', '2025-04-08 13:43:38', '2025-04-11 02:56:08', 10),
+(21, 62, 34, 10, 100.00, '2024-07-11', '2025-04-08 13:43:38', '2025-04-11 02:56:08', 11),
+(22, 63, 28, 20, 200.00, '2024-07-16', '2025-04-08 13:43:38', '2025-04-11 02:56:08', 12),
+(23, 64, 29, 30, 300.00, '2024-07-21', '2025-04-08 13:43:38', '2025-04-11 02:56:08', 13),
+(24, 65, 30, 40, 400.00, '2024-07-26', '2025-04-08 13:43:38', '2025-04-11 02:56:08', 14),
+(25, 66, 31, 50, 500.00, '2024-08-01', '2025-04-08 13:43:38', '2025-04-11 02:56:08', 15),
+(26, 67, 32, 10, 100.00, '2024-08-06', '2025-04-08 13:43:38', '2025-04-11 02:56:08', 16),
+(27, 68, 33, 20, 200.00, '2024-08-11', '2025-04-08 13:43:38', '2025-04-11 02:56:08', 17),
+(28, 69, 34, 30, 300.00, '2024-08-16', '2025-04-08 13:43:38', '2025-04-11 02:56:08', 18),
+(29, 70, 28, 40, 400.00, '2024-08-21', '2025-04-08 13:43:38', '2025-04-11 02:56:08', 19),
+(30, 71, 29, 50, 500.00, '2024-08-26', '2025-04-08 13:43:38', '2025-04-11 02:56:08', 20),
+(31, 72, 30, 10, 100.00, '2024-09-01', '2025-04-08 13:43:38', '2025-04-11 02:56:08', 21),
+(32, 73, 31, 20, 200.00, '2024-09-06', '2025-04-08 13:43:38', '2025-04-11 02:56:08', 22),
+(33, 74, 32, 30, 300.00, '2024-09-11', '2025-04-08 13:43:38', '2025-04-11 02:56:08', 3),
+(34, 75, 33, 40, 400.00, '2024-09-16', '2025-04-08 13:43:38', '2025-04-11 02:56:08', 4),
+(35, 76, 34, 50, 500.00, '2024-09-21', '2025-04-08 13:43:38', '2025-04-11 02:56:08', 5),
+(36, 77, 28, 10, 100.00, '2024-09-26', '2025-04-08 13:43:38', '2025-04-11 02:56:08', 10),
+(37, 78, 29, 20, 200.00, '2024-10-01', '2025-04-08 13:43:38', '2025-04-11 02:56:08', 11),
+(38, 79, 30, 30, 300.00, '2024-10-06', '2025-04-08 13:43:38', '2025-04-11 02:56:08', 12),
+(39, 80, 31, 40, 400.00, '2024-10-11', '2025-04-08 13:43:38', '2025-04-11 02:56:08', 13),
+(40, 81, 32, 50, 500.00, '2024-10-16', '2025-04-08 13:43:38', '2025-04-11 02:56:08', 14),
+(41, 82, 33, 10, 100.00, '2024-10-21', '2025-04-08 13:43:38', '2025-04-11 02:56:08', 15),
+(42, 83, 34, 20, 200.00, '2024-10-26', '2025-04-08 13:43:38', '2025-04-11 02:56:08', 16),
+(43, 84, 28, 30, 300.00, '2024-11-01', '2025-04-08 13:43:38', '2025-04-11 02:56:08', 17),
+(44, 85, 29, 40, 400.00, '2024-11-06', '2025-04-08 13:43:38', '2025-04-11 02:56:08', 18),
+(45, 86, 30, 50, 500.00, '2024-11-11', '2025-04-08 13:43:38', '2025-04-11 02:56:08', 19),
+(46, 87, 31, 10, 100.00, '2024-11-16', '2025-04-08 13:43:38', '2025-04-11 02:56:08', 20),
+(47, 88, 32, 20, 200.00, '2024-11-21', '2025-04-08 13:43:38', '2025-04-11 02:56:08', 21),
+(48, 89, 33, 30, 300.00, '2024-11-26', '2025-04-08 13:43:38', '2025-04-11 02:56:08', 22),
+(49, 90, 34, 40, 400.00, '2024-12-01', '2025-04-08 13:43:38', '2025-04-11 02:56:08', 3),
+(50, 105, 28, 10, 100.00, '2025-02-01', '2025-04-08 13:43:38', '2025-04-11 02:56:08', 4),
+(51, 106, 29, 20, 200.00, '2025-02-06', '2025-04-08 13:43:38', '2025-04-11 02:56:08', 5),
+(52, 107, 30, 30, 300.00, '2025-02-11', '2025-04-08 13:43:38', '2025-04-11 02:56:08', 10),
+(53, 108, 31, 40, 400.00, '2025-02-16', '2025-04-08 13:43:38', '2025-04-11 02:56:08', 11),
+(54, 109, 32, 50, 500.00, '2025-02-21', '2025-04-08 13:43:38', '2025-04-11 02:56:08', 12),
+(55, 110, 33, 10, 100.00, '2025-02-26', '2025-04-08 13:43:38', '2025-04-11 02:56:08', 13),
+(56, 111, 34, 20, 200.00, '2025-03-01', '2025-04-08 13:43:38', '2025-04-11 02:56:08', 14),
+(57, 112, 28, 30, 300.00, '2025-03-06', '2025-04-08 13:43:38', '2025-04-11 02:56:08', 15),
+(58, 113, 29, 40, 400.00, '2025-03-11', '2025-04-08 13:43:38', '2025-04-11 02:56:08', 16),
+(59, 114, 30, 50, 500.00, '2025-03-16', '2025-04-08 13:43:38', '2025-04-11 02:56:08', 17),
+(60, 115, 31, 10, 100.00, '2025-03-21', '2025-04-08 13:43:38', '2025-04-11 02:56:08', 18),
+(61, 116, 32, 20, 200.00, '2025-03-26', '2025-04-08 13:43:38', '2025-04-11 02:56:08', 19),
+(62, 117, 33, 30, 300.00, '2025-04-01', '2025-04-08 13:43:38', '2025-04-11 02:56:08', 20),
+(63, 118, 34, 40, 400.00, '2025-04-06', '2025-04-08 13:43:38', '2025-04-11 02:56:08', 21),
+(64, 119, 28, 50, 500.00, '2025-04-11', '2025-04-08 13:43:38', '2025-04-11 02:56:08', 22),
+(65, 120, 29, 10, 100.00, '2025-04-16', '2025-04-08 13:43:38', '2025-04-11 02:56:08', 3),
+(66, 121, 30, 20, 200.00, '2025-04-21', '2025-04-08 13:43:38', '2025-04-11 02:56:08', 4),
+(67, 122, 31, 30, 300.00, '2025-04-26', '2025-04-08 13:43:38', '2025-04-11 02:56:08', 5),
+(68, 117, 28, 10, 100.00, '2025-04-01', '2025-04-08 13:43:38', '2025-04-11 02:56:08', 10),
+(69, 118, 29, 20, 200.00, '2025-04-06', '2025-04-08 13:43:38', '2025-04-11 02:56:08', 11),
+(70, 119, 30, 30, 300.00, '2025-04-11', '2025-04-08 13:43:38', '2025-04-11 02:56:08', 12),
+(71, 120, 31, 40, 400.00, '2025-04-16', '2025-04-08 13:43:38', '2025-04-11 02:56:08', 13),
+(72, 121, 32, 50, 500.00, '2025-04-21', '2025-04-08 13:43:38', '2025-04-11 02:56:08', 14),
+(73, 122, 33, 10, 100.00, '2025-04-26', '2025-04-08 13:43:38', '2025-04-11 02:56:08', 15),
+(74, 123, 34, 20, 200.00, '2025-04-02', '2025-04-08 13:43:38', '2025-04-11 02:56:08', 16),
+(75, 124, 28, 30, 300.00, '2025-04-07', '2025-04-08 13:43:38', '2025-04-11 02:56:08', 17),
+(76, 125, 29, 40, 400.00, '2025-04-12', '2025-04-08 13:43:38', '2025-04-11 02:56:08', 18),
+(77, 126, 30, 50, 500.00, '2025-04-17', '2025-04-08 13:43:38', '2025-04-11 02:56:08', 19);
 
 -- --------------------------------------------------------
 
@@ -1094,14 +1143,6 @@ CREATE TABLE `suppliers` (
   `UpdatedAt` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- 
--- update suplliers
--- 
-ALTER TABLE suppliers
-ADD COLUMN CategoryID INT(11) AFTER SupplierID;
-
-
-
 --
 -- Dumping data for table `suppliers`
 --
@@ -1201,7 +1242,7 @@ INSERT INTO `users` (`user_id`, `select_user`, `profile_image`, `first_name`, `l
 (5, 'default_value', NULL, 'Chandy', 'Neat', 'chandyneat89@gmail.com', '', 2, '$2y$10$aZe.pYH4ioXD97p9.5TxkuoMC.iEUzBKEUKTVQyx1codqnK3jI1rC', '', '', '2025-04-02 08:13:17', '2025-04-02 10:08:01'),
 (7, 'default_value', 'uploads/1743590713_332d9c658b26340cd0f5808371458659.jpg', 'Ronaldo', 'Smos', 'ronaldosmos94@gmail.com', '093967654', 6, '$2y$10$500ShBTa8VRimQprJXZrC.93AaGddNRf.9cEDxNXjx4xAlj4O.wkK', 'Cambodia Phnom Penh', 'Chomka Duong', '2025-04-02 10:45:13', '2025-04-02 10:51:39'),
 (8, 'default_value', 'uploads/1743590925_06ae800957fd7efabe894de3d1c0611b.jpg', 'Dyy', 'Development', 'chandyneat0094@gmail.com', '093967689', 4, '$2y$10$8ZN5cT/Gc.eoJo0uW2ATAe3q6dV.AHK9FHL3YODqmlCMKybx/uom2', 'Cambodia Phnom Penh', 'Chomka Duong', '2025-04-02 10:48:45', '2025-04-02 10:48:45'),
-(10, 'default_value', NULL, 'Darin', 'Development', 'darin94@gmail.com', '', 2, '$2y$10$W/y5b415UMXbNMbvlYB2fej/PCrMAhPhusWo.hZIwow2PtXGSLx/u', '', '', '2025-04-02 10:55:25', '2025-04-02 10:55:25'),
+(10, 'default_value', 'uploads/680f8093a9df0-b70b3a5faa8c1a3ed0acedde139ea02c.jpg', 'hah', 'Development', 'darin94@gmail.com', '093967654', 2, '$2y$10$W/y5b415UMXbNMbvlYB2fej/PCrMAhPhusWo.hZIwow2PtXGSLx/u', '', 'Cambodia Phnom Penh', '2025-04-02 10:55:25', '2025-04-28 13:20:19'),
 (11, 'default_value', NULL, 'Chantha', 'Dy', 'chantha9999@gmail.com', '', 2, '$2y$10$uhWzwOZtwBOcw.ba/jtLN.F6bsLCavxcm7cLw5oRmQBINK1EwfXRO', '', '', '2025-04-03 00:27:47', '2025-04-03 00:27:47'),
 (12, 'default_value', NULL, 'Chorina', 'Thin', 'thinchorina9999@gmail.com', '', 2, '$2y$10$0Qb1d4.Pl2pSV56aTgs/IuMA4wLc9FBqd1KNDA94OZteotC1Psljy', '', '', '2025-04-07 00:52:38', '2025-04-07 00:52:38'),
 (13, 'default_value', NULL, 'Sohean', 'Chan', 'sopeahnpgouk9999@gmail.com', '', 2, '$2y$10$DRh6tDArirNUpXSN6Kd4fej5xIhUWzk9tR1cV6LmfUplG7CujQXN.', '', '', '2025-04-07 02:12:22', '2025-04-07 02:12:22'),
@@ -1213,7 +1254,14 @@ INSERT INTO `users` (`user_id`, `select_user`, `profile_image`, `first_name`, `l
 (19, 'default_value', NULL, 'Koko', 'jenny', 'kokojenii94@gmail.com', '', 2, '$2y$10$X1yHobF2fn3WOwLDvcgHwOw0rniwBbuvoMNfG119apr8DM4/HGIE6', '', '', '2025-04-07 12:54:56', '2025-04-07 12:54:56'),
 (20, 'default_value', NULL, 'dYY', 'Smos', 'chandyneat8888@gmail.com', '', 2, '$2y$10$DjtAXMisTCOdsFCw7FFXqux/p5nWFrxpNje9IU6feXE8Lf1XCOV7.', '', '', '2025-04-07 13:03:24', '2025-04-07 13:03:24'),
 (21, 'default_value', NULL, 'Somnang', 'Neat', 'somnangneat9999@gmail.com', '', 2, '$2y$10$DDiKQTXMhaTco3SpJnuQbO/PEzd6fAXB9n/qrmCQwPfezum2zPWhC', '', '', '2025-04-08 13:48:22', '2025-04-08 13:48:22'),
-(22, 'default_value', NULL, 'Chantha', 'leng', 'chanthatleng9999@gmail.com', '', 2, '$2y$10$YCWNN5f5vivrcm.jFGHfF.hMsuO.BVdGUWzsZQnaqkRHjcLZ2Gf7.', '', '', '2025-04-09 01:54:45', '2025-04-09 01:54:45');
+(22, 'default_value', NULL, 'Chantha', 'leng', 'chanthatleng9999@gmail.com', '', 2, '$2y$10$YCWNN5f5vivrcm.jFGHfF.hMsuO.BVdGUWzsZQnaqkRHjcLZ2Gf7.', '', '', '2025-04-09 01:54:45', '2025-04-09 01:54:45'),
+(23, 'default_value', NULL, 'Chea', 'Taa', 'cheatta94@gmail.com', '', 2, '$2y$10$rabIy80asrUB0pMu.ObQfuOXCgiqmrv8hjD2SeI24mFdO/IDOj2Ge', '', '', '2025-04-26 01:24:54', '2025-04-26 01:24:54'),
+(25, 'default_value', NULL, 'Sophean', 'Phouk', 'sopeanphouk9999@gmail.com', '', 2, '$2y$10$HmDhvpfScVuo.N2D0qzj4OgwydWnXAD.egKiitz0Mc3vLAjj2uyzW', '', '', '2025-04-28 02:19:43', '2025-04-28 02:19:43'),
+(26, 'default_value', NULL, 'Senghin', 'Loem', 'snedjfnjdfjdf@gmail.com', '', 2, '$2y$10$dzU.zUXBSAyQuUmahUQoVuo9CpG71oChHmSuWziY5jkcvdVXMmo0u', '', '', '2025-04-28 04:06:28', '2025-04-28 04:06:28'),
+(27, 'default_value', NULL, 'Somnang', 'Neat', 'somnangneat94@gmail.com', '', 2, '$2y$10$jIdfRxwN8mn3940eRNMwKuIMLfF9Ev/AJaDEZ66gaIqYH3M0CQPc2', '', '', '2025-04-28 07:47:01', '2025-04-28 07:47:01'),
+(28, 'default_value', NULL, 'Chandy', 'smos', 'mealeameng32211@gmail.com', '', 2, '$2y$10$A.dK7/V0VUayEc50wmCaDe/VnldDGE0urTZdXGT.hiSW8e4GKk4oG', '', '', '2025-04-28 08:31:16', '2025-04-28 08:31:16'),
+(29, 'default_value', NULL, 'Chandy', 'the konmg', 'chandyneat997765@gmail.com', '', 2, '$2y$10$Fe0flEjWRt3WrB2.Bk.TguyqSGTQx.KXh0K6p11BpQtbDZ3ulhuqO', '', '', '2025-04-28 13:24:14', '2025-04-28 13:24:14'),
+(31, 'default_value', NULL, 'Senghin', 'Kekfde', 'hehehe@gmail.com', '', 2, '$2y$10$Rx8d8onUuS2p/1U5CTXIHezqk7W7W6.iGprDWYx2xT6ZrD/R1uDDm', '', '', '2025-04-28 13:24:46', '2025-04-28 13:24:46');
 
 -- --------------------------------------------------------
 
@@ -1250,6 +1298,15 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 DROP TABLE IF EXISTS `daily_sales_summary`;
 
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `daily_sales_summary`  AS SELECT curdate() AS `record_date`, sum(case when cast(`salesorders`.`CreatedAt` as date) = curdate() then `salesorders`.`TotalAmount` else 0 end) AS `total_sales`, count(case when cast(`salesorders`.`CreatedAt` as date) = curdate() then 1 else NULL end) AS `total_sales_orders`, sum(case when cast(`salesorders`.`CreatedAt` as date) = curdate() - interval 1 day then `salesorders`.`TotalAmount` else 0 end) AS `yesterday_sales`, CASE WHEN sum(case when cast(`salesorders`.`CreatedAt` as date) = curdate() - interval 1 day then `salesorders`.`TotalAmount` else 0 end) = 0 THEN NULL ELSE round((sum(case when cast(`salesorders`.`CreatedAt` as date) = curdate() then `salesorders`.`TotalAmount` else 0 end) - sum(case when cast(`salesorders`.`CreatedAt` as date) = curdate() - interval 1 day then `salesorders`.`TotalAmount` else 0 end)) / sum(case when cast(`salesorders`.`CreatedAt` as date) = curdate() - interval 1 day then `salesorders`.`TotalAmount` else 0 end) * 100,2) END AS `percent_change` FROM `salesorders` ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `employee`
+--
+DROP TABLE IF EXISTS `employee`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `employee`  AS SELECT `users`.`user_id` AS `user_id`, `users`.`select_user` AS `select_user`, `users`.`profile_image` AS `profile_image`, `users`.`first_name` AS `first_name`, `users`.`last_name` AS `last_name`, `users`.`email` AS `email`, `users`.`phone` AS `phone`, `users`.`role_id` AS `role_id`, `users`.`password` AS `password`, `users`.`address` AS `address`, `users`.`street_address` AS `street_address`, `users`.`created_at` AS `created_at`, `users`.`updated_at` AS `updated_at` FROM `users` WHERE `users`.`role_id` not in (1,2) ;
 
 -- --------------------------------------------------------
 
@@ -1402,25 +1459,6 @@ ALTER TABLE `users`
   ADD PRIMARY KEY (`user_id`),
   ADD UNIQUE KEY `email` (`email`);
 
---------------------------------------------------------------
--- Adds a foreign key constraint between user and role
--- 1. Identify Invalid role_id Values:
-SELECT u.role_id
-FROM users u
-LEFT JOIN roles r ON u.role_id = r.role_id
-WHERE r.role_id IS NULL;
-
--- 2. Fix the Invalid Data:
-UPDATE users
-SET role_id = 1
-WHERE role_id NOT IN (SELECT role_id FROM roles);
-
--- 3. Add the Foreign Key Constraint:
-ALTER TABLE users
-ADD CONSTRAINT fk_user_role
-FOREIGN KEY (role_id)
-REFERENCES roles(role_id);
-
 --
 -- AUTO_INCREMENT for dumped tables
 --
@@ -1429,13 +1467,13 @@ REFERENCES roles(role_id);
 -- AUTO_INCREMENT for table `audit_logs`
 --
 ALTER TABLE `audit_logs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=123;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=152;
 
 --
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `CategoryID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `CategoryID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT for table `employees`
@@ -1465,7 +1503,7 @@ ALTER TABLE `invoices`
 -- AUTO_INCREMENT for table `materials`
 --
 ALTER TABLE `materials`
-  MODIFY `MaterialID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `MaterialID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT for table `pages`
@@ -1525,7 +1563,7 @@ ALTER TABLE `suppliers`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- Constraints for dumped tables
@@ -1599,17 +1637,3 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-
-
--- update customers table 
-ALTER TABLE Customers ADD COLUMN created DATE;
-
-UPDATE Customers SET created = '2025-03-28';
-
---
--- update customers table 
---
-ALTER TABLE customers 
-ADD COLUMN Profile VARCHAR(255) AFTER CustomerID,
-ADD COLUMN Status VARCHAR(50) AFTER Address,
-ADD COLUMN Quantity INT AFTER MaterialID;
