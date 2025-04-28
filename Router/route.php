@@ -36,6 +36,8 @@ require_once 'Controllers/adminController/customerController.php/customerListCon
 
 // Shop Controller
 require_once "Controllers/adminController/shopController/ShopController.php";
+require_once "Controllers/userController/aboutController/aboutController.php";
+require_once "Controllers/userController/contactController/contactController.php";
 
 // Other Controllers
 require_once "Controllers/adminController/BashInfoController.php";
@@ -150,8 +152,8 @@ $route->group('dashboard', function ($route) {
  */
 $route->group('welcome', function ($route) {
     $route->get('/welcome', [WelcomeController::class, 'welcome']);
-    $route->get('/contact', [WelcomeController::class, 'contact']);
-    $route->get('/about', [WelcomeController::class, 'about']);
+    $route->get('/contact', [ContactController::class, 'contact']);
+    $route->get('/about', [AboutController::class, 'about']);
 });
 
 /**

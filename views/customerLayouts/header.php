@@ -62,6 +62,18 @@
         .arrow-right {
             right: 10px;
         }
+
+        .carousel-item img { height: 500px; object-fit: cover; border-radius: 15px; transition: transform 0.3s; }
+        .carousel-item img:hover { transform: scale(1.05); }
+        @media (max-width: 768px) { .carousel-item img { height: 300px; } }
+        .container { display: flex; justify-content: center; align-items: center; position: relative; text-align: center; color: white; }
+        .image { width: 70%; }
+        .caption { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: rgba(0, 0, 0, 0.7); padding: 20px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); opacity: 0; animation: fadeIn 1s forwards; }
+        .title { font-size: 2.5em; font-weight: bold; text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7); }
+        @keyframes fadeIn { from { opacity: 0; transform: translate(-50%, -60%); } to { opacity: 1; transform: translate(-50%, -50%); } }
+        .about-company { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin: 20px 0; }
+        .about-company p { width: 80%; margin: 20px 70px; }
+        .con img { margin-left: 70px; }
     </style>
 </head>
-<body class="bg-gray-50 font-sans antialiased"></body>
+<body class="bg-gray-50 font-sans antialiased">
