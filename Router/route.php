@@ -38,6 +38,7 @@ require_once 'Controllers/adminController/customerController.php/customerListCon
 require_once "Controllers/adminController/shopController/ShopController.php";
 require_once "Controllers/userController/aboutController/aboutController.php";
 require_once "Controllers/userController/contactController/contactController.php";
+require_once "Controllers/userController/profileController/userProfileController.php";
 
 // Other Controllers
 require_once "Controllers/adminController/BashInfoController.php";
@@ -52,6 +53,7 @@ require_once "Models/invenoryModel/categoryModel.php";
 require_once "Models/dashboard/dashboardModel.php";
 require_once "Models/supplierModel/SupplierModel.php";
 require_once "Models/invenoryModel/import&export/material.php";
+require_once "Models/accountModel/userModel.php";
 
 // Shop model 
 require_once "Models/shopModel/ShopModel.php";
@@ -154,6 +156,7 @@ $route->group('welcome', function ($route) {
     $route->get('/welcome', [WelcomeController::class, 'welcome']);
     $route->get('/contact', [ContactController::class, 'contact']);
     $route->get('/about', [AboutController::class, 'about']);
+    $route->get('/profile', [UserProfileController::class, 'profile']);
 });
 
 /**
