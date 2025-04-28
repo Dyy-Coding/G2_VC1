@@ -20,4 +20,20 @@ class ShopController extends BaseController {
         ]);
     }
 
+    public function viewMaterial($id) {
+        $material = $this->material->getMaterialById($id);
+
+        if (!$material) {
+            $this->renderView('errors/404', [], 404);
+            return;
+        }
+
+        $this->renderView('adminView/shop/materialDetail', [
+            'material' => $material,
+            'flash_message' => $_SESSION['flash_message'] ?? null
+        ]);
+        unset($_SESSION['flash_message']);
+    }
+
+
 }

@@ -171,7 +171,7 @@
                             <!-- Quantity Selector -->
                             <div class="quantity-control">
                                 <button class="btn btn-sm btn-outline-secondary" onclick="decreaseQuantity(this)">-</button>
-                                <input type="text" value="1" class="form-control quantity-input text-center" readonly>
+                                <input type="text" value="1" class="quantity-input text-center" readonly>
                                 <button class="btn btn-sm btn-outline-secondary" onclick="increaseQuantity(this)">+</button>
                             </div>
                         </div>
@@ -179,7 +179,11 @@
                         <!-- Buttons -->
                         <div class="d-flex justify-content-center gap-2 mt-2">
                             <button class="btn btn-primary btn-sm">Add to Cart</button>
-                            <button class="btn btn-outline-info btn-sm">View</button>
+                            <button class="btn btn-outline-info btn-sm">  
+                                <a href="/material/detail/<?= htmlspecialchars($material['MaterialID']) ?>" class="dropdown-item d-flex align-items-center">
+                                    <i class="material-icons me-2" style="font-size:18px;">visibility</i> View
+                                </a>
+                            </button>
                         </div>
                     </div>
 
@@ -258,4 +262,4 @@ categoryButtons.forEach(button => {
         filterMaterials(category === 'All' ? 'all' : category);
     });
 });
-/script>
+</script>
