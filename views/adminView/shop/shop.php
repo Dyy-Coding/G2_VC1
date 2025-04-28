@@ -1,69 +1,189 @@
 <style>
+    body {
+        background-color: #f5f5f5;
+    }
+
+    .container-shop {
+        max-width: 1200px;
+        margin: 30px auto;
+        background: white;
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
     .scrollable-container {
-        width: 100%; /* Ensure container takes the full width */
-        overflow-x: scroll; /* Enable horizontal scrolling */
-        white-space: nowrap; /* Prevent wrapping of the content */
-        -webkit-overflow-scrolling: touch; /* For smooth scrolling on mobile */
-        scrollbar-width: none; /* Firefox: Hide the scrollbar */
-        -ms-overflow-style: none;  /* Internet Explorer 10+ */
+        width: 100%;
+        overflow-x: auto;
+        white-space: nowrap;
+        margin-bottom: 20px;
     }
 
     .scrollable-container::-webkit-scrollbar {
-        display: none; /* Hide the scrollbar in WebKit browsers (Chrome, Safari, etc.) */
+        display: none;
     }
 
     .scroll-container {
-        display: inline-flex; /* Make sure the buttons stay in a row */
-        gap: 10px; /* Optional: space between the buttons */
+        display: inline-flex;
+        gap: 10px;
     }
 
     .scroll-container button {
-        white-space: nowrap; /* Prevent text from wrapping within buttons */
+        white-space: nowrap;
     }
 
-</style>
-<div class="container mt-3 card" style="width: 95%; padding: 20px;">
-    <h1>Shop</h1>
-    <p>Welcome to the shop! Here you can find a variety of materials available for purchase.</p>
-    
-    <nav>
-        <div class="scrollable-container mb-3">
-            <div class="relative">
-                <div class="scroll-container">
-                    <?php if (isset($categories) && is_array($categories)): ?>
-                        <button class="btn btn-outline-primary rounded-pill" onclick="filterMaterials('all')">All</button>
-                        <?php foreach ($categories as $category): ?>
-                            <button class="btn btn-outline-secondary rounded-pill" onclick="filterMaterials('<?= htmlspecialchars($category['CategoryName']) ?>')">
-                                <?= htmlspecialchars($category['CategoryName']) ?>
-                            </button>
-                        <?php endforeach; ?>
-                    <?php else: ?>
-                        <p>No categories available.</p>
-                    <?php endif; ?>
-                </div>
-            </div>
-        </div>
-    </nav>
+    .card-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 20px;
+    }
 
-    <div class="card-container d-flex  align-center justify-content-center flex-wrap gap-6">
+    .material-card {
+        background: #ffffff;
+        border: none;
+        border-radius: 15px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        transition: all 0.3s ease;
+        height: 500px;
+    }
+
+    .material-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0px 8px 16px rgba(0,0,0,0.15);
+    }
+
+    .material-image-container {
+        height: 250px;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #fafafa;
+    }
+
+    .material-image-container img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s;
+    }
+
+    .material-image-container:hover img {
+        transform: scale(1.1);
+    }
+
+    .card-body {
+        flex: 1;
+        padding: 15px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .card-title {
+        font-weight: 600;
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+        color: #34495e;
+    }
+
+    .price-text {
+        color: #2ecc71;
+        font-size: 1.1rem;
+        font-weight: bold;
+        margin-bottom: 15px;
+    }
+
+    .quantity-control {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+
+    .quantity-control button {
+        width: 30px;
+        height: 30px;
+    }
+
+    .quantity-input {
+        width: 50px;
+        margin: 0 5px;
+    }
+
+    .btn-sm {
+        border-radius: 20px;
+        padding: 5px 15px;
+        font-size: 0.9rem;
+    }
+</style>
+
+<div class="container container-shop">
+    <h1 class="text-center mb-4">🛍️ Our Shop</h1>
+    <p class="text-center mb-5">Find the best materials you need!</p>
+
+    <!-- Category Buttons -->
+    <div class="scrollable-container">
+        <div class="scroll-container">
+            <?php if (isset($categories) && is_array($categories)): ?>
+                <button class="btn btn-outline-primary rounded-pill" onclick="filterMaterials('all')">All</button>
+                <?php foreach ($categories as $category): ?>
+                    <button class="btn btn-outline-secondary rounded-pill" onclick="filterMaterials('<?= htmlspecialchars($category['CategoryName']) ?>')">
+                        <?= htmlspecialchars($category['CategoryName']) ?>
+                    </button>
+                <?php endforeach; ?>
+            <?php else: ?>
+                <p>No categories available.</p>
+            <?php endif; ?>
+        </div>
+    </div>
+
+    <!-- Search Bar -->
+    <div class="mb-4">
+        <input 
+            type="text" 
+            id="search" 
+            class="form-control" 
+            placeholder="Search for materials..."
+        >
+    </div>
+
+    <!-- Materials Cards -->
+    <div class="card-container">
         <?php if (isset($materials) && is_array($materials)): ?>
             <?php foreach ($materials as $material): ?>
-                <div class="card material-card shadow-sm" style="width: 18rem; border-radius: 15px; overflow: hidden;" data-category="<?= htmlspecialchars($material['CategoryName']) ?>">
-                <div style="height: 25vh; overflow: hidden;">
-                    <img 
-                        src="<?= htmlspecialchars($material['ImagePath']) ?>" 
-                        class="card-img" 
-                        alt="<?= htmlspecialchars($material['Name']) ?>" 
-                        style="height: 100%; object-fit: cover;"
-                    >
-                </div>
-                <div class="card-body text-center">
-                    <h5 class="card-title" style="font-weight: 600; color: #34495e;"><?= htmlspecialchars($material['Name']) ?></h5>
-                    <p class="card-text" style="color: #7f8c8d;">Price: $<?= number_format($material['UnitPrice'], 2) ?></p>
-                    <p class="card-text" style="color: #7f8c8d;">Quantity: <?= htmlspecialchars($material['Quantity']) ?></p>
-                </div>
-            </div>
+                <div class="card material-card shadow-sm"
+                     data-category="<?= htmlspecialchars($material['CategoryName']) ?>"
+                     data-Size="<?= htmlspecialchars($material['Size']) ?>"
+                     data-unit-price="<?= htmlspecialchars($material['UnitPrice']) ?>">
+                     
+                    <div class="material-image-container">
+                        <img src="<?= htmlspecialchars($material['ImagePath']) ?>" alt="<?= htmlspecialchars($material['Name']) ?>">
+                    </div>
 
+                    <div class="card-body text-center">
+                        <div>
+                            <h5 class="card-title material-name"><?= htmlspecialchars($material['Name']) ?></h5>
+                            <p class="price-text">$<span class="price"><?= number_format($material['UnitPrice'], 2) ?></span></p>
+
+                            <!-- Quantity Selector -->
+                            <div class="quantity-control">
+                                <button class="btn btn-sm btn-outline-secondary" onclick="decreaseQuantity(this)">-</button>
+                                <input type="text" value="1" class="form-control quantity-input text-center" readonly>
+                                <button class="btn btn-sm btn-outline-secondary" onclick="increaseQuantity(this)">+</button>
+                            </div>
+                        </div>
+
+                        <!-- Buttons -->
+                        <div class="d-flex justify-content-center gap-2 mt-2">
+                            <button class="btn btn-primary btn-sm">Add to Cart</button>
+                            <button class="btn btn-outline-info btn-sm">View</button>
+                        </div>
+                    </div>
+
+                </div>
             <?php endforeach; ?>
         <?php else: ?>
             <p>No materials available.</p>
@@ -71,14 +191,25 @@
     </div>
 </div>
 
-<!-- JavaScript to filter materials -->
+<!-- JavaScript -->
 <script>
+let currentCategory = 'all';
+
 function filterMaterials(category) {
+    currentCategory = category;
     const cards = document.querySelectorAll('.material-card');
+    const searchValue = document.getElementById('search').value.toLowerCase().trim();
 
     cards.forEach(card => {
-        if (category === 'all' || card.getAttribute('data-category') === category) {
-            card.style.display = 'block';
+        const cardCategory = card.getAttribute('data-category');
+        const nameElement = card.querySelector('.material-name');
+        const materialName = nameElement ? nameElement.textContent.toLowerCase() : '';
+
+        const matchesCategory = (category === 'all' || cardCategory === category);
+        const matchesSearch = (materialName.includes(searchValue));
+
+        if (matchesCategory && matchesSearch) {
+            card.style.display = 'flex';
         } else {
             card.style.display = 'none';
         }
@@ -86,19 +217,45 @@ function filterMaterials(category) {
 }
 
 document.getElementById('search').addEventListener('input', function() {
-    const searchValue = this.value.toLowerCase().trim();
-    const cards = document.querySelectorAll('.material-card');
+    filterMaterials(currentCategory);
+});
 
-    cards.forEach(card => {
-        const nameElement = card.querySelector('.material-name');
-        if (nameElement) {
-            const materialName = nameElement.textContent.toLowerCase();
-            if (materialName.includes(searchValue)) {
-                card.style.display = "";
-            } else {
-                card.style.display = "none";
-            }
-        }
+// Quantity functions
+function increaseQuantity(button) {
+    const input = button.previousElementSibling;
+    let value = parseInt(input.value);
+    if (!isNaN(value)) {
+        value++;
+        input.value = value;
+        updatePrice(button, value);
+    }
+}
+
+function decreaseQuantity(button) {
+    const input = button.nextElementSibling;
+    let value = parseInt(input.value);
+    if (!isNaN(value) && value > 1) {
+        value--;
+        input.value = value;
+        updatePrice(button, value);
+    }
+}
+
+// Update price when quantity changes
+function updatePrice(button, quantity) {
+    const card = button.closest('.material-card');
+    const unitPrice = parseFloat(card.getAttribute('data-unit-price'));
+    const priceElement = card.querySelector('.price');
+    const totalPrice = unitPrice * quantity;
+    priceElement.textContent = totalPrice.toFixed(2);
+}
+
+// Category Buttons
+const categoryButtons = document.querySelectorAll('.scroll-container button');
+categoryButtons.forEach(button => {
+    button.addEventListener('click', function() {
+        const category = this.textContent.trim();
+        filterMaterials(category === 'All' ? 'all' : category);
     });
 });
-</script>
+/script>

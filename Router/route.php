@@ -158,7 +158,7 @@ $route->group('welcome', function ($route) {
  * Inventory Routes
  */
 $route->group('inventory', function ($route) {
-    $route->get('/inventory', [InventoryController::class, 'inventory']);
+    $route->get('/material', [MaterialsController::class, 'material']);
     // Crud
     $route->get('/materials/add', [InventoryController::class, 'addMaterial']);
     $route->post('/materials/add', [InventoryController::class, 'addMaterial']);

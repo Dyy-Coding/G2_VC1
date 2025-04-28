@@ -11,7 +11,7 @@ class MaterialsController extends BaseController {
 
 
 
-    public function inventory() {
+    public function material() {
         $categories = $this->category->getAllCategories();
         $suppliers = $this->material->getSuppliers();
         $materials = $this->material->getAllMaterials();
