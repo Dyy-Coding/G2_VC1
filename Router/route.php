@@ -16,12 +16,12 @@ require_once "Controllers/adminController/authenicationController/registerContro
 require_once "Controllers/adminController/InventoryController/materialsController.php";
 require_once "Controllers/adminController/InventoryController/categoriesController.php";
 require_once "Controllers/adminController/InventoryController/importExportController.php";
+require_once "Controllers/adminController/settingController/settingController.php";
 // require_once "Controllers/adminController/InventoryController/exportByPython.php";
 // require_once "Controllers/adminController/InventoryController/exportImportController.php";
 
 // Dashboard Controllers
 require_once "Controllers/adminController/DashboardController.php";
-require_once "Controllers/adminController/dashboardController/stockListController.php";
 
 // Account Controllers
 require_once "Controllers/adminController/accountController/adminProfileController.php";
@@ -40,11 +40,14 @@ require_once "Controllers/adminController/shopController/ShopController.php";
 require_once "Controllers/userController/aboutController/aboutController.php";
 require_once "Controllers/userController/contactController/contactController.php";
 require_once "Controllers/userController/profileController/userProfileController.php";
+require_once "Controllers/adminController/employeeController/employyeeController.php";
 
 // Other Controllers
 require_once "Controllers/adminController/BashInfoController.php";
 require_once "Controllers/errorController.php";
 
+// Help Controller
+// require_once "Controllers/adminController/SupportController.php";
 
 
 // Models
@@ -99,6 +102,18 @@ $route->group('sale', function ($route) {
     $route->post('/admin/saleorder/add', [SaleOrderController::class, 'addSaleOrder']);
     $route->get('/purchase/order', [PurchaseOrderController::class, 'purchaseInfo']);
 });
+// Employee route group
+$route->group('employee', function ($route) {
+    $route->get('/employee/managment', [EmployeeController::class, 'employeeManagement']);
+
+});
+// Setting route group
+$route->group('setting', function ($route) {
+    $route->get('/setting/managment', [SettingController::class, 'settingManagement']);
+
+});
+
+
 
 $route->group('supplier', function ($route) {
     // read 
@@ -163,6 +178,8 @@ $route->group('welcome', function ($route) {
     $route->get('/profile', [UserProfileController::class, 'profile']);
 });
 
+
+
 /**
  * Inventory Routes
  */
@@ -223,6 +240,7 @@ $route->group('shop', function ($route) {
     $route->get('/shop', [ShopController::class, 'shop']);
     $route->get('/payment', [ShopController::class, 'payment']);
     $route->get('/material/detail/{id}', [ShopController::class, 'viewMaterial']);
+    $route->get('/help', [ShopController::class, 'help']);
 });
 /**
  * Error Handling Route
