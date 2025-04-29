@@ -19,27 +19,11 @@ require_once "Controllers/adminController/InventoryController/importExportContro
 // require_once "Controllers/adminController/InventoryController/exportByPython.php";
 // require_once "Controllers/adminController/InventoryController/exportImportController.php";
 
-<<<<<<< HEAD
-// Setting
-require_once 'Controllers/adminController/settingController/settingManagement.php';
-
-// require_one Controllers/adminController/dashboardController/stockListController.php;
-require_once 'Controllers/adminController/dashboardController/stockListController.php';
-// require_once 'Models/dashboard/purchaseOrderModel.php';
-
-// Employee Controller
-require_once "Controllers/adminController/employeeController/employeeController.php";
-
-
-// Database link files
-require_once __DIR__ . '/../Database/Database.php';
-=======
 // Dashboard Controllers
 require_once "Controllers/adminController/DashboardController.php";
 require_once "Controllers/adminController/dashboardController/stockListController.php";
 
 // Account Controllers
->>>>>>> 8e5876e9d77f42d7799115338ff016561dfdf94d
 require_once "Controllers/adminController/accountController/adminProfileController.php";
 require_once "Controllers/adminController/accountController/listUserController.php";
 
@@ -103,8 +87,6 @@ $route->group('sale', function ($route) {
     $route->post('/admin/saleorder/add', [SaleOrderController::class, 'addSaleOrder']);
 });
 
-<<<<<<< HEAD
-=======
 $route->group('supplier', function ($route) {
     // read 
     $route->get('/suppliers', [supplierController::class, 'suppliersInfo']);
@@ -152,88 +134,10 @@ $route->group('shop', function($route) {
 /**
  * Dashboard Routes
  */
->>>>>>> 8e5876e9d77f42d7799115338ff016561dfdf94d
 $route->group('dashboard', function ($route) {
     $route->get('/', [DashboardController::class, 'index']);
     $route->get('/user', [DashboardController::class, 'userDashboard']);
 });
-<<<<<<< HEAD
-$route->group('welcome', function ($route) {
-    $route->get('/welcome', [WelcomeController::class, 'welcome']);
-});
-
-$route->group('inventory', function ($route) {
-    $route->get('/inventory', [InventoryController::class, 'inventory']);
-    // Crud
-    $route->get('/materials/add', [InventoryController::class, 'addMaterial']);
-    $route->post('/materials/add', [InventoryController::class, 'addMaterial']);
-    $route->get('/editmaterial/{id}', [InventoryController::class, 'materialEditForSome']);
-    $route->post('/materials/update', [InventoryController::class, 'updateMaterial']);
-    $route->get('/materials/delete/{id}', [InventoryController::class, 'deleteMaterial']);
-    // View detail
-    $route->get('/materials/view/{id}', [InventoryController::class, 'viewMaterial']);
-    // Import 
-    $route->get('/inventory/import', [InventoryController::class, 'importInventory']);
-    $route->post('/inventory/import', [InventoryController::class, 'importInventory']);
-
-    // Export file
-    $route->get('/inventory/export', [InventoryController::class, 'exportInventory']);
-
-
-    // $route->get('/materials/view/{id}', [InventoryController::class, 'viewMaterial']);
-    // $route->get('/category', [InventoryController::class, 'category']);
-    // $route->post('/category/add', [InventoryController::class, 'addCategory']);
-    // $route->get('/category/delete/(.*)', [InventoryController::class, 'deleteCategory']);
-    // $route->post('/category/deleteSelected', [InventoryController::class, 'deleteSelectedCategories']);
-    // $route->get('/category/category_edit/(.*)', [InventoryController::class, 'editCategory']);
-    // $route->post('/category/update/(.*)', [InventoryController::class, 'updateCategory']);
-
-    $route->get('/order', [InventoryController::class, 'order']);
-});
-
-// Router Categories 
-$route->group('category', function ($route) {
-    $route->get('/category', [CategoriesController::class, 'category']);
-    $route->post('/category/add', [CategoriesController::class, 'addCategory']);
-    $route->get('/category/delete/(.*)', [CategoriesController::class, 'deleteCategory']);
-    $route->post('/category/deleteSelected', [CategoriesController::class, 'deleteSelectedCategories']);
-    $route->get('/category/category_edit/(.*)', [CategoriesController::class, 'editCategory']);
-    $route->post('/category/update/(.*)', [CategoriesController::class, 'updateCategory']);
-    $route->get('/category/detail/{id}', [CategoriesController::class, 'categoryDetail']);
-});
-
-
-$route->group('profile', function ($route) {
-    // Profile admin
-    $route->get('/profile/account', [ProfileAccountController::class, 'profileadmin']);
-
-    // $route->get('/addusersform', [AccountController::class, 'viewAddusersForm']);
-    $route->get('/userList', [AccountListController::class, 'viewUsersAccListProfile']);
-    $route->get('/userdetail', [AccountListController::class, 'viewUserDetail']);
-
-    // add user 
-    $route->get('/createuser', [AccountListController::class, 'createNewUserAccProfile']);
-    $route->post('/userstore', [AccountListController::class, 'storeUserAccProfile']);
-
-    // update user
-    $route->get('/edituser', [AccountListController::class, 'editUserAccProfile']);
-    $route->post('/storeupdate', [AccountListController::class, 'updateUserAccProfile']);
-
-    // delete user
-    $route->post('/deleteuser', [AccountListController::class, 'destroyUserAccProfile']);
-    // Add this new route for single user deletion
-    $route->get('/deleteuser/{id}', [AccountListController::class, 'destroySingleUserAccProfile']);
-});
-
-$route->group('setting', function ($route) {
-    $route->get('/setting', [SettingController::class, 'settingInfo']);
-});
-$route->group('employee', function ($route) {
-    $route->get('/employees', [EmployeeController::class, 'EmployeeControllerInfo']);
-});
-
-=======
->>>>>>> 8e5876e9d77f42d7799115338ff016561dfdf94d
 
 /**
  * Welcome Routes
@@ -305,16 +209,7 @@ $route->group('profile', function ($route) {
  */
 $route->get('/error', [ErrorController::class, 'error']);
 
-<<<<<<< HEAD
-// $route->printRoutes();
-
-
-// Route Handling: match the requested URI with the defined routes
-$route->route();
-// $route->printRoutes();   
-=======
 /**
  * Route Handling: Match the requested URI with the defined routes
  */
 $route->route();
->>>>>>> 8e5876e9d77f42d7799115338ff016561dfdf94d
