@@ -44,6 +44,8 @@ require_once "Controllers/userController/profileController/userProfileController
 require_once "Controllers/adminController/BashInfoController.php";
 require_once "Controllers/errorController.php";
 
+// Help Controller
+// require_once "Controllers/adminController/SupportController.php";
 
 
 // Models
@@ -159,6 +161,8 @@ $route->group('welcome', function ($route) {
     $route->get('/profile', [UserProfileController::class, 'profile']);
 });
 
+
+
 /**
  * Inventory Routes
  */
@@ -217,6 +221,7 @@ $route->group('profile', function ($route) {
 // shop route group
 $route->group('shop', function ($route) {
     $route->get('/shop', [ShopController::class, 'shop']);
+    $route->get('/help', [ShopController::class, 'help']);
 });
 /**
  * Error Handling Route

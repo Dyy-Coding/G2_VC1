@@ -36,4 +36,7 @@ class ShopController extends BaseController {
     }
 
 
+    public function help() {
+        $this->renderView('adminView/help/help');
+    }
 }
