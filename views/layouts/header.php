@@ -220,7 +220,7 @@
                 </a>
                 <ul class="dropdown-menu" id="accountDropdown">
                   <li><a class="dropdown-item" href="/profile/account">Profile</a></li>
-                  <li><a class="dropdown-item" href="/userList">Employees</a></li>
+                  <li><a class="dropdown-item" href="/userList">Users</a></li>
                 </ul>
               </li>
 

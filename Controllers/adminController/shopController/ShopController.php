@@ -35,5 +35,12 @@ class ShopController extends BaseController {
         unset($_SESSION['flash_message']);
     }
 
+    // PaymentController.php (or inside same controller if you prefer)
+    public function payment()
+    {
+        $this->renderView("adminView/shop/payment");
+    }
+
+
 
 }

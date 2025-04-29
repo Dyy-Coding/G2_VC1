@@ -22,9 +22,9 @@
                         <?php echo htmlspecialchars($admin['email'] ?? 'Not Provided'); ?></p>
                 </div>
                 <div class="d-flex gap-2">
-                    <a href="#" class="btn btn-light btn-sm"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="www.linkedin.com/in/chandy-neat-407331351" class="btn btn-light btn-sm"><i class="fab fa-linkedin-in"></i></a>
                     <a href="#" class="btn btn-light btn-sm"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" class="btn btn-light btn-sm"><i class="fab fa-github"></i></a>
+                    <a href="https://github.com/Dyy-Coding" class="btn btn-light btn-sm"><i class="fab fa-github"></i></a>
                     <a href="#" class="btn btn-light btn-sm"><i class="fas fa-envelope"></i></a>
                 </div>
             </div>

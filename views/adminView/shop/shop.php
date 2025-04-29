@@ -118,7 +118,119 @@
         padding: 5px 15px;
         font-size: 0.9rem;
     }
+
+    .cart_shop {
+    position: fixed;
+    top: 600px;
+    left: 1300px;
+    z-index: 1000;
+}
+
+/* Cart Link basic */
+.cart-link {
+    transition: all 0.3s ease;
+    border: 2px solid #00bcd4;
+    border-radius: 15px;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    background-color: #e0f7fa;
+}
+
+/* Cart Icon bigger */
+.cart-icon {
+    background-color: #f0f0f0;
+    transition: background-color 0.3s, transform 0.3s;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+/* Hover effect */
+.cart-link:hover {
+    background-color: #e0f7fa;
+    border: 2px solid #00bcd4;
+    transform: translateY(-3px);
+}
+
+.cart-link:hover .cart-icon {
+    background-color: #00bcd4;
+    transform: rotate(10deg);
+}
+
+.cart-link:hover .material-icons {
+    color: white;
+}
+
+/* Text stronger */
+.nav-link-text {
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+/* RESPONSIVE MEDIA QUERIES */
+@media (max-width: 1400px) {
+    .cart_shop {
+        left: 1100px;
+        top: 580px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .cart_shop {
+        left: 900px;
+        top: 550px;
+    }
+}
+
+@media (max-width: 992px) {
+    .cart_shop {
+        left: 750px;
+        top: 500px;
+    }
+}
+
+@media (max-width: 768px) {
+    .cart_shop {
+        left: 85%;
+        top: 85%;
+        transform: translate(-50%, -50%);
+    }
+    .cart-link {
+        padding: 8px 16px;
+    }
+    .cart-icon {
+        width: 45px;
+        height: 45px;
+    }
+    .nav-link-text {
+        display: none; /* hide text, keep only icon on small screen */
+    }
+}
+
+@media (max-width: 576px) {
+    .cart_shop {
+        left: 80%;
+        top: 85%;
+        transform: translate(-50%, -50%);
+    }
+    .cart-icon {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+
+  
 </style>
+
+<!-- Cart Button -->
+<div class="nav-item cart_shop">
+    <a class="nav-link cart-link" href="/payment" id="cartLink">
+        <i class="material-icons text-dark text-xl">shopping_cart</i>
+        <span class="nav-link-text ms-2">Cart (<span id="cart-count">0</span>)</span>
+    </a>
+</div>
 
 <div class="container container-shop">
     <h1 class="text-center mb-4">🛍️ Our Shop</h1>
@@ -157,7 +269,8 @@
                 <div class="card material-card shadow-sm"
                      data-category="<?= htmlspecialchars($material['CategoryName']) ?>"
                      data-Size="<?= htmlspecialchars($material['Size']) ?>"
-                     data-unit-price="<?= htmlspecialchars($material['UnitPrice']) ?>">
+                     data-unit-price="<?= htmlspecialchars($material['UnitPrice']) ?>"
+                     data-id="<?= htmlspecialchars($material['MaterialID']) ?>">
                      
                     <div class="material-image-container">
                         <img src="<?= htmlspecialchars($material['ImagePath']) ?>" alt="<?= htmlspecialchars($material['Name']) ?>">
@@ -178,7 +291,7 @@
 
                         <!-- Buttons -->
                         <div class="d-flex justify-content-center gap-2 mt-2">
-                            <button class="btn btn-primary btn-sm">Add to Cart</button>
+                            <button class="btn btn-primary btn-sm" onclick="addToCart(this)">Add to Cart</button>
                             <button class="btn btn-outline-info btn-sm">  
                                 <a href="/material/detail/<?= htmlspecialchars($material['MaterialID']) ?>" class="dropdown-item d-flex align-items-center">
                                     <i class="material-icons me-2" style="font-size:18px;">visibility</i> View
@@ -197,8 +310,16 @@
 
 <!-- JavaScript -->
 <script>
+// Initialize the cart
+let cart = JSON.parse(localStorage.getItem('cart')) || [];
 let currentCategory = 'all';
 
+// Update cart count
+function updateCartCount() {
+    document.getElementById('cart-count').textContent = cart.reduce((total, item) => total + item.quantity, 0);
+}
+
+// Function to filter materials
 function filterMaterials(category) {
     currentCategory = category;
     const cards = document.querySelectorAll('.material-card');
@@ -220,11 +341,12 @@ function filterMaterials(category) {
     });
 }
 
+// Listen for search input changes
 document.getElementById('search').addEventListener('input', function() {
     filterMaterials(currentCategory);
 });
 
-// Quantity functions
+// Update quantity and price
 function increaseQuantity(button) {
     const input = button.previousElementSibling;
     let value = parseInt(input.value);
@@ -245,7 +367,7 @@ function decreaseQuantity(button) {
     }
 }
 
-// Update price when quantity changes
+// Update price based on quantity
 function updatePrice(button, quantity) {
     const card = button.closest('.material-card');
     const unitPrice = parseFloat(card.getAttribute('data-unit-price'));
@@ -254,12 +376,33 @@ function updatePrice(button, quantity) {
     priceElement.textContent = totalPrice.toFixed(2);
 }
 
-// Category Buttons
-const categoryButtons = document.querySelectorAll('.scroll-container button');
-categoryButtons.forEach(button => {
-    button.addEventListener('click', function() {
-        const category = this.textContent.trim();
-        filterMaterials(category === 'All' ? 'all' : category);
-    });
+// Add to Cart function
+function addToCart(button) {
+    const card = button.closest('.material-card');
+    const name = card.querySelector('.material-name').textContent;
+    const image = card.querySelector('img').src;
+    const price = parseFloat(card.getAttribute('data-unit-price'));
+    const quantity = parseInt(card.querySelector('.quantity-input').value);
+    const materialID = card.getAttribute('data-id');
+
+    // Check if item is already in the cart
+    const existingItem = cart.find(item => item.materialID === materialID);
+    if (existingItem) {
+        existingItem.quantity += quantity;
+    } else {
+        cart.push({ materialID, name, image, price, quantity });
+    }
+
+    // Update cart in localStorage and update cart count
+    localStorage.setItem('cart', JSON.stringify(cart));
+    updateCartCount();
+    alert('Item added to cart!');
+}
+
+// Call this function to initialize the cart count on page load
+document.addEventListener('DOMContentLoaded', function() {
+    updateCartCount();
+    filterMaterials(currentCategory);
 });
+
 </script>

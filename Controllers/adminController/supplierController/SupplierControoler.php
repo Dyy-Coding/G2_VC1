@@ -16,17 +16,44 @@ class SupplierController extends BaseController
         $this->model = new SupplierManagementModel();
     }
 
+    // Show supplier detail page
+// Show detailed view of a single supplier by ID
+public function supplierDetailById($supplierId, ...$rest)
+{
+    try {
+        $supplier = $this->model->supplierDetail($supplierId);
+        if (!$supplier) {
+            throw new Exception("Supplier not found");
+        }
+
+        $this->renderView('adminView/supplier/supplierdetail', ['supplier' => $supplier]);
+    } catch (Exception $e) {
+        $supplier = $this->model->supplierDetail($supplierId);
+        echo $supplierId;
+        var_dump($supplier);
+        $_SESSION['error'] = $e->getMessage();
+        $this->renderView('adminView/supplier/supplierdetail', ['supplier' => $supplier]);
+
+        exit();
+    }
+}
+
+
+
+
     // Read: Display all suppliers with their categories
     public function suppliersInfo()
     {
-        $data['suppliers'] = $this->model->getAllSuppliersWithCategories();
+        $data['suppliers'] = $this->model->getAllSuppliers();
+        $data['topSupplier'] = $this->model->getTopSuppliersWithPurchaseOrders();
+   
         $this->renderView("adminView/supplier/supplierlist", $data);
     }
 
     // Export suppliers to different formats
     public function exportSuppliers($format)
     {
-        $suppliers = $this->model->getAllSuppliersWithCategories();
+        $suppliers = $this->model->getAllSuppliers();
 
         switch (strtolower($format)) {
             case 'excel': // Changed to CSV

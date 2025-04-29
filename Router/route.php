@@ -29,10 +29,11 @@ require_once "Controllers/adminController/accountController/listUserController.p
 
 // Suppliers Controller
 require_once 'Controllers/adminController/supplierController/SupplierControoler.php';
-require_once 'Controllers/adminController/supplierController/DetailSupplierController.php';
 
 // Customers Controller
 require_once 'Controllers/adminController/customerController.php/customerListController.php';
+require_once 'Controllers/adminController/saleController/salesOrderController.php';
+require_once 'Controllers/adminController/saleController/purchaseController.php';
 
 // Shop Controller
 require_once "Controllers/adminController/shopController/ShopController.php";
@@ -54,6 +55,7 @@ require_once "Models/dashboard/dashboardModel.php";
 require_once "Models/supplierModel/SupplierModel.php";
 require_once "Models/invenoryModel/import&export/material.php";
 require_once "Models/accountModel/userModel.php";
+require_once "Models/salesModel/salesOrderModel.php";
 
 // Shop model 
 require_once "Models/shopModel/ShopModel.php";
@@ -95,6 +97,7 @@ $route->group('sale', function ($route) {
     $route->get('/sale/order', [SaleOrderController::class, 'saleInfo']);
     $route->get('/admin/saleorder/add', [SaleOrderController::class, 'addSaleOrder']);
     $route->post('/admin/saleorder/add', [SaleOrderController::class, 'addSaleOrder']);
+    $route->get('/purchase/order', [PurchaseOrderController::class, 'purchaseInfo']);
 });
 
 $route->group('supplier', function ($route) {
@@ -113,7 +116,8 @@ $route->group('supplier', function ($route) {
     $route->post('/supplier/delete/{id}', [supplierController::class, 'destroySupplier']);
 
     // supplier detail
-    $route->get('/supplier/detail', [SupplierDetailController::class, 'suppliersInfoDetails']);
+    $route->get('/supplier/detail/{id}', [SupplierController::class, 'supplierDetailById']);
+
 
 
     // export supplier detail
@@ -199,24 +203,25 @@ $route->group('category', function ($route) {
  */
 $route->group('profile', function ($route) {
     // Admin Profile
-    $route->get('/account', [ProfileAccountController::class, 'profileadmin']);
+    $route->get('/profile/account', [ProfileAccountController::class, 'profileadmin']);
 
     // User List & Details
-    // $route->get('/userList', [AccountListController::class, 'viewUsersAccListProfile']);
-    // $route->get('/userDetail/{id}', [AccountListController::class, 'viewUserDetail']);
+    $route->get('/userList', [AccountListController::class, 'viewUsersAccListProfile']);
+    $route->get('/userDetail/{id}', [AccountListController::class, 'viewUserDetail']);
 
     // // User Management
-    // $route->get('/createuser', [AccountListController::class, 'createNewUserAccProfile']);
-    // $route->post('/userstore', [AccountListController::class, 'storeUserAccProfile']);
-    // $route->get('/edituser/{id}', [AccountListController::class, 'editUserAccProfile']);
-    // $route->post('/storeupdate/{id}', [AccountListController::class, 'updateUserAccProfile']);
-    // $route->match(['post', 'delete'], '/deleteuser/{id}', [AccountListController::class, 'destroySingleUserAccProfile']);
+    $route->get('/createuser', [AccountListController::class, 'createNewUserAccProfile']);
+    $route->post('/userstore', [AccountListController::class, 'storeUserAccProfile']);
+    $route->get('/edituser/{id}', [AccountListController::class, 'editUserAccProfile']);
+    $route->post('/storeupdate/{id}', [AccountListController::class, 'updateUserAccProfile']);
+    $route->match(['post', 'delete'], '/deleteuser/{id}', [AccountListController::class, 'destroySingleUserAccProfile']);
 });
 
 
 // shop route group
 $route->group('shop', function ($route) {
     $route->get('/shop', [ShopController::class, 'shop']);
+    $route->get('/payment', [ShopController::class, 'payment']);
     $route->get('/material/detail/{id}', [ShopController::class, 'viewMaterial']);
 });
 /**
