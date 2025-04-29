@@ -238,7 +238,7 @@
 
 
               <li class="nav-item">
-                <a class="nav-link" href="../pages/sign-in.html">
+                <a class="nav-link" href="/financal/managment">
                   <div
                     class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                     <i class="material-icons text-dark text-lg">report</i>

@@ -41,6 +41,7 @@ require_once "Controllers/userController/aboutController/aboutController.php";
 require_once "Controllers/userController/contactController/contactController.php";
 require_once "Controllers/userController/profileController/userProfileController.php";
 require_once "Controllers/adminController/employeeController/employyeeController.php";
+require_once "Controllers/adminController/reportController/financalController.php";
 
 // Other Controllers
 require_once "Controllers/adminController/BashInfoController.php";
@@ -110,6 +111,11 @@ $route->group('employee', function ($route) {
 // Setting route group
 $route->group('setting', function ($route) {
     $route->get('/setting/managment', [SettingController::class, 'settingManagement']);
+
+});
+// report route group
+$route->group('report', function ($route) {
+    $route->get('/financal/managment', [FinancalController::class, 'financalManagement']);
 
 });
 
